@@ -1,0 +1,18 @@
+.button-action {
+    -fx-text-fill: white;
+    -fx-background-color: #1700e1;
+    -fx-cursor: hand;
+}
+
+.table-view {
+    -fx-font-size: 12px;
+}
+
+.column-header {
+    -fx-pref-height: 30px;
+}
+
+.table-cell {
+    -fx-alignment: center-left;
+    -fx-wrap-text: true;
+}

@@ -1,0 +1,26 @@
+.button-top {
+    -fx-background-color: #1700e1;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-top:hover {
+   -fx-font-size: 12px;
+}   
+
+.item-top-bar {
+   -fx-pref-height: 30px;
+}
+
+#tfPesquisar {
+    -fx-background-color: none;
+    -fx-border-style: hidden hidden solid hidden ;
+    -fx-border-color: #1700e1;
+}
+
+.table-cell {
+    -fx-alignment: center-left;
+    -fx-wrap-text: true;
+}
+
