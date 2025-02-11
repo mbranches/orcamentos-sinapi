@@ -106,6 +106,8 @@ public class TelaOrcamentoController implements Initializable{
     private void excluirServico(ActionEvent event) {
         servicosAdicionados.remove(servicoSelecionado);
 
+        limparBarraPesquisa();
+
         atualizarTabela();
         atualizarValorTotal();
 
@@ -215,6 +217,7 @@ public class TelaOrcamentoController implements Initializable{
 
         servicosAdicionados.add(servicoAdicionado);
 
+        limparBarraPesquisa();
         atualizarTabela();
         atualizarValorTotal();
     }
@@ -239,8 +242,12 @@ public class TelaOrcamentoController implements Initializable{
             }
         }
 
-        if (!tfPesquisar.getText().equals("")) tfPesquisar.clear();
+        limparBarraPesquisa();
         atualizarTabela();
         atualizarValorTotal();
+    }
+
+    public void limparBarraPesquisa() {
+        if (!tfPesquisar.getText().equals("")) tfPesquisar.clear();
     }
 }
