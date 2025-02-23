@@ -1,4 +1,4 @@
-package com.branches.cpu.Dao;
+package com.branches.cpu.dao;
 
 import com.branches.cpu.model.Servico;
 
@@ -16,7 +16,7 @@ public class ServicoDao {
             sql = "SELECT * FROM precos_sinapi_teste";
         }
         else {
-            sql = "SELECT * FROM precos_sinapi_teste WHERE descricao_insumo LIKE '%" + descricao.replace("\'", "\'\'") + "%'"; //substituindo '' por '''' para que não haja conflito entre o comando sql e a string descrição
+            sql = "SELECT * FROM precos_sinapi_teste WHERE descricao_insumo LIKE '%" + descricao.replace("'", "''") + "%'";
         }
 
         try (PreparedStatement conexao = ConexaoBanco.getConexao().prepareStatement(sql)) {

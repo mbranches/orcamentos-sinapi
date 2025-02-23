@@ -4,10 +4,11 @@
  */
 package com.branches.cpu.controller;
 
-import com.branches.cpu.Dao.ServicoDao;
+import com.branches.cpu.dao.ServicoDao;
 import com.branches.cpu.model.Servico;
 import com.branches.cpu.model.ServicoAdicionado;
 import com.branches.cpu.utils.Monetary;
+import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,20 +20,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lombok.Setter;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
  *
  * @author Branches
  */
+@Setter
 public class TelaAdicionarController implements Initializable {
     @FXML
     private Button btnAdicionar;
@@ -52,11 +53,8 @@ public class TelaAdicionarController implements Initializable {
     @FXML
     private TableView<Servico> tvMostrarServico;
 
-    private ObservableList observableList = javafx.collections.FXCollections.observableArrayList();
     private Servico servicoSelecionado;
     List<Servico> resultadoBusca = new ArrayList<>();
-
-    private java.util.List<ServicoAdicionado> servicosAdicionados = new ArrayList<>();
 
     private TelaOrcamentoController telaPrincipal;
 
@@ -113,7 +111,7 @@ public class TelaAdicionarController implements Initializable {
         autoCompletePesquisar.setMinWidth(600);
 
         autoCompletePesquisar.setOnAutoCompleted( event -> {
-            Servico servicoPesquisado = event.getCompletion();
+            event.getCompletion();
         });
     }
 
@@ -145,19 +143,7 @@ public class TelaAdicionarController implements Initializable {
         colunaUnidade.setCellValueFactory(new PropertyValueFactory("unidadeMedida"));
         colunaValor.setCellValueFactory(new PropertyValueFactory("preco"));
 
-        colunaValor.setCellFactory(col -> {
-            return new TableCell<Servico, Double>() {
-                @Override
-                protected void updateItem(Double item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty || item == null) {
-                        setText(null);
-                    } else {
-                        setText(Monetary.formatarValorBRL(item));
-                    }
-                }
-            };
-        });
+        TableColumnConfig.columnFomatoMonetario(colunaValor);
     }
 
     private void limparCampos() {
@@ -165,10 +151,6 @@ public class TelaAdicionarController implements Initializable {
         tfQuantidade.clear();
         txtTotal.setText("R$ 0,00");
         tvMostrarServico.getItems().clear();
-    }
-
-    public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
-        this.telaPrincipal = telaPrincipal;
     }
 
     private void adicionar() {

@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import com.branches.cpu.model.ServicoAdicionado;
 import com.branches.cpu.utils.Monetary;
+import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -196,19 +197,7 @@ public class TelaOrcamentoController implements Initializable{
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
 
-        colunaTotal.setCellFactory(col -> {
-            return new TableCell<ServicoAdicionado, Double>() {
-                @Override
-                protected void updateItem(Double item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty || item == null) {
-                        setText(null);
-                    } else {
-                        setText(Monetary.formatarValorBRL(item));
-                    }
-                }
-            };
-        });
+        TableColumnConfig.columnFomatoMonetario(colunaTotal);
     }
 
     public void adicionarServico(ServicoAdicionado servicoAdicionado) {

@@ -1,8 +1,9 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.Dao.ServicoDao;
+import com.branches.cpu.dao.ServicoDao;
 import com.branches.cpu.model.Servico;
 import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,9 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static com.branches.cpu.utils.Monetary.formatarValorBRL;
@@ -122,18 +121,6 @@ public class TelaEditarController implements Initializable {
         colunaUnidade.setCellValueFactory(new PropertyValueFactory("unidadeMedida"));
         colunaValor.setCellValueFactory(new PropertyValueFactory("preco"));
 
-        colunaValor.setCellFactory(col -> {
-            return new TableCell<Servico, Double>() {
-                @Override
-                protected void updateItem(Double item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty || item == null) {
-                        setText(null);
-                    } else {
-                        setText(formatarValorBRL(item));
-                    }
-                }
-            };
-        });
+        TableColumnConfig.columnFomatoMonetario(colunaValor);
     }
 }

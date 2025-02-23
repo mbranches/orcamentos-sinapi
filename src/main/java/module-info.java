@@ -1,8 +1,8 @@
 module com.branches.cpu {
     requires javafx.fxml;
-    requires java.sql;
     requires static lombok;
     requires org.controlsfx.controls;
+    requires jakarta.persistence;
 
     opens com.branches.cpu to javafx.fxml;
     exports com.branches.cpu;
