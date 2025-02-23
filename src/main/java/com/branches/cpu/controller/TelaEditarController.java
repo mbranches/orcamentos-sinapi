@@ -14,13 +14,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.branches.cpu.utils.Monetary.formatarValorBRL;
-
+@Setter
 public class TelaEditarController implements Initializable {
     @FXML
     private Button btnSalvarFechar;
@@ -63,14 +64,6 @@ public class TelaEditarController implements Initializable {
 
         servicoAEditar.setQuantidade( Integer.valueOf(tfQuantidade.getText()) );
         servicoAEditar.setarValorTotal();
-    }
-
-    public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
-        this.telaPrincipal = telaPrincipal;
-    }
-
-    public void setServicoAEditar(ServicoAdicionado servicoAEditar) {
-        this.servicoAEditar = servicoAEditar;
     }
 
     @Override
