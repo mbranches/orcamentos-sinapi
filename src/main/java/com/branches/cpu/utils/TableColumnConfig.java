@@ -8,8 +8,8 @@ import static com.branches.cpu.utils.Monetary.formatarValorBRL;
 
 public class TableColumnConfig {
     public static void columnFomatoMonetario (TableColumn column) {
-        column.setCellFactory(col -> {
-            return new TableCell<Servico, Double>() {
+        column.setCellFactory(col ->
+            new TableCell<Servico, Double>() {
                 @Override
                 protected void updateItem(Double item, boolean empty) {
                     super.updateItem(item, empty);
@@ -19,7 +19,6 @@ public class TableColumnConfig {
                         setText(formatarValorBRL(item));
                     }
                 }
-            };
         });
     }
 }
