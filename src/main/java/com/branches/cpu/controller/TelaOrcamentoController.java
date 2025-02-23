@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.utils.Lists;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -156,14 +157,9 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     private List<ServicoAdicionado> consultarEmServicosAdicionados(String descricao) {
+        List<ServicoAdicionado> servicosPesquisados= Lists.containsInList(servicosAdicionados, s -> s.getDescricao().toLowerCase().contains(descricao.toLowerCase()));
 
-        for (ServicoAdicionado servicosAdicionado : servicosAdicionados) {
-            if (servicosAdicionado.getDescricao().toLowerCase().contains(descricao.toLowerCase())) {
-                resultadoBusca.add(servicosAdicionado);
-            }
-        }
-
-        return resultadoBusca;
+        return servicosPesquisados;
     }
 
     private void atualizarValorTotal() {
