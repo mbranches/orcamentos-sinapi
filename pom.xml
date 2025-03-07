@@ -8,5 +8,6 @@
 
     <modules>
         <module>orcamentos-sinapi-application</module>
+        <module>orcamentos-sinapi-api</module>
     </modules>
 </project>
