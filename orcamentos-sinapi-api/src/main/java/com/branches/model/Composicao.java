@@ -3,7 +3,7 @@ package com.branches.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Servico {
+public class Composicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
