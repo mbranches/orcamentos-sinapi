@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Servicos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741387501436</updated>
       <workItem from="1741387503908" duration="678000" />
-      <workItem from="1741454090243" duration="360000" />
+      <workItem from="1741454090243" duration="687000" />
     </task>
     <servers />
   </component>
