@@ -19,4 +19,8 @@ public class ComposicaoService {
     public List<Composicao> findByDescription(String description) {
         return repository.findAllByDescricaoContaining(description);
     }
+
+    public Composicao save(Composicao composicao) {
+        return repository.save(composicao);
+    }
 }
