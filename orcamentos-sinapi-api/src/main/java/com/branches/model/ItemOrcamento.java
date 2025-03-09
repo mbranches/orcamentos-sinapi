@@ -1,7 +1,6 @@
 package com.branches.model;
 
 import jakarta.persistence.*;
-import org.hibernate.mapping.ToOne;
 
 @Entity(name = "item_orcamento")
 public class ItemOrcamento {
@@ -9,8 +8,8 @@ public class ItemOrcamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "id_composicao")
-    private Composicao composicao;
+    @JoinColumn(name = "id_insumo")
+    private Insumo insumo;
     private Integer quantidade;
     @ManyToOne
     @JoinColumn(name = "id_orcamento")
