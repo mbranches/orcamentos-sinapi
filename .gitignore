@@ -3,7 +3,6 @@
 out/
 target/
 .idea/
-../.idea/
 
 pom.xml.tag
 pom.xml.releaseBackup
