@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="feat: model ItemOrcamento adicionado" />
+    <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="chore: gitignore alterado">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ComposicaoController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +58,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -85,7 +92,7 @@
       <workItem from="1741387503908" duration="678000" />
       <workItem from="1741454090243" duration="1380000" />
       <workItem from="1741525783428" duration="8000" />
-      <workItem from="1741547699830" duration="1379000" />
+      <workItem from="1741547699830" duration="1634000" />
     </task>
     <task id="LOCAL-00001" summary="feat: gitignore adicionado ao pacote externo">
       <option name="closed" value="true" />
@@ -127,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741549088308</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="chore: gitignore alterado">
+      <option name="closed" value="true" />
+      <created>1741549161924</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741549161924</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,9 +150,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: gitignore adicionado ao pacote externo" />
-    <MESSAGE value="chore: gitignore alterado" />
     <MESSAGE value="refactor: nome da entidade alterado" />
     <MESSAGE value="feat: model ItemOrcamento adicionado" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: model ItemOrcamento adicionado" />
+    <MESSAGE value="chore: gitignore alterado" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: gitignore alterado" />
   </component>
 </project>
