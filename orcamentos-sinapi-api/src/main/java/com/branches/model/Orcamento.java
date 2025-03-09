@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "orcamento")
 public class Orcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
