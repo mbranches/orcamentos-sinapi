@@ -11,5 +11,6 @@ public class Orcamento {
     private Long id;
     @Column(name = "data_criacao")
     private LocalDate dataCriacao;
+    @Column(length = 50, nullable = false)
     private String nome;
 }

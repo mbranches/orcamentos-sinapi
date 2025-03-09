@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="chore: gitignore alterado">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ComposicaoController.java" afterDir="false" />
+    <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="refactor: nome de insumo alterado">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,22 +48,36 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi",
+    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-api" />
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.branches.controller" />
     </key>
   </component>
   <component name="RunManager">
@@ -93,6 +110,7 @@
       <workItem from="1741454090243" duration="1380000" />
       <workItem from="1741525783428" duration="8000" />
       <workItem from="1741547699830" duration="1634000" />
+      <workItem from="1741549501451" duration="3053000" />
     </task>
     <task id="LOCAL-00001" summary="feat: gitignore adicionado ao pacote externo">
       <option name="closed" value="true" />
@@ -142,7 +160,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741549161924</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: ComposicaoRepository e ComposicaoController adicionados">
+      <option name="closed" value="true" />
+      <created>1741550168827</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741550168827</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: adicionado funcionalidades para get e post">
+      <option name="closed" value="true" />
+      <created>1741550338587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741550338587</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactor: nome de insumo alterado">
+      <option name="closed" value="true" />
+      <created>1741551263105</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741551263105</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +195,9 @@
     <MESSAGE value="refactor: nome da entidade alterado" />
     <MESSAGE value="feat: model ItemOrcamento adicionado" />
     <MESSAGE value="chore: gitignore alterado" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: gitignore alterado" />
+    <MESSAGE value="feat: ComposicaoRepository e ComposicaoController adicionados" />
+    <MESSAGE value="feat: adicionado funcionalidades para get e post" />
+    <MESSAGE value="refactor: nome de insumo alterado" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: nome de insumo alterado" />
   </component>
 </project>

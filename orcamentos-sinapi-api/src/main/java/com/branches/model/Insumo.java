@@ -7,6 +7,7 @@ public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 30)
     private String codigo;
     @Column(name = "descricao_insumo", length = 300, nullable = false)
     private String descricao;
