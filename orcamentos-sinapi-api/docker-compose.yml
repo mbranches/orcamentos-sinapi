@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mysql
+    container_name: orcamentos-sinapi
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - branches_data:/var/lib/mysql
+
+volumes:
+  branches_data:
