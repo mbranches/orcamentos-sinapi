@@ -79,11 +79,18 @@
       <recent name="com.branches.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.OrcamentosSinapiApiApplication">
     <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="orcamentos-sinapi-api" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.branches.OrcamentosSinapiApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScriptInsercaoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="orcamentos-sinapi-insercao" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.branches.ScriptInsercaoApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
