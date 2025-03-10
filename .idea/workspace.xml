@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="feat: banco de dados adicionado via docker">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/model/Insumo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +116,7 @@
       <workItem from="1741547699830" duration="1634000" />
       <workItem from="1741549501451" duration="3318000" />
       <workItem from="1741553288181" duration="661000" />
+      <workItem from="1741623988043" duration="495000" />
     </task>
     <task id="LOCAL-00001" summary="feat: gitignore adicionado ao pacote externo">
       <option name="closed" value="true" />
