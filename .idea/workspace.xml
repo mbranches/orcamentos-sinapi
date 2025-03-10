@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="feat: banco de dados adicionado via docker">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/InsumoPostRequest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/model/Insumo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/request/InsumoPostRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/service/InsumoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/resources/files/SINAPI_Preco_Ref_Insumos_PA_202412_NaoDesonerado.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/InsumoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/InsumoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/ExcelToBdApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/ExcelToBdApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/util/ReaderXlsx.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/util/ReaderXlsx.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -43,33 +53,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.OrcamentosSinapiApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ReaderXlsx.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
+    "Spring Boot.ScriptInsercaoApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-insercao/src/main/resources/files",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-insercao\src\main\resources\files" />
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-api" />
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi" />
     </key>
@@ -78,6 +91,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.OrcamentosSinapiApiApplication">
+    <configuration name="ReaderXlsx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.branches.util.ReaderXlsx" />
+      <module name="orcamentos-sinapi-insercao" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.branches.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="orcamentos-sinapi-api" />
@@ -93,6 +119,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ReaderXlsx" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -116,7 +147,8 @@
       <workItem from="1741547699830" duration="1634000" />
       <workItem from="1741549501451" duration="3318000" />
       <workItem from="1741553288181" duration="661000" />
-      <workItem from="1741623988043" duration="495000" />
+      <workItem from="1741623988043" duration="4769000" />
+      <workItem from="1741628807824" duration="2692000" />
     </task>
     <task id="LOCAL-00001" summary="feat: gitignore adicionado ao pacote externo">
       <option name="closed" value="true" />
