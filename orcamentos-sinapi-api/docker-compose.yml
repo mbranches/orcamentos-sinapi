@@ -3,6 +3,7 @@ services:
     image: mysql
     container_name: orcamentos-sinapi
     environment:
+      MYSQL_ROOT_USERNAME: root
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
