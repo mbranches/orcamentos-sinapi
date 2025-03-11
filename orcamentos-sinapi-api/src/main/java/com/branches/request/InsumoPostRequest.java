@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InsumoPostRequest {
-    private String codigo;
+    private Long codigo;
     private String descricao;
     private String unidadeMedida;
     private String origemPreco;

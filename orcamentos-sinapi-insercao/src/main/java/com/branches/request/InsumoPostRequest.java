@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class InsumoPostRequest {
-    private String codigo;
+    private Long codigo;
     private String descricao;
     private String unidadeMedida;
     private String origemPreco;
