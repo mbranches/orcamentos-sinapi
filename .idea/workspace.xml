@@ -4,29 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="feat: request adicionado para método post">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/mapper/InsumoMapper.java" afterDir="false" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/InsumoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/InsumoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Insumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Insumo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/ExcelToBdApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/ScriptInsercaoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/model/Insumo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/request/InsumoPostRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/util/ReaderXlsx.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/resources/files/SINAPI_Preco_Ref_Insumos_PA_202412_NaoDesonerado.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/test/java/com/branches/ScriptInsercaoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/util/ReaderXlsx.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-insercao/src/main/java/com/branches/util/ReaderXlsx.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,94 +19,60 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;mbranches&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "mbranches"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/mbranches/orcamentos-sinapi.git&quot;,
-    &quot;accountId&quot;: &quot;f0ba08a4-e762-4434-850d-f58631d0d2ea&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mbranches/orcamentos-sinapi.git",
+    "accountId": "f0ba08a4-e762-4434-850d-f58631d0d2ea"
   }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2u0ZYOscWAVFEsqgMboluRKmpr3" />
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2uAsHrkMOQszi6eGc6DHti30JQ0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ReaderXlsx.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.OrcamentosSinapiApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ScriptInsercaoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-insercao/src/main/resources/files&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
+    "Spring Boot.ScriptInsercaoApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-insercao\src\main\resources\files" />
-      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-api" />
-      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.branches.model" />
-      <recent name="com.branches.controller" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.OrcamentosSinapiApiApplication">
-    <configuration name="ReaderXlsx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.branches.util.ReaderXlsx" />
-      <module name="orcamentos-sinapi-insercao" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.branches.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.ScriptInsercaoApplication">
+    <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="orcamentos-sinapi-api" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.branches.OrcamentosSinapiApiApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.branches.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,7 +86,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReaderXlsx" />
+        <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -150,161 +101,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1972afed-3217-4a99-a070-9a8c05d50d8b" name="Changes" comment="" />
-      <created>1741387501436</created>
+      <changelist id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="" />
+      <created>1741702628611</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1741387501436</updated>
-      <workItem from="1741387503908" duration="678000" />
-      <workItem from="1741454090243" duration="1380000" />
-      <workItem from="1741525783428" duration="8000" />
-      <workItem from="1741547699830" duration="1634000" />
-      <workItem from="1741549501451" duration="3318000" />
-      <workItem from="1741553288181" duration="661000" />
-      <workItem from="1741623988043" duration="4769000" />
-      <workItem from="1741628807824" duration="4871000" />
-      <workItem from="1741633770176" duration="5217000" />
+      <updated>1741702628611</updated>
+      <workItem from="1741702629763" duration="1026000" />
     </task>
-    <task id="LOCAL-00001" summary="feat: gitignore adicionado ao pacote externo">
-      <option name="closed" value="true" />
-      <created>1741548950084</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1741548950084</updated>
-    </task>
-    <task id="LOCAL-00002" summary="chore: gitignore alterado">
-      <option name="closed" value="true" />
-      <created>1741548989200</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1741548989200</updated>
-    </task>
-    <task id="LOCAL-00003" summary="refactor: nome da entidade alterado">
-      <option name="closed" value="true" />
-      <created>1741549059512</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1741549059512</updated>
-    </task>
-    <task id="LOCAL-00004" summary="refactor: nome da entidade alterado">
-      <option name="closed" value="true" />
-      <created>1741549066562</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1741549066562</updated>
-    </task>
-    <task id="LOCAL-00005" summary="feat: model ItemOrcamento adicionado">
-      <option name="closed" value="true" />
-      <created>1741549088308</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1741549088308</updated>
-    </task>
-    <task id="LOCAL-00006" summary="chore: gitignore alterado">
-      <option name="closed" value="true" />
-      <created>1741549161924</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1741549161924</updated>
-    </task>
-    <task id="LOCAL-00007" summary="feat: ComposicaoRepository e ComposicaoController adicionados">
-      <option name="closed" value="true" />
-      <created>1741550168827</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1741550168827</updated>
-    </task>
-    <task id="LOCAL-00008" summary="feat: adicionado funcionalidades para get e post">
-      <option name="closed" value="true" />
-      <created>1741550338587</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1741550338587</updated>
-    </task>
-    <task id="LOCAL-00009" summary="refactor: nome de insumo alterado">
-      <option name="closed" value="true" />
-      <created>1741551263105</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1741551263105</updated>
-    </task>
-    <task id="LOCAL-00010" summary="feat: banco de dados adicionado via docker">
-      <option name="closed" value="true" />
-      <created>1741552847075</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1741552847075</updated>
-    </task>
-    <task id="LOCAL-00011" summary="feat: tornando request param não obrigatorio">
-      <option name="closed" value="true" />
-      <created>1741631693350</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1741631693350</updated>
-    </task>
-    <task id="LOCAL-00012" summary="chore: config hibernate alterada">
-      <option name="closed" value="true" />
-      <created>1741631739085</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1741631739085</updated>
-    </task>
-    <task id="LOCAL-00013" summary="feat: método para ler a planilha sinapi adicionado">
-      <option name="closed" value="true" />
-      <created>1741631791241</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1741631791241</updated>
-    </task>
-    <task id="LOCAL-00014" summary="feat: model insumo adicionado">
-      <option name="closed" value="true" />
-      <created>1741631815668</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1741631815668</updated>
-    </task>
-    <task id="LOCAL-00015" summary="feat: request adicionado para método post">
-      <option name="closed" value="true" />
-      <created>1741631848684</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1741631848684</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: gitignore adicionado ao pacote externo" />
-    <MESSAGE value="refactor: nome da entidade alterado" />
-    <MESSAGE value="feat: model ItemOrcamento adicionado" />
-    <MESSAGE value="chore: gitignore alterado" />
-    <MESSAGE value="feat: ComposicaoRepository e ComposicaoController adicionados" />
-    <MESSAGE value="feat: adicionado funcionalidades para get e post" />
-    <MESSAGE value="refactor: nome de insumo alterado" />
-    <MESSAGE value="feat: banco de dados adicionado via docker" />
-    <MESSAGE value="feat: tornando request param não obrigatorio" />
-    <MESSAGE value="chore: config hibernate alterada" />
-    <MESSAGE value="feat: método para ler a planilha sinapi adicionado" />
-    <MESSAGE value="feat: model insumo adicionado" />
-    <MESSAGE value="feat: request adicionado para método post" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: request adicionado para método post" />
   </component>
 </project>

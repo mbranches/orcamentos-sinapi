@@ -10,6 +10,5 @@
         <module>orcamentos-sinapi-application</module>
         <module>orcamentos-sinapi-api</module>
         <module>orcamentos-sinapi-insercao</module>
-
     </modules>
 </project>

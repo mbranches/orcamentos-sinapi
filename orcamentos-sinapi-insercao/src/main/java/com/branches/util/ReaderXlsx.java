@@ -36,7 +36,7 @@ public class ReaderXlsx {
         Sheet sheet = workbook.getSheetAt(0);
 
         for (Row row : sheet) {
-            if (row.getRowNum() < 7 || row.getRowNum() > 4846) continue;
+            if (row.getRowNum() < 7 || row.getRowNum() >= 4846) continue;
                 InsumoPostRequest insumo = InsumoPostRequest.builder().build();
 
             for (Cell cell : row) {
@@ -61,25 +61,25 @@ public class ReaderXlsx {
                 }
 
             }
-                log.info(insumo);
-                if (allFieldsFilled(insumo)) insumos.add(insumo);
+                if (!allFieldsFilled(insumo)){
+                    log.info(insumo);
+                    continue;
+                }
+                insumos.add(insumo);
         }
         return insumos;
 
     }
 
-    private static boolean allFieldsFilled(Object object) {
-        Field[] fields = object.getClass().getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-            try {
-                if (field.get(object) == null) {
-                    return false;
-                }
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
+    private static boolean allFieldsFilled(InsumoPostRequest insumoPostRequest) {
+        if (
+                insumoPostRequest.getCodigo() == null ||
+                        insumoPostRequest.getDescricao() == null ||
+                        insumoPostRequest.getUnidadeMedida() == null ||
+                        insumoPostRequest.getOrigemPreco() == null ||
+                        insumoPostRequest.getPreco() == null
+        ) {
+            return false;
         }
         return true;
     }
