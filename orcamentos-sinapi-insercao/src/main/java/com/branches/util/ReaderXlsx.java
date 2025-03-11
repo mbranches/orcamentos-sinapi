@@ -44,7 +44,7 @@ public class ReaderXlsx {
 
                 switch (cell.getColumnIndex()) {
                     case 0:
-                        insumo.setCodigo(cell.toString());
+                        insumo.setCodigo(Long.parseLong(cell.toString().replace(".0", "")));
                         break;
                     case 1:
                         insumo.setDescricao(cell.toString().trim());

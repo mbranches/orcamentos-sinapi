@@ -11,13 +11,13 @@ public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 30)
-    private String codigo;
-    @Column(name = "descricao_insumo", length = 300, nullable = false)
+    @Column
+    private Long codigo;
+    @Column(name = "descricao_insumo", length = 500, nullable = false)
     private String descricao;
-    @Column(name = "unidade_medida", length = 5, nullable = false)
+    @Column(name = "unidade_medida", length = 10, nullable = false)
     private String unidadeMedida;
-    @Column(name = "origem_preco", length = 5, nullable = false)
+    @Column(name = "origem_preco", length = 10, nullable = false)
     private String origemPreco;
     private Double preco;
 }
