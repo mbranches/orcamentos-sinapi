@@ -1,7 +1,7 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.dao.ServicoDao;
-import com.branches.cpu.model.Servico;
+import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ServicoAdicionado;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -33,7 +33,7 @@ public class TelaEditarController implements Initializable {
     private TextField tfQuantidade;
 
     @FXML
-    private TableView<Servico> tvMostrarServico;
+    private TableView<Insumo> tvMostrarServico;
 
     @FXML
     private Text txtTotal;
@@ -85,9 +85,9 @@ public class TelaEditarController implements Initializable {
     }
 
     private void setarItemTableView() {
-        List<Servico> servicos = ServicoDao.consultarServicos(tfMostrarServico.getText());
+        List<Insumo> servicos = ServicoDao.consultarServicos(tfMostrarServico.getText());
 
-        for (Servico servico : servicos) {
+        for (Insumo servico : servicos) {
             observableList.add(servico);
         }
 
@@ -95,10 +95,10 @@ public class TelaEditarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Servico, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<Servico, String> colunaDescricao =new TableColumn<>("Descrição");
-        TableColumn<Servico, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<Servico, Double> colunaValor = new TableColumn<>("Valor Unitário");
+        TableColumn<Insumo, Long> colunaCodigo =new TableColumn<>("Cód.");
+        TableColumn<Insumo, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
 
         colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
