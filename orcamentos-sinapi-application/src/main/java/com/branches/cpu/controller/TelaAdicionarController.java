@@ -1,12 +1,11 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.dao.ServicoDao;
-import com.branches.cpu.model.Servico;
+import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ServicoAdicionado;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,10 +46,10 @@ public class TelaAdicionarController implements Initializable {
     private Text txtTotal;
 
     @FXML
-    private TableView<Servico> tvMostrarServico;
+    private TableView<Insumo> tvMostrarServico;
 
-    private Servico servicoSelecionado;
-    List<Servico> resultadoBusca = new ArrayList<>();
+    private Insumo servicoSelecionado;
+    List<Insumo> resultadoBusca = new ArrayList<>();
 
     private TelaOrcamentoController telaPrincipal;
 
@@ -100,7 +99,7 @@ public class TelaAdicionarController implements Initializable {
         tvMostrarServico.getPlaceholder().setStyle("-fx-font-size: 15px");
 
 
-        AutoCompletionBinding<Servico> autoCompletePesquisar = TextFields.bindAutoCompletion(
+        AutoCompletionBinding<Insumo> autoCompletePesquisar = TextFields.bindAutoCompletion(
                 tfPesquisarServico,
                 ServicoDao.consultarServicos(tfPesquisarServico.getText())
         );
@@ -120,10 +119,10 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Servico, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<Servico, String> colunaDescricao =new TableColumn<>("Descrição");
-        TableColumn<Servico, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<Servico, Double> colunaValor = new TableColumn<>("Valor Unitário");
+        TableColumn<Insumo, Long> colunaCodigo =new TableColumn<>("Cód.");
+        TableColumn<Insumo, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
 
         colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));

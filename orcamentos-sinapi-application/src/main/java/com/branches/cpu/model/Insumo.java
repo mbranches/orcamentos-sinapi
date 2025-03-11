@@ -5,7 +5,6 @@ package com.branches.cpu.model;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +15,7 @@ import lombok.Setter;
  */
 
 @Getter @Setter @NoArgsConstructor
-public class Servico {
+public class Insumo {
     private long id;
     private long codigo;
     private String descricao;
