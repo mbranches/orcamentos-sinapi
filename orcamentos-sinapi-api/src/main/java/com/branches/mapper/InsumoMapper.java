@@ -1,4 +1,16 @@
 package com.branches.mapper;
 
-public class Insumo {
+import com.branches.model.Insumo;
+import com.branches.request.InsumoPostRequest;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.factory.Mappers;
+import org.springframework.context.annotation.Primary;
+
+@Primary
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface InsumoMapper {
+    InsumoMapper INSTANCE = Mappers.getMapper(InsumoMapper.class);
+
+    Insumo toInsumo(InsumoPostRequest insumoPostRequest);
 }
