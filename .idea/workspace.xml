@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="remove: removendo dependencias que não serão utilizadas">
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: antigo método de consulta substituido pelo service">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images/logo-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images/orçamento-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +57,7 @@
     "Spring Boot.ScriptInsercaoApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +69,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-application\src\main\resources\com\branches\cpu\Images" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.branches.cpu.App" />
@@ -129,7 +132,7 @@
       <updated>1741702628611</updated>
       <workItem from="1741702629763" duration="2698000" />
       <workItem from="1741705481081" duration="1854000" />
-      <workItem from="1741780400454" duration="2821000" />
+      <workItem from="1741780400454" duration="6977000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -155,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741707192021</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: adicionando service para consumir a api">
+      <option name="closed" value="true" />
+      <created>1741783483051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741783483052</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor: antigo método de consulta substituido pelo service">
+      <option name="closed" value="true" />
+      <created>1741783574872</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741783574872</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +184,8 @@
     <MESSAGE value="refactor: alterando propriedas da tabela insumos" />
     <MESSAGE value="remove: removendo banco de dados local da minha applicação principal" />
     <MESSAGE value="remove: removendo dependencias que não serão utilizadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove: removendo dependencias que não serão utilizadas" />
+    <MESSAGE value="feat: adicionando service para consumir a api" />
+    <MESSAGE value="refactor: antigo método de consulta substituido pelo service" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: antigo método de consulta substituido pelo service" />
   </component>
 </project>
