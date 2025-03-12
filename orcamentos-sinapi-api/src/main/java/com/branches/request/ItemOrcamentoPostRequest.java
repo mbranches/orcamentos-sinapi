@@ -1,0 +1,17 @@
+package com.branches.request;
+
+import com.branches.model.Insumo;
+import com.branches.model.Orcamento;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Builder
+@Getter
+@Setter
+public class ItemOrcamentoPostRequest {
+    private Insumo insumo;
+    private Integer quantidade;
+    private Orcamento orcamento;
+}

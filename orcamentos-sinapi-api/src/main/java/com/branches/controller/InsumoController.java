@@ -27,7 +27,6 @@ public class InsumoController {
     @PostMapping
     public Insumo save(@RequestBody InsumoPostRequest insumoPostRequest){
         Insumo insumo = MAPPER.toInsumo(insumoPostRequest);
-        log.info(insumo.getDescricao());
         return service.save(insumo);
     }
 }
