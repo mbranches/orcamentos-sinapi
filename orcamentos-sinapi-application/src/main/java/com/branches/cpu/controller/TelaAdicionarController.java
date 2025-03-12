@@ -1,8 +1,8 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.dao.ServicoDao;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -53,6 +53,8 @@ public class TelaAdicionarController implements Initializable {
 
     private TelaOrcamentoController telaPrincipal;
 
+    private InsumoService service = new InsumoService();
+
     @FXML
     void Fechar(ActionEvent event) {
         fecharPagina(event);
@@ -101,7 +103,7 @@ public class TelaAdicionarController implements Initializable {
 
         AutoCompletionBinding<Insumo> autoCompletePesquisar = TextFields.bindAutoCompletion(
                 tfPesquisarServico,
-                ServicoDao.consultarServicos(tfPesquisarServico.getText())
+                service.findByName(tfPesquisarServico.getText())
         );
         autoCompletePesquisar.setMinWidth(600);
 
@@ -112,7 +114,7 @@ public class TelaAdicionarController implements Initializable {
 
     private void atualizarTabela() {
         tvMostrarServico.getItems().clear();
-        resultadoBusca = ServicoDao.consultarServicos(tfPesquisarServico.getText());
+        resultadoBusca = service.findByName(tfPesquisarServico.getText());
         servicoSelecionado = resultadoBusca.get(0);
 
         tvMostrarServico.getItems().add(servicoSelecionado);

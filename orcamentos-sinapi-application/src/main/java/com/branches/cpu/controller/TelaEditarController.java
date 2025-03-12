@@ -1,8 +1,8 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.dao.ServicoDao;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.collections.ObservableList;
@@ -41,6 +41,8 @@ public class TelaEditarController implements Initializable {
     private TelaOrcamentoController telaPrincipal;
 
     private ServicoAdicionado servicoAEditar;
+
+    private InsumoService service = new InsumoService();
 
     private ObservableList observableList = javafx.collections.FXCollections.observableArrayList();
 
@@ -85,7 +87,7 @@ public class TelaEditarController implements Initializable {
     }
 
     private void setarItemTableView() {
-        List<Insumo> servicos = ServicoDao.consultarServicos(tfMostrarServico.getText());
+        List<Insumo> servicos = service.findByName(tfMostrarServico.getText());
 
         for (Insumo servico : servicos) {
             observableList.add(servico);
