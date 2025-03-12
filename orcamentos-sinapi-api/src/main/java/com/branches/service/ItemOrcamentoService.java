@@ -1,5 +1,6 @@
 package com.branches.service;
 
+import com.branches.mapper.ItemOrcamentoMapper;
 import com.branches.model.Insumo;
 import com.branches.model.ItemOrcamento;
 import com.branches.repository.InsumoRepository;
@@ -14,8 +15,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemOrcamentoService {
     private final ItemOrcamentoRepository repository;
+    private final ItemOrcamentoMapper MAPPER;
 
-    public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemsOrcamento) {
-        return repository.saveAll(itemsOrcamento);
+    public List<ItemOrcamento> saveAll(List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
+        List<ItemOrcamento> itemOrcamentoList = MAPPER.toItemOrcamentoList(itemOrcamentoPostRequestList);
+        return repository.saveAll(itemOrcamentoList);
     }
 }

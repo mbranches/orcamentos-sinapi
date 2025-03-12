@@ -15,10 +15,8 @@ import java.util.List;
 @RestController
 public class ItemOrcamentoController {
     private final ItemOrcamentoService service;
-    private final ItemOrcamentoMapper MAPPER;
     @PostMapping
     public List<ItemOrcamento> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
-        List<ItemOrcamento> itemOrcamentoList = MAPPER.toItemOrcamentoList(itemOrcamentoPostRequestList);
-        return service.saveAll(itemOrcamentoList);
+        return service.saveAll(itemOrcamentoPostRequestList);
     }
 }
