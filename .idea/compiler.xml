@@ -39,7 +39,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="orcamentos-sinapi-api" options="-parameters" />
-      <module name="orcamentos-sinapi-application" options="-parameters" />
+      <module name="orcamentos-sinapi-application" options="-parameters --add-exports javafx.controls/com.sun.javafx.scene.control.skin=com.branches.cpu" />
       <module name="orcamentos-sinapi-insercao" options="-parameters" />
     </option>
   </component>

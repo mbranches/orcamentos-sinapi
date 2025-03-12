@@ -14,12 +14,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader =  new FXMLLoader(getClass().getResource("fxml/tela-orcamento.fxml"));
+        FXMLLoader fxmlLoader =  new FXMLLoader(getClass().getResource("fxml/tela-inicial.fxml"));
         
         Scene scene = new Scene(fxmlLoader.load());
 
-        stage.setMinWidth(900);
-        stage.setMinHeight(600);
+        stage.setMinWidth(720);
+        stage.setMinHeight(480);
         stage.setScene(scene);
         stage.show();
     }
