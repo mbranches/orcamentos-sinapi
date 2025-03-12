@@ -23,12 +23,12 @@
             </ImageView>
             <VBox prefHeight="150.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="213.0" styleClass="button-navigation-bar" text="Orçamentos">
+                  <Button mnemonicParsing="false" onAction="#abrirTelaOrcamentos" prefHeight="26.0" prefWidth="213.0" styleClass="button-navigation-bar" text="Orçamentos">
                      <VBox.margin>
                         <Insets bottom="2.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="214.0" styleClass="button-navigation-bar" text="Criar novo Orçamento" />
+                  <Button mnemonicParsing="false" onAction="#abrirTelaOrcamentos" prefHeight="26.0" prefWidth="214.0" styleClass="button-navigation-bar" text="Criar novo Orçamento" />
                </children>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" />
@@ -36,7 +36,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="186.0" layoutY="190.0" prefHeight="100.0" prefWidth="535.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" styleClass="button-section" text="Orçamentos">
+            <Button mnemonicParsing="false" onAction="#abrirTelaOrcamentos" prefHeight="50.0" prefWidth="135.0" styleClass="button-section" text="Orçamentos">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -48,7 +48,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" styleClass="button-section" text="Criar novo orçamento">
+            <Button mnemonicParsing="false" onAction="#abrirTelaOrcamentos" prefHeight="50.0" prefWidth="170.0" styleClass="button-section" text="Criar novo orçamento">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
