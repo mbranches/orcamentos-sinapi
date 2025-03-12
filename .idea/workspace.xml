@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: antigo método de consulta substituido pelo service">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images/logo-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images/orçamento-icon.png" afterDir="false" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: tela inicial criada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-inicial.css" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-inicial.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +132,7 @@
       <updated>1741702628611</updated>
       <workItem from="1741702629763" duration="2698000" />
       <workItem from="1741705481081" duration="1854000" />
-      <workItem from="1741780400454" duration="6977000" />
+      <workItem from="1741780400454" duration="8387000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -174,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741783574872</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: tela inicial criada">
+      <option name="closed" value="true" />
+      <created>1741791184032</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741791184032</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +194,7 @@
     <MESSAGE value="remove: removendo dependencias que não serão utilizadas" />
     <MESSAGE value="feat: adicionando service para consumir a api" />
     <MESSAGE value="refactor: antigo método de consulta substituido pelo service" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: antigo método de consulta substituido pelo service" />
+    <MESSAGE value="feat: tela inicial criada" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela inicial criada" />
   </component>
 </project>

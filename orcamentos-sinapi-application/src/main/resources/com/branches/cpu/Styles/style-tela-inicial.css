@@ -13,3 +13,12 @@
     -fx-background-color: #1700e1;
     -fx-border-color: #1700e1;
 }
+
+.button-section:pressed {
+    -fx-background-color: #0b0259;
+}
+
+.button-navigation-bar:pressed {
+    -fx-background-color: #0b0259;
+    -fx-background-radius: 20px;
+}
