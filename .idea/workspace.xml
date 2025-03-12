@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="style: efeito de click adicionado">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaInicialController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/AbrirFxml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: tela inicial adicionada ao inicio do app">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images/save-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-orcamento.css" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-orcamento.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-orcamento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-orcamento.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,31 +46,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
-    "Spring Boot.ScriptInsercaoApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.OrcamentosSinapiApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ScriptInsercaoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-application\src\main\resources\com\branches\cpu\Images" />
@@ -135,7 +134,8 @@
       <updated>1741702628611</updated>
       <workItem from="1741702629763" duration="2698000" />
       <workItem from="1741705481081" duration="1854000" />
-      <workItem from="1741780400454" duration="9505000" />
+      <workItem from="1741780400454" duration="9616000" />
+      <workItem from="1741798161637" duration="2051000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -193,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741792229031</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: tela inicial adicionada ao inicio do app">
+      <option name="closed" value="true" />
+      <created>1741793422218</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741793422218</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +215,7 @@
     <MESSAGE value="refactor: antigo método de consulta substituido pelo service" />
     <MESSAGE value="feat: tela inicial criada" />
     <MESSAGE value="style: efeito de click adicionado" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: efeito de click adicionado" />
+    <MESSAGE value="feat: tela inicial adicionada ao inicio do app" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela inicial adicionada ao inicio do app" />
   </component>
 </project>

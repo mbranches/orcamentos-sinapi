@@ -101,41 +101,55 @@
                         <Insets left="20.0" right="20.0" top="50.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" maxHeight="600.0" minHeight="300.0" minWidth="860.0" prefHeight="500.0" prefWidth="1400.0">
+                  <HBox alignment="CENTER" maxHeight="650.0" minHeight="400.0" minWidth="860.0" prefWidth="1400.0">
                      <children>
-                        <TableView fx:id="tvServicosAdiconados" maxHeight="600.0" maxWidth="1400.0" minHeight="300.0" minWidth="860.0" onMouseClicked="#selecionarServicoAdicionado" prefWidth="1400.0">
+                        <TableView fx:id="tvServicosAdiconados" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarServicoAdicionado" prefHeight="700.0" prefWidth="1400.0">
                            <HBox.margin>
                               <Insets left="20.0" right="20.0" />
                            </HBox.margin>
                         </TableView>
                      </children>
                   </HBox>
-                  <VBox alignment="TOP_RIGHT" maxWidth="1400.0" prefHeight="48.0" prefWidth="62.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label text="Total:" textFill="#1700e1">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <padding>
-                              <Insets left="8.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="-2.0" right="14.0" top="1.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Text fx:id="txtTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 0,00">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="8.0" top="1.0" />
-                           </VBox.margin>
-                        </Text>
+                        <Button id="button-salvar" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#salvarOrçamento" text="Salvar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/save-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <VBox alignment="TOP_RIGHT" fillWidth="false" maxWidth="1400.0" prefHeight="39.0" prefWidth="58.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Total:" textFill="#1700e1">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="-2.0" right="14.0" top="1.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Text fx:id="txtTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 0,00">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="8.0" top="1.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="40.0" right="20.0" top="2.0" />
+                        <Insets bottom="20.0" top="10.0" />
                      </VBox.margin>
-                  </VBox>
+                  </AnchorPane>
                </children>
                <HBox.margin>
                   <Insets />
