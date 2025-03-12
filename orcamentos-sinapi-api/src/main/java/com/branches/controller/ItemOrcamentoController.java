@@ -6,14 +6,13 @@ import com.branches.model.ItemOrcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController("v1/items")
+@RequestMapping("v1/items")
+@RestController
 public class ItemOrcamentoController {
     private final ItemOrcamentoService service;
     private final ItemOrcamentoMapper MAPPER;
