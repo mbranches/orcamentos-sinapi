@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: tela inicial criada">
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="style: efeito de click adicionado">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaInicialController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/AbrirFxml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-inicial.css" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Styles/style-tela-inicial.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-inicial.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +135,7 @@
       <updated>1741702628611</updated>
       <workItem from="1741702629763" duration="2698000" />
       <workItem from="1741705481081" duration="1854000" />
-      <workItem from="1741780400454" duration="8387000" />
+      <workItem from="1741780400454" duration="9505000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -182,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741791184032</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="style: efeito de click adicionado">
+      <option name="closed" value="true" />
+      <created>1741792229030</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741792229031</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +206,7 @@
     <MESSAGE value="feat: adicionando service para consumir a api" />
     <MESSAGE value="refactor: antigo método de consulta substituido pelo service" />
     <MESSAGE value="feat: tela inicial criada" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: tela inicial criada" />
+    <MESSAGE value="style: efeito de click adicionado" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: efeito de click adicionado" />
   </component>
 </project>
