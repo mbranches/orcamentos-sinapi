@@ -68,6 +68,11 @@ public class TelaOrcamentoController implements Initializable{
     void autoComplementarTabela(KeyEvent event) {
         atualizarTabela();
     }
+
+    @FXML
+    void salvarOrçamento(ActionEvent event) {
+
+    }
     
     public void abrirFxml(String nomeFile, String titulo) {
         try {

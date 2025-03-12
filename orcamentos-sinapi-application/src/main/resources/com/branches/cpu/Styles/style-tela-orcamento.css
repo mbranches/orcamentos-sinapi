@@ -24,3 +24,11 @@
     -fx-wrap-text: true;
 }
 
+#button-salvar {
+    -fx-text-fill: #ffff;
+    -fx-background-color: #1700e1;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
