@@ -1,0 +1,15 @@
+.button-navigation-bar {
+    -fx-border-radius: 20px;
+    -fx-padding: 10px;
+    -fx-text-fill: #ffff;
+    -fx-background-color: none;
+    -fx-border-color: #ffff;
+}
+
+.button-section {
+    /*-fx-border-radius: 20px;*/
+    -fx-padding: 10px;
+    -fx-text-fill: #ffff;
+    -fx-background-color: #1700e1;
+    -fx-border-color: #1700e1;
+}
