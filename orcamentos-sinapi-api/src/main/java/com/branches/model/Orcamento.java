@@ -1,10 +1,16 @@
 package com.branches.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity(name = "orcamento")
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Orcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
