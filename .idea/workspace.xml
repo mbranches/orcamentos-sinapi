@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="remove: removendo dependencias que não serão utilizadas">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +47,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.OrcamentosSinapiApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ScriptInsercaoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
+    "Spring Boot.ScriptInsercaoApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.branches.cpu.App" />
+      <module name="orcamentos-sinapi-application" />
+      <option name="VM_PARAMETERS" value="--add-opens javafx.base/com.sun.javafx.event=org.controlsfx.controls " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.branches.cpu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="orcamentos-sinapi-api" />
@@ -80,8 +100,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
       </list>
     </recent_temporary>
@@ -103,7 +128,8 @@
       <option name="presentableId" value="Default" />
       <updated>1741702628611</updated>
       <workItem from="1741702629763" duration="2698000" />
-      <workItem from="1741705481081" duration="1769000" />
+      <workItem from="1741705481081" duration="1854000" />
+      <workItem from="1741780400454" duration="2821000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
