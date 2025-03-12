@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: adicionando controller e método post para itens do orçamento">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/mapper/OrcamentoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/repository/OrcamentoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/OrcamentoPostRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ItemOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ItemOrcamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" afterDir="false" />
-    </list>
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: método post alterado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +136,7 @@
       <workItem from="1741705481081" duration="1854000" />
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
-      <workItem from="1741802682603" duration="2783000" />
+      <workItem from="1741802682603" duration="3348000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -220,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741801403895</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor: método post alterado">
+      <option name="closed" value="true" />
+      <created>1741805718189</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1741805718189</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +234,7 @@
     <MESSAGE value="style: efeito de click adicionado" />
     <MESSAGE value="feat: tela inicial adicionada ao inicio do app" />
     <MESSAGE value="feat: adicionando controller e método post para itens do orçamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adicionando controller e método post para itens do orçamento" />
+    <MESSAGE value="refactor: método post alterado" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: método post alterado" />
   </component>
 </project>
