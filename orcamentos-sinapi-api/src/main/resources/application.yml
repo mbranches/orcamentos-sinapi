@@ -8,6 +8,20 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+    h2:
+      console:
+        enabled: true
+    jpa:
+      defer-datasource-initialization: true
+      hibernate:
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        properties:
+          hibernate:
+            format_sql: true
 
   jpa:
     hibernate:

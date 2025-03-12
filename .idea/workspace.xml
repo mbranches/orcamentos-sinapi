@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: método post alterado" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: método post alterado">
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +138,7 @@
       <workItem from="1741705481081" duration="1854000" />
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
-      <workItem from="1741802682603" duration="3348000" />
+      <workItem from="1741802682603" duration="3651000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
