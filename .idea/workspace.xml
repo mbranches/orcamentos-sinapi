@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: referencia à Insumo alterada">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/ItemOrcamentoServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" afterDir="false" />
-    </list>
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: teste unitario adicionado à ItemOrcamentoServiece" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +48,7 @@
     "JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor": "Run",
     "JUnit.InsumoServiceTest.executor": "Run",
     "JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful.executor": "Run",
-    "JUnit.OrcamentoServiceTest.executor": "Debug",
+    "JUnit.OrcamentoServiceTest.executor": "Run",
     "JUnit.OrcamentoServiceTest.save_ReturnsCreatedObject.executor": "Run",
     "JUnit.java in orcamentos-sinapi-api.executor": "Coverage",
     "RequestMappingsPanelOrder0": "0",
@@ -206,7 +202,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="8530000" />
+      <workItem from="1741961789867" duration="8840000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -336,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741967231679</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: teste unitario adicionado à ItemOrcamentoServiece">
+      <option name="closed" value="true" />
+      <created>1741973700525</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1741973700525</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +363,8 @@
     <MESSAGE value="feat: teste para OrcamentoService criado" />
     <MESSAGE value="remove: annotation incorreta retirada" />
     <MESSAGE value="refactor: referencia à Insumo alterada" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: referencia à Insumo alterada" />
+    <MESSAGE value="feat: teste unitario adicionado à ItemOrcamentoServiece" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: teste unitario adicionado à ItemOrcamentoServiece" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
