@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: método post alterado">
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/repository/InsumoRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/utils/CreatesInsumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Insumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Insumo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -45,6 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App.executor": "Run",
+    "JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -53,6 +59,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
     "Spring Boot.ScriptInsercaoApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images",
@@ -71,6 +79,12 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-application\src\main\resources\com\branches\cpu\Images" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.branches.repository" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.branches.mapper" />
       <recent name="com.branches.request" />
@@ -78,7 +92,7 @@
       <recent name="com.branches.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.OrcamentosSinapiApiApplication">
+  <component name="RunManager" selected="JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.branches.cpu.App" />
       <module name="orcamentos-sinapi-application" />
@@ -89,6 +103,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="orcamentos-sinapi-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.branches.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.branches.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.branches.repository.InsumoRepositoryTest" />
+      <option name="METHOD_NAME" value="save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,10 +139,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
+      <item itemvalue="JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
       <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
         <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
         <item itemvalue="Application.App" />
       </list>
@@ -138,7 +170,7 @@
       <workItem from="1741705481081" duration="1854000" />
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
-      <workItem from="1741802682603" duration="3651000" />
+      <workItem from="1741802682603" duration="5875000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />

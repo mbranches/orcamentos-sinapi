@@ -1,12 +1,14 @@
 package com.branches.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity(name = "insumo")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
