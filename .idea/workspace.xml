@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: consumindo a api para salvar orçamento na tela de salvar orçamento">
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: api consumida para adicionar itens dos orçamentos aos orçamentos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ItemOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/ItemOrcamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/ItemOrcamentoPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/ItemOrcamentoPostRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/ItemOrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/ItemOrcamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/ItemOrcamentoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/ItemOrcamentoServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaInicialController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaInicialController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Insumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Insumo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/ItemOrcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/ItemOrcamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Orcamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/ItemOrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/ItemOrcamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/ItemOrcamentoPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/ItemOrcamentoPostRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/AbrirFxml.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/AbrirFxml.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,42 +53,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "JUnit.InsumoControllerTest.executor": "Run",
-    "JUnit.InsumoControllerTest.findAll_ReturnsAllInsumos_WhenSuccessful.executor": "Run",
-    "JUnit.InsumoCreatorServiceTest.executor": "Run",
-    "JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor": "Run",
-    "JUnit.InsumoServiceTest.executor": "Run",
-    "JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful.executor": "Run",
-    "JUnit.OrcamentoServiceTest.executor": "Run",
-    "JUnit.OrcamentoServiceTest.save_ReturnsCreatedObject.executor": "Run",
-    "JUnit.java in orcamentos-sinapi-api.executor": "Coverage",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.OrcamentosSinapiApiApplication.executor": "Run",
-    "Spring Boot.ScriptInsercaoApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marcu/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoControllerTest.findAll_ReturnsAllInsumos_WhenSuccessful.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoCreatorServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrcamentoServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrcamentoServiceTest.save_ReturnsCreatedObject.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.java in orcamentos-sinapi-api.executor&quot;: &quot;Coverage&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.OrcamentosSinapiApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ScriptInsercaoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marcu/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-application\src\main\resources\com\branches\cpu\fxml" />
@@ -201,7 +199,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="21517000" />
+      <workItem from="1741961789867" duration="25671000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -403,14 +401,37 @@
       <option name="project" value="LOCAL" />
       <updated>1741981769625</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="refactor: table view adaptada para as entidades">
+      <option name="closed" value="true" />
+      <created>1741986968636</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1741986968637</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: requisição get adicionada para item orçamento">
+      <option name="closed" value="true" />
+      <created>1741987017991</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1741987017991</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: api consumida para adicionar itens dos orçamentos aos orçamentos">
+      <option name="closed" value="true" />
+      <created>1741987068267</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1741987068267</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: alterando propriedas da tabela insumos" />
     <MESSAGE value="remove: removendo banco de dados local da minha applicação principal" />
     <MESSAGE value="remove: removendo dependencias que não serão utilizadas" />
     <MESSAGE value="feat: adicionando service para consumir a api" />
@@ -433,7 +454,10 @@
     <MESSAGE value="feat: tela para salvar orçamento adicionada" />
     <MESSAGE value="refactor: nome de ItemOrcamento alterado" />
     <MESSAGE value="feat: consumindo a api para salvar orçamento na tela de salvar orçamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: consumindo a api para salvar orçamento na tela de salvar orçamento" />
+    <MESSAGE value="refactor: table view adaptada para as entidades" />
+    <MESSAGE value="feat: requisição get adicionada para item orçamento" />
+    <MESSAGE value="feat: api consumida para adicionar itens dos orçamentos aos orçamentos" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: api consumida para adicionar itens dos orçamentos aos orçamentos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ItemOrcamentoPostRequest {
+    private Long id;
     private Insumo insumo;
     private Integer quantidade;
     private Orcamento orcamento;
