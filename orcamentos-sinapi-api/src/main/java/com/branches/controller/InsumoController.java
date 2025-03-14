@@ -1,12 +1,9 @@
 package com.branches.controller;
 
-import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.request.InsumoPostRequest;
 import com.branches.service.InsumoService;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,16 +12,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class InsumoController {
-    private static final Logger log = LogManager.getLogger(InsumoController.class);
-    private final InsumoService service;
+    private final InsumoService SERVICE;
 
     @GetMapping
     public List<Insumo> findAll(@RequestParam(required = false) String description) {
-        return description == null ? service.findAll() : service.findByDescription(description);
+        return description == null ? SERVICE.findAll() : SERVICE.findByDescription(description);
     }
 
     @PostMapping
     public Insumo save(@RequestBody InsumoPostRequest insumoPostRequest){
-        return service.save(insumoPostRequest);
+        return SERVICE.save(insumoPostRequest);
     }
 }
