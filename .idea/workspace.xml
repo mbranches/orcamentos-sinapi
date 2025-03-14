@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: tirando a criação do insumo da classe teste e pondo em uma classe util">
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: referencia à Insumo alterada">
       <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/ItemOrcamentoServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/utils/OrcamentoCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/ItemOrcamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/InsumoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/InsumoServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +52,7 @@
     "JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor": "Run",
     "JUnit.InsumoServiceTest.executor": "Run",
     "JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful.executor": "Run",
+    "JUnit.OrcamentoServiceTest.executor": "Debug",
     "JUnit.OrcamentoServiceTest.save_ReturnsCreatedObject.executor": "Run",
     "JUnit.java in orcamentos-sinapi-api.executor": "Coverage",
     "RequestMappingsPanelOrder0": "0",
@@ -208,7 +206,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="5114000" />
+      <workItem from="1741961789867" duration="8530000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -314,7 +312,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741965644811</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: teste para OrcamentoService criado">
+      <option name="closed" value="true" />
+      <created>1741967181678</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1741967181678</updated>
+    </task>
+    <task id="LOCAL-00015" summary="remove: annotation incorreta retirada">
+      <option name="closed" value="true" />
+      <created>1741967208064</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1741967208064</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor: referencia à Insumo alterada">
+      <option name="closed" value="true" />
+      <created>1741967231679</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1741967231679</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,25 +356,53 @@
     <MESSAGE value="remove: retirando h2 para testes" />
     <MESSAGE value="feat: teste unitário adicionado para InsumoService" />
     <MESSAGE value="refactor: tirando a criação do insumo da classe teste e pondo em uma classe util" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: tirando a criação do insumo da classe teste e pondo em uma classe util" />
+    <MESSAGE value="feat: teste para OrcamentoService criado" />
+    <MESSAGE value="remove: annotation incorreta retirada" />
+    <MESSAGE value="refactor: referencia à Insumo alterada" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: referencia à Insumo alterada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>25</line>
+          <line>24</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>23</line>
+          <line>22</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>24</line>
+          <line>23</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
