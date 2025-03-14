@@ -4,6 +4,7 @@ import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
+import com.branches.utils.InsumoCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,7 +57,7 @@ class InsumoServiceTest {
     void findByDescription_ReturnsFoundObjects_WhenSuccessful() {
         BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(List.of(INSUMOS_LIST.get(0)));
 
-        com.branches.model.Insumo expectedInsumo = this.INSUMOS_LIST.get(0);
+       Insumo expectedInsumo = this.INSUMOS_LIST.get(0);
 
         String descriptionToBeSearched = expectedInsumo.getDescricao();
         List<com.branches.model.Insumo> insumosResponse = service.findByDescription(descriptionToBeSearched);
@@ -104,14 +105,7 @@ class InsumoServiceTest {
                 .preco(20D)
                 .build();;
 
-        Insumo insumoExpected = Insumo.builder()
-                .id(1L)
-                .codigo(1L)
-                .descricao("Areia")
-                .unidadeMedida("Kg")
-                .origemPreco("XX")
-                .preco(20D)
-                .build();;
+        Insumo insumoExpected = InsumoCreator.createsInsumo();
 
         BDDMockito.when(mapper.toInsumo(insumoToBeSaved)).thenReturn(insumoMapped);
         BDDMockito.when(repository.save(ArgumentMatchers.any(Insumo.class))).thenReturn(insumoExpected);
