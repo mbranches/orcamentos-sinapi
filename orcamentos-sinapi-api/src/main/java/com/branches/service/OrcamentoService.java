@@ -19,7 +19,6 @@ public class OrcamentoService {
     private final OrcamentoMapper MAPPER;
     private final OrcamentoRepository repository;
 
-    @PostMapping
     public Orcamento save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = MAPPER.toOrcamento(orcamentoPostRequest);
         orcamento.setDataCriacao(LocalDate.now());
