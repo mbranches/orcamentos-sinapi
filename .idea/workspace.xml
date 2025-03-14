@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: teste unitario adicionado à ItemOrcamentoServiece" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/resources/insumo/get-insumo-null-description-200.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/controller/InsumoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/controller/InsumoControllerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -44,6 +49,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App.executor": "Run",
+    "JUnit.InsumoControllerTest.executor": "Run",
+    "JUnit.InsumoControllerTest.findAll_ReturnsAllInsumos_WhenSuccessful.executor": "Run",
     "JUnit.InsumoCreatorServiceTest.executor": "Run",
     "JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful.executor": "Run",
     "JUnit.InsumoServiceTest.executor": "Run",
@@ -63,7 +70,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/Images",
+    "last_opened_file_path": "C:/Users/marcu/OneDrive/Documentos/dev/orcamentos-sinapi/orcamentos-sinapi-api/src/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,12 +84,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-api\src\test" />
       <recent name="C:\Users\marcu\OneDrive\Documentos\dev\orcamentos-sinapi\orcamentos-sinapi-application\src\main\resources\com\branches\cpu\Images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.branches.controller" />
       <recent name="com.branches.service" />
       <recent name="com.branches.repository" />
     </key>
@@ -93,64 +102,17 @@
       <recent name="com.branches.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrcamentoServiceTest">
-    <configuration name="InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.InsumoControllerTest">
+    <configuration name="InsumoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="orcamentos-sinapi-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.branches.repository.*" />
+          <option name="PATTERN" value="com.branches.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.branches.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.branches.repository.InsumoRepositoryTest" />
-      <option name="METHOD_NAME" value="save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsumoServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="orcamentos-sinapi-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.branches.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.branches.service" />
-      <option name="MAIN_CLASS_NAME" value="com.branches.service.InsumoServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="orcamentos-sinapi-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.branches.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.branches.service" />
-      <option name="MAIN_CLASS_NAME" value="com.branches.service.InsumoServiceTest" />
-      <option name="METHOD_NAME" value="findByDescription_ReturnsFoundObjects_WhenSuccessful" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrcamentoServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="orcamentos-sinapi-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.branches.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.branches.service" />
-      <option name="MAIN_CLASS_NAME" value="com.branches.service.OrcamentoServiceTest" />
+      <option name="PACKAGE_NAME" value="com.branches.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.branches.controller.InsumoControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,20 +126,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrcamentosSinapiApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="orcamentos-sinapi-api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.branches.OrcamentosSinapiApiApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.branches.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.InsumoServiceTest" />
-      <item itemvalue="JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful" />
-      <item itemvalue="JUnit.OrcamentoServiceTest" />
+      <item itemvalue="JUnit.InsumoControllerTest" />
       <item itemvalue="JUnit.java in orcamentos-sinapi-api" />
-      <item itemvalue="JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
+      <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrcamentoServiceTest" />
+        <item itemvalue="JUnit.InsumoControllerTest" />
         <item itemvalue="JUnit.java in orcamentos-sinapi-api" />
-        <item itemvalue="JUnit.InsumoServiceTest" />
-        <item itemvalue="JUnit.InsumoServiceTest.findByDescription_ReturnsFoundObjects_WhenSuccessful" />
-        <item itemvalue="JUnit.InsumoRepositoryTest.save_SavesInsumoAndReturnsTheSame_WhenSuccessful" />
+        <item itemvalue="Spring Boot.OrcamentosSinapiApiApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -202,7 +174,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="8840000" />
+      <workItem from="1741961789867" duration="12018000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -340,7 +312,39 @@
       <option name="project" value="LOCAL" />
       <updated>1741973700525</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="refactor: variaveis finais postas em upper case">
+      <option name="closed" value="true" />
+      <created>1741974008179</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1741974008180</updated>
+    </task>
+    <task id="LOCAL-00019" summary="refactor: variaveis finais postas em upper case">
+      <option name="closed" value="true" />
+      <created>1741974048871</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1741974048871</updated>
+    </task>
+    <task id="LOCAL-00020" summary="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity">
+      <option name="closed" value="true" />
+      <created>1741975105854</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1741975105854</updated>
+    </task>
+    <task id="LOCAL-00021" summary="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity">
+      <option name="closed" value="true" />
+      <created>1741975541397</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1741975541397</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,26 +368,13 @@
     <MESSAGE value="remove: annotation incorreta retirada" />
     <MESSAGE value="refactor: referencia à Insumo alterada" />
     <MESSAGE value="feat: teste unitario adicionado à ItemOrcamentoServiece" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: teste unitario adicionado à ItemOrcamentoServiece" />
+    <MESSAGE value="refactor: variaveis finais postas em upper case" />
+    <MESSAGE value="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/orcamentos-sinapi-api/src/test/java/com/branches/service/OrcamentoServiceTest.java</url>
           <line>30</line>
@@ -413,6 +404,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/orcamentos_sinapi$java_in_orcamentos_sinapi_api.ic" NAME="java in orcamentos-sinapi-api Coverage Results" MODIFIED="1741965101457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/orcamentos_sinapi$java_in_orcamentos_sinapi_api.ic" NAME="java in orcamentos-sinapi-api Coverage Results" MODIFIED="1741976833873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
