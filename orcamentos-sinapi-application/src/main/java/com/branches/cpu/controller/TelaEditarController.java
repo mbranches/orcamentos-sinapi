@@ -1,7 +1,7 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Insumo;
-import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -40,7 +40,7 @@ public class TelaEditarController implements Initializable {
 
     private TelaOrcamentoController telaPrincipal;
 
-    private ServicoAdicionado servicoAEditar;
+    private ItemOrcamento servicoAEditar;
 
     private InsumoService service = new InsumoService();
 
