@@ -5,6 +5,7 @@ import com.branches.model.ItemOrcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,5 +19,9 @@ public class ItemOrcamentoService {
     public List<ItemOrcamento> saveAll(List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
         List<ItemOrcamento> itemOrcamentoList = MAPPER.toItemOrcamentoList(itemOrcamentoPostRequestList);
         return REPOSITORY.saveAll(itemOrcamentoList);
+    }
+
+    public List<ItemOrcamento> findAll() {
+        return REPOSITORY.findAll();
     }
 }
