@@ -16,8 +16,7 @@ public class ItemOrcamentoService {
     private final ItemOrcamentoRepository REPOSITORY;
     private final ItemOrcamentoMapper MAPPER;
 
-    public List<ItemOrcamento> saveAll(List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
-        List<ItemOrcamento> itemOrcamentoList = MAPPER.toItemOrcamentoList(itemOrcamentoPostRequestList);
+    public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemOrcamentoList) {
         return REPOSITORY.saveAll(itemOrcamentoList);
     }
 

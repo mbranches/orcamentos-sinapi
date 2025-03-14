@@ -24,6 +24,8 @@ public class TelaSalvarOrcamentoController {
     @FXML
     private TextField tfNomeOrcamento;
 
+    private TelaOrcamentoController orcamentoController;
+
     private List<ItemOrcamento> itemOrcamentoPostRequests;
 
     private OrcamentoService orcamentoService = new OrcamentoService();
@@ -40,7 +42,8 @@ public class TelaSalvarOrcamentoController {
         OrcamentoPostRequest orcamentoPostRequest = OrcamentoPostRequest.builder().nome(tfNomeOrcamento.getText()).build();
         Orcamento orcamento = orcamentoService.save(orcamentoPostRequest);
         itemOrcamentoPostRequests.forEach(item -> item.setOrcamento(orcamento));
-        itemOrcamentoService.saveAll(itemOrcamentoPostRequests);
+        orcamentoController.setServicosAdicionados(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
+        orcamentoController.setOrcamento(orcamento);
         fecharPagina(event);
     }
 

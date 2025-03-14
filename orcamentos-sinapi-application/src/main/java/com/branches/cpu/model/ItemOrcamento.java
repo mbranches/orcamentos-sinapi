@@ -15,4 +15,9 @@ public class ItemOrcamento {
     public void setarValorTotal(){
         valorTotal = insumo.getPreco() * quantidade;
     }
+
+    @Override
+    public String toString() {
+        return insumo.getDescricao();
+    }
 }

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.ItemOrcamentoService;
 import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.*;
@@ -30,11 +30,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 /**
  *
  * @author Branches
  */
+@Setter
 public class TelaOrcamentoController implements Initializable{
 
     @FXML
@@ -60,7 +62,7 @@ public class TelaOrcamentoController implements Initializable{
 
     private double valorTotal = 0;
 
-    private Long id;
+    private Orcamento orcamento;
 
     private ItemOrcamento servicoSelecionado = null;
 
@@ -79,7 +81,7 @@ public class TelaOrcamentoController implements Initializable{
         OrcamentoService orcamentoService = new OrcamentoService();
         ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
 
-        if (id == null) abrirFxml.abrirFxml("tela-salvar-orcamento", "Salvar Orçamento", 660, 320, false, servicosAdicionados);
+        if (orcamento == null) abrirFxml.abrirFxml("tela-salvar-orcamento", "Salvar Orçamento", 660, 320, false, servicosAdicionados, this);
         else {
             itemOrcamentoService.saveAll(servicosAdicionados);
         }
@@ -219,6 +221,7 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     public void adicionarServico(ItemOrcamento itemOrcamento) {
+        itemOrcamento.setOrcamento(orcamento);
         servicosAdicionados.add(itemOrcamento);
 
         limparBarraPesquisa();
@@ -253,5 +256,15 @@ public class TelaOrcamentoController implements Initializable{
 
     public void limparBarraPesquisa() {
         if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
+    }
+
+
+    public void setServicosAdicionados(List<ItemOrcamento> itemOrcamentos) {
+        servicosAdicionados.clear();
+        servicosAdicionados.addAll(itemOrcamentos);
+
+        servicosAdicionados.forEach(ItemOrcamento::setarValorTotal);
+
+        atualizarTabela();
     }
 }
