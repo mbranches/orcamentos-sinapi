@@ -14,11 +14,11 @@ public class TelaInicialController {
     private final AbrirFxml abrirFxml = new AbrirFxml();
     @FXML
     void abrirTelaCriarOrcamento(ActionEvent event) {
-        abrirFxml.abrirFxml("tela-orcamento", "Criar Orçamento", 900, 600, true);
+        abrirFxml.abrirFxml("tela-orcamento", "Criar Orçamento", 900, 600, true, null);
     }
 
     @FXML
     void abrirTelaOrcamentos(ActionEvent event) {
-        abrirFxml.abrirFxml("tela-orcamento", "Criar Orçamento", 900, 600, true);
+        abrirFxml.abrirFxml("tela-orcamento", "Criar Orçamento", 900, 600, true, null);
     }
 }

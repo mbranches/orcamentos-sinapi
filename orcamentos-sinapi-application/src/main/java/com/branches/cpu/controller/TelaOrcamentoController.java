@@ -11,7 +11,11 @@ import java.util.ResourceBundle;
 
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.service.ItemOrcamentoService;
+import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.*;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +36,7 @@ import javafx.stage.Stage;
  * @author Branches
  */
 public class TelaOrcamentoController implements Initializable{
-    
+
     @FXML
     private ImageView imageEditar;
     @FXML
@@ -72,7 +76,13 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void salvarOrçamento(ActionEvent event) {
-        abrirFxml.abrirFxml("tela-salvar-orcamento", "Salvar Orçamento", 660, 320, false);
+        OrcamentoService orcamentoService = new OrcamentoService();
+        ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+
+        if (id == null) abrirFxml.abrirFxml("tela-salvar-orcamento", "Salvar Orçamento", 660, 320, false, servicosAdicionados);
+        else {
+            itemOrcamentoService.saveAll(servicosAdicionados);
+        }
     }
     
     public void abrirFxml(String nomeFile, String titulo) {
@@ -171,8 +181,7 @@ public class TelaOrcamentoController implements Initializable{
     private void atualizarValorTotal() {
         valorTotal = 0;
         for (ItemOrcamento itemOrcamento : tvServicosAdiconados.getItems()) {
-            Insumo insumo = itemOrcamento.getInsumo();
-            valorTotal += insumo.getPreco() * itemOrcamento.getQuantidade();
+            valorTotal += itemOrcamento.getValorTotal();
         }
 
         txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
@@ -194,9 +203,15 @@ public class TelaOrcamentoController implements Initializable{
         tvServicosAdiconados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
         TableViewProprieties.noEditableColumns(tvServicosAdiconados);
 
-        colunaCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
-        colunaDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
-        colunaUnidade.setCellValueFactory(new PropertyValueFactory("unidadeMedida"));
+        colunaCodigo.setCellValueFactory(cellData ->
+                new SimpleLongProperty(cellData.getValue().getInsumo().getCodigo()).asObject());
+
+        colunaDescricao.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getInsumo().getDescricao()));
+
+        colunaUnidade.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getInsumo().getUnidadeMedida()));
+
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
 
@@ -225,8 +240,9 @@ public class TelaOrcamentoController implements Initializable{
 
     public void atualizarServico(ItemOrcamento servicoNovo) {
         for (ItemOrcamento servico : servicosAdicionados) {
-            if (servico.getId() == servicoNovo.getId()) {
+            if (servico.getId().equals(servicoNovo.getId())) {
                 servico.setQuantidade(servicoNovo.getQuantidade());
+                servico.setarValorTotal();
             }
         }
 
@@ -236,6 +252,6 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     public void limparBarraPesquisa() {
-        if (!tfPesquisar.getText().equals("")) tfPesquisar.clear();
+        if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
     }
 }
