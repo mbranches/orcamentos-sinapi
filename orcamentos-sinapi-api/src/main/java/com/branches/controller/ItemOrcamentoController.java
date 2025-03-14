@@ -4,6 +4,8 @@ import com.branches.model.ItemOrcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.List;
 public class ItemOrcamentoController {
     private final ItemOrcamentoService SERVICE;
     @PostMapping
-    public List<ItemOrcamento> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
-        return SERVICE.saveAll(itemOrcamentoPostRequestList);
+    public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
+        List<ItemOrcamento> response = SERVICE.saveAll(itemOrcamentoPostRequestList);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
