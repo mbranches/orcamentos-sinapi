@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
