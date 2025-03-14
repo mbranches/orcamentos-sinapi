@@ -10,4 +10,9 @@ public class ItemOrcamento {
     private Insumo insumo;
     private Integer quantidade;
     private Orcamento orcamento;
+    private Double valorTotal;
+
+    public void setarValorTotal(){
+        valorTotal = insumo.getPreco() * quantidade;
+    }
 }
