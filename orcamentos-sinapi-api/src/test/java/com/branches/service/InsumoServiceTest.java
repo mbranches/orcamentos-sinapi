@@ -28,13 +28,13 @@ class InsumoServiceTest {
     @Mock
     private InsumoRepository repository;
 
-    private final List<com.branches.model.Insumo> INSUMOS_LIST = new ArrayList<>();
+    private final List<Insumo> INSUMOS_LIST = new ArrayList<>();
 
     @BeforeEach
     void init() {
-        com.branches.model.Insumo insumo1 = com.branches.model.Insumo.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
-        com.branches.model.Insumo insumo2 = com.branches.model.Insumo.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
-        com.branches.model.Insumo insumo3 = com.branches.model.Insumo.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
+        Insumo insumo1 = Insumo.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
+        Insumo insumo2 = Insumo.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
+        Insumo insumo3 = Insumo.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
         INSUMOS_LIST.addAll(List.of(insumo1, insumo2, insumo3));
     }
 
@@ -43,7 +43,7 @@ class InsumoServiceTest {
     @DisplayName("findAll returns all insumos when successful")
     void findAll_ReturnsAllInsumos_WhenSuccessful() {
         BDDMockito.when(repository.findAll()).thenReturn(INSUMOS_LIST);
-        List<com.branches.model.Insumo> insumosResponse = service.findAll();
+        List<Insumo> insumosResponse = service.findAll();
 
         Assertions.assertThat(insumosResponse)
                 .isNotNull()
@@ -60,7 +60,7 @@ class InsumoServiceTest {
        Insumo expectedInsumo = this.INSUMOS_LIST.get(0);
 
         String descriptionToBeSearched = expectedInsumo.getDescricao();
-        List<com.branches.model.Insumo> insumosResponse = service.findByDescription(descriptionToBeSearched);
+        List<Insumo> insumosResponse = service.findByDescription(descriptionToBeSearched);
 
         Assertions.assertThat(insumosResponse)
                 .isNotNull()
@@ -78,7 +78,7 @@ class InsumoServiceTest {
         BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(Collections.emptyList());
 
         String randomDescription =  "xaxa";
-        List<com.branches.model.Insumo> insumosResponse = service.findByDescription(randomDescription);
+        List<Insumo> insumosResponse = service.findByDescription(randomDescription);
 
         Assertions.assertThat(insumosResponse)
                 .isNotNull()
