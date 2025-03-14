@@ -11,10 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.branches.cpu.model.ServicoAdicionado;
-import com.branches.cpu.utils.Lists;
-import com.branches.cpu.utils.Monetary;
-import com.branches.cpu.utils.TableColumnConfig;
-import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +52,11 @@ public class TelaOrcamentoController implements Initializable{
 
     private List<ServicoAdicionado> servicosAdicionados = new ArrayList<>();
 
+    private AbrirFxml abrirFxml = new AbrirFxml();
+
     private double valorTotal = 0;
+
+    private Long id;
 
     private ServicoAdicionado servicoSelecionado = null;
 
@@ -71,7 +72,7 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void salvarOrçamento(ActionEvent event) {
-
+        abrirFxml.abrirFxml("tela-salvar-orcamento", "Salvar Orçamento", 660, 320, false);
     }
     
     public void abrirFxml(String nomeFile, String titulo) {
