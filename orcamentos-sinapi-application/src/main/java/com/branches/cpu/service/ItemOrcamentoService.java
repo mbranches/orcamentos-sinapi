@@ -1,6 +1,7 @@
 package com.branches.cpu.service;
 
 import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import lombok.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemOrcamentoService {
-    private String url = "http://localhost:8090/v1/items"
+    private String url = "http://localhost:8090/v1/items";
     private RestTemplate restTemplate = new RestTemplate();
 
     public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemsOrcamento) {

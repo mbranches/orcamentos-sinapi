@@ -152,14 +152,9 @@ public class TelaAdicionarController implements Initializable {
 
     private void adicionar() {
         ItemOrcamento itemOrcamento = new ItemOrcamento();
-        itemOrcamento.setCodigo(servicoSelecionado.getCodigo());
-        itemOrcamento.setDescricao(servicoSelecionado.getDescricao());
-        itemOrcamento.setUnidadeMedida(servicoSelecionado.getUnidadeMedida());
-        itemOrcamento.setPreco(servicoSelecionado.getPreco());
-        itemOrcamento.setOrigemPreco(servicoSelecionado.getOrigemPreco());
+        itemOrcamento.setInsumo(servicoSelecionado);
         itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
         itemOrcamento.setarValorTotal();
-
         telaPrincipal.adicionarServico(itemOrcamento);
     }
 

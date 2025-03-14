@@ -75,14 +75,14 @@ public class TelaEditarController implements Initializable {
     }
 
     public void atualizarCampos() {
-        tfMostrarServico.setText(servicoAEditar.getDescricao());
+        tfMostrarServico.setText(servicoAEditar.getInsumo().getDescricao());
         tfQuantidade.setText(String.valueOf(servicoAEditar.getQuantidade()));
         setarItemTableView();
         setarValorTotal();
     }
 
     private void setarValorTotal() {
-        double valorTotal = servicoAEditar.getPreco() * Integer.valueOf(tfQuantidade.getText());
+        double valorTotal = servicoAEditar.getInsumo().getPreco() * Integer.valueOf(tfQuantidade.getText());
         txtTotal.setText(formatarValorBRL(valorTotal));
     }
 
