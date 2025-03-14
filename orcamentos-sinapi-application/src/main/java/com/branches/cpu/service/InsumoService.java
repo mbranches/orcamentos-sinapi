@@ -1,12 +1,8 @@
 package com.branches.cpu.service;
 
 import com.branches.cpu.model.Insumo;
-import com.branches.cpu.model.ServicoAdicionado;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 import java.util.List;
 

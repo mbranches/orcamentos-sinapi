@@ -5,12 +5,12 @@
 package com.branches.cpu.controller;
 
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.model.Insumo;
+import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.utils.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,13 +44,13 @@ public class TelaOrcamentoController implements Initializable{
     @FXML
     private Button btnExcluir;
     @FXML
-    private TableView<ServicoAdicionado> tvServicosAdiconados;
+    private TableView<ItemOrcamento> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
 
-    private List<ServicoAdicionado> resultadoBusca = new ArrayList<>();
+    private List<ItemOrcamento> resultadoBusca = new ArrayList<>();
 
-    private List<ServicoAdicionado> servicosAdicionados = new ArrayList<>();
+    private List<ItemOrcamento> servicosAdicionados = new ArrayList<>();
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
@@ -58,7 +58,7 @@ public class TelaOrcamentoController implements Initializable{
 
     private Long id;
 
-    private ServicoAdicionado servicoSelecionado = null;
+    private ItemOrcamento servicoSelecionado = null;
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
@@ -147,7 +147,7 @@ public class TelaOrcamentoController implements Initializable{
         String descricao = tfPesquisar.getText();
 
         if (descricao.isEmpty()) {
-            for (ServicoAdicionado servicosAdicionado : servicosAdicionados) {
+            for (ItemOrcamento servicosAdicionado : servicosAdicionados) {
                 tvServicosAdiconados.getItems().add(servicosAdicionado);
             }
 
@@ -162,27 +162,28 @@ public class TelaOrcamentoController implements Initializable{
         }
     }
 
-    private List<ServicoAdicionado> consultarEmServicosAdicionados(String descricao) {
-        List<ServicoAdicionado> servicosPesquisados= Lists.containsInList(servicosAdicionados, s -> s.getDescricao().toLowerCase().contains(descricao.toLowerCase()));
+    private List<ItemOrcamento> consultarEmServicosAdicionados(String descricao) {
+        List<ItemOrcamento> servicosPesquisados= Lists.containsInList(servicosAdicionados, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
 
     private void atualizarValorTotal() {
         valorTotal = 0;
-        for (ServicoAdicionado servicoAdicionado : tvServicosAdiconados.getItems()) {
-            valorTotal += servicoAdicionado.getValorTotal();
+        for (ItemOrcamento itemOrcamento : tvServicosAdiconados.getItems()) {
+            Insumo insumo = itemOrcamento.getInsumo();
+            valorTotal += insumo.getPreco() * itemOrcamento.getQuantidade();
         }
 
         txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
     }
 
     private void criarColunasTabela() {
-        TableColumn<ServicoAdicionado, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<ServicoAdicionado, String> colunaDescricao =new TableColumn<>("Descrição");
-        TableColumn<ServicoAdicionado, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<ServicoAdicionado, Integer> colunaQtd = new TableColumn<>("Qtd.");
-        TableColumn<ServicoAdicionado, Double> colunaTotal = new TableColumn<>("Total");
+        TableColumn<ItemOrcamento, Long> colunaCodigo =new TableColumn<>("Cód.");
+        TableColumn<ItemOrcamento, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<ItemOrcamento, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<ItemOrcamento, Integer> colunaQtd = new TableColumn<>("Qtd.");
+        TableColumn<ItemOrcamento, Double> colunaTotal = new TableColumn<>("Total");
 
         colunaCodigo.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.05));
         colunaDescricao.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.685));
@@ -202,11 +203,8 @@ public class TelaOrcamentoController implements Initializable{
         TableColumnConfig.columnFomatoMonetario(colunaTotal);
     }
 
-    public void adicionarServico(ServicoAdicionado servicoAdicionado) {
-        int id = servicosAdicionados.size() + 1;
-        servicoAdicionado.setId(id);
-
-        servicosAdicionados.add(servicoAdicionado);
+    public void adicionarServico(ItemOrcamento itemOrcamento) {
+        servicosAdicionados.add(itemOrcamento);
 
         limparBarraPesquisa();
         atualizarTabela();
@@ -225,11 +223,10 @@ public class TelaOrcamentoController implements Initializable{
         btnExcluir.setDisable(true);
     }
 
-    public void atualizarServico(ServicoAdicionado servicoNovo) {
-        for (ServicoAdicionado servico : servicosAdicionados) {
+    public void atualizarServico(ItemOrcamento servicoNovo) {
+        for (ItemOrcamento servico : servicosAdicionados) {
             if (servico.getId() == servicoNovo.getId()) {
                 servico.setQuantidade(servicoNovo.getQuantidade());
-                servico.setarValorTotal();
             }
         }
 

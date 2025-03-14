@@ -1,7 +1,7 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Insumo;
-import com.branches.cpu.model.ServicoAdicionado;
+import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
@@ -151,16 +151,16 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void adicionar() {
-        ServicoAdicionado servicoAdicionado = new ServicoAdicionado();
-        servicoAdicionado.setCodigo(servicoSelecionado.getCodigo());
-        servicoAdicionado.setDescricao(servicoSelecionado.getDescricao());
-        servicoAdicionado.setUnidadeMedida(servicoSelecionado.getUnidadeMedida());
-        servicoAdicionado.setPreco(servicoSelecionado.getPreco());
-        servicoAdicionado.setOrigemPreco(servicoSelecionado.getOrigemPreco());
-        servicoAdicionado.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
-        servicoAdicionado.setarValorTotal();
+        ItemOrcamento itemOrcamento = new ItemOrcamento();
+        itemOrcamento.setCodigo(servicoSelecionado.getCodigo());
+        itemOrcamento.setDescricao(servicoSelecionado.getDescricao());
+        itemOrcamento.setUnidadeMedida(servicoSelecionado.getUnidadeMedida());
+        itemOrcamento.setPreco(servicoSelecionado.getPreco());
+        itemOrcamento.setOrigemPreco(servicoSelecionado.getOrigemPreco());
+        itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
+        itemOrcamento.setarValorTotal();
 
-        telaPrincipal.adicionarServico(servicoAdicionado);
+        telaPrincipal.adicionarServico(itemOrcamento);
     }
 
     private void fecharPagina(ActionEvent event) {

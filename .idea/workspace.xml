@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="remove: test para controller removido provisóriamente">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Orcamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/OrcamentoPostRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/OrcamentoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-salvar-orcamento.fxml" afterDir="false" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: tela para salvar orçamento adicionada">
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/ItemOrcamentoPostRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/ItemOrcamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaAdicionarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaEditarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/ServicoAdicionado.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/ItemOrcamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/OrcamentoPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/OrcamentoPostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/InsumoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/OrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/OrcamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/Lists.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/utils/Lists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-salvar-orcamento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-salvar-orcamento.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +107,7 @@
       <recent name="com.branches.repository" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.branches.cpu.request" />
       <recent name="com.branches.mapper" />
       <recent name="com.branches.request" />
       <recent name="com.branches.service" />
@@ -194,7 +202,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="13617000" />
+      <workItem from="1741961789867" duration="16242000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -372,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741977169840</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat: tela para salvar orçamento adicionada">
+      <option name="closed" value="true" />
+      <created>1741978726881</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1741978726881</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +415,8 @@
     <MESSAGE value="refactor: variaveis finais postas em upper case" />
     <MESSAGE value="refactor: assinatura dos métodos alteradas, agora os métodos retornar ResponseEntity" />
     <MESSAGE value="remove: test para controller removido provisóriamente" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove: test para controller removido provisóriamente" />
+    <MESSAGE value="feat: tela para salvar orçamento adicionada" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela para salvar orçamento adicionada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -20,7 +20,7 @@
          </font></Label>
       <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
          <children>
-            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#editarFechar" prefHeight="30.0" styleClass="button-action" text="Salvar e Fechar">
+            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#salvarFechar" prefHeight="30.0" styleClass="button-action" text="Salvar e Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
