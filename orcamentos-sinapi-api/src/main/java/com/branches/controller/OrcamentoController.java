@@ -4,6 +4,8 @@ import com.branches.model.Orcamento;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.service.OrcamentoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,8 @@ public class OrcamentoController {
     private final OrcamentoService SERVICE;
 
     @PostMapping
-    public Orcamento save(@RequestBody OrcamentoPostRequest orcamentoPostRequest) {
-        return SERVICE.save(orcamentoPostRequest);
+    public ResponseEntity<Orcamento> save(@RequestBody OrcamentoPostRequest orcamentoPostRequest) {
+        Orcamento response = SERVICE.save(orcamentoPostRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
