@@ -15,6 +15,12 @@ import java.util.List;
 @RestController
 public class ItemOrcamentoController {
     private final ItemOrcamentoService SERVICE;
+
+    @GetMapping
+    public ResponseEntity<List<ItemOrcamento>> findAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(SERVICE.findAll());
+    }
+
     @PostMapping
     public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemOrcamentoPostRequestList) {
         List<ItemOrcamento> response = SERVICE.saveAll(itemOrcamentoPostRequestList);
