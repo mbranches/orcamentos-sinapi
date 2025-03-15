@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: equals and hashcode adicionado à ItemOrcamento">
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentosController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-orcamentos.fxml" afterDir="false" />
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: tela de orçamentos adicionada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/model/Orcamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/OrcamentoPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/request/OrcamentoPostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaOrcamentosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Orcamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/model/Orcamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/OrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/service/OrcamentoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +197,7 @@
       <workItem from="1741780400454" duration="9616000" />
       <workItem from="1741798161637" duration="4394000" />
       <workItem from="1741802682603" duration="5875000" />
-      <workItem from="1741961789867" duration="28017000" />
+      <workItem from="1741961789867" duration="31425000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: alterando propriedas da tabela insumos">
       <option name="closed" value="true" />
@@ -434,14 +439,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742002515717</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="feat: tela de orçamentos adicionada">
+      <option name="closed" value="true" />
+      <created>1742003149195</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1742003149195</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: adicionando service para consumir a api" />
     <MESSAGE value="refactor: antigo método de consulta substituido pelo service" />
     <MESSAGE value="feat: tela inicial criada" />
     <MESSAGE value="style: efeito de click adicionado" />
@@ -466,7 +478,8 @@
     <MESSAGE value="feat: api consumida para adicionar itens dos orçamentos aos orçamentos" />
     <MESSAGE value="feat: método salvar orçamento adaptado para atualizar items de orçamento automaticamente" />
     <MESSAGE value="feat: equals and hashcode adicionado à ItemOrcamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: equals and hashcode adicionado à ItemOrcamento" />
+    <MESSAGE value="feat: tela de orçamentos adicionada" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela de orçamentos adicionada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
