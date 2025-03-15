@@ -1,11 +1,16 @@
 package com.branches.cpu.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ItemOrcamento {
+    @EqualsAndHashCode.Include
     private Long id;
     private Insumo insumo;
     private Integer quantidade;
