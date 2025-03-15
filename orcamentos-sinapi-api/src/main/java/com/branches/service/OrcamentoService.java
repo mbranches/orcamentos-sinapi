@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,9 @@ public class OrcamentoService {
         Orcamento orcamento = MAPPER.toOrcamento(orcamentoPostRequest);
         orcamento.setDataCriacao(LocalDate.now());
         return REPOSITORY.save(orcamento);
+    }
+
+    public List<Orcamento> findAll() {
+        return REPOSITORY.findAll();
     }
 }

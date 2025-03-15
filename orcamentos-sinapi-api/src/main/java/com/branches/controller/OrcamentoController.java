@@ -6,16 +6,20 @@ import com.branches.service.OrcamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("v1/orcamentos")
 @RestController
 @RequiredArgsConstructor
 public class OrcamentoController {
     private final OrcamentoService SERVICE;
+
+    @GetMapping
+    public List<Orcamento> findAll() {
+        return SERVICE.findAll();
+    }
 
     @PostMapping
     public ResponseEntity<Orcamento> save(@RequestBody OrcamentoPostRequest orcamentoPostRequest) {
