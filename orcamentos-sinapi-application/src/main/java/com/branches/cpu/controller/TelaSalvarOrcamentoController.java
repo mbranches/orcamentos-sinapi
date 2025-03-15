@@ -2,7 +2,6 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
-import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import com.branches.cpu.request.OrcamentoPostRequest;
 import com.branches.cpu.service.ItemOrcamentoService;
 import com.branches.cpu.service.OrcamentoService;
@@ -24,6 +23,9 @@ public class TelaSalvarOrcamentoController {
     @FXML
     private TextField tfNomeOrcamento;
 
+    @FXML
+    private TextField tfNomeCliente;
+
     private TelaOrcamentoController orcamentoController;
 
     private List<ItemOrcamento> itemOrcamentoPostRequests;
@@ -39,8 +41,13 @@ public class TelaSalvarOrcamentoController {
 
     @FXML
     void salvarFechar(ActionEvent event) {
-        OrcamentoPostRequest orcamentoPostRequest = OrcamentoPostRequest.builder().nome(tfNomeOrcamento.getText()).build();
+        String nomeOrcamento = tfNomeOrcamento.getText();
+        String nomeCliente = tfNomeCliente.getText();
+
+        OrcamentoPostRequest orcamentoPostRequest = OrcamentoPostRequest.builder().nome(nomeOrcamento).nomeCliente(nomeCliente).build();
+
         Orcamento orcamento = orcamentoService.save(orcamentoPostRequest);
+
         itemOrcamentoPostRequests.forEach(item -> item.setOrcamento(orcamento));
         orcamentoController.setServicosAdicionados(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
         orcamentoController.setOrcamento(orcamento);
