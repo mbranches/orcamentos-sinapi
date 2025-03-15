@@ -12,4 +12,5 @@ import java.time.LocalDate;
 @Setter
 public class OrcamentoPostRequest {
     private String nome;
+    private String nomeCliente;
 }
