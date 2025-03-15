@@ -1,16 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+w<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: adionando table view que mostrará os orçamentos1">
+    <list default="true" id="7eaf2667-7e2c-4eae-bd65-bda01e31c7be" name="Changes" comment="feat: merge da substituição do auto complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/controller/OrcamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-api/src/main/java/com/branches/service/OrcamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/controller/TelaSalvarOrcamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/OrcamentoPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/java/com/branches/cpu/request/OrcamentoPostRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-salvar-orcamento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/orcamentos-sinapi-application/src/main/resources/com/branches/cpu/fxml/tela-salvar-orcamento.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +35,9 @@
     &quot;accountId&quot;: &quot;f0ba08a4-e762-4434-850d-f58631d0d2ea&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -111,7 +109,6 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.branches.cpu.App" />
       <module name="orcamentos-sinapi-application" />
-      <option name="VM_PARAMETERS" value="--add-opens javafx.base/com.sun.javafx.event=org.controlsfx.controls " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.branches.cpu.*" />
@@ -469,15 +466,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742007021754</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat: merge da substituição do auto complete">
+      <option name="closed" value="true" />
+      <created>1742054092417</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1742054092417</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: tela inicial adicionada ao inicio do app" />
-    <MESSAGE value="feat: adicionando controller e método post para itens do orçamento" />
     <MESSAGE value="refactor: método post alterado" />
     <MESSAGE value="remove: retirando h2 para testes" />
     <MESSAGE value="feat: teste unitário adicionado para InsumoService" />
@@ -501,7 +504,9 @@
     <MESSAGE value="feat: coluna usuário adicionado a orçamento" />
     <MESSAGE value="feat: request get adicionada a Orcamento" />
     <MESSAGE value="feat: adionando table view que mostrará os orçamentos" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adionando table view que mostrará os orçamentos" />
+    <MESSAGE value="git commit -m &quot;feat: .idea&quot;" />
+    <MESSAGE value="feat: merge da substituição do auto complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: merge da substituição do auto complete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
