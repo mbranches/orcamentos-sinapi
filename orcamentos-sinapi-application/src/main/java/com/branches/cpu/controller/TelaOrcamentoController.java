@@ -243,7 +243,7 @@ public class TelaOrcamentoController implements Initializable{
 
     public void atualizarServico(ItemOrcamento servicoNovo) {
         for (ItemOrcamento servico : servicosAdicionados) {
-            if (servico.getId().equals(servicoNovo.getId())) {
+            if (servico.equals(servicoNovo)) {
                 servico.setQuantidade(servicoNovo.getQuantidade());
                 servico.setarValorTotal();
             }
