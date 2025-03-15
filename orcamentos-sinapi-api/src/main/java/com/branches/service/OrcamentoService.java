@@ -18,7 +18,7 @@ public class OrcamentoService {
 
     public Orcamento save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = MAPPER.toOrcamento(orcamentoPostRequest);
-        orcamento.setDataCriacao(LocalDate.now());
+        if (orcamento.getDataCriacao() == null) orcamento.setDataCriacao(LocalDate.now());
         return REPOSITORY.save(orcamento);
     }
 
