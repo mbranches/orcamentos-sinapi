@@ -13,10 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" stylesheets="@../Styles/style-telas-editar-adicionar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaAdicionarController">
    <children>
-      <TextField fx:id="tfPesquisarServico" layoutX="10.0" layoutY="58.0" onAction="#PesquisarServico" prefHeight="30.0" prefWidth="454.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="58.0">
-         <font>
-            <Font size="10.0" />
-         </font></TextField>
       <TextField fx:id="tfQuantidade" disable="true" layoutX="475.0" layoutY="58.0" onKeyReleased="#setarValorTotal" prefHeight="30.0" prefWidth="108.0" AnchorPane.leftAnchor="475.0" AnchorPane.rightAnchor="143.39999999999998" />
       <Label layoutX="10.0" layoutY="41.0" text="Informe a descrição do serviço e pressione enter" textFill="#736b6b" AnchorPane.leftAnchor="10.0" />
       <Label layoutX="475.0" layoutY="41.0" text="Quantidade*" textFill="#736b6b" AnchorPane.leftAnchor="475.0" />
@@ -69,5 +65,6 @@
             <Insets right="20.0" />
          </padding>
       </VBox>
+      <VBox fx:id="sugestions" layoutX="10.0" layoutY="60.0" maxWidth="454.0" prefHeight="146.0" prefWidth="454.0" />
    </children>
 </AnchorPane>

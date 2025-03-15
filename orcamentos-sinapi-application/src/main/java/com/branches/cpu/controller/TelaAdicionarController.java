@@ -3,6 +3,7 @@ package com.branches.cpu.controller;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
+import com.branches.cpu.utils.AutoCompleteTextField;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -10,9 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
@@ -20,9 +24,8 @@ import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -47,6 +50,11 @@ public class TelaAdicionarController implements Initializable {
 
     @FXML
     private TableView<Insumo> tvMostrarServico;
+
+    @FXML
+    private VBox sugestions;
+
+    AutoCompleteTextField autoCompletePesquisar = new AutoCompleteTextField();
 
     private Insumo servicoSelecionado;
     List<Insumo> resultadoBusca = new ArrayList<>();
@@ -100,21 +108,20 @@ public class TelaAdicionarController implements Initializable {
         tvMostrarServico.setPlaceholder(new Label("Nenhum serviço selecionado até o momento."));
         tvMostrarServico.getPlaceholder().setStyle("-fx-font-size: 15px");
 
-
-        AutoCompletionBinding<Insumo> autoCompletePesquisar = TextFields.bindAutoCompletion(
-                tfPesquisarServico,
-                service.findByName(tfPesquisarServico.getText())
+        autoCompletePesquisar.getEntries().addAll(
+                service.findAll()
+                        .stream()
+                        .map(Insumo::getDescricao)
+                        .collect(Collectors.toList())
         );
-        autoCompletePesquisar.setMinWidth(600);
-
-        autoCompletePesquisar.setOnAutoCompleted( event -> {
-            event.getCompletion();
-        });
+        autoCompletePesquisar.setPrefHeight(30);
+        autoCompletePesquisar.setOnAction(this::PesquisarServico);
+        sugestions.getChildren().add(autoCompletePesquisar);
     }
 
     private void atualizarTabela() {
         tvMostrarServico.getItems().clear();
-        resultadoBusca = service.findByName(tfPesquisarServico.getText());
+        resultadoBusca = service.findByName(autoCompletePesquisar.getText());
         servicoSelecionado = resultadoBusca.get(0);
 
         tvMostrarServico.getItems().add(servicoSelecionado);
