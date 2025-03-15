@@ -1,4 +1,4 @@
-package com.branches.cpu.utils;
+package com.branches.cpu.components;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
