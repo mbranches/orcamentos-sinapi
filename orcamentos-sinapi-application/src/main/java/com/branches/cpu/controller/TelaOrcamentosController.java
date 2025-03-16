@@ -1,12 +1,8 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.OrcamentoService;
-import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,8 +58,8 @@ public class TelaOrcamentosController implements Initializable {
     }
 
     @FXML
-    void selecionarServicoAdicionado(MouseEvent event) {
-
+    void selecionarOrcamento(MouseEvent event) {
+        //habilitar botões (se o clicado não for null
     }
 
     @Override
@@ -71,7 +67,7 @@ public class TelaOrcamentosController implements Initializable {
         tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
         tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
 
-        tvOrcamentos.setFixedCellSize(40);
+        tvOrcamentos.setFixedCellSize(60);
         tvOrcamentos.setEditable(false);
 
         criarColunasTabela();
