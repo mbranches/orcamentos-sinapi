@@ -40,13 +40,13 @@ public class AbrirFxml {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
 
             if (orcamento != null) {
                 TelaOrcamentoController controller = loader.getController();
                 controller.setOrcamento(orcamento);
             }
 
-            Parent root = loader.load();
             abrirFxml(root, title, 900, 600, true);
 
         } catch (Exception e) {
