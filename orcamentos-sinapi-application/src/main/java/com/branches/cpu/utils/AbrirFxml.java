@@ -1,15 +1,23 @@
 package com.branches.cpu.utils;
 
+import com.branches.cpu.controller.TelaAdicionarController;
+import com.branches.cpu.controller.TelaEditarController;
+import com.branches.cpu.controller.TelaOrcamentoController;
+import com.branches.cpu.controller.TelaSalvarOrcamentoController;
+import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class AbrirFxml {
     private final String PATH = "/com/branches/cpu/fxml/";
 
-    private void abrirFxmlDefault(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable) {
+    private void abrirFxml(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable) {
         try {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -33,7 +41,7 @@ public class AbrirFxml {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
 
             Parent root = loader.load();
-            abrirFxmlDefault(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true);
 
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
@@ -48,8 +56,61 @@ public class AbrirFxml {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
 
             Parent root = loader.load();
-            abrirFxmlDefault(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true);
 
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void abrirTelaAdicionar(String titulo, TelaOrcamentoController telaOrcamentoController) {
+        String fileName = "tela-adicionar";
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            TelaAdicionarController telaAdicionarController = loader.getController();
+            telaAdicionarController.setTelaPrincipal(telaOrcamentoController);
+
+            abrirFxml(root, titulo, 720, 400, false);
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaEditar(String titulo, TelaOrcamentoController telaOrcamentoController, ItemOrcamento itemAEditar) {
+        String fileName = "tela-editar";
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            TelaEditarController telaEditarController = loader.getController();
+            telaEditarController.setTelaPrincipal(telaOrcamentoController);
+            telaEditarController.setServicoAEditar(itemAEditar);
+            telaEditarController.atualizarCampos();
+
+            abrirFxml(root, titulo, 720, 400, false);
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaSalvarOrcamento(String titulo, TelaOrcamentoController telaOrcamentoController, List<ItemOrcamento> itemsASalvar) {
+        String fileName = "tela-salvar-orcamento";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            TelaSalvarOrcamentoController controller = loader.getController();
+            controller.setOrcamentoController(telaOrcamentoController);
+            controller.setItemOrcamentoPostRequests(itemsASalvar);
+
+            abrirFxml(root, titulo, 660, 320, false);
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
