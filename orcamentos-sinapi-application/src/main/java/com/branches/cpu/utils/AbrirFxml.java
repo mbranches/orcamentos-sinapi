@@ -5,6 +5,7 @@ import com.branches.cpu.controller.TelaEditarController;
 import com.branches.cpu.controller.TelaOrcamentoController;
 import com.branches.cpu.controller.TelaSalvarOrcamentoController;
 import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,11 +35,16 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaOrcamento(String title){
+    public void abrirTelaOrcamento(String title, Orcamento orcamento){
         String fileName = "tela-orcamento";
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+
+            if (orcamento != null) {
+                TelaOrcamentoController controller = loader.getController();
+                controller.setOrcamento(orcamento);
+            }
 
             Parent root = loader.load();
             abrirFxml(root, title, 900, 600, true);
