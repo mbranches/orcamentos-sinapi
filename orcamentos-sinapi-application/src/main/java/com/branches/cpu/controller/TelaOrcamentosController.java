@@ -57,7 +57,9 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void excluirServico(ActionEvent event) {
+        orcamentoService.delete(orcamentoSelecionado);
 
+        removerSelecao();
     }
 
     @FXML
