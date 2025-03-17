@@ -2,6 +2,7 @@ package com.branches.service;
 
 import com.branches.mapper.ItemOrcamentoMapper;
 import com.branches.model.ItemOrcamento;
+import com.branches.model.Orcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,9 @@ public class ItemOrcamentoService {
 
     public List<ItemOrcamento> findAll() {
         return REPOSITORY.findAll();
+    }
+
+    public List<ItemOrcamento> findByOrcamento(Long orcamentoId) {
+        return REPOSITORY.findAllByOrcamentoId(orcamentoId);
     }
 }

@@ -1,6 +1,7 @@
 package com.branches.controller;
 
 import com.branches.model.ItemOrcamento;
+import com.branches.model.Orcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,11 @@ public class ItemOrcamentoController {
     @GetMapping
     public ResponseEntity<List<ItemOrcamento>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(SERVICE.findAll());
+    }
+
+    @GetMapping("/{idOrcamento}")
+    public ResponseEntity<List<ItemOrcamento>> findAllByOrcamento(@PathVariable Long idOrcamento) {
+        return ResponseEntity.ok(SERVICE.findByOrcamento(idOrcamento));
     }
 
     @PostMapping
