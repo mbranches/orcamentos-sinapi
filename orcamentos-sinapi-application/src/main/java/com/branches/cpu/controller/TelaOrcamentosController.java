@@ -49,7 +49,7 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditarOrcamento("Editar " + orcamentoSelecionado.getNome(), orcamentoSelecionado);
+        abrirFxml.abrirTelaEditarOrcamento("Editar " + orcamentoSelecionado.getNome(), orcamentoSelecionado, this);
         atualizarTabela();
     }
 
@@ -83,7 +83,7 @@ public class TelaOrcamentosController implements Initializable {
         atualizarTabela();
     }
 
-    private void atualizarTabela() {
+    public void atualizarTabela() {
         tvOrcamentos.getItems().clear();
         orcamentoService.findAll()
                 .forEach(orcamento -> tvOrcamentos.getItems().add(orcamento));
