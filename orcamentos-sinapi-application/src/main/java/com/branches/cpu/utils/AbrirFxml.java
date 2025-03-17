@@ -1,34 +1,20 @@
 package com.branches.cpu.utils;
 
-import com.branches.cpu.controller.TelaInicialController;
-import com.branches.cpu.controller.TelaOrcamentoController;
-import com.branches.cpu.controller.TelaSalvarOrcamentoController;
-import com.branches.cpu.model.ItemOrcamento;
-import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.List;
-
 public class AbrirFxml {
-    public void abrirFxml(String fileName, String title, Integer width, Integer minHeight, Boolean resizable, List<ItemOrcamento> items, TelaOrcamentoController telaOrcamentoController) {
+    private final String PATH = "/com/branches/cpu/fxml/";
+
+    private void abrirFxmlDefault(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/branches/cpu/fxml/" + fileName + ".fxml"));
-            Parent root = loader.load();
-
-            if (fileName.equals("tela-salvar-orcamento")) {
-                TelaSalvarOrcamentoController controller = loader.getController();
-                controller.setOrcamentoController(telaOrcamentoController);
-                controller.setItemOrcamentoPostRequests(items);
-            }
-
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
-            stage.setMinWidth(width);
+            stage.setMinWidth(minWidth);
             stage.setMinHeight(minHeight);
             stage.centerOnScreen();
             stage.setResizable(resizable);
@@ -36,6 +22,36 @@ public class AbrirFxml {
             stage.show();
         } catch (Exception e) {
             System.out.println("Não foi possível abrir a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaOrcamento(String title){
+        String fileName = "tela-orcamento";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+
+            Parent root = loader.load();
+            abrirFxmlDefault(root, title, 900, 600, true);
+
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaOrcamentos(String title){
+        String fileName = "tela-orcamentos";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+
+            Parent root = loader.load();
+            abrirFxmlDefault(root, title, 900, 600, true);
+
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
         }
     }
