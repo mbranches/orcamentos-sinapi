@@ -60,6 +60,8 @@ public class TelaOrcamentoController implements Initializable{
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
+    ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+
     private double valorTotal = 0;
 
     private Orcamento orcamento;
@@ -78,7 +80,6 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void salvarOrçamento(ActionEvent event) {
-        ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
 
         if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.servicosAdicionados);
         else {
@@ -112,6 +113,7 @@ public class TelaOrcamentoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (orcamento != null) servicosAdicionados.addAll(itemOrcamentoService.findByOrcamento(orcamento));
         tvServicosAdiconados.setPlaceholder(new Label("Nenhum serviço adicionado até o momento."));
         tvServicosAdiconados.getPlaceholder().setStyle("-fx-font-size: 15px");
 
@@ -132,7 +134,6 @@ public class TelaOrcamentoController implements Initializable{
             for (ItemOrcamento servicosAdicionado : servicosAdicionados) {
                 tvServicosAdiconados.getItems().add(servicosAdicionado);
             }
-
         } else {
             resultadoBusca = consultarEmServicosAdicionados(descricao);
 
