@@ -83,7 +83,9 @@ public class TelaOrcamentoController implements Initializable{
 
         if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.servicosAdicionados);
         else {
-            itemOrcamentoService.saveAll(servicosAdicionados);
+            List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(servicosAdicionados);
+            servicosAdicionados.clear();
+            servicosAdicionados.addAll(itensSalvos);
         }
     }
 
