@@ -29,4 +29,8 @@ public class OrcamentoService {
     public Orcamento update(Orcamento orcamento) {
         return REPOSITORY.save(orcamento);
     }
+
+    public void delete(Long idOrcamento) {
+        REPOSITORY.deleteById(idOrcamento);
+    }
 }
