@@ -17,8 +17,10 @@ public class OrcamentoController {
     private final OrcamentoService SERVICE;
 
     @GetMapping
-    public List<Orcamento> findAll() {
-        return SERVICE.findAll();
+    public ResponseEntity<List<Orcamento>> findAll(@RequestParam(required = false) String name) {
+        List<Orcamento> response = name == null ? SERVICE.findAll() : SERVICE.findAllByName(name);
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping

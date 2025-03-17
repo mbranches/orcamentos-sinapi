@@ -33,4 +33,8 @@ public class OrcamentoService {
     public void delete(Long idOrcamento) {
         REPOSITORY.deleteById(idOrcamento);
     }
+
+    public List<Orcamento> findAllByName(String nameOrcamento) {
+        return REPOSITORY.findAllByNomeContaining(nameOrcamento);
+    }
 }
