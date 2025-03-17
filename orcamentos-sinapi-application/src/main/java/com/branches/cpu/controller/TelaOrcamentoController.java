@@ -113,7 +113,6 @@ public class TelaOrcamentoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (orcamento != null) servicosAdicionados.addAll(itemOrcamentoService.findByOrcamento(orcamento));
         tvServicosAdiconados.setPlaceholder(new Label("Nenhum serviço adicionado até o momento."));
         tvServicosAdiconados.getPlaceholder().setStyle("-fx-font-size: 15px");
 
