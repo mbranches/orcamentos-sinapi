@@ -19,4 +19,8 @@ public class OrcamentoService {
         Orcamento[] arrayOrcamento = restTemplate.getForObject(url, Orcamento[].class);
         return Arrays.asList(arrayOrcamento);
     }
+
+    public void update(Orcamento orcamento) {
+        restTemplate.put(url, orcamento);
+    }
 }
