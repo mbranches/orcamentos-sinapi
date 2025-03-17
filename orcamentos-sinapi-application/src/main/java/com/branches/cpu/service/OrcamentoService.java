@@ -23,4 +23,10 @@ public class OrcamentoService {
     public void update(Orcamento orcamento) {
         restTemplate.put(url, orcamento);
     }
+
+    public void delete(Orcamento orcamento) {
+        Long idToBeDeleted = orcamento.getId();
+        String urlForDelete = url + "/" + idToBeDeleted;
+        restTemplate.delete(urlForDelete);
+    }
 }
