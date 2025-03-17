@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Setter;
@@ -61,10 +62,10 @@ public class TelaEditarController implements Initializable {
     }
 
     @FXML
-    void editarValorTotal(ActionEvent event) {
+    void editarValorTotal(KeyEvent event) {
         setarValorTotal();
 
-        servicoAEditar.setQuantidade( Integer.valueOf(tfQuantidade.getText()) );
+        servicoAEditar.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
         servicoAEditar.setarValorTotal();
     }
 
@@ -82,16 +83,14 @@ public class TelaEditarController implements Initializable {
     }
 
     private void setarValorTotal() {
-        double valorTotal = servicoAEditar.getInsumo().getPreco() * Integer.valueOf(tfQuantidade.getText());
+        double valorTotal = servicoAEditar.getInsumo().getPreco() * Integer.parseInt(tfQuantidade.getText());
         txtTotal.setText(formatarValorBRL(valorTotal));
     }
 
     private void setarItemTableView() {
         List<Insumo> servicos = service.findByName(tfMostrarServico.getText());
 
-        for (Insumo servico : servicos) {
-            observableList.add(servico);
-        }
+        observableList.addAll(servicos);
 
         tvMostrarServico.setItems(observableList);
     }
@@ -111,10 +110,10 @@ public class TelaEditarController implements Initializable {
         tvMostrarServico.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
         TableViewProprieties.noEditableColumns(tvMostrarServico);
 
-        colunaCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
-        colunaDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
-        colunaUnidade.setCellValueFactory(new PropertyValueFactory("unidadeMedida"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory("preco"));
+        colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        colunaUnidade.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
+        colunaValor.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
         TableColumnConfig.columnFomatoMonetario(colunaValor);
     }
