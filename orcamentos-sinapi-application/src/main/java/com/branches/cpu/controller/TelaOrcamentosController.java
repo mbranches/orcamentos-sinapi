@@ -2,6 +2,7 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class TelaOrcamentosController implements Initializable {
     @FXML
-    private Button btnAdicionar;
+    private Button btnAbrir;
 
     @FXML
     private Button btnEditar;
@@ -35,10 +36,12 @@ public class TelaOrcamentosController implements Initializable {
     @FXML
     private TableView<Orcamento> tvOrcamentos;
 
+    private Orcamento orcamentoSelecionado;
+
     private OrcamentoService orcamentoService = new OrcamentoService();
 
     @FXML
-    void abrirTelaAdicionar(ActionEvent event) {
+    void abrirOrcamento(ActionEvent event) {
 
     }
 
@@ -59,7 +62,9 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void selecionarOrcamento(MouseEvent event) {
-        //habilitar botões (se o clicado não for null
+        orcamentoSelecionado = tvOrcamentos.getSelectionModel().getSelectedItem();
+
+        if (orcamentoSelecionado != null) ativarBotoes();
     }
 
     @Override
@@ -94,5 +99,17 @@ public class TelaOrcamentosController implements Initializable {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaDataCriacao.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
         colunaNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+    }
+
+    private void ativarBotoes() {
+        btnAbrir.setDisable(false);
+        btnEditar.setDisable(false);
+        btnExcluir.setDisable(false);
+    }
+
+    private void desativarBotoes() {
+        btnAbrir.setDisable(true);
+        btnEditar.setDisable(true);
+        btnExcluir.setDisable(true);
     }
 }
