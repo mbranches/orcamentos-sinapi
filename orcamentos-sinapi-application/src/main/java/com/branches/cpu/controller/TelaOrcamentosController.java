@@ -60,6 +60,7 @@ public class TelaOrcamentosController implements Initializable {
         orcamentoService.delete(orcamentoSelecionado);
 
         removerSelecao();
+        atualizarTabela();
     }
 
     @FXML
