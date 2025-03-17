@@ -50,16 +50,17 @@ public class TelaOrcamentosController implements Initializable {
     @FXML
     void abrirTelaEditar(ActionEvent event) {
         abrirFxml.abrirTelaEditarOrcamento("Editar " + orcamentoSelecionado.getNome(), orcamentoSelecionado, this);
-        atualizarTabela();
-    }
 
-    @FXML
-    void autoComplementarTabela(KeyEvent event) {
-
+        removerSelecao();
     }
 
     @FXML
     void excluirServico(ActionEvent event) {
+
+    }
+
+    @FXML
+    void autoComplementarTabela(KeyEvent event) {
 
     }
 
@@ -104,6 +105,11 @@ public class TelaOrcamentosController implements Initializable {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaDataCriacao.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
         colunaNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+    }
+
+    private void removerSelecao() {
+        tvOrcamentos.getSelectionModel().clearSelection();
+        desativarBotoes();
     }
 
     private void ativarBotoes() {
