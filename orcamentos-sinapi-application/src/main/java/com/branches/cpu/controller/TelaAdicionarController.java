@@ -53,6 +53,7 @@ public class TelaAdicionarController implements Initializable {
     AutoCompleteTextField autoCompletePesquisar = new AutoCompleteTextField();
 
     private Insumo servicoSelecionado;
+
     List<Insumo> resultadoBusca = new ArrayList<>();
 
     private TelaOrcamentoController telaPrincipal;
@@ -88,7 +89,7 @@ public class TelaAdicionarController implements Initializable {
     @FXML
     void setarValorTotal(KeyEvent event) {
         if (tfQuantidade.getText() != null) {
-            double valorTotal = resultadoBusca.get(0).getPreco() * Integer.valueOf(tfQuantidade.getText());
+            double valorTotal = resultadoBusca.get(0).getPreco() * Integer.parseInt(tfQuantidade.getText());
             txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
         } else {
             txtTotal.setText(Monetary.formatarValorBRL(0));
