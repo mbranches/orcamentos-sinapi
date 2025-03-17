@@ -45,6 +45,7 @@ public class TelaOrcamentosController implements Initializable {
     @FXML
     void abrirOrcamento(ActionEvent event) {
         abrirFxml.abrirTelaOrcamento(orcamentoSelecionado.getNome(), orcamentoSelecionado);
+        removerSelecao();
     }
 
     @FXML
