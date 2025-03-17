@@ -28,7 +28,7 @@
                               <Font size="10.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAdicionar" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abrirTelaAdicionar" prefHeight="40.0" prefWidth="91.0" text="Abrir" textFill="WHITE">
+                        <Button fx:id="btnAbrir" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abrirOrcamento" prefHeight="40.0" prefWidth="91.0" text="Abrir" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
