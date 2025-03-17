@@ -28,8 +28,15 @@ public class OrcamentoController {
     }
 
     @PutMapping
-    public ResponseEntity<Orcamento> updateOrcamento(@RequestBody Orcamento orcamento) {
+    public ResponseEntity<Void> updateOrcamento(@RequestBody Orcamento orcamento) {
         SERVICE.update(orcamento);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{idOrcamento}")
+    public ResponseEntity<Orcamento> deleteOrcamento(@PathVariable Long idOrcamento) {
+        SERVICE.delete(idOrcamento);
 
         return ResponseEntity.noContent().build();
     }
