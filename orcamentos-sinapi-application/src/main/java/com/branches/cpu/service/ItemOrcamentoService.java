@@ -1,6 +1,7 @@
 package com.branches.cpu.service;
 
 import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import lombok.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,14 @@ public class ItemOrcamentoService {
 
     public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemsOrcamento) {
         ItemOrcamento[] response = restTemplate.postForObject(url, itemsOrcamento, ItemOrcamento[].class);
+
+        return Arrays.asList(response);
+    }
+
+    public List<ItemOrcamento> findByOrcamento(Orcamento orcamento) {
+        Long orcamentoId = orcamento.getId();
+        String urlForGet = url + "/" + orcamentoId;
+        ItemOrcamento[] response = restTemplate.getForObject(url, ItemOrcamento[].class);
 
         return Arrays.asList(response);
     }
