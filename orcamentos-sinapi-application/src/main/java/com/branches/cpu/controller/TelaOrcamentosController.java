@@ -101,7 +101,7 @@ public class TelaOrcamentosController implements Initializable {
 
         colunaNome.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.5));
         colunaNomeCliente.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.28));
-        colunaDataCriacao.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.2));
+        colunaDataCriacao.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.19));
 
         tvOrcamentos.getColumns().addAll(colunaNome, colunaNomeCliente, colunaDataCriacao);
         TableViewProprieties.noEditableColumns(tvOrcamentos);
