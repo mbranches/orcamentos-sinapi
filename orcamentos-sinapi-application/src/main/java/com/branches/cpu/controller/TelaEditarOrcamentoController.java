@@ -4,8 +4,10 @@ import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.OrcamentoService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lombok.Setter;
 
 public class TelaEditarOrcamentoController {
@@ -24,7 +26,7 @@ public class TelaEditarOrcamentoController {
 
     @FXML
     void Fechar(ActionEvent event) {
-
+        fecharPagina(event);
     }
 
     @FXML
@@ -33,6 +35,8 @@ public class TelaEditarOrcamentoController {
         orcamentoAEditar.setNomeCliente(tfNomeCliente.getText());
 
         ORCAMENTO_SERVICE.update(orcamentoAEditar);
+
+        fecharPagina(event);
     }
 
     public void setOrcamento(Orcamento orcamento) {
@@ -44,5 +48,10 @@ public class TelaEditarOrcamentoController {
     private void atualizarCampos() {
         tfNomeOrcamento.setText(orcamentoAEditar.getNome());
         tfNomeCliente.setText(orcamentoAEditar.getNomeCliente());
+    }
+
+    private void fecharPagina(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
