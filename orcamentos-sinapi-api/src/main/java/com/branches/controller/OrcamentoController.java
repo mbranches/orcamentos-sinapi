@@ -26,4 +26,11 @@ public class OrcamentoController {
         Orcamento response = SERVICE.save(orcamentoPostRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @PutMapping
+    public ResponseEntity<Orcamento> updateOrcamento(@RequestBody Orcamento orcamento) {
+        SERVICE.update(orcamento);
+
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -25,4 +25,8 @@ public class OrcamentoService {
     public List<Orcamento> findAll() {
         return REPOSITORY.findAll();
     }
+
+    public Orcamento update(Orcamento orcamento) {
+        return REPOSITORY.save(orcamento);
+    }
 }
