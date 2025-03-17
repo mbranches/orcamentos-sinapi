@@ -1,12 +1,8 @@
 package com.branches.cpu.utils;
 
-import com.branches.cpu.controller.TelaAdicionarController;
-import com.branches.cpu.controller.TelaEditarController;
-import com.branches.cpu.controller.TelaOrcamentoController;
-import com.branches.cpu.controller.TelaSalvarOrcamentoController;
+import com.branches.cpu.controller.*;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
-import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -123,12 +119,15 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaEditarOrcamento(String titulo) {
+    public void abrirTelaEditarOrcamento(String titulo, Orcamento orcamentoAEditar) {
         String fileName = "tela-editar-orcamento";
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
             Parent root = loader.load();
+
+            TelaEditarOrcamentoController controller = loader.getController();
+            controller.setOrcamento(orcamentoAEditar);
 
             abrirFxml(root, titulo, 660, 320, false);
         } catch (Exception e) {
