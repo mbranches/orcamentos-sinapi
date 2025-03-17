@@ -119,7 +119,7 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaEditarOrcamento(String titulo, Orcamento orcamentoAEditar) {
+    public void abrirTelaEditarOrcamento(String titulo, Orcamento orcamentoAEditar, TelaOrcamentosController telaOrcamentosController) {
         String fileName = "tela-editar-orcamento";
 
         try {
@@ -128,6 +128,7 @@ public class AbrirFxml {
 
             TelaEditarOrcamentoController controller = loader.getController();
             controller.setOrcamento(orcamentoAEditar);
+            controller.setTelaOrcamentosController(telaOrcamentosController);
 
             abrirFxml(root, titulo, 660, 320, false);
         } catch (Exception e) {
