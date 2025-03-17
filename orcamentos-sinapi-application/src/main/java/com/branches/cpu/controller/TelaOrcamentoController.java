@@ -68,7 +68,7 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
-        abrirTelaAdicionar("Adicionar Serviço");
+        abrirFxml.abrirTelaAdicionar("Adicionar Serviço", this);
     }
 
     @FXML
@@ -78,92 +78,17 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void salvarOrçamento(ActionEvent event) {
-        OrcamentoService orcamentoService = new OrcamentoService();
         ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
 
-        if (orcamento == null) abrirTelaSalvarOrcamento("Salvar Orçamento");
+        if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.servicosAdicionados);
         else {
             itemOrcamentoService.saveAll(servicosAdicionados);
-        }
-    }
-    
-    public void abrirTelaAdicionar(String titulo) {
-        String fileName = "tela-adicionar";
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/branches/cpu/fxml/" + fileName + ".fxml"));
-            Parent root = loader.load();
-
-            TelaAdicionarController telaAdicionarController = loader.getController();
-            telaAdicionarController.setTelaPrincipal(this);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle(titulo);
-            stage.setMinWidth(720);
-            stage.setMinHeight(400);
-            stage.centerOnScreen();
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void abrirTelaEditar(String titulo) {
-        String fileName = "tela-editar";
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/branches/cpu/fxml/" + fileName + ".fxml"));
-            Parent root = loader.load();
-
-            TelaEditarController telaEditarController = loader.getController();
-            telaEditarController.setTelaPrincipal(this);
-            telaEditarController.setServicoAEditar(this.servicoSelecionado);
-            telaEditarController.atualizarCampos();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle(titulo);
-            stage.setMinWidth(720);
-            stage.setMinHeight(400);
-            stage.centerOnScreen();
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void abrirTelaSalvarOrcamento(String titulo) {
-        String fileName = "tela-salvar-orcamento";
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/branches/cpu/fxml/" + fileName + ".fxml"));
-            Parent root = loader.load();
-
-            TelaSalvarOrcamentoController controller = loader.getController();
-            controller.setOrcamentoController(this);
-            controller.setItemOrcamentoPostRequests(servicosAdicionados);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle(titulo);
-            stage.setMinWidth(660);
-            stage.setMinHeight(320);
-            stage.centerOnScreen();
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Erro ao Abrir " + fileName + ".");
-            throw new RuntimeException(e);
         }
     }
 
     @FXML
     private void abrirTelaEditar(ActionEvent event) {
-        abrirTelaEditar("Editar Serviço");
+        abrirFxml.abrirTelaEditar("Editar Serviço", this, this.servicoSelecionado);
         desativarBotoes();
     }
 
