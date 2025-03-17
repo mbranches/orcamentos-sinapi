@@ -40,9 +40,11 @@ public class TelaOrcamentosController implements Initializable {
 
     private OrcamentoService orcamentoService = new OrcamentoService();
 
+    private AbrirFxml abrirFxml = new AbrirFxml();
+
     @FXML
     void abrirOrcamento(ActionEvent event) {
-
+        abrirFxml.abrirTelaOrcamento(orcamentoSelecionado.getNome(), orcamentoSelecionado);
     }
 
     @FXML
@@ -81,7 +83,8 @@ public class TelaOrcamentosController implements Initializable {
     }
 
     private void atualizarTabela() {
-        orcamentoService.findAll().forEach(orcamento -> tvOrcamentos.getItems().add(orcamento));
+        orcamentoService.findAll()
+                .forEach(orcamento -> tvOrcamentos.getItems().add(orcamento));
     }
 
     private void criarColunasTabela() {
