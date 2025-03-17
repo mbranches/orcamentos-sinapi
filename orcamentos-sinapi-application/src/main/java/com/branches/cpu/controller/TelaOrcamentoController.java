@@ -132,9 +132,7 @@ public class TelaOrcamentoController implements Initializable{
         String descricao = tfPesquisar.getText();
 
         if (descricao.isEmpty()) {
-            for (ItemOrcamento servicosAdicionado : servicosAdicionados) {
-                tvServicosAdiconados.getItems().add(servicosAdicionado);
-            }
+            tvServicosAdiconados.getItems().addAll(servicosAdicionados);
         } else {
             resultadoBusca = consultarEmServicosAdicionados(descricao);
 
