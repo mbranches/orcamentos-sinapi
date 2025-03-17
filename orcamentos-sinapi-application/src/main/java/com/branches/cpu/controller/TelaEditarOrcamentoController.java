@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.Setter;
 
+@Setter
 public class TelaEditarOrcamentoController {
     @FXML
     private Button btnSalvarFechar;
@@ -21,6 +22,8 @@ public class TelaEditarOrcamentoController {
     private TextField tfNomeOrcamento;
 
     private Orcamento orcamentoAEditar;
+
+    private TelaOrcamentosController telaOrcamentosController;
 
     private final OrcamentoService ORCAMENTO_SERVICE = new OrcamentoService();
 
@@ -35,6 +38,8 @@ public class TelaEditarOrcamentoController {
         orcamentoAEditar.setNomeCliente(tfNomeCliente.getText());
 
         ORCAMENTO_SERVICE.update(orcamentoAEditar);
+
+        telaOrcamentosController.atualizarTabela();
 
         fecharPagina(event);
     }
