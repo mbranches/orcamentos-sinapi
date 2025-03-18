@@ -34,8 +34,8 @@ public class OrcamentoService {
         return REPOSITORY.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Orcamento Not Found"));
     }
 
-    public Orcamento update(Orcamento orcamento) {
-        return REPOSITORY.save(orcamento);
+    public void update(Orcamento orcamento) {
+        REPOSITORY.save(orcamento);
     }
 
     @Transactional
