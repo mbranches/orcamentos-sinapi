@@ -156,7 +156,9 @@ public class TelaAdicionarController implements Initializable {
         itemOrcamento.setInsumo(servicoSelecionado);
         itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
         itemOrcamento.setarValorTotal();
+
         telaPrincipal.adicionarServico(itemOrcamento);
+        telaPrincipal.ativarBtnSalvar();
     }
 
     private void fecharPagina(ActionEvent event) {
