@@ -32,4 +32,9 @@ public class ItemOrcamentoController {
         List<ItemOrcamento> response = SERVICE.saveAll(itemOrcamentoList);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestBody ItemOrcamento itemOrcamento) {
+        SERVICE.delete(itemOrcamento);
+    }
 }

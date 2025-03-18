@@ -3,7 +3,9 @@ package com.branches.service;
 import com.branches.model.ItemOrcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -34,5 +36,13 @@ public class ItemOrcamentoService {
     public void deleteByOrcamentoId(Long orcamentoId) {
         ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
         REPOSITORY.deleteByOrcamentoId(orcamentoId);
+    }
+
+    public void delete(ItemOrcamento itemOrcamento) {
+        Long itemToBeDeletedId = itemOrcamento.getId();
+
+        findByIdOrElseThrowNotFoundException(itemToBeDeletedId);
+
+        deleteByOrcamentoId(itemToBeDeletedId);
     }
 }
