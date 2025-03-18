@@ -3,6 +3,7 @@ package com.branches.cpu.controller;
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.AbrirFxml;
+import com.branches.cpu.utils.Alerta;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,8 +59,10 @@ public class TelaOrcamentosController implements Initializable {
     }
 
     @FXML
-    void excluirServico(ActionEvent event) {
-        orcamentoService.delete(orcamentoSelecionado);
+    void excluirOrcamento(ActionEvent event) {
+        if (Alerta.confirmarExclusão("Orçamento", orcamentoSelecionado.getNome())) {
+            orcamentoService.delete(orcamentoSelecionado);
+        }
 
         removerSelecao();
         atualizarTabela();
