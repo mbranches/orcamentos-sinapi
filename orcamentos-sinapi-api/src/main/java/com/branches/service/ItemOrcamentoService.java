@@ -38,11 +38,7 @@ public class ItemOrcamentoService {
         REPOSITORY.deleteByOrcamentoId(orcamentoId);
     }
 
-    public void delete(ItemOrcamento itemOrcamento) {
-        Long itemToBeDeletedId = itemOrcamento.getId();
-
-        findByIdOrElseThrowNotFoundException(itemToBeDeletedId);
-
-        deleteByOrcamentoId(itemToBeDeletedId);
+    public void delete(Long id) {
+        REPOSITORY.delete(findByIdOrElseThrowNotFoundException(id));
     }
 }
