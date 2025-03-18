@@ -36,9 +36,6 @@ public class TelaAdicionarController implements Initializable {
     private Button btnAdicionarFechar;
 
     @FXML
-    private TextField tfPesquisarServico;
-
-    @FXML
     private TextField tfQuantidade;
 
     @FXML
@@ -148,7 +145,7 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void limparCampos() {
-        tfPesquisarServico.clear();
+        autoCompletePesquisar.clear();
         tfQuantidade.clear();
         txtTotal.setText("R$ 0,00");
         tvMostrarServico.getItems().clear();
