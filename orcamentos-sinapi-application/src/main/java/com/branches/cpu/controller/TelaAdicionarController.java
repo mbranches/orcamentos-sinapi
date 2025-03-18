@@ -85,7 +85,7 @@ public class TelaAdicionarController implements Initializable {
 
     @FXML
     void setarValorTotal(KeyEvent event) {
-        String quantidade = tfQuantidade.getText();
+        String quantidade = tfQuantidade.getText().trim();
 
         if (!quantidade.isEmpty() && Validador.isValidNumber(quantidade)) {
             ativarBotoes();
@@ -158,7 +158,7 @@ public class TelaAdicionarController implements Initializable {
     private void adicionar() {
         ItemOrcamento itemOrcamento = new ItemOrcamento();
         itemOrcamento.setInsumo(servicoSelecionado);
-        itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
+        itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText().trim()));
         itemOrcamento.setarValorTotal();
 
         telaPrincipal.adicionarServico(itemOrcamento);
