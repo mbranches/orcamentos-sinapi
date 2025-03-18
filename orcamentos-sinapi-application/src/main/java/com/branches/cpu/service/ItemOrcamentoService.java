@@ -36,4 +36,8 @@ public class ItemOrcamentoService {
         String urlForDelete = url + "/" + itemToBeDeletedId;
         restTemplate.delete(urlForDelete);
     }
+
+    public void deleteAll(List<ItemOrcamento> itemsToBeDeleted) {
+        itemsToBeDeleted.forEach(this::delete);
+    }
 }
