@@ -12,24 +12,18 @@ import java.util.ResourceBundle;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.ItemOrcamentoService;
-import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.*;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import lombok.Setter;
 
 /**
@@ -56,7 +50,7 @@ public class TelaOrcamentoController implements Initializable{
 
     private List<ItemOrcamento> resultadoBusca = new ArrayList<>();
 
-    private List<ItemOrcamento> servicosAdicionados = new ArrayList<>();
+    private List<ItemOrcamento> itemsOrcamento = new ArrayList<>();
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
@@ -66,7 +60,7 @@ public class TelaOrcamentoController implements Initializable{
 
     private Orcamento orcamento;
 
-    private ItemOrcamento servicoSelecionado = null;
+    private ItemOrcamento itemSelecionado = null;
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
@@ -81,23 +75,23 @@ public class TelaOrcamentoController implements Initializable{
     @FXML
     void salvarOrçamento(ActionEvent event) {
 
-        if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.servicosAdicionados);
+        if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
         else {
-            List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(servicosAdicionados);
-            servicosAdicionados.clear();
-            servicosAdicionados.addAll(itensSalvos);
+            List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
+            itemsOrcamento.clear();
+            itemsOrcamento.addAll(itensSalvos);
         }
     }
 
     @FXML
     private void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditar("Editar Serviço", this, this.servicoSelecionado);
+        abrirFxml.abrirTelaEditar("Editar Serviço", this, this.itemSelecionado);
         desativarBotoes();
     }
 
     @FXML
     private void excluirServico(ActionEvent event) {
-        servicosAdicionados.remove(servicoSelecionado);
+        itemsOrcamento.remove(itemSelecionado);
 
         limparBarraPesquisa();
 
@@ -109,8 +103,8 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void selecionarServicoAdicionado(MouseEvent event) {
-        servicoSelecionado = tvServicosAdiconados.getSelectionModel().getSelectedItem();
-        if (servicoSelecionado != null) ativarBotoes();
+        itemSelecionado = tvServicosAdiconados.getSelectionModel().getSelectedItem();
+        if (itemSelecionado != null) ativarBotoes();
     }
 
     @Override
@@ -132,7 +126,7 @@ public class TelaOrcamentoController implements Initializable{
         String descricao = tfPesquisar.getText();
 
         if (descricao.isEmpty()) {
-            tvServicosAdiconados.getItems().addAll(servicosAdicionados);
+            tvServicosAdiconados.getItems().addAll(itemsOrcamento);
         } else {
             resultadoBusca = consultarEmServicosAdicionados(descricao);
 
@@ -145,7 +139,7 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     private List<ItemOrcamento> consultarEmServicosAdicionados(String descricao) {
-        List<ItemOrcamento> servicosPesquisados= Lists.containsInList(servicosAdicionados, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
+        List<ItemOrcamento> servicosPesquisados= Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
@@ -192,7 +186,7 @@ public class TelaOrcamentoController implements Initializable{
 
     public void adicionarServico(ItemOrcamento itemOrcamento) {
         itemOrcamento.setOrcamento(orcamento);
-        servicosAdicionados.add(itemOrcamento);
+        itemsOrcamento.add(itemOrcamento);
 
         limparBarraPesquisa();
         atualizarTabela();
@@ -212,7 +206,7 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     public void atualizarServico(ItemOrcamento servicoNovo) {
-        for (ItemOrcamento servico : servicosAdicionados) {
+        for (ItemOrcamento servico : itemsOrcamento) {
             if (servico.equals(servicoNovo)) {
                 servico.setQuantidade(servicoNovo.getQuantidade());
                 servico.setarValorTotal();
@@ -229,11 +223,11 @@ public class TelaOrcamentoController implements Initializable{
     }
 
 
-    public void setServicosAdicionados(List<ItemOrcamento> itemOrcamentos) {
-        servicosAdicionados.clear();
-        servicosAdicionados.addAll(itemOrcamentos);
+    public void setItemsOrcamento(List<ItemOrcamento> itemOrcamentos) {
+        itemsOrcamento.clear();
+        itemsOrcamento.addAll(itemOrcamentos);
 
-        servicosAdicionados.forEach(ItemOrcamento::setarValorTotal);
+        itemsOrcamento.forEach(ItemOrcamento::setarValorTotal);
 
         atualizarTabela();
     }
@@ -244,8 +238,8 @@ public class TelaOrcamentoController implements Initializable{
         List<ItemOrcamento> itensDoOrcamento = itemOrcamentoService.findByOrcamento(orcamento);
         itensDoOrcamento.forEach(ItemOrcamento::setarValorTotal);
 
-        servicosAdicionados.clear();
-        servicosAdicionados.addAll(itensDoOrcamento);
+        itemsOrcamento.clear();
+        itemsOrcamento.addAll(itensDoOrcamento);
 
         atualizarTabela();
     }
