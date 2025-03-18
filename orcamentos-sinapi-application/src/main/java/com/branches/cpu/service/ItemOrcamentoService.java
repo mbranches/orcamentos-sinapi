@@ -27,7 +27,7 @@ public class ItemOrcamentoService {
     public List<ItemOrcamento> findByOrcamento(Orcamento orcamento) {
         Long orcamentoId = orcamento.getId();
         String urlForGet = url + "/" + orcamentoId;
-        ItemOrcamento[] response = restTemplate.getForObject(url, ItemOrcamento[].class);
+        ItemOrcamento[] response = restTemplate.getForObject(urlForGet, ItemOrcamento[].class);
 
         return Arrays.asList(response);
     }
