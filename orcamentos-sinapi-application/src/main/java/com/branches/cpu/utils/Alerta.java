@@ -31,9 +31,9 @@ public class Alerta {
         return resposta;
     }
 
-    public static void error(String mensagem) {
+    public static void error(String tipoErro, String mensagem) {
         Alert alert = new Alert(AlertType.ERROR);
-        alert.setHeaderText("Error");
+        alert.setHeaderText(tipoErro);
         alert.setContentText(mensagem);
         alert.show();
     }
