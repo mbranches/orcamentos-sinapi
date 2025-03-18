@@ -4,9 +4,7 @@ import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.components.AutoCompleteTextField;
-import com.branches.cpu.utils.Monetary;
-import com.branches.cpu.utils.TableColumnConfig;
-import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -87,8 +85,9 @@ public class TelaAdicionarController implements Initializable {
 
     @FXML
     void setarValorTotal(KeyEvent event) {
-        if (tfQuantidade.getText() != null) {
-            double valorTotal = resultadoBusca.get(0).getPreco() * Integer.parseInt(tfQuantidade.getText());
+        String quantidade = tfQuantidade.getText();
+        if (!quantidade.isEmpty() && Validador.isValidNumber(quantidade)) {
+            double valorTotal = resultadoBusca.get(0).getPreco() * Integer.parseInt(quantidade);
             txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
         } else {
             txtTotal.setText(Monetary.formatarValorBRL(0));
