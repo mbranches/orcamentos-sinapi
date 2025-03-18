@@ -2,7 +2,6 @@ package com.branches.cpu.service;
 
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
-import com.branches.cpu.request.ItemOrcamentoPostRequest;
 import lombok.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,5 +29,11 @@ public class ItemOrcamentoService {
         ItemOrcamento[] response = restTemplate.getForObject(urlForGet, ItemOrcamento[].class);
 
         return Arrays.asList(response);
+    }
+
+    public void delete(ItemOrcamento itemToBeDeleted) {
+        Long itemToBeDeletedId = itemToBeDeleted.getId();
+        String urlForDelete = url + "/" + itemToBeDeletedId;
+        restTemplate.delete(urlForDelete);
     }
 }
