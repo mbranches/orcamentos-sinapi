@@ -14,6 +14,10 @@
     -fx-border-color: #1700e1;
 }
 
+.button-navigation-bar, .button-section {
+    -fx-cursor: hand;
+}
+
 .button-section:pressed {
     -fx-background-color: #0b0259;
 }
