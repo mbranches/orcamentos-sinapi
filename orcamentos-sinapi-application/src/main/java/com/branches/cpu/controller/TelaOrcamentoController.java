@@ -187,7 +187,7 @@ public class TelaOrcamentoController implements Initializable{
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
 
-        TableColumnConfig.columnFomatoMonetario(colunaTotal);
+        TableColumnConfig.columnFormatoMonetario(colunaTotal);
     }
 
     public void adicionarServico(ItemOrcamento itemOrcamento) {

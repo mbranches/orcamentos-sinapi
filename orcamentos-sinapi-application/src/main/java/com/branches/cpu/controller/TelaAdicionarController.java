@@ -147,7 +147,7 @@ public class TelaAdicionarController implements Initializable {
         colunaUnidade.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
         colunaValor.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
-        TableColumnConfig.columnFomatoMonetario(colunaValor);
+        TableColumnConfig.columnFormatoMonetario(colunaValor);
     }
 
     private void limparCampos() {

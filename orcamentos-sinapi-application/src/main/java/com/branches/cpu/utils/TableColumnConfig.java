@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import static com.branches.cpu.utils.Monetary.formatarValorBRL;
 
 public class TableColumnConfig {
-    public static void columnFomatoMonetario (TableColumn column) {
+    public static void columnFormatoMonetario(TableColumn column) {
         column.setCellFactory(col ->
             new TableCell<Insumo, Double>() {
                 @Override
