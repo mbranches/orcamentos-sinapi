@@ -5,6 +5,7 @@ import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.request.OrcamentoPostRequest;
 import com.branches.cpu.service.ItemOrcamentoService;
 import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.utils.Alerta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -51,7 +52,9 @@ public class TelaSalvarOrcamentoController {
         itemOrcamentoPostRequests.forEach(item -> item.setOrcamento(orcamento));
         orcamentoController.setItemsOrcamento(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
         orcamentoController.setOrcamento(orcamento);
+
         fecharPagina(event);
+        Alerta.salvo(tfNomeOrcamento.getText(), "Orçamento salvo com sucesso!");
     }
 
     private void fecharPagina(ActionEvent event) {
