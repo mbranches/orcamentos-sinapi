@@ -35,6 +35,7 @@ public class OrcamentoService {
     }
 
     public void update(Orcamento orcamento) {
+        findByIdOrElseThrowNotFoundException(orcamento.getId());
         REPOSITORY.save(orcamento);
     }
 
