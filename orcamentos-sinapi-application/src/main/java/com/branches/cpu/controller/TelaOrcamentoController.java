@@ -101,6 +101,7 @@ public class TelaOrcamentoController implements Initializable{
         atualizarValorTotal();
 
         desativarBotoes();
+        ativarBtnSalvar();
     }
 
     @FXML
@@ -218,6 +219,7 @@ public class TelaOrcamentoController implements Initializable{
         limparBarraPesquisa();
         atualizarTabela();
         atualizarValorTotal();
+        ativarBtnSalvar();
     }
 
     public void limparBarraPesquisa() {
