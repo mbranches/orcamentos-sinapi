@@ -44,6 +44,8 @@ public class TelaOrcamentoController implements Initializable{
     @FXML
     private Button btnExcluir;
     @FXML
+    private Button btnSalvar;
+    @FXML
     private TableView<ItemOrcamento> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
@@ -242,5 +244,13 @@ public class TelaOrcamentoController implements Initializable{
         itemsOrcamento.addAll(itensDoOrcamento);
 
         atualizarTabela();
+    }
+
+    public void ativarBtnSalvar() {
+        btnSalvar.setDisable(false);
+    }
+
+    public void desativarBtnSalvar() {
+        btnSalvar.setDisable(false);
     }
 }
