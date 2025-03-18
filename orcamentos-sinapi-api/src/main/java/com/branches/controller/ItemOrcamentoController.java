@@ -33,9 +33,9 @@ public class ItemOrcamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> delete(@RequestBody ItemOrcamento itemOrcamento) {
-        SERVICE.delete(itemOrcamento);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        SERVICE.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
