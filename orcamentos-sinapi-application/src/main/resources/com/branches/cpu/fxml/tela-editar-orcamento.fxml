@@ -10,10 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="660.0" stylesheets="@../Styles/style-telas-editar-adicionar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaEditarOrcamentoController">
    <children>
-      <TextField fx:id="tfNomeOrcamento" layoutX="14.0" layoutY="82.0" prefHeight="38.0" prefWidth="612.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="82.0">
-         <font>
-            <Font size="10.0" />
-         </font></TextField>
+      <TextField fx:id="tfNomeOrcamento" layoutX="14.0" layoutY="82.0" prefHeight="38.0" prefWidth="612.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="82.0" />
       <Label layoutX="14.0" layoutY="44.0" prefHeight="38.0" prefWidth="141.0" text="Nome do orçamento" textFill="#736b6b" AnchorPane.leftAnchor="14.0">
          <font>
             <Font size="14.0" />
@@ -35,11 +32,7 @@
             <Insets bottom="10.0" />
          </padding>
       </HBox>
-      <TextField fx:id="tfNomeCliente" layoutX="14.0" layoutY="176.0" prefHeight="38.0" prefWidth="612.0">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="tfNomeCliente" layoutX="14.0" layoutY="176.0" prefHeight="38.0" prefWidth="612.0" />
       <Label layoutX="14.0" layoutY="138.0" prefHeight="38.0" prefWidth="141.0" text="Cliente" textFill="#736b6b">
          <font>
             <Font size="14.0" />
