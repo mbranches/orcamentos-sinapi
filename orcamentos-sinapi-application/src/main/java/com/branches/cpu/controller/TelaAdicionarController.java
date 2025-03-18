@@ -184,4 +184,14 @@ public class TelaAdicionarController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    private void ativarBotoes() {
+        btnAdicionar.setDisable(false);
+        btnAdicionarFechar.setDisable(false);
+    }
+
+    private void desativarBotoes() {
+        btnAdicionar.setDisable(true);
+        btnAdicionarFechar.setDisable(true);
+    }
 }
