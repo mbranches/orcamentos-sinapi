@@ -72,7 +72,7 @@ public class TelaEditarController implements Initializable {
     void editarValorTotal(KeyEvent event) {
         if (Validador.isValidNumber(tfQuantidade.getText())) {
             setarValorTotal();
-            servicoAEditar.setQuantidade(Double.parseDouble(tfQuantidade.getText()));
+            servicoAEditar.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
             servicoAEditar.setarValorTotal();
         } else {
             txtTotal.setText(formatarValorBRL(0));

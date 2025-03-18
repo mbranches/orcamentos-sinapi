@@ -13,6 +13,6 @@ import lombok.Setter;
 public class ItemOrcamentoPostRequest {
     private Long id;
     private Insumo insumo;
-    private Double quantidade;
+    private Integer quantidade;
     private Orcamento orcamento;
 }

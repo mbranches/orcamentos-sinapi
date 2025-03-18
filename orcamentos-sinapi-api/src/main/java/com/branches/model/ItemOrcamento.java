@@ -16,7 +16,7 @@ public class ItemOrcamento {
     @ManyToOne
     @JoinColumn(name = "insumo_id")
     private Insumo insumo;
-    private Double quantidade;
+    private Integer quantidade;
     @ManyToOne
     @JoinColumn(name = "orcamento_id")
     private Orcamento orcamento;
