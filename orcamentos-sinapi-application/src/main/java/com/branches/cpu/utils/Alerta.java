@@ -8,6 +8,13 @@ public class Alerta {
     private static ButtonType btnCancelar = new ButtonType("Cancelar");
     private static boolean resposta;
 
+    public static void salvo(String objetoSalvo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(objetoSalvo);
+        alert.setContentText(mensagem);
+        alert.show();
+    }
+
     public static boolean confirmarExclusão(String tipoExclusao, String msgExclusao) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Exclusão de " + tipoExclusao);
