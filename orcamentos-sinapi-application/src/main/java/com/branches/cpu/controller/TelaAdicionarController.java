@@ -86,10 +86,13 @@ public class TelaAdicionarController implements Initializable {
     @FXML
     void setarValorTotal(KeyEvent event) {
         String quantidade = tfQuantidade.getText();
+
         if (!quantidade.isEmpty() && Validador.isValidNumber(quantidade)) {
+            ativarBotoes();
             double valorTotal = resultadoBusca.get(0).getPreco() * Integer.parseInt(quantidade);
             txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
         } else {
+            desativarBotoes();
             txtTotal.setText(Monetary.formatarValorBRL(0));
         }
     }
