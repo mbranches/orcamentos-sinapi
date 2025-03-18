@@ -244,6 +244,7 @@ public class TelaOrcamentoController implements Initializable{
         List<ItemOrcamento> itensDoOrcamento = itemOrcamentoService.findByOrcamento(orcamento);
         itensDoOrcamento.forEach(ItemOrcamento::setarValorTotal);
 
+        servicosAdicionados.clear();
         servicosAdicionados.addAll(itensDoOrcamento);
 
         atualizarTabela();
