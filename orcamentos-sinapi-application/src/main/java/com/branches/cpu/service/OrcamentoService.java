@@ -20,6 +20,13 @@ public class OrcamentoService {
         return Arrays.asList(arrayOrcamento);
     }
 
+    public List<Orcamento> findAllByName(String nomeOrcamento) {
+        String urlWithFilter = url + "?name=" + nomeOrcamento;
+
+        Orcamento[] arrayOrcamento = restTemplate.getForObject(urlWithFilter, Orcamento[].class);
+        return Arrays.asList(arrayOrcamento);
+    }
+
     public void update(Orcamento orcamento) {
         restTemplate.put(url, orcamento);
     }
