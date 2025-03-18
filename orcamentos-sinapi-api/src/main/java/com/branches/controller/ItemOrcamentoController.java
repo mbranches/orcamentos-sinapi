@@ -36,5 +36,6 @@ public class ItemOrcamentoController {
     @DeleteMapping
     public ResponseEntity<Void> delete(@RequestBody ItemOrcamento itemOrcamento) {
         SERVICE.delete(itemOrcamento);
+        return ResponseEntity.noContent().build();
     }
 }
