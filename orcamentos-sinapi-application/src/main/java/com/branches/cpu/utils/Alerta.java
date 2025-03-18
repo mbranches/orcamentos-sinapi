@@ -9,9 +9,9 @@ public class Alerta {
     private static ButtonType btnCancelar = new ButtonType("Cancelar");
     private static boolean resposta;
 
-    public static void salvo(String objetoSalvo, String mensagem) {
+    public static void informacao(String headerText, String mensagem) {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setHeaderText(objetoSalvo);
+        alert.setHeaderText(headerText);
         alert.setContentText(mensagem);
         alert.show();
     }
