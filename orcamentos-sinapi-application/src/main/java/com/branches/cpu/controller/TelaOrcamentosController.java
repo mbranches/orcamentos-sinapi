@@ -4,6 +4,7 @@ import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.utils.TableViewProprieties;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TelaOrcamentosController implements Initializable {
@@ -65,7 +67,17 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void autoComplementarTabela(KeyEvent event) {
+        String orcamentoBuscado = tfPesquisar.getText();
 
+        List<Orcamento> resultadoDaBusca = orcamentoService.findAllByName(orcamentoBuscado);
+
+        if (resultadoDaBusca.isEmpty()) {
+            tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
+        }
+
+        ObservableList<Orcamento> itensDaTabela = tvOrcamentos.getItems();
+        itensDaTabela.clear();
+        itensDaTabela.addAll(resultadoDaBusca);
     }
 
     @FXML
