@@ -75,7 +75,7 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     @FXML
-    void salvarOrçamento(ActionEvent event) {
+    void salvarOrcamento(ActionEvent event) {
 
         if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
         else {
