@@ -36,21 +36,21 @@ class ItemOrcamentoServiceTest {
         ItemOrcamento item1 = ItemOrcamento.builder()
                 .id(1L)
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(1)
+                .quantidade(1D)
                 .orcamento(OrcamentoCreator.createsOrcamento())
                 .build();
 
         ItemOrcamento item2 = ItemOrcamento.builder()
                 .id(2L)
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(3)
+                .quantidade(3D)
                 .orcamento(OrcamentoCreator.createsOrcamento())
                 .build();
 
         ItemOrcamento item3 = ItemOrcamento.builder()
                 .id(3L)
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(89)
+                .quantidade(89D)
                 .orcamento(OrcamentoCreator.createsOrcamento())
                 .build();
 
@@ -67,19 +67,19 @@ class ItemOrcamentoServiceTest {
 
         ItemOrcamento item1 = ItemOrcamento.builder()
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(1)
+                .quantidade(1D)
                 .orcamento(ownerOrcamento)
                 .build();
 
         ItemOrcamento item2 = ItemOrcamento.builder()
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(3)
+                .quantidade(3D)
                 .orcamento(ownerOrcamento)
                 .build();
 
         ItemOrcamento item3 = ItemOrcamento.builder()
                 .insumo(InsumoCreator.createsInsumo())
-                .quantidade(89)
+                .quantidade(89D)
                 .orcamento(ownerOrcamento)
                 .build();
 
