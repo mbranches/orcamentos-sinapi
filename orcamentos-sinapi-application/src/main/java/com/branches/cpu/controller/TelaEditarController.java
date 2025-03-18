@@ -83,7 +83,9 @@ public class TelaEditarController implements Initializable {
     }
 
     private void setarValorTotal() {
-        double valorTotal = servicoAEditar.getInsumo().getPreco() * Integer.parseInt(tfQuantidade.getText());
+        double preco = servicoAEditar.getInsumo().getPreco();
+        double quantidade = Double.parseDouble(tfQuantidade.getText());
+        double valorTotal = preco * quantidade;
         txtTotal.setText(formatarValorBRL(valorTotal));
     }
 
