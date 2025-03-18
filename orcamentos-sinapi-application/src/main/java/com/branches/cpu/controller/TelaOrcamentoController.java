@@ -82,7 +82,7 @@ public class TelaOrcamentoController implements Initializable{
             List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
             itemsOrcamento.clear();
             itemsOrcamento.addAll(itensSalvos);
-            Alerta.salvo(orcamento.getNome(), "Orçamento salvo com sucesso!");
+            Alerta.informacao(orcamento.getNome(), "Orçamento salvo com sucesso!");
         }
 
         desativarBtnSalvar();

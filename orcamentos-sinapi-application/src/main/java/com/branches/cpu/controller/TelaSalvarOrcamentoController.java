@@ -54,7 +54,7 @@ public class TelaSalvarOrcamentoController {
         orcamentoController.setOrcamento(orcamento);
 
         fecharPagina(event);
-        Alerta.salvo(tfNomeOrcamento.getText(), "Orçamento salvo com sucesso!");
+        Alerta.informacao(tfNomeOrcamento.getText(), "Orçamento salvo com sucesso!");
     }
 
     private void fecharPagina(ActionEvent event) {
