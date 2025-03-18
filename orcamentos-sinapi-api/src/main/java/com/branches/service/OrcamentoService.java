@@ -5,8 +5,10 @@ import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,12 +30,17 @@ public class OrcamentoService {
         return REPOSITORY.findAll();
     }
 
+    public Orcamento findByIdOrElseThrowNotFoundException(Long id) {
+        return REPOSITORY.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Orcamento Not Found"));
+    }
+
     public Orcamento update(Orcamento orcamento) {
         return REPOSITORY.save(orcamento);
     }
 
     @Transactional
     public void delete(Long orcamentoId) {
+        findByIdOrElseThrowNotFoundException(orcamentoId);
         ITEM_SERVICE.deleteByOrcamentoId(orcamentoId);
         REPOSITORY.deleteById(orcamentoId);
     }
