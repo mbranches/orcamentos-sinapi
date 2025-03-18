@@ -6,6 +6,7 @@ import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class OrcamentoService {
     private final OrcamentoMapper MAPPER;
     private final OrcamentoRepository REPOSITORY;
+    private final ItemOrcamentoService ITEM_SERVICE;
 
     public Orcamento save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = MAPPER.toOrcamento(orcamentoPostRequest);
@@ -30,8 +32,10 @@ public class OrcamentoService {
         return REPOSITORY.save(orcamento);
     }
 
-    public void delete(Long idOrcamento) {
-        REPOSITORY.deleteById(idOrcamento);
+    @Transactional
+    public void delete(Long orcamentoId) {
+        ITEM_SERVICE.deleteByOrcamentoId(orcamentoId);
+        REPOSITORY.deleteById(orcamentoId);
     }
 
     public List<Orcamento> findAllByName(String nameOrcamento) {
