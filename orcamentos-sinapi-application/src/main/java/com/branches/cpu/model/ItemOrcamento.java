@@ -13,7 +13,7 @@ public class ItemOrcamento {
     @EqualsAndHashCode.Include
     private Long id;
     private Insumo insumo;
-    private Integer quantidade;
+    private Double quantidade;
     private Orcamento orcamento;
     private Double valorTotal;
 
