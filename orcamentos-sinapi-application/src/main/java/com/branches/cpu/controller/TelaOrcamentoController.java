@@ -83,6 +83,8 @@ public class TelaOrcamentoController implements Initializable{
             itemsOrcamento.clear();
             itemsOrcamento.addAll(itensSalvos);
         }
+
+        desativarBtnSalvar();
     }
 
     @FXML
@@ -253,6 +255,6 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     public void desativarBtnSalvar() {
-        btnSalvar.setDisable(false);
+        btnSalvar.setDisable(true);
     }
 }
