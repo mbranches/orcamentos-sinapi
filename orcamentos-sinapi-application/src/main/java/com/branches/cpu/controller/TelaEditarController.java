@@ -3,8 +3,10 @@ package com.branches.cpu.controller;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
+import com.branches.cpu.utils.Alerta;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.Validador;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +57,11 @@ public class TelaEditarController implements Initializable {
 
     @FXML
     void editarFechar(ActionEvent event) {
+        String quantidadeString = tfQuantidade.getText();
+        if (!Validador.isValidNumber(quantidadeString) || Double.parseDouble(quantidadeString) == 0) {
+            Alerta.error("Quantidade inválida!", "Digite uma quantidade válida");
+            return;
+        }
         telaPrincipal.atualizarServico(servicoAEditar);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -63,10 +70,14 @@ public class TelaEditarController implements Initializable {
 
     @FXML
     void editarValorTotal(KeyEvent event) {
-        setarValorTotal();
+        if (Validador.isValidNumber(tfQuantidade.getText())) {
+            setarValorTotal();
+            servicoAEditar.setQuantidade(Double.parseDouble(tfQuantidade.getText()));
+            servicoAEditar.setarValorTotal();
+        } else {
+            txtTotal.setText(formatarValorBRL(0));
+        }
 
-        servicoAEditar.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
-        servicoAEditar.setarValorTotal();
     }
 
     @Override
