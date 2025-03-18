@@ -161,6 +161,24 @@ public class TelaAdicionarController implements Initializable {
         telaPrincipal.ativarBtnSalvar();
     }
 
+    private boolean validarCampoQuantidade() {
+        String quantidade = tfQuantidade.getText();
+
+        if (quantidade.isEmpty()) {
+            Alerta.error("\"Quantidade\" é um campo obrigatório.");
+            return false;
+        }
+        if (!Validador.isValidNumber(quantidade)) {
+            Alerta.error("\"Quantidade\" só aceita números.");
+            return false;
+        }
+        if (Double.parseDouble(quantidade) == 0) {
+            Alerta.error("Digite uma quantidade válida.");
+            return false;
+        }
+        return true;
+    }
+
     private void fecharPagina(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
