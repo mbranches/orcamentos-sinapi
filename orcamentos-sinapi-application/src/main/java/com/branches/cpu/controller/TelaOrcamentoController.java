@@ -104,7 +104,9 @@ public class TelaOrcamentoController implements Initializable{
         atualizarValorTotal();
 
         desativarBotoes();
-        ativarBtnSalvar();
+
+        if (orcamento == null && itemsOrcamento.isEmpty()) desativarBtnSalvar();
+        else ativarBtnSalvar();
     }
 
     @FXML
