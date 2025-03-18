@@ -136,10 +136,10 @@ public class TelaAdicionarController implements Initializable {
         tvMostrarServico.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
         TableViewProprieties.noEditableColumns(tvMostrarServico);
 
-        colunaCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
-        colunaDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
-        colunaUnidade.setCellValueFactory(new PropertyValueFactory("unidadeMedida"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory("preco"));
+        colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        colunaUnidade.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
+        colunaValor.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
         TableColumnConfig.columnFomatoMonetario(colunaValor);
     }
