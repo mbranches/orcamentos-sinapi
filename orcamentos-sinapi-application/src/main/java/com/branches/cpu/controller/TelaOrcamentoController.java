@@ -54,6 +54,8 @@ public class TelaOrcamentoController implements Initializable{
 
     private List<ItemOrcamento> itemsOrcamento = new ArrayList<>();
 
+    private List<ItemOrcamento> itemsToBeDeleted = new ArrayList<>();
+
     private AbrirFxml abrirFxml = new AbrirFxml();
 
     ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
@@ -80,6 +82,8 @@ public class TelaOrcamentoController implements Initializable{
         if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
         else {
             List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
+            itemOrcamentoService.deleteAll(itemsToBeDeleted);
+
             itemsOrcamento.clear();
             itemsOrcamento.addAll(itensSalvos);
             Alerta.informacao(orcamento.getNome(), "Orçamento salvo com sucesso!");
@@ -96,6 +100,8 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     private void excluirServico(ActionEvent event) {
+        if (itemSelecionado.getId() != null) itemsToBeDeleted.add(itemSelecionado);
+
         itemsOrcamento.remove(itemSelecionado);
 
         limparBarraPesquisa();
