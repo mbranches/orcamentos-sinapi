@@ -22,7 +22,7 @@ public class OrcamentoService {
 
     public Orcamento save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = MAPPER.toOrcamento(orcamentoPostRequest);
-        if (orcamento.getDataCriacao() == null) orcamento.setDataCriacao(LocalDate.now());
+        orcamento.setDataCriacao(LocalDate.now());
         return REPOSITORY.save(orcamento);
     }
 
