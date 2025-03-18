@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemOrcamentoService {
     private final ItemOrcamentoRepository REPOSITORY;
+    private final OrcamentoService ORCAMENTO_SERVICE;
 
     public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemOrcamentoList) {
         return REPOSITORY.saveAll(itemOrcamentoList);
@@ -21,10 +22,12 @@ public class ItemOrcamentoService {
     }
 
     public List<ItemOrcamento> findByOrcamento(Long orcamentoId) {
+        ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
         return REPOSITORY.findAllByOrcamentoId(orcamentoId);
     }
 
     public void deleteByOrcamentoId(Long orcamentoId) {
+        ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
         REPOSITORY.deleteByOrcamentoId(orcamentoId);
     }
 }
