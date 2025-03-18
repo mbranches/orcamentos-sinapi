@@ -14,10 +14,10 @@ public class ItemOrcamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "id_insumo")
+    @JoinColumn(name = "insumo_id")
     private Insumo insumo;
     private Integer quantidade;
     @ManyToOne
-    @JoinColumn(name = "id_orcamento")
+    @JoinColumn(name = "orcamento_id")
     private Orcamento orcamento;
 }
