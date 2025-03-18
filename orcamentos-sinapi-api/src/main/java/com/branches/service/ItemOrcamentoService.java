@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemOrcamentoService {
     private final ItemOrcamentoRepository REPOSITORY;
-    private final ItemOrcamentoMapper MAPPER;
 
     public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemOrcamentoList) {
         return REPOSITORY.saveAll(itemOrcamentoList);
