@@ -62,6 +62,7 @@ public class TelaOrcamentosController implements Initializable {
     void excluirOrcamento(ActionEvent event) {
         if (Alerta.confirmarExclusão("Orçamento", orcamentoSelecionado.getNome())) {
             orcamentoService.delete(orcamentoSelecionado);
+            Alerta.informacao("Sucesso!", "orcamento excluído com sucesso.");
         }
 
         removerSelecao();
