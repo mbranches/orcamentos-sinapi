@@ -21,6 +21,11 @@ public class ItemOrcamentoService {
         return REPOSITORY.findAll();
     }
 
+    public ItemOrcamento findByIdOrElseThrowNotFoundException(Long id) {
+        return REPOSITORY.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found"));
+    }
+
     public List<ItemOrcamento> findByOrcamento(Long orcamentoId) {
         ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
         return REPOSITORY.findAllByOrcamentoId(orcamentoId);
