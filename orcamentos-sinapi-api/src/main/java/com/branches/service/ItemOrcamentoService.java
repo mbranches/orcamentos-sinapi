@@ -28,4 +28,8 @@ public class ItemOrcamentoService {
     public List<ItemOrcamento> findByOrcamento(Long orcamentoId) {
         return REPOSITORY.findAllByOrcamentoId(orcamentoId);
     }
+
+    public void deleteByOrcamentoId(Long orcamentoId) {
+        REPOSITORY.deleteByOrcamentoId(orcamentoId);
+    }
 }
