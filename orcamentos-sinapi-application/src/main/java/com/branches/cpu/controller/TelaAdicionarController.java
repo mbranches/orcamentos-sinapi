@@ -168,7 +168,7 @@ public class TelaAdicionarController implements Initializable {
     private boolean validarCampoQuantidade() {
         String quantidade = tfQuantidade.getText();
         if (Double.parseDouble(quantidade) == 0) {
-            Alerta.error("Digite uma quantidade válida.");
+            Alerta.error("Quantidade inválida!", "Digite uma quantidade válida.");
             return false;
         }
         return true;
