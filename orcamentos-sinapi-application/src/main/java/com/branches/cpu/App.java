@@ -18,6 +18,7 @@ public class App extends Application {
         
         Scene scene = new Scene(fxmlLoader.load());
 
+        stage.setTitle("Branches Orçamentos");
         stage.setMinWidth(720);
         stage.setMinHeight(480);
         stage.setScene(scene);
