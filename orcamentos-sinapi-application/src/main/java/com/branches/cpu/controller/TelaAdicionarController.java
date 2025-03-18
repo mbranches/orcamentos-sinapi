@@ -70,12 +70,14 @@ public class TelaAdicionarController implements Initializable {
 
     @FXML
     void adicionarFechar(ActionEvent event) {
+        if (!validarCampoQuantidade()) return;
         adicionar();
         fecharPagina(event);
     }
 
     @FXML
     void adicionarServico(ActionEvent event) {
+        if (!validarCampoQuantidade()) return;
         adicionar();
         tfQuantidade.setDisable(true);
         limparCampos();
