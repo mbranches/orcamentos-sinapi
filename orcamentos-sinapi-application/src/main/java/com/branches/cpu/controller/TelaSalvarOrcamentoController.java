@@ -49,7 +49,7 @@ public class TelaSalvarOrcamentoController {
         Orcamento orcamento = orcamentoService.save(orcamentoPostRequest);
 
         itemOrcamentoPostRequests.forEach(item -> item.setOrcamento(orcamento));
-        orcamentoController.setServicosAdicionados(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
+        orcamentoController.setItemsOrcamento(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
         orcamentoController.setOrcamento(orcamento);
         fecharPagina(event);
     }
