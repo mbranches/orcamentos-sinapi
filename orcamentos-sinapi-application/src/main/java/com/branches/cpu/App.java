@@ -21,6 +21,7 @@ public class App extends Application {
         stage.setTitle("Branches Orçamentos");
         stage.setMinWidth(720);
         stage.setMinHeight(480);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
