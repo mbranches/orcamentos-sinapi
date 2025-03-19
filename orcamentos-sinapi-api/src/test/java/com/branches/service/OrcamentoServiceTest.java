@@ -74,7 +74,7 @@ class OrcamentoServiceTest {
 
     @Test
     @Order(3)
-    @DisplayName("findByIdOrElseThrowNotFoundException returns object found when successful")
+    @DisplayName("findByIdOrElseThrowsNotFoundException returns object found when successful")
     void findByIdOrElseThrowNotFoundException_ReturnsObjectFound_WhenSuccessful() {
         Orcamento orcamentoExpected = ORCAMENTO_LIST.get(0);
         Long idToBeSearched = orcamentoExpected.getId();
@@ -90,7 +90,7 @@ class OrcamentoServiceTest {
 
     @Test
     @Order(4)
-    @DisplayName("findByIdOrElseThrowNotFoundException throws not found exception when orcamentos doesn't exists")
+    @DisplayName("findByIdOrElseThrowsNotFoundException throws not found exception when orcamentos doesn't exists")
     void findByIdOrElseThrowNotFoundException_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         Long randomId = 112099L;
         BDDMockito.when(repository.findById(randomId)).thenReturn(Optional.empty());

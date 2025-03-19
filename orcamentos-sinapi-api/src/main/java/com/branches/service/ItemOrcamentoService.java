@@ -23,7 +23,7 @@ public class ItemOrcamentoService {
         return REPOSITORY.findAll();
     }
 
-    public ItemOrcamento findByIdOrElseThrowNotFoundException(Long id) {
+    public ItemOrcamento findByIdOrElseThrowsNotFoundException(Long id) {
         return REPOSITORY.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found"));
     }
@@ -39,6 +39,6 @@ public class ItemOrcamentoService {
     }
 
     public void delete(Long id) {
-        REPOSITORY.delete(findByIdOrElseThrowNotFoundException(id));
+        REPOSITORY.delete(findByIdOrElseThrowsNotFoundException(id));
     }
 }
