@@ -69,7 +69,7 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
-        abrirFxml.abrirTelaAdicionar("Adicionar Serviço", this);
+        abrirFxml.abrirTelaAdicionar("Adicionar Insumo", this);
     }
 
     @FXML
@@ -95,7 +95,7 @@ public class TelaOrcamentoController implements Initializable{
 
     @FXML
     private void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditar("Editar Serviço", this, this.itemSelecionado);
+        abrirFxml.abrirTelaEditar("Editar Insumo", this, this.itemSelecionado);
         desativarBotoes();
     }
 
