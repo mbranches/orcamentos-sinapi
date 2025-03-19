@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -105,8 +106,37 @@ class ItemOrcamentoServiceTest {
     }
 
     @Test
-    @DisplayName("findByOrcamento returns all items of the orcamento submitted when successul")
+    @DisplayName("findByIdOrElseThrowsNotFoundException returns the object found when successful")
     @Order(3)
+    void findByIdOrElseThrowsNotFoundException_ReturnsObjectFound_WhenSuccessful() {
+        ItemOrcamento expectedItem = ITEMS_ORCAMENTO_LIST.get(0);
+        Long idToBeSearched = expectedItem.getId();
+
+        BDDMockito.when(repository.findById(idToBeSearched)).thenReturn(Optional.of(expectedItem));
+
+        ItemOrcamento response = service.findByIdOrElseThrowsNotFoundException(idToBeSearched);
+
+        Assertions.assertThat(response)
+                .isNotNull()
+                .isEqualTo(expectedItem);
+    }
+
+    @Test
+    @DisplayName("findByIdOrElseThrowsNotFoundException throws not found exception when id is not found")
+    @Order(4)
+    void findByIdOrElseThrowsNotFoundException_ThrowsNotFoundException_WhenIdIsNotFound() {
+        Long randomId = 440921L;
+
+        BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> service.findByIdOrElseThrowsNotFoundException(randomId))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("Item Not Found");
+    }
+
+    @Test
+    @DisplayName("findByOrcamento returns all items of the orcamento submitted when successul")
+    @Order(5)
     void findByOrcamento_ReturnsAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
         BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(ITEMS_ORCAMENTO_LIST);
         Orcamento orcamentoToBeSubmitted = OrcamentoCreator.createsOrcamento();
@@ -122,7 +152,7 @@ class ItemOrcamentoServiceTest {
 
     @Test
     @DisplayName("findByOrcamento returns an empty list when orcamento doesn't contains items")
-    @Order(3)
+    @Order(6)
     void findByOrcamento_ReturnsAnEmptyList_WhenOrcamentoDoesNotContainsItems() {
         BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(Collections.emptyList());
 
@@ -138,7 +168,7 @@ class ItemOrcamentoServiceTest {
 
     @Test
     @DisplayName("findByOrcamento throws not found exception when orcamento doesn't exists")
-    @Order(4)
+    @Order(7)
     void findByOrcamento_ThrowsNotFoundException_WhenOrcamentoDesNotExists() {
         BDDMockito.when(orcamentoService.findByIdOrElseThrowNotFoundException(ArgumentMatchers.anyLong()))
                 .thenThrow(ResponseStatusException.class);
@@ -150,8 +180,35 @@ class ItemOrcamentoServiceTest {
     }
 
     @Test
+    @DisplayName("delete remove item when successful")
+    @Order(8)
+    void delete_RemoveItem_WhenSuccessful() {
+        ItemOrcamento itemToBeDeleted = ITEMS_ORCAMENTO_LIST.get(0);
+        Long itemToBeDeletedId = itemToBeDeleted.getId();
+
+        BDDMockito.doNothing().when(repository).delete(ArgumentMatchers.any(ItemOrcamento.class));
+        BDDMockito.when(repository.findById(itemToBeDeletedId)).thenReturn(Optional.of(itemToBeDeleted));
+
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> service.delete(itemToBeDeletedId));
+    }
+
+    @Test
+    @DisplayName("delete throws not found exception when id is not found")
+    @Order(9)
+    void delete_ThrowsNotFoundException_WhenIdIsNotFound() {
+        Long randomIdToBeDeleted = 440921L;
+
+        BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> service.findByIdOrElseThrowsNotFoundException(randomIdToBeDeleted))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("Item Not Found");
+    }
+
+    @Test
     @DisplayName("deleteByOrcamentoId removes all items of the orcamento submitted when successful")
-    @Order(5)
+    @Order(10)
     void deleteByOrcamentoId_RemovesAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
         Orcamento orcamentoToBeSubmitted = OrcamentoCreator.createsOrcamento();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
@@ -162,7 +219,7 @@ class ItemOrcamentoServiceTest {
 
     @Test
     @DisplayName("deleteByOrcamentoId Throws Not Found Exception when orcamento doesn't exists")
-    @Order(6)
+    @Order(11)
     void deleteByOrcamentoId_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         BDDMockito.when(orcamentoService.findByIdOrElseThrowNotFoundException(ArgumentMatchers.anyLong()))
                 .thenThrow(ResponseStatusException.class);
