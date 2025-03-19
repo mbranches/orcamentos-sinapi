@@ -37,7 +37,8 @@ public class ReaderXlsx {
 
         for (Row row : sheet) {
             if (row.getRowNum() < 7 || row.getRowNum() >= 4846) continue;
-                InsumoPostRequest insumo = InsumoPostRequest.builder().build();
+
+            InsumoPostRequest insumo = InsumoPostRequest.builder().build();
 
             for (Cell cell : row) {
                 if (cell.toString().isEmpty()) continue;
