@@ -9,6 +9,6 @@
     <modules>
         <module>orcamentos-sinapi-application</module>
         <module>orcamentos-sinapi-api</module>
-        <module>orcamentos-sinapi-insercao</module>
+        <module>orcamentos-sinapi-script-insercao-insumos</module>
     </modules>
 </project>
