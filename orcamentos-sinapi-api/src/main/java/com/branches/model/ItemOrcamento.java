@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class ItemOrcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
