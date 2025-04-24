@@ -13,6 +13,7 @@ import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.service.ItemOrcamentoService;
+import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.*;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -59,7 +60,9 @@ public class TelaOrcamentoController implements Initializable{
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
-    ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+    private ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+
+    private OrcamentoService orcamentoService = new OrcamentoService();
 
     private double valorTotal = 0;
 
@@ -159,7 +162,7 @@ public class TelaOrcamentoController implements Initializable{
         return servicosPesquisados;
     }
 
-    private void atualizarValorTotal() {
+    public void atualizarValorTotal() {
         valorTotal = 0;
         for (ItemOrcamento itemOrcamento : tvServicosAdiconados.getItems()) {
             valorTotal += itemOrcamento.getValorTotal();
@@ -251,7 +254,7 @@ public class TelaOrcamentoController implements Initializable{
     public void setOrcamento(Orcamento orcamento) {
         this.orcamento = orcamento;
 
-        List<ItemOrcamento> itensDoOrcamento = itemOrcamentoService.findByOrcamento(orcamento);
+        List<ItemOrcamento> itensDoOrcamento = orcamentoService.findItems(orcamento);
         itensDoOrcamento.forEach(ItemOrcamento::setarValorTotal);
 
         itemsOrcamento.clear();
