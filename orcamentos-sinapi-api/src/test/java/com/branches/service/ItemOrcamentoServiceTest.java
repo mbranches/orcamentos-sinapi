@@ -183,15 +183,4 @@ class ItemOrcamentoServiceTest {
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("Item Not Found");
     }
-
-    @Test
-    @DisplayName("deleteByOrcamentoId removes all items of the orcamento submitted when successful")
-    @Order(10)
-    void deleteByOrcamentoId_RemovesAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
-        Orcamento orcamentoToBeSubmitted = OrcamentoUtils.newOrcamentoSaved();
-        Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
-
-        BDDMockito.doNothing().when(repository).deleteByOrcamentoId(idToBeSubmitted);
-        Assertions.assertThatNoException().isThrownBy(() -> service.deleteByOrcamentoId(idToBeSubmitted));
-    }
 }

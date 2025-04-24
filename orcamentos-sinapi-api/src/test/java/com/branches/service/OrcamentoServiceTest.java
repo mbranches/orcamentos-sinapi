@@ -183,7 +183,6 @@ class OrcamentoServiceTest {
         Long orcamentoToBeDeletedId = orcamentoToBeDeleted.getId();
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(orcamentoToBeDeleted));
-        BDDMockito.doNothing().when(itemOrcamentoService).deleteByOrcamentoId(orcamentoToBeDeletedId);
 
         Assertions.assertThatNoException().isThrownBy(() -> service.delete(orcamentoToBeDeletedId));
     }
