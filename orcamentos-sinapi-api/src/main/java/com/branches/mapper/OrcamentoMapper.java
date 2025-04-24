@@ -6,6 +6,7 @@ import com.branches.request.InsumoPostRequest;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
+import com.branches.response.OrcamentoPostResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -24,4 +25,6 @@ public interface OrcamentoMapper {
     Orcamento toOrcamento(OrcamentoPutRequest orcamentoPutRequest);
 
     List<OrcamentoGetResponse> toOrcamentoGetResponse(List<Orcamento> orcamentoList);
+
+    OrcamentoPostResponse toOrcamentoPostResponse(Orcamento orcamento);
 }

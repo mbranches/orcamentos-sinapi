@@ -6,6 +6,7 @@ import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
+import com.branches.response.OrcamentoPostResponse;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,13 @@ public class OrcamentoService {
         this.itemService = itemService;
     }
 
-    public Orcamento save(OrcamentoPostRequest orcamentoPostRequest) {
+    public OrcamentoPostResponse save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = mapper.toOrcamento(orcamentoPostRequest);
         orcamento.setDataCriacao(LocalDate.now());
-        return repository.save(orcamento);
+
+        Orcamento response = repository.save(orcamento);
+
+        return mapper.toOrcamentoPostResponse(response);
     }
 
     public List<OrcamentoGetResponse> findAll(String name) {
