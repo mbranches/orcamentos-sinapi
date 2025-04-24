@@ -2,8 +2,10 @@ package com.branches.controller;
 
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
+import com.branches.response.ItemOrcamentoGetResponse;
 import com.branches.response.OrcamentoGetResponse;
 import com.branches.response.OrcamentoPostResponse;
+import com.branches.service.ItemOrcamentoService;
 import com.branches.service.OrcamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +19,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrcamentoController {
     private final OrcamentoService service;
+    private final ItemOrcamentoService itemOrcamentoService;
 
     @GetMapping
     public ResponseEntity<List<OrcamentoGetResponse>> findAll(@RequestParam(required = false) String name) {
         List<OrcamentoGetResponse> response = service.findAll(name);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{idOrcamento}/items")
+    public ResponseEntity<List<ItemOrcamentoGetResponse>> findAllItemsByOrcamentoId(@PathVariable Long idOrcamento) {
+        List<ItemOrcamentoGetResponse> response = itemOrcamentoService.findByOrcamento(idOrcamento);
 
         return ResponseEntity.ok(response);
     }

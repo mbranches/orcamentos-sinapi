@@ -25,13 +25,6 @@ public class ItemOrcamentoController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/{idOrcamento}")
-    public ResponseEntity<List<ItemOrcamentoGetResponse>> findAllByOrcamento(@PathVariable Long idOrcamento) {
-        List<ItemOrcamentoGetResponse> response = service.findByOrcamento(idOrcamento);
-
-        return ResponseEntity.ok(response);
-    }
-
     @PostMapping
     public ResponseEntity<List<ItemOrcamentoPostResponse>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
         List<ItemOrcamentoPostResponse> response = service.saveAll(itemPostRequestList);
