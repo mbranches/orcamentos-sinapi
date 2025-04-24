@@ -14,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,36 +27,33 @@ class InsumoServiceTest {
     @Mock
     private InsumoRepository repository;
 
-    private final List<Insumo> INSUMOS_LIST = new ArrayList<>();
+    private List<Insumo> insumoList;
 
     @BeforeEach
     void init() {
-        Insumo insumo1 = Insumo.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
-        Insumo insumo2 = Insumo.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
-        Insumo insumo3 = Insumo.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
-        INSUMOS_LIST.addAll(List.of(insumo1, insumo2, insumo3));
+        insumoList = InsumoUtils.newInsumoList();
     }
 
     @Test
     @Order(1)
     @DisplayName("findAll returns all insumos when successful")
     void findAll_ReturnsAllInsumos_WhenSuccessful() {
-        BDDMockito.when(repository.findAll()).thenReturn(INSUMOS_LIST);
+        BDDMockito.when(repository.findAll()).thenReturn(insumoList);
         List<Insumo> insumosResponse = service.findAll();
 
         Assertions.assertThat(insumosResponse)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.INSUMOS_LIST);
+                .containsExactlyElementsOf(this.insumoList);
     }
 
     @Test
     @Order(2)
     @DisplayName("findByDescription returns found objects when successful")
     void findByDescription_ReturnsFoundObjects_WhenSuccessful() {
-        BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(List.of(INSUMOS_LIST.get(0)));
+        BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(List.of(insumoList.get(0)));
 
-       Insumo expectedInsumo = this.INSUMOS_LIST.get(0);
+       Insumo expectedInsumo = this.insumoList.get(0);
 
         String descriptionToBeSearched = expectedInsumo.getDescricao();
         List<Insumo> insumosResponse = service.findByDescription(descriptionToBeSearched);
@@ -89,23 +85,11 @@ class InsumoServiceTest {
     @Order(4)
     @DisplayName("saveAll returns the saved objects when successful")
     void saveAll_ReturnsTheSavedObjectS_WhenSuccessful() {
-        InsumoPostRequest insumoToBeSaved = InsumoPostRequest.builder()
-                .codigo(1L)
-                .descricao("Areia")
-                .unidadeMedida("Kg")
-                .origemPreco("XX")
-                .preco(20D)
-                .build();
+        InsumoPostRequest insumoToBeSaved = InsumoUtils.newInsumoPostRequest();
 
-        Insumo insumoMapped = Insumo.builder()
-                .codigo(1L)
-                .descricao("Areia")
-                .unidadeMedida("Kg")
-                .origemPreco("XX")
-                .preco(20D)
-                .build();;
+        Insumo insumoMapped = InsumoUtils.newInsumoToSave();
 
-        List<Insumo> insumosExpected = List.of(InsumoUtils.createsInsumo());
+        List<Insumo> insumosExpected = List.of(InsumoUtils.newInsumoSaved());
 
         BDDMockito.when(mapper.toInsumoList(List.of(insumoToBeSaved))).thenReturn(List.of(insumoMapped));
         BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(insumosExpected);
