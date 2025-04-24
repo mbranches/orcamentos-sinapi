@@ -24,8 +24,8 @@ public class InsumoController {
     }
 
     @PostMapping
-    public ResponseEntity<Insumo> save(@RequestBody InsumoPostRequest insumoPostRequest){
-        Insumo response = SERVICE.save(insumoPostRequest);
+    public ResponseEntity<List<Insumo>> saveAll(@RequestBody List<InsumoPostRequest> insumoPostRequestList){
+        List<Insumo> response = SERVICE.saveAll(insumoPostRequestList);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

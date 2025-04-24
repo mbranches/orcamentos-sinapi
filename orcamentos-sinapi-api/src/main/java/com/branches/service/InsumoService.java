@@ -24,8 +24,8 @@ public class InsumoService {
         return REPOSITORY.findAllByDescricaoContaining(description);
     }
 
-    public Insumo save(InsumoPostRequest insumoPostRequest) {
-        Insumo insumo = MAPPER.toInsumo(insumoPostRequest);
-        return REPOSITORY.save(insumo);
+    public List<Insumo> saveAll(List<InsumoPostRequest> insumoPostRequestList) {
+        List<Insumo> insumosToSave = MAPPER.toInsumoList(insumoPostRequestList);
+        return REPOSITORY.saveAll(insumosToSave);
     }
 }
