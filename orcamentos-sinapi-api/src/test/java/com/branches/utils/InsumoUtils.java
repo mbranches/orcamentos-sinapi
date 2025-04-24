@@ -3,6 +3,7 @@ package com.branches.utils;
 import com.branches.model.Insumo;
 import com.branches.request.InsumoPostRequest;
 import com.branches.response.InsumoGetResponse;
+import com.branches.response.InsumoPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,17 @@ public class InsumoUtils {
 
     public static Insumo newInsumoToSave() {
         return Insumo.builder()
+                .codigo(4L)
+                .descricao("Areia")
+                .unidadeMedida("Kg")
+                .origemPreco("XX")
+                .preco(20D)
+                .build();
+    }
+
+    public static InsumoPostResponse newInsumoPostResponse() {
+        return InsumoPostResponse.builder()
+                .id(4L)
                 .codigo(4L)
                 .descricao("Areia")
                 .unidadeMedida("Kg")

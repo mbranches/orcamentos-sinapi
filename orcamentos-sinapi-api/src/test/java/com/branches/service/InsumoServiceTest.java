@@ -5,6 +5,7 @@ import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
 import com.branches.response.InsumoGetResponse;
+import com.branches.response.InsumoPostResponse;
 import com.branches.utils.InsumoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -96,16 +97,17 @@ class InsumoServiceTest {
 
         Insumo insumoMapped = InsumoUtils.newInsumoToSave();
 
-        List<Insumo> insumosExpected = List.of(InsumoUtils.newInsumoSaved());
+        List<InsumoPostResponse> expectedResponse = List.of(InsumoUtils.newInsumoPostResponse());
 
         BDDMockito.when(mapper.toInsumoList(List.of(insumoToBeSaved))).thenReturn(List.of(insumoMapped));
-        BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(insumosExpected);
+        BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(List.of(insumoMapped));
+        BDDMockito.when(mapper.toInsumoPostResponseList(List.of(insumoMapped))).thenReturn(expectedResponse);
 
-        List<Insumo> insumoResponse = service.saveAll(List.of(insumoToBeSaved));
+        List<InsumoPostResponse> response = service.saveAll(List.of(insumoToBeSaved));
 
-        Assertions.assertThat(insumoResponse)
+        Assertions.assertThat(response)
                 .isNotNull()
-                .isEqualTo(insumosExpected);
+                .isEqualTo(expectedResponse);
     }
 
 }
