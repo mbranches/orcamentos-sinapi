@@ -5,6 +5,7 @@ import com.branches.model.ItemOrcamento;
 import com.branches.model.Orcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
+import com.branches.response.ItemOrcamentoPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,33 @@ public class ItemOrcamentoUtils {
                 .build();
 
         ItemOrcamentoPostRequest item3 = ItemOrcamentoPostRequest.builder()
+                .id(3L)
+                .insumo(InsumoUtils.newInsumoSaved())
+                .quantidade(89)
+                .orcamento(orcamento)
+                .build();
+
+        return new ArrayList<>(List.of(item1, item2, item3));
+    }
+
+    public static List<ItemOrcamentoPostResponse> newItemPostResponseList() {
+        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
+
+        ItemOrcamentoPostResponse item1 = ItemOrcamentoPostResponse.builder()
+                .id(1L)
+                .insumo(InsumoUtils.newInsumoSaved())
+                .quantidade(1)
+                .orcamento(orcamento)
+                .build();
+
+        ItemOrcamentoPostResponse item2 = ItemOrcamentoPostResponse.builder()
+                .id(2L)
+                .insumo(InsumoUtils.newInsumoSaved())
+                .quantidade(3)
+                .orcamento(orcamento)
+                .build();
+
+        ItemOrcamentoPostResponse item3 = ItemOrcamentoPostResponse.builder()
                 .id(3L)
                 .insumo(InsumoUtils.newInsumoSaved())
                 .quantidade(89)

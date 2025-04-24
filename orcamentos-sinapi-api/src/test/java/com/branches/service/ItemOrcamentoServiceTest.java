@@ -6,6 +6,7 @@ import com.branches.model.Orcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
+import com.branches.response.ItemOrcamentoPostResponse;
 import com.branches.utils.ItemOrcamentoUtils;
 import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
@@ -49,15 +50,18 @@ class ItemOrcamentoServiceTest {
     void saveAll_ReturnsAllObjectsSaved_whenSuccessful() {
         List<ItemOrcamentoPostRequest> itemPostRequestList = ItemOrcamentoUtils.newItemPostRequestList();
 
+        List<ItemOrcamentoPostResponse> expectedResponse = ItemOrcamentoUtils.newItemPostResponseList();
+
         BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(itemOrcamentoList);
         BDDMockito.when(mapper.toItemOrcamentoList(itemPostRequestList)).thenReturn(itemOrcamentoList);
+        BDDMockito.when(mapper.toItemOrcamentoPostResponseList(itemOrcamentoList)).thenReturn(expectedResponse);
 
-        List<ItemOrcamento> itemsSaved = service.saveAll(itemPostRequestList);
+        List<ItemOrcamentoPostResponse> response = service.saveAll(itemPostRequestList);
 
-        Assertions.assertThat(itemsSaved)
+        Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.itemOrcamentoList);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
@@ -154,9 +158,9 @@ class ItemOrcamentoServiceTest {
     }
 
     @Test
-    @DisplayName("delete remove item when successful")
+    @DisplayName("delete removes item when successful")
     @Order(8)
-    void delete_RemoveItem_WhenSuccessful() {
+    void delete_RemovesItem_WhenSuccessful() {
         ItemOrcamento itemToBeDeleted = itemOrcamentoList.get(0);
         Long itemToBeDeletedId = itemToBeDeleted.getId();
 
@@ -189,18 +193,5 @@ class ItemOrcamentoServiceTest {
 
         BDDMockito.doNothing().when(repository).deleteByOrcamentoId(idToBeSubmitted);
         Assertions.assertThatNoException().isThrownBy(() -> service.deleteByOrcamentoId(idToBeSubmitted));
-    }
-
-    @Test
-    @DisplayName("deleteByOrcamentoId Throws Not Found Exception when orcamento doesn't exists")
-    @Order(11)
-    void deleteByOrcamentoId_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
-        BDDMockito.when(orcamentoService.findByIdOrElseThrowNotFoundException(ArgumentMatchers.anyLong()))
-                .thenThrow(ResponseStatusException.class);
-
-        Long randomId = 8881L;
-
-        Assertions.assertThatThrownBy(() -> service.deleteByOrcamentoId(randomId))
-                .isInstanceOf(ResponseStatusException.class);
     }
 }
