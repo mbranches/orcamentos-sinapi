@@ -3,7 +3,6 @@ module com.branches.cpu {
     requires static lombok;
     requires org.controlsfx.controls;
     requires spring.web;
-    requires spring.context;
     requires spring.core;
     requires com.fasterxml.jackson.databind;
 
