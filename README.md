@@ -11,7 +11,7 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 ## 📁 Estrutura do Repositório
 *  **orcamentos-sinapi-api:** Módulo onde está localizada API RestFul, desenvolvida com **Spring Boot**.
 *  **orcamentos-sinapi-application:**  Módulo responsável pelo Front-End, desenvolvido com JavaFX.
-*  **orcamentos-sinapi-script-insercao-insumos:** Módulo que contém um script que faz requisição POST na API com insumos lidos da tabela SINAPI.
+*  **orcamentos-sinapi-script-insercao-insumos:** Módulo que contém um script que faz requisição POST na API com insumos lidos da tabela SINAPI, carregada em `src/main/resources/files`.
 
 ---
 
