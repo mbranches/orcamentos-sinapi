@@ -4,6 +4,7 @@ import com.branches.mapper.OrcamentoMapper;
 import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
+import com.branches.request.OrcamentoPutRequest;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -39,9 +40,12 @@ public class OrcamentoService {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Orcamento Not Found"));
     }
 
-    public void update(Orcamento orcamento) {
-        findByIdOrElseThrowNotFoundException(orcamento.getId());
-        repository.save(orcamento);
+    public void update(OrcamentoPutRequest orcamentoPutRequest) {
+        findByIdOrElseThrowNotFoundException(orcamentoPutRequest.getId());
+
+        Orcamento orcamentoToUpdate = mapper.toOrcamento(orcamentoPutRequest);
+
+        repository.save(orcamentoToUpdate);
     }
 
     @Transactional

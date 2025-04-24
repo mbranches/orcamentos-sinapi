@@ -2,6 +2,7 @@ package com.branches.controller;
 
 import com.branches.model.Orcamento;
 import com.branches.request.OrcamentoPostRequest;
+import com.branches.request.OrcamentoPutRequest;
 import com.branches.service.OrcamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class OrcamentoController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateOrcamento(@RequestBody Orcamento orcamento) {
-        SERVICE.update(orcamento);
+    public ResponseEntity<Void> updateOrcamento(@RequestBody OrcamentoPutRequest orcamentoPutRequest) {
+        SERVICE.update(orcamentoPutRequest);
 
         return ResponseEntity.noContent().build();
     }
