@@ -1,11 +1,14 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.components.Alerta;
+import com.branches.cpu.components.AutoCompleteTextField;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
-import com.branches.cpu.components.AutoCompleteTextField;
-import com.branches.cpu.utils.*;
+import com.branches.cpu.utils.Monetary;
+import com.branches.cpu.utils.TableColumnConfig;
+import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.Validador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,17 +19,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lombok.Setter;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author Branches
- */
-@Setter
 public class TelaAdicionarController implements Initializable {
     @FXML
     private Button btnAdicionar;
@@ -83,7 +82,6 @@ public class TelaAdicionarController implements Initializable {
     }
 
 
-
     @FXML
     void setarValorTotal(KeyEvent event) {
         String quantidadeString = tfQuantidade.getText().trim();
@@ -129,8 +127,8 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Insumo, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<Insumo, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<Insumo, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<Insumo, String> colunaDescricao = new TableColumn<>("Descrição");
         TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
         TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
@@ -191,4 +189,9 @@ public class TelaAdicionarController implements Initializable {
         btnAdicionar.setDisable(true);
         btnAdicionarFechar.setDisable(true);
     }
+
+    public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
+        this.telaPrincipal = telaPrincipal;
+    }
+
 }

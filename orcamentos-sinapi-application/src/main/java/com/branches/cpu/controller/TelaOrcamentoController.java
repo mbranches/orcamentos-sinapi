@@ -4,11 +4,6 @@
  */
 package com.branches.cpu.controller;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
@@ -26,14 +21,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import lombok.Setter;
 
-/**
- *
- * @author Branches
- */
-@Setter
-public class TelaOrcamentoController implements Initializable{
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class TelaOrcamentoController implements Initializable {
 
     @FXML
     private ImageView imageEditar;
@@ -157,7 +151,7 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     private List<ItemOrcamento> consultarEmServicosAdicionados(String descricao) {
-        List<ItemOrcamento> servicosPesquisados= Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
+        List<ItemOrcamento> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
@@ -172,8 +166,8 @@ public class TelaOrcamentoController implements Initializable{
     }
 
     private void criarColunasTabela() {
-        TableColumn<ItemOrcamento, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<ItemOrcamento, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<ItemOrcamento, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<ItemOrcamento, String> colunaDescricao = new TableColumn<>("Descrição");
         TableColumn<ItemOrcamento, String> colunaUnidade = new TableColumn<>("Unidade");
         TableColumn<ItemOrcamento, Integer> colunaQtd = new TableColumn<>("Qtd.");
         TableColumn<ItemOrcamento, Double> colunaTotal = new TableColumn<>("Total");

@@ -1,9 +1,9 @@
 package com.branches.cpu.controller;
 
+import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Insumo;
 import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.service.InsumoService;
-import com.branches.cpu.components.Alerta;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import com.branches.cpu.utils.Validador;
@@ -12,19 +12,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lombok.Setter;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.branches.cpu.utils.Monetary.formatarValorBRL;
-@Setter
+
 public class TelaEditarController implements Initializable {
     @FXML
     private Button btnSalvarFechar;
@@ -109,8 +111,8 @@ public class TelaEditarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Insumo, Long> colunaCodigo =new TableColumn<>("Cód.");
-        TableColumn<Insumo, String> colunaDescricao =new TableColumn<>("Descrição");
+        TableColumn<Insumo, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<Insumo, String> colunaDescricao = new TableColumn<>("Descrição");
         TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
         TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
@@ -129,5 +131,13 @@ public class TelaEditarController implements Initializable {
         colunaValor.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
         TableColumnConfig.columnFormatoMonetario(colunaValor);
+    }
+
+    public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
+        this.telaPrincipal = telaPrincipal;
+    }
+
+    public void setServicoAEditar(ItemOrcamento servicoAEditar) {
+        this.servicoAEditar = servicoAEditar;
     }
 }

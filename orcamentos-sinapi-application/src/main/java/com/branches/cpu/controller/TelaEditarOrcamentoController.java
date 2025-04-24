@@ -8,9 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lombok.Setter;
 
-@Setter
 public class TelaEditarOrcamentoController {
     @FXML
     private Button btnSalvarFechar;
@@ -58,5 +56,9 @@ public class TelaEditarOrcamentoController {
     private void fecharPagina(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    public void setTelaOrcamentosController(TelaOrcamentosController telaOrcamentosController) {
+        this.telaOrcamentosController = telaOrcamentosController;
     }
 }

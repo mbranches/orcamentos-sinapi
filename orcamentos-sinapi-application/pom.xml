@@ -67,9 +67,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>11</release>
-                    <source>13</source>
-                    <target>13</target>
+                    <release>17</release>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -85,13 +85,9 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                     </execution>
                     <execution>
-                        <!-- Configuration for manual attach debugging -->
-                        <!-- Usage: mvn clean javafx:run@debug -->
                         <id>debug</id>
                         <configuration>
                             <options>
