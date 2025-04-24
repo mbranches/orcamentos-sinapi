@@ -1,6 +1,5 @@
 module com.branches.cpu {
     requires javafx.fxml;
-    requires static lombok;
     requires org.controlsfx.controls;
     requires spring.web;
     requires spring.core;
