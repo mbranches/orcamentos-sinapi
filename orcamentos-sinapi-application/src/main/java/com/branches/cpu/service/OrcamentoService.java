@@ -1,5 +1,6 @@
 package com.branches.cpu.service;
 
+import com.branches.cpu.model.ItemOrcamento;
 import com.branches.cpu.model.Orcamento;
 import com.branches.cpu.request.OrcamentoPostRequest;
 import org.springframework.web.client.RestTemplate;
@@ -25,6 +26,14 @@ public class OrcamentoService {
 
         Orcamento[] arrayOrcamento = restTemplate.getForObject(urlWithFilter, Orcamento[].class);
         return Arrays.asList(arrayOrcamento);
+    }
+
+    public List<ItemOrcamento> findItems(Orcamento orcamento) {
+        Long orcamentoId = orcamento.getId();
+        String urlForGet = url + "/" + orcamentoId + "/items";
+        ItemOrcamento[] response = restTemplate.getForObject(urlForGet, ItemOrcamento[].class);
+
+        return Arrays.asList(response);
     }
 
     public void update(Orcamento orcamento) {

@@ -23,14 +23,6 @@ public class ItemOrcamentoService {
         return Arrays.asList(response);
     }
 
-    public List<ItemOrcamento> findByOrcamento(Orcamento orcamento) {
-        Long orcamentoId = orcamento.getId();
-        String urlForGet = url + "/" + orcamentoId;
-        ItemOrcamento[] response = restTemplate.getForObject(urlForGet, ItemOrcamento[].class);
-
-        return Arrays.asList(response);
-    }
-
     public void delete(ItemOrcamento itemToBeDeleted) {
         Long itemToBeDeletedId = itemToBeDeleted.getId();
         String urlForDelete = url + "/" + itemToBeDeletedId;
