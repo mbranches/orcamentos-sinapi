@@ -1,7 +1,6 @@
 package com.branches.controller;
 
 import com.branches.model.ItemOrcamento;
-import com.branches.model.Orcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +27,8 @@ public class ItemOrcamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamento> itemOrcamentoList) {
-        List<ItemOrcamento> response = SERVICE.saveAll(itemOrcamentoList);
+    public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
+        List<ItemOrcamento> response = SERVICE.saveAll(itemPostRequestList);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
