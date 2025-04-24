@@ -5,6 +5,7 @@ import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
+import com.branches.response.OrcamentoGetResponse;
 import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -31,30 +32,70 @@ class OrcamentoServiceTest {
     private OrcamentoRepository repository;
     @Mock
     private OrcamentoMapper mapper;
-
     private List<Orcamento> orcamentoList;
+    private List<OrcamentoGetResponse> orcamentoGetResponseList;
 
     @BeforeEach
     void init() {
         orcamentoList = OrcamentoUtils.newOrcamentoList();
+        orcamentoGetResponseList = OrcamentoUtils.newOrcamentoGetResponseList();
     }
 
     @Test
     @Order(1)
-    @DisplayName("findAll return all orcamento when successful")
+    @DisplayName("findAll return all orcamento when the given argument is null")
     void findAll_ReturnsAllOrcamento_WhenSuccessful() {
-        BDDMockito.when(repository.findAll()).thenReturn(orcamentoList);
+        List<OrcamentoGetResponse> expectedResponse = orcamentoGetResponseList;
 
-        List<Orcamento> response = service.findAll();
+        BDDMockito.when(repository.findAll()).thenReturn(orcamentoList);
+        BDDMockito.when(mapper.toOrcamentoGetResponse(orcamentoList)).thenReturn(expectedResponse);
+
+        List<OrcamentoGetResponse> response = service.findAll(null);
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(orcamentoList);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
+    @DisplayName("findAll returns all objects found when the given argument is found")
     @Order(2)
+    void findAll_ReturnsAllObjectsFound_WhenTheGivenArgumentIsFound() {
+        OrcamentoGetResponse expectedOrcamentoGetResponse = orcamentoGetResponseList.get(0);
+        String nameToBeSearched = expectedOrcamentoGetResponse.getNome();
+
+        Orcamento expectedOrcamento = orcamentoList.get(0);
+
+        List<OrcamentoGetResponse> expectedResponse = List.of(expectedOrcamentoGetResponse);
+        BDDMockito.when(repository.findAllByNomeContaining(nameToBeSearched)).thenReturn(List.of(expectedOrcamento));
+        BDDMockito.when(mapper.toOrcamentoGetResponse(List.of(expectedOrcamento))).thenReturn(expectedResponse);
+
+        List<OrcamentoGetResponse> response = service.findAll(nameToBeSearched);
+
+        Assertions.assertThat(response)
+                .isNotNull()
+                .isNotEmpty()
+                .containsExactlyElementsOf(expectedResponse);
+    }
+
+    @Test
+    @DisplayName("findAll returns an empty list when the given argument is not found")
+    @Order(3)
+    void findAll_ReturnsEmptyList_WhenTheGivenArgumentIsNotFound() {
+        String randomName = "XAxaKIlpan";
+
+        BDDMockito.when(repository.findAllByNomeContaining(randomName)).thenReturn(Collections.emptyList());
+
+        List<OrcamentoGetResponse> response = service.findAll(randomName);
+
+        Assertions.assertThat(response)
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
+    @Order(4)
     @DisplayName("save returns created object when successful")
     void save_ReturnsCreatedObject_WhenSuccessful() {
         Orcamento orcamentoExpected = OrcamentoUtils.newOrcamentoToSaved();
@@ -73,7 +114,7 @@ class OrcamentoServiceTest {
     }
 
     @Test
-    @Order(3)
+    @Order(5)
     @DisplayName("findByIdOrElseThrowsNotFoundException returns object found when successful")
     void findByIdOrElseThrowNotFoundException_ReturnsObjectFound_WhenSuccessful() {
         Orcamento orcamentoExpected = orcamentoList.get(0);
@@ -89,7 +130,7 @@ class OrcamentoServiceTest {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     @DisplayName("findByIdOrElseThrowsNotFoundException throws not found exception when orcamentos doesn't exists")
     void findByIdOrElseThrowNotFoundException_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         Long randomId = 112099L;
@@ -102,7 +143,7 @@ class OrcamentoServiceTest {
 
     @Test
     @DisplayName("update updates orcamento when successful")
-    @Order(5)
+    @Order(7)
     void update_UpdatesOrcamento_WhenSuccessful() {
         Orcamento currentOrcamento = OrcamentoUtils.newOrcamentoSaved();
         OrcamentoPutRequest orcamentoToBeUpdated = OrcamentoUtils.newOrcamentoPutRequest();
@@ -116,7 +157,7 @@ class OrcamentoServiceTest {
 
     @Test
     @DisplayName("update throws not found exception when orcamento doesn't exists")
-    @Order(6)
+    @Order(8)
     void update_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         OrcamentoPutRequest orcamentoToBeUpdated = OrcamentoUtils.newOrcamentoPutRequest();
 
@@ -131,7 +172,7 @@ class OrcamentoServiceTest {
 
     @Test
     @DisplayName("delete deletes orcamento when successful")
-    @Order(7)
+    @Order(9)
     void delete_DeletesOrcamento_WhenSuccessful() {
         Orcamento orcamentoToBeDeleted = orcamentoList.get(0);
         Long orcamentoToBeDeletedId = orcamentoToBeDeleted.getId();
@@ -144,7 +185,7 @@ class OrcamentoServiceTest {
 
     @Test
     @DisplayName("delete throws not found exception when orcamento doesn't exists")
-    @Order(8)
+    @Order(10)
     void delete_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         Long randomId = 13131L;
 
@@ -153,39 +194,5 @@ class OrcamentoServiceTest {
         Assertions.assertThatThrownBy(() -> service.delete(randomId))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("Orcamento Not Found");
-    }
-
-    @Test
-    @DisplayName("findAllByName returns all objects found when successful")
-    @Order(9)
-    void findAllByName_ReturnsAllObjectsFound_WhenSuccessful() {
-        Orcamento expectedOrcamento = orcamentoList.get(0);
-        String nameToBeSearched = expectedOrcamento.getNome();
-
-        List<Orcamento> expectedResponse = List.of(expectedOrcamento);
-        BDDMockito.when(repository.findAllByNomeContaining(nameToBeSearched)).thenReturn(expectedResponse);
-
-
-        List<Orcamento> response = service.findAllByName(nameToBeSearched);
-
-        Assertions.assertThat(response)
-                .isNotNull()
-                .isNotEmpty()
-                .containsExactlyElementsOf(expectedResponse);
-    }
-
-    @Test
-    @DisplayName("findAllByName returns an empty list when name is not found")
-    @Order(9)
-    void findAllByName_ReturnsEmptyList_WhenNameIsNotFound() {
-        String randomName = "XAxaKIlpan";
-
-        BDDMockito.when(repository.findAllByNomeContaining(randomName)).thenReturn(Collections.emptyList());
-
-        List<Orcamento> response = service.findAllByName(randomName);
-
-        Assertions.assertThat(response)
-                .isNotNull()
-                .isEmpty();
     }
 }
