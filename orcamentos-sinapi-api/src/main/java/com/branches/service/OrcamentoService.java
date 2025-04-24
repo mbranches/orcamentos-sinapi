@@ -5,6 +5,7 @@ import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
+import com.branches.response.OrcamentoGetResponse;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,10 @@ public class OrcamentoService {
         return repository.save(orcamento);
     }
 
-    public List<Orcamento> findAll() {
-        return repository.findAll();
+    public List<OrcamentoGetResponse> findAll(String name) {
+        List<Orcamento> response = name == null ? repository.findAll() : repository.findAllByNomeContaining(name);
+
+        return mapper.toOrcamentoGetResponse(response);
     }
 
     public Orcamento findByIdOrElseThrowNotFoundException(Long id) {
@@ -53,9 +56,5 @@ public class OrcamentoService {
         findByIdOrElseThrowNotFoundException(orcamentoId);
         itemService.deleteByOrcamentoId(orcamentoId);
         repository.deleteById(orcamentoId);
-    }
-
-    public List<Orcamento> findAllByName(String nameOrcamento) {
-        return repository.findAllByNomeContaining(nameOrcamento);
     }
 }
