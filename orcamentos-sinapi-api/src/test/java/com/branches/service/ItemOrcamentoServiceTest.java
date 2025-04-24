@@ -5,6 +5,7 @@ import com.branches.model.ItemOrcamento;
 import com.branches.model.Orcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
+import com.branches.response.ItemOrcamentoGetResponse;
 import com.branches.utils.ItemOrcamentoUtils;
 import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
@@ -33,12 +34,13 @@ class ItemOrcamentoServiceTest {
     private OrcamentoService orcamentoService;
     @Mock
     private ItemOrcamentoMapper mapper;
-
-    private List<ItemOrcamento> itemOrcamentoList = new ArrayList<>();
+    private List<ItemOrcamento> itemOrcamentoList;
+    private List<ItemOrcamentoGetResponse> itemGetResponseList;
 
     @BeforeEach
     void init() {
         itemOrcamentoList = ItemOrcamentoUtils.newItemOrcamentoList();
+        itemGetResponseList = ItemOrcamentoUtils.newItemGetResponseList();
     }
 
     @Test
@@ -62,13 +64,16 @@ class ItemOrcamentoServiceTest {
     @DisplayName("findAll returns all items when successful")
     @Order(2)
     void findAll_ReturnsAllItems_WhenSuccessful() {
+        List<ItemOrcamentoGetResponse> expectedResponse = this.itemGetResponseList;
+
         BDDMockito.when(repository.findAll()).thenReturn(itemOrcamentoList);
-        List<ItemOrcamento> response = service.findAll();
+        BDDMockito.when(mapper.toItemOrcamentoGetResponseList(itemOrcamentoList)).thenReturn(expectedResponse);
+        List<ItemOrcamentoGetResponse> response = service.findAll();
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.itemOrcamentoList);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
@@ -104,28 +109,31 @@ class ItemOrcamentoServiceTest {
     @DisplayName("findByOrcamento returns all items of the orcamento submitted when successul")
     @Order(5)
     void findByOrcamento_ReturnsAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
-        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(itemOrcamentoList);
         Orcamento orcamentoToBeSubmitted = OrcamentoUtils.newOrcamentoSaved();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
+        List<ItemOrcamentoGetResponse> expectedResponse = this.itemGetResponseList;
 
-        List<ItemOrcamento> response = service.findByOrcamento(idToBeSubmitted);
+        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(itemOrcamentoList);
+        BDDMockito.when(mapper.toItemOrcamentoGetResponseList(itemOrcamentoList)).thenReturn(expectedResponse);
+
+        List<ItemOrcamentoGetResponse> response = service.findByOrcamento(idToBeSubmitted);
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.itemOrcamentoList);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
     @DisplayName("findByOrcamento returns an empty list when orcamento doesn't contains items")
     @Order(6)
     void findByOrcamento_ReturnsAnEmptyList_WhenOrcamentoDoesNotContainsItems() {
-        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(Collections.emptyList());
-
         Orcamento orcamentoToBeSubmitted = OrcamentoUtils.newOrcamentoSaved();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
 
-        List<ItemOrcamento> response = service.findByOrcamento(idToBeSubmitted);
+        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(Collections.emptyList());
+
+        List<ItemOrcamentoGetResponse> response = service.findByOrcamento(idToBeSubmitted);
 
         Assertions.assertThat(response)
                 .isNotNull()
