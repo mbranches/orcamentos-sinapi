@@ -4,6 +4,7 @@ import com.branches.mapper.OrcamentoMapper;
 import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
+import com.branches.request.OrcamentoPutRequest;
 import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -103,9 +104,10 @@ class OrcamentoServiceTest {
     @DisplayName("update updates orcamento when successful")
     @Order(5)
     void update_UpdatesOrcamento_WhenSuccessful() {
-        Orcamento orcamentoToBeUpdated = orcamentoList.get(0);
+        Orcamento currentOrcamento = OrcamentoUtils.newOrcamentoSaved();
+        OrcamentoPutRequest orcamentoToBeUpdated = OrcamentoUtils.newOrcamentoPutRequest();
 
-        BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(orcamentoToBeUpdated));
+        BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(currentOrcamento));
 
         orcamentoToBeUpdated.setNome("Nome novo");
 
@@ -116,7 +118,7 @@ class OrcamentoServiceTest {
     @DisplayName("update throws not found exception when orcamento doesn't exists")
     @Order(6)
     void update_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
-        Orcamento orcamentoToBeUpdated = orcamentoList.get(0);
+        OrcamentoPutRequest orcamentoToBeUpdated = OrcamentoUtils.newOrcamentoPutRequest();
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());
 

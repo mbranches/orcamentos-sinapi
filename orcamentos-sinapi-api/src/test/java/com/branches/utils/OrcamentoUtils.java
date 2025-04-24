@@ -2,6 +2,7 @@ package com.branches.utils;
 
 import com.branches.model.Orcamento;
 import com.branches.request.OrcamentoPostRequest;
+import com.branches.request.OrcamentoPutRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,14 @@ public class OrcamentoUtils {
         return OrcamentoPostRequest.builder()
                 .nome("Orçamento 4")
                 .nomeCliente("Cliente 4")
+                .build();
+    }
+
+    public static OrcamentoPutRequest newOrcamentoPutRequest() {
+        return OrcamentoPutRequest.builder()
+                .id(1L)
+                .nome("Novo nome")
+                .nomeCliente("Cliente 1")
                 .build();
     }
 }
