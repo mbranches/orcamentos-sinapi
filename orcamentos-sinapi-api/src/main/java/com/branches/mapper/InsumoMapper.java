@@ -2,6 +2,7 @@ package com.branches.mapper;
 
 import com.branches.model.Insumo;
 import com.branches.request.InsumoPostRequest;
+import com.branches.response.InsumoGetResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.factory.Mappers;
@@ -17,4 +18,6 @@ public interface InsumoMapper {
     Insumo toInsumo(InsumoPostRequest insumoPostRequest);
 
     List<Insumo> toInsumoList(List<InsumoPostRequest> insumoPostRequestList);
+
+    List<InsumoGetResponse> toInsumoGetResponseList(List<Insumo> insumoList);
 }

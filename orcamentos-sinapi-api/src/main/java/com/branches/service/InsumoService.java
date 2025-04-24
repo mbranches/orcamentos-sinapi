@@ -4,6 +4,7 @@ import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
+import com.branches.response.InsumoGetResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,20 +13,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class InsumoService {
-    private final InsumoRepository REPOSITORY;
-    private final InsumoMapper MAPPER;
+    private final InsumoRepository repository;
+    private final InsumoMapper mapper;
 
 
-    public List<Insumo> findAll() {
-        return REPOSITORY.findAll();
-    }
+    public List<InsumoGetResponse> findAll(String description) {
+        List<Insumo> response = description == null ? repository.findAll() : repository.findAllByDescricaoContaining(description);
 
-    public List<Insumo> findByDescription(String description) {
-        return REPOSITORY.findAllByDescricaoContaining(description);
+        return mapper.toInsumoGetResponseList(response);
     }
 
     public List<Insumo> saveAll(List<InsumoPostRequest> insumoPostRequestList) {
-        List<Insumo> insumosToSave = MAPPER.toInsumoList(insumoPostRequestList);
-        return REPOSITORY.saveAll(insumosToSave);
+        List<Insumo> insumosToSave = mapper.toInsumoList(insumoPostRequestList);
+
+        return repository.saveAll(insumosToSave);
     }
 }
