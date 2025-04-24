@@ -3,8 +3,8 @@ package com.branches.service;
 import com.branches.model.ItemOrcamento;
 import com.branches.model.Orcamento;
 import com.branches.repository.ItemOrcamentoRepository;
-import com.branches.utils.InsumoCreator;
-import com.branches.utils.OrcamentoCreator;
+import com.branches.utils.ItemOrcamentoUtils;
+import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,86 +30,45 @@ class ItemOrcamentoServiceTest {
     @Mock
     private OrcamentoService orcamentoService;
 
-    private final List<ItemOrcamento> ITEMS_ORCAMENTO_LIST = new ArrayList<>();
+    private List<ItemOrcamento> itemOrcamentoList = new ArrayList<>();
 
     @BeforeEach
     void init() {
-        ItemOrcamento item1 = ItemOrcamento.builder()
-                .id(1L)
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(1)
-                .orcamento(OrcamentoCreator.createsOrcamento())
-                .build();
-
-        ItemOrcamento item2 = ItemOrcamento.builder()
-                .id(2L)
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(3)
-                .orcamento(OrcamentoCreator.createsOrcamento())
-                .build();
-
-        ItemOrcamento item3 = ItemOrcamento.builder()
-                .id(3L)
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(89)
-                .orcamento(OrcamentoCreator.createsOrcamento())
-                .build();
-
-        ITEMS_ORCAMENTO_LIST.addAll(List.of(item1, item2, item3));
-
+        itemOrcamentoList = ItemOrcamentoUtils.newItemOrcamentoList();
     }
 
     @Test
     @Order(1)
     @DisplayName("saveAll return all object saved when successful")
     void saveAll_ReturnsAllObjectsSaved_whenSuccessful() {
-        BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(ITEMS_ORCAMENTO_LIST);
-        Orcamento ownerOrcamento = OrcamentoCreator.createsOrcamento();
+        BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(itemOrcamentoList);
 
-        ItemOrcamento item1 = ItemOrcamento.builder()
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(1)
-                .orcamento(ownerOrcamento)
-                .build();
-
-        ItemOrcamento item2 = ItemOrcamento.builder()
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(3)
-                .orcamento(ownerOrcamento)
-                .build();
-
-        ItemOrcamento item3 = ItemOrcamento.builder()
-                .insumo(InsumoCreator.createsInsumo())
-                .quantidade(89)
-                .orcamento(ownerOrcamento)
-                .build();
-
-        List<ItemOrcamento> itemsSaved = service.saveAll(List.of(item1, item2, item3));
+        List<ItemOrcamento> itemsSaved = service.saveAll(ItemOrcamentoUtils.newItemPostRequestList());
 
         Assertions.assertThat(itemsSaved)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.ITEMS_ORCAMENTO_LIST);
+                .containsExactlyElementsOf(this.itemOrcamentoList);
     }
 
     @Test
     @DisplayName("findAll returns all items when successful")
     @Order(2)
     void findAll_ReturnsAllItems_WhenSuccessful() {
-        BDDMockito.when(repository.findAll()).thenReturn(ITEMS_ORCAMENTO_LIST);
+        BDDMockito.when(repository.findAll()).thenReturn(itemOrcamentoList);
         List<ItemOrcamento> response = service.findAll();
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.ITEMS_ORCAMENTO_LIST);
+                .containsExactlyElementsOf(this.itemOrcamentoList);
     }
 
     @Test
     @DisplayName("findByIdOrElseThrowsNotFoundException returns the object found when successful")
     @Order(3)
     void findByIdOrElseThrowsNotFoundException_ReturnsObjectFound_WhenSuccessful() {
-        ItemOrcamento expectedItem = ITEMS_ORCAMENTO_LIST.get(0);
+        ItemOrcamento expectedItem = itemOrcamentoList.get(0);
         Long idToBeSearched = expectedItem.getId();
 
         BDDMockito.when(repository.findById(idToBeSearched)).thenReturn(Optional.of(expectedItem));
@@ -138,8 +97,8 @@ class ItemOrcamentoServiceTest {
     @DisplayName("findByOrcamento returns all items of the orcamento submitted when successul")
     @Order(5)
     void findByOrcamento_ReturnsAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
-        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(ITEMS_ORCAMENTO_LIST);
-        Orcamento orcamentoToBeSubmitted = OrcamentoCreator.createsOrcamento();
+        BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(itemOrcamentoList);
+        Orcamento orcamentoToBeSubmitted = OrcamentoUtils.createsOrcamento();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
 
         List<ItemOrcamento> response = service.findByOrcamento(idToBeSubmitted);
@@ -147,7 +106,7 @@ class ItemOrcamentoServiceTest {
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.ITEMS_ORCAMENTO_LIST);
+                .containsExactlyElementsOf(this.itemOrcamentoList);
     }
 
     @Test
@@ -156,7 +115,7 @@ class ItemOrcamentoServiceTest {
     void findByOrcamento_ReturnsAnEmptyList_WhenOrcamentoDoesNotContainsItems() {
         BDDMockito.when(repository.findAllByOrcamentoId(ArgumentMatchers.anyLong())).thenReturn(Collections.emptyList());
 
-        Orcamento orcamentoToBeSubmitted = OrcamentoCreator.createsOrcamento();
+        Orcamento orcamentoToBeSubmitted = OrcamentoUtils.createsOrcamento();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
 
         List<ItemOrcamento> response = service.findByOrcamento(idToBeSubmitted);
@@ -183,7 +142,7 @@ class ItemOrcamentoServiceTest {
     @DisplayName("delete remove item when successful")
     @Order(8)
     void delete_RemoveItem_WhenSuccessful() {
-        ItemOrcamento itemToBeDeleted = ITEMS_ORCAMENTO_LIST.get(0);
+        ItemOrcamento itemToBeDeleted = itemOrcamentoList.get(0);
         Long itemToBeDeletedId = itemToBeDeleted.getId();
 
         BDDMockito.doNothing().when(repository).delete(ArgumentMatchers.any(ItemOrcamento.class));
@@ -210,7 +169,7 @@ class ItemOrcamentoServiceTest {
     @DisplayName("deleteByOrcamentoId removes all items of the orcamento submitted when successful")
     @Order(10)
     void deleteByOrcamentoId_RemovesAllItemsOfTheOrcamentoSubmitted_WhenSuccessful() {
-        Orcamento orcamentoToBeSubmitted = OrcamentoCreator.createsOrcamento();
+        Orcamento orcamentoToBeSubmitted = OrcamentoUtils.createsOrcamento();
         Long idToBeSubmitted = orcamentoToBeSubmitted.getId();
 
         BDDMockito.doNothing().when(repository).deleteByOrcamentoId(idToBeSubmitted);
