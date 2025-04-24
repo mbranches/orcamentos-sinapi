@@ -4,6 +4,7 @@ import com.branches.mapper.ItemOrcamentoMapper;
 import com.branches.model.ItemOrcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
+import com.branches.response.ItemOrcamentoGetResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,35 +15,40 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ItemOrcamentoService {
-    private final ItemOrcamentoRepository REPOSITORY;
-    private final OrcamentoService ORCAMENTO_SERVICE;
+    private final ItemOrcamentoRepository repository;
+    private final OrcamentoService orcamentoService;
     private final ItemOrcamentoMapper mapper;
 
     public List<ItemOrcamento> saveAll(List<ItemOrcamentoPostRequest> itemPostRequestList) {
         List<ItemOrcamento> itemsToSave = mapper.toItemOrcamentoList(itemPostRequestList);
-        return REPOSITORY.saveAll(itemsToSave);
+        return repository.saveAll(itemsToSave);
     }
 
-    public List<ItemOrcamento> findAll() {
-        return REPOSITORY.findAll();
+    public List<ItemOrcamentoGetResponse> findAll() {
+        List<ItemOrcamento> response = repository.findAll();
+
+        return mapper.toItemOrcamentoGetResponseList(response);
     }
 
     public ItemOrcamento findByIdOrElseThrowsNotFoundException(Long id) {
-        return REPOSITORY.findById(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found"));
     }
 
-    public List<ItemOrcamento> findByOrcamento(Long orcamentoId) {
-        ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
-        return REPOSITORY.findAllByOrcamentoId(orcamentoId);
+    public List<ItemOrcamentoGetResponse> findByOrcamento(Long orcamentoId) {
+        orcamentoService.findByIdOrElseThrowNotFoundException(orcamentoId);
+
+        List<ItemOrcamento> response = repository.findAllByOrcamentoId(orcamentoId);
+
+        return mapper.toItemOrcamentoGetResponseList(response);
     }
 
     public void deleteByOrcamentoId(Long orcamentoId) {
-        ORCAMENTO_SERVICE.findByIdOrElseThrowNotFoundException(orcamentoId);
-        REPOSITORY.deleteByOrcamentoId(orcamentoId);
+        orcamentoService.findByIdOrElseThrowNotFoundException(orcamentoId);
+        repository.deleteByOrcamentoId(orcamentoId);
     }
 
     public void delete(Long id) {
-        REPOSITORY.delete(findByIdOrElseThrowsNotFoundException(id));
+        repository.delete(findByIdOrElseThrowsNotFoundException(id));
     }
 }

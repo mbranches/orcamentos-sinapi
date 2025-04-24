@@ -2,6 +2,7 @@ package com.branches.controller;
 
 import com.branches.model.ItemOrcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
+import com.branches.response.ItemOrcamentoGetResponse;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,27 +15,31 @@ import java.util.List;
 @RequestMapping("v1/items")
 @RestController
 public class ItemOrcamentoController {
-    private final ItemOrcamentoService SERVICE;
+    private final ItemOrcamentoService service;
 
     @GetMapping
-    public ResponseEntity<List<ItemOrcamento>> findAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(SERVICE.findAll());
+    public ResponseEntity<List<ItemOrcamentoGetResponse>> findAll(){
+        List<ItemOrcamentoGetResponse> response = service.findAll();
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/{idOrcamento}")
-    public ResponseEntity<List<ItemOrcamento>> findAllByOrcamento(@PathVariable Long idOrcamento) {
-        return ResponseEntity.ok(SERVICE.findByOrcamento(idOrcamento));
+    public ResponseEntity<List<ItemOrcamentoGetResponse>> findAllByOrcamento(@PathVariable Long idOrcamento) {
+        List<ItemOrcamentoGetResponse> response = service.findByOrcamento(idOrcamento);
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping
     public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
-        List<ItemOrcamento> response = SERVICE.saveAll(itemPostRequestList);
+        List<ItemOrcamento> response = service.saveAll(itemPostRequestList);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        SERVICE.delete(id);
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
