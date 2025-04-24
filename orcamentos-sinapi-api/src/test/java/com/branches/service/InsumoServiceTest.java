@@ -4,6 +4,7 @@ import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
+import com.branches.response.InsumoGetResponse;
 import com.branches.utils.InsumoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -26,57 +27,63 @@ class InsumoServiceTest {
     private InsumoMapper mapper;
     @Mock
     private InsumoRepository repository;
-
     private List<Insumo> insumoList;
+    private List<InsumoGetResponse> insumoGetResponseList;
 
     @BeforeEach
     void init() {
         insumoList = InsumoUtils.newInsumoList();
+        insumoGetResponseList = InsumoUtils.newInsumoGetResponseList();
     }
 
     @Test
     @Order(1)
-    @DisplayName("findAll returns all insumos when successful")
+    @DisplayName("findAll returns all insumos when the given argument is null")
     void findAll_ReturnsAllInsumos_WhenSuccessful() {
+        List<InsumoGetResponse> expectedResponse = insumoGetResponseList;
+
         BDDMockito.when(repository.findAll()).thenReturn(insumoList);
-        List<Insumo> insumosResponse = service.findAll();
+        BDDMockito.when(mapper.toInsumoGetResponseList(insumoList)).thenReturn(expectedResponse);
+
+        List<InsumoGetResponse> insumosResponse = service.findAll(null);
 
         Assertions.assertThat(insumosResponse)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(this.insumoList);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
     @Order(2)
-    @DisplayName("findByDescription returns found objects when successful")
-    void findByDescription_ReturnsFoundObjects_WhenSuccessful() {
-        BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(List.of(insumoList.get(0)));
+    @DisplayName("findAll returns found objects when the given argument is found")
+    void findAll_ReturnsFoundObjects_WhenTheGivenArgumentIsFound() {
+        InsumoGetResponse expectedInsumoGetResponse = this.insumoGetResponseList.get(0);
+        List<InsumoGetResponse> expectedResponse = List.of(expectedInsumoGetResponse);
 
-       Insumo expectedInsumo = this.insumoList.get(0);
+        String descriptionToBeSearched = expectedInsumoGetResponse.getDescricao();
 
-        String descriptionToBeSearched = expectedInsumo.getDescricao();
-        List<Insumo> insumosResponse = service.findByDescription(descriptionToBeSearched);
+        List<Insumo> foundInsumo = List.of(insumoList.get(0));
+        BDDMockito.when(repository.findAllByDescricaoContaining(descriptionToBeSearched)).thenReturn(foundInsumo);
+        BDDMockito.when(mapper.toInsumoGetResponseList(foundInsumo)).thenReturn(expectedResponse);
 
-        Assertions.assertThat(insumosResponse)
+        List<InsumoGetResponse> response = service.findAll(descriptionToBeSearched);
+
+        Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .hasSize(1);
-
-        Assertions.assertThat(insumosResponse.get(0))
-                .isEqualTo(expectedInsumo);
+                .containsExactlyElementsOf(expectedResponse);
     }
 
     @Test
     @Order(3)
-    @DisplayName("findByDescription returns empty list when description not exists")
-    void findByDescription_ReturnsEmptyList_WhenDescriptionNotExists() {
+    @DisplayName("findAll returns an empty list when the given argument is not found")
+    void findAll_ReturnsEmptyList_WhenTheGivenArgumentIsNotFound() {
         BDDMockito.when(repository.findAllByDescricaoContaining(ArgumentMatchers.anyString())).thenReturn(Collections.emptyList());
 
         String randomDescription =  "xaxa";
-        List<Insumo> insumosResponse = service.findByDescription(randomDescription);
+        List<InsumoGetResponse> response = service.findAll(randomDescription);
 
-        Assertions.assertThat(insumosResponse)
+        Assertions.assertThat(response)
                 .isNotNull()
                 .isEmpty();
     }
