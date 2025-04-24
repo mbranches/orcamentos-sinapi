@@ -4,7 +4,7 @@ import com.branches.mapper.OrcamentoMapper;
 import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
-import com.branches.utils.OrcamentoCreator;
+import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +36,7 @@ class OrcamentoServiceTest {
 
     @BeforeEach
     void init() {
-        ORCAMENTO_LIST.addAll(OrcamentoCreator.createsOrcamentoList());
+        ORCAMENTO_LIST.addAll(OrcamentoUtils.createsOrcamentoList());
     }
 
     @Test
@@ -57,9 +57,9 @@ class OrcamentoServiceTest {
     @Order(2)
     @DisplayName("save returns created object when successful")
     void save_ReturnsCreatedObject_WhenSuccessful() {
-        Orcamento orcamentoExpected = OrcamentoCreator.createsOrcamento();
+        Orcamento orcamentoExpected = OrcamentoUtils.createsOrcamento();
         OrcamentoPostRequest orcamentoToBeSaved = OrcamentoPostRequest.builder().nome("Orçamento 1").build();
-        Orcamento orcamentoMapped = OrcamentoCreator.createsOrcamento();
+        Orcamento orcamentoMapped = OrcamentoUtils.createsOrcamento();
         orcamentoMapped.setId(null);
 
         BDDMockito.when(repository.save(ArgumentMatchers.any(Orcamento.class))).thenReturn(orcamentoExpected);

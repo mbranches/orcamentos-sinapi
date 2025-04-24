@@ -2,7 +2,7 @@ package com.branches.utils;
 
 import com.branches.model.Insumo;
 
-public class InsumoCreator {
+public class InsumoUtils {
     public static Insumo createsInsumo() {
         return Insumo.builder()
                 .id(1L)

@@ -4,7 +4,7 @@ import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
-import com.branches.utils.InsumoCreator;
+import com.branches.utils.InsumoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -105,7 +105,7 @@ class InsumoServiceTest {
                 .preco(20D)
                 .build();;
 
-        List<Insumo> insumosExpected = List.of(InsumoCreator.createsInsumo());
+        List<Insumo> insumosExpected = List.of(InsumoUtils.createsInsumo());
 
         BDDMockito.when(mapper.toInsumoList(List.of(insumoToBeSaved))).thenReturn(List.of(insumoMapped));
         BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(insumosExpected);

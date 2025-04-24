@@ -4,7 +4,7 @@ import com.branches.model.Orcamento;
 
 import java.util.List;
 
-public class OrcamentoCreator {
+public class OrcamentoUtils {
     public static Orcamento createsOrcamento() {
         return Orcamento.builder()
                 .id(1L)
