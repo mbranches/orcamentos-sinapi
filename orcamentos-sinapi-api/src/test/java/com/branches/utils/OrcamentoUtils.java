@@ -1,19 +1,19 @@
 package com.branches.utils;
 
 import com.branches.model.Orcamento;
+import com.branches.request.OrcamentoPostRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrcamentoUtils {
-    public static Orcamento createsOrcamento() {
-        return Orcamento.builder()
+    public static List<Orcamento> newOrcamentoList() {
+        Orcamento orcamento1 = Orcamento.builder()
                 .id(1L)
                 .nome("Orçamento 1")
                 .nomeCliente("Cliente 1")
                 .build();
-    }
 
-    public static List<Orcamento> createsOrcamentoList() {
         Orcamento orcamento2 = Orcamento.builder()
                 .id(2L)
                 .nome("Orcamento 2")
@@ -26,6 +26,29 @@ public class OrcamentoUtils {
                 .nomeCliente("Cliente 3")
                 .build();
 
-        return List.of(createsOrcamento(), orcamento2, orcamento3);
+        return new ArrayList<>(List.of(orcamento1, orcamento2, orcamento3));
+    }
+
+    public static Orcamento newOrcamentoSaved() {
+        return Orcamento.builder()
+                .id(1L)
+                .nome("Orçamento 1")
+                .nomeCliente("Cliente 1")
+                .build();
+    }
+
+    public static Orcamento newOrcamentoToSaved() {
+        return Orcamento.builder()
+                .id(4L)
+                .nome("Orçamento 4")
+                .nomeCliente("Cliente 4")
+                .build();
+    }
+
+    public static OrcamentoPostRequest newOrcamentoPostRequest() {
+        return OrcamentoPostRequest.builder()
+                .nome("Orçamento 4")
+                .nomeCliente("Cliente 4")
+                .build();
     }
 }

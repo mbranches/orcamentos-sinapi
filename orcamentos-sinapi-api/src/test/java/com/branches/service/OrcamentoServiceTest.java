@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -32,34 +31,34 @@ class OrcamentoServiceTest {
     @Mock
     private OrcamentoMapper mapper;
 
-    private final List<Orcamento> ORCAMENTO_LIST = new ArrayList<>();
+    private List<Orcamento> orcamentoList;
 
     @BeforeEach
     void init() {
-        ORCAMENTO_LIST.addAll(OrcamentoUtils.createsOrcamentoList());
+        orcamentoList = OrcamentoUtils.newOrcamentoList();
     }
 
     @Test
     @Order(1)
     @DisplayName("findAll return all orcamento when successful")
     void findAll_ReturnsAllOrcamento_WhenSuccessful() {
-        BDDMockito.when(repository.findAll()).thenReturn(ORCAMENTO_LIST);
+        BDDMockito.when(repository.findAll()).thenReturn(orcamentoList);
 
         List<Orcamento> response = service.findAll();
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(ORCAMENTO_LIST);
+                .containsExactlyElementsOf(orcamentoList);
     }
 
     @Test
     @Order(2)
     @DisplayName("save returns created object when successful")
     void save_ReturnsCreatedObject_WhenSuccessful() {
-        Orcamento orcamentoExpected = OrcamentoUtils.createsOrcamento();
-        OrcamentoPostRequest orcamentoToBeSaved = OrcamentoPostRequest.builder().nome("Orçamento 1").build();
-        Orcamento orcamentoMapped = OrcamentoUtils.createsOrcamento();
+        Orcamento orcamentoExpected = OrcamentoUtils.newOrcamentoToSaved();
+        OrcamentoPostRequest orcamentoToBeSaved = OrcamentoUtils.newOrcamentoPostRequest();
+        Orcamento orcamentoMapped = OrcamentoUtils.newOrcamentoSaved();
         orcamentoMapped.setId(null);
 
         BDDMockito.when(repository.save(ArgumentMatchers.any(Orcamento.class))).thenReturn(orcamentoExpected);
@@ -76,7 +75,7 @@ class OrcamentoServiceTest {
     @Order(3)
     @DisplayName("findByIdOrElseThrowsNotFoundException returns object found when successful")
     void findByIdOrElseThrowNotFoundException_ReturnsObjectFound_WhenSuccessful() {
-        Orcamento orcamentoExpected = ORCAMENTO_LIST.get(0);
+        Orcamento orcamentoExpected = orcamentoList.get(0);
         Long idToBeSearched = orcamentoExpected.getId();
 
         BDDMockito.when(repository.findById(idToBeSearched)).thenReturn(Optional.of(orcamentoExpected));
@@ -104,7 +103,7 @@ class OrcamentoServiceTest {
     @DisplayName("update updates orcamento when successful")
     @Order(5)
     void update_UpdatesOrcamento_WhenSuccessful() {
-        Orcamento orcamentoToBeUpdated = ORCAMENTO_LIST.get(0);
+        Orcamento orcamentoToBeUpdated = orcamentoList.get(0);
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(orcamentoToBeUpdated));
 
@@ -117,7 +116,7 @@ class OrcamentoServiceTest {
     @DisplayName("update throws not found exception when orcamento doesn't exists")
     @Order(6)
     void update_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
-        Orcamento orcamentoToBeUpdated = ORCAMENTO_LIST.get(0);
+        Orcamento orcamentoToBeUpdated = orcamentoList.get(0);
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());
 
@@ -132,7 +131,7 @@ class OrcamentoServiceTest {
     @DisplayName("delete deletes orcamento when successful")
     @Order(7)
     void delete_DeletesOrcamento_WhenSuccessful() {
-        Orcamento orcamentoToBeDeleted = ORCAMENTO_LIST.get(0);
+        Orcamento orcamentoToBeDeleted = orcamentoList.get(0);
         Long orcamentoToBeDeletedId = orcamentoToBeDeleted.getId();
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(orcamentoToBeDeleted));
@@ -158,7 +157,7 @@ class OrcamentoServiceTest {
     @DisplayName("findAllByName returns all objects found when successful")
     @Order(9)
     void findAllByName_ReturnsAllObjectsFound_WhenSuccessful() {
-        Orcamento expectedOrcamento = ORCAMENTO_LIST.get(0);
+        Orcamento expectedOrcamento = orcamentoList.get(0);
         String nameToBeSearched = expectedOrcamento.getNome();
 
         List<Orcamento> expectedResponse = List.of(expectedOrcamento);

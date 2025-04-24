@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ItemOrcamentoUtils {
     public static List<ItemOrcamento> newItemOrcamentoList() {
-        Orcamento orcamento = OrcamentoUtils.createsOrcamento();
+        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
         Insumo insumo = InsumoUtils.newInsumoSaved();
 
         ItemOrcamento item1 = ItemOrcamento.builder()
@@ -38,7 +38,7 @@ public class ItemOrcamentoUtils {
     }
 
     public static List<ItemOrcamentoPostRequest> newItemPostRequestList() {
-        Orcamento orcamento = OrcamentoUtils.createsOrcamento();
+        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
 
         ItemOrcamentoPostRequest item1 = ItemOrcamentoPostRequest.builder()
                 .id(1L)
