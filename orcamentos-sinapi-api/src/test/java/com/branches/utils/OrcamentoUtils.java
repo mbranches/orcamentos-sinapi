@@ -4,6 +4,7 @@ import com.branches.model.Orcamento;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
+import com.branches.response.OrcamentoPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,14 @@ public class OrcamentoUtils {
                 .id(1L)
                 .nome("Novo nome")
                 .nomeCliente("Cliente 1")
+                .build();
+    }
+
+    public static OrcamentoPostResponse newOrcamentoPostResponse() {
+        return OrcamentoPostResponse.builder()
+                .id(4L)
+                .nome("Orçamento 4")
+                .nomeCliente("Cliente 4")
                 .build();
     }
 }

@@ -6,6 +6,7 @@ import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
+import com.branches.response.OrcamentoPostResponse;
 import com.branches.utils.OrcamentoUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -98,19 +99,23 @@ class OrcamentoServiceTest {
     @Order(4)
     @DisplayName("save returns created object when successful")
     void save_ReturnsCreatedObject_WhenSuccessful() {
-        Orcamento orcamentoExpected = OrcamentoUtils.newOrcamentoToSaved();
+        Orcamento orcamentoSaved = OrcamentoUtils.newOrcamentoToSaved();
         OrcamentoPostRequest orcamentoToBeSaved = OrcamentoUtils.newOrcamentoPostRequest();
-        Orcamento orcamentoMapped = OrcamentoUtils.newOrcamentoSaved();
+
+        Orcamento orcamentoMapped = OrcamentoUtils.newOrcamentoToSaved();
         orcamentoMapped.setId(null);
 
-        BDDMockito.when(repository.save(ArgumentMatchers.any(Orcamento.class))).thenReturn(orcamentoExpected);
-        BDDMockito.when(mapper.toOrcamento(orcamentoToBeSaved)).thenReturn(orcamentoMapped);
+        OrcamentoPostResponse expectedResponse = OrcamentoUtils.newOrcamentoPostResponse();
 
-        Orcamento returnedOrcamento = service.save(orcamentoToBeSaved);
+        BDDMockito.when(mapper.toOrcamento(orcamentoToBeSaved)).thenReturn(orcamentoMapped);
+        BDDMockito.when(repository.save(orcamentoMapped)).thenReturn(orcamentoSaved);
+        BDDMockito.when(mapper.toOrcamentoPostResponse(orcamentoSaved)).thenReturn(expectedResponse);
+
+        OrcamentoPostResponse returnedOrcamento = service.save(orcamentoToBeSaved);
 
         Assertions.assertThat(returnedOrcamento)
                 .isNotNull()
-                .isEqualTo(orcamentoExpected);
+                .isEqualTo(expectedResponse);
     }
 
     @Test
