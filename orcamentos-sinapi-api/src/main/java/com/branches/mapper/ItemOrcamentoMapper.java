@@ -3,6 +3,7 @@ package com.branches.mapper;
 import com.branches.model.ItemOrcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
+import com.branches.response.ItemOrcamentoPostResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.springframework.context.annotation.Primary;
@@ -15,4 +16,6 @@ public interface ItemOrcamentoMapper {
     List<ItemOrcamento> toItemOrcamentoList(List<ItemOrcamentoPostRequest> itemPostRequestList);
 
     List<ItemOrcamentoGetResponse> toItemOrcamentoGetResponseList(List<ItemOrcamento> itemOrcamentoList);
+
+    List<ItemOrcamentoPostResponse> toItemOrcamentoPostResponseList(List<ItemOrcamento> itemOrcamentoList);
 }

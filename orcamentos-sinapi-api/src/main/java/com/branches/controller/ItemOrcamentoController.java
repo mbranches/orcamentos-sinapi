@@ -3,6 +3,7 @@ package com.branches.controller;
 import com.branches.model.ItemOrcamento;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
+import com.branches.response.ItemOrcamentoPostResponse;
 import com.branches.service.ItemOrcamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,9 @@ public class ItemOrcamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<ItemOrcamento>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
-        List<ItemOrcamento> response = service.saveAll(itemPostRequestList);
+    public ResponseEntity<List<ItemOrcamentoPostResponse>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
+        List<ItemOrcamentoPostResponse> response = service.saveAll(itemPostRequestList);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

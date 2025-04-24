@@ -5,6 +5,7 @@ import com.branches.model.ItemOrcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
+import com.branches.response.ItemOrcamentoPostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,12 @@ public class ItemOrcamentoService {
     private final OrcamentoService orcamentoService;
     private final ItemOrcamentoMapper mapper;
 
-    public List<ItemOrcamento> saveAll(List<ItemOrcamentoPostRequest> itemPostRequestList) {
+    public List<ItemOrcamentoPostResponse> saveAll(List<ItemOrcamentoPostRequest> itemPostRequestList) {
         List<ItemOrcamento> itemsToSave = mapper.toItemOrcamentoList(itemPostRequestList);
-        return repository.saveAll(itemsToSave);
+
+        List<ItemOrcamento> response = repository.saveAll(itemsToSave);
+
+        return mapper.toItemOrcamentoPostResponseList(response);
     }
 
     public List<ItemOrcamentoGetResponse> findAll() {
@@ -44,7 +48,6 @@ public class ItemOrcamentoService {
     }
 
     public void deleteByOrcamentoId(Long orcamentoId) {
-        orcamentoService.findByIdOrElseThrowNotFoundException(orcamentoId);
         repository.deleteByOrcamentoId(orcamentoId);
     }
 
