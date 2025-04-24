@@ -1,9 +1,11 @@
 package com.branches.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "orcamento")
 @Setter
@@ -22,4 +24,7 @@ public class Orcamento {
     private String nomeCliente;
     @Column(name = "data_criacao")
     private LocalDate dataCriacao;
+    @OneToMany(mappedBy = "orcamento", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ItemOrcamento> items;
 }

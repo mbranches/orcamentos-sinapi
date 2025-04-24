@@ -7,26 +7,19 @@ import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
 import com.branches.response.OrcamentoPostResponse;
-import org.springframework.context.annotation.Lazy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrcamentoService {
-    private OrcamentoMapper mapper;
-    private OrcamentoRepository repository;
-    private ItemOrcamentoService itemService;
-
-    public OrcamentoService(OrcamentoMapper mapper, OrcamentoRepository repository, @Lazy ItemOrcamentoService itemService) {
-        this.mapper = mapper;
-        this.repository = repository;
-        this.itemService = itemService;
-    }
+    private final OrcamentoMapper mapper;
+    private final OrcamentoRepository repository;
 
     public OrcamentoPostResponse save(OrcamentoPostRequest orcamentoPostRequest) {
         Orcamento orcamento = mapper.toOrcamento(orcamentoPostRequest);
@@ -55,10 +48,9 @@ public class OrcamentoService {
         repository.save(orcamentoToUpdate);
     }
 
-    @Transactional
     public void delete(Long orcamentoId) {
-        findByIdOrElseThrowNotFoundException(orcamentoId);
-        itemService.deleteByOrcamentoId(orcamentoId);
-        repository.deleteById(orcamentoId);
+        Orcamento orcamentoToDelete = findByIdOrElseThrowNotFoundException(orcamentoId);
+
+        repository.delete(orcamentoToDelete);
     }
 }
