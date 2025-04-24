@@ -176,26 +176,26 @@ class OrcamentoServiceTest {
     }
 
     @Test
-    @DisplayName("delete deletes orcamento when successful")
+    @DisplayName("deleteById deletes orcamento when successful")
     @Order(9)
-    void delete_DeletesOrcamento_WhenSuccessful() {
+    void deleteById_DeletesOrcamento_WhenSuccessful() {
         Orcamento orcamentoToBeDeleted = orcamentoList.get(0);
         Long orcamentoToBeDeletedId = orcamentoToBeDeleted.getId();
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(orcamentoToBeDeleted));
 
-        Assertions.assertThatNoException().isThrownBy(() -> service.delete(orcamentoToBeDeletedId));
+        Assertions.assertThatNoException().isThrownBy(() -> service.deleteById(orcamentoToBeDeletedId));
     }
 
     @Test
-    @DisplayName("delete throws not found exception when orcamento doesn't exists")
+    @DisplayName("deleteById throws not found exception when orcamento doesn't exists")
     @Order(10)
-    void delete_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
+    void deleteById_ThrowsNotFoundException_WhenOrcamentoDoesNotExists() {
         Long randomId = 13131L;
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> service.delete(randomId))
+        Assertions.assertThatThrownBy(() -> service.deleteById(randomId))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("Orcamento Not Found");
     }

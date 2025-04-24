@@ -160,7 +160,7 @@ class ItemOrcamentoServiceTest {
     @Test
     @DisplayName("delete removes item when successful")
     @Order(8)
-    void delete_RemovesItem_WhenSuccessful() {
+    void delete_ById_RemovesItem_WhenSuccessful() {
         ItemOrcamento itemToBeDeleted = itemOrcamentoList.get(0);
         Long itemToBeDeletedId = itemToBeDeleted.getId();
 
@@ -174,7 +174,7 @@ class ItemOrcamentoServiceTest {
     @Test
     @DisplayName("delete throws not found exception when id is not found")
     @Order(9)
-    void delete_ThrowsNotFoundException_WhenIdIsNotFound() {
+    void delete_ById_ThrowsNotFoundException_WhenIdIsNotFound() {
         Long randomIdToBeDeleted = 440921L;
 
         BDDMockito.when(repository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.empty());

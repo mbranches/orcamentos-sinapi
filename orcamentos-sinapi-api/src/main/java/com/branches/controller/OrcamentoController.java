@@ -1,6 +1,5 @@
 package com.branches.controller;
 
-import com.branches.model.Orcamento;
 import com.branches.request.OrcamentoPostRequest;
 import com.branches.request.OrcamentoPutRequest;
 import com.branches.response.OrcamentoGetResponse;
@@ -34,15 +33,15 @@ public class OrcamentoController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateOrcamento(@RequestBody OrcamentoPutRequest orcamentoPutRequest) {
+    public ResponseEntity<Void> update(@RequestBody OrcamentoPutRequest orcamentoPutRequest) {
         service.update(orcamentoPutRequest);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{idOrcamento}")
-    public ResponseEntity<Void> deleteOrcamento(@PathVariable Long idOrcamento) {
-        service.delete(idOrcamento);
+    public ResponseEntity<Void> deleteById(@PathVariable Long idOrcamento) {
+        service.deleteById(idOrcamento);
 
         return ResponseEntity.noContent().build();
     }

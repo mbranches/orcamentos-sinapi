@@ -48,7 +48,7 @@ public class OrcamentoService {
         repository.save(orcamentoToUpdate);
     }
 
-    public void delete(Long orcamentoId) {
+    public void deleteById(Long orcamentoId) {
         Orcamento orcamentoToDelete = findByIdOrElseThrowNotFoundException(orcamentoId);
 
         repository.delete(orcamentoToDelete);
