@@ -1,6 +1,5 @@
 package com.branches.controller;
 
-import com.branches.model.Insumo;
 import com.branches.request.InsumoPostRequest;
 import com.branches.response.InsumoGetResponse;
 import com.branches.response.InsumoPostResponse;

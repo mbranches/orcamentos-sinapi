@@ -47,10 +47,6 @@ public class ItemOrcamentoService {
         return mapper.toItemOrcamentoGetResponseList(response);
     }
 
-    public void deleteByOrcamentoId(Long orcamentoId) {
-        repository.deleteByOrcamentoId(orcamentoId);
-    }
-
     public void delete(Long id) {
         repository.delete(findByIdOrElseThrowsNotFoundException(id));
     }
