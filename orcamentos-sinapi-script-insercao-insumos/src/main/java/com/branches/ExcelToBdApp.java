@@ -18,6 +18,6 @@ public class ExcelToBdApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        readerXlsx.readerAllInsumos().forEach(service::save);
+        service.saveAll(readerXlsx.readerAllInsumos());
     }
 }
