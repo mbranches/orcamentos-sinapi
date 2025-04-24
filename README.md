@@ -43,7 +43,7 @@ Antes de iniciar a aplicação, é necessário configurar as variáveis de ambie
 
 #### b. **Variáveis Spring Boot (`src/main/resources`)**
 - Navegue até o diretório `src/main/resources` do módulo `orcamentos-sinapi-api`.
-- Copie o arquivo `.envTemplate` para `.env` e configure as variáveis conforme necessário para o Spring Boot.
+- Renomeie o arquivo `.envTemplate` para `.env` e configure as variáveis conforme necessário para o Spring Boot.
 
 ### 2. Rodar Docker
 - A partir da raíz do repositório rodar o seguinte comando:
@@ -60,7 +60,7 @@ Antes de iniciar a aplicação, é necessário configurar as variáveis de ambie
     ```
 
 ### 4. Rode o Script de Inserção de Insumos
-- Para uma melhor experiência é fundamental ter o banco de dados povoado. Para isso, a partir da raíz do repositório, com a **API inicializada** rode os seguintes comandos:
+- Para uma melhor experiência é fundamental ter o banco de dados povoado. Para isso, a partir da raíz do repositório, com a **API inicializada**, rode os seguintes comandos:
     ```
       cd orcamentos-sinapi-script-insercao-insumos
       mvn spring-boot:run
