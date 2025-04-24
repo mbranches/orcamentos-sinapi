@@ -87,8 +87,8 @@ class InsumoServiceTest {
 
     @Test
     @Order(4)
-    @DisplayName("save returns the saved object when successful")
-    void save_ReturnsTheSavedObject_WhenSuccessful() {
+    @DisplayName("saveAll returns the saved objects when successful")
+    void saveAll_ReturnsTheSavedObjectS_WhenSuccessful() {
         InsumoPostRequest insumoToBeSaved = InsumoPostRequest.builder()
                 .codigo(1L)
                 .descricao("Areia")
@@ -105,16 +105,16 @@ class InsumoServiceTest {
                 .preco(20D)
                 .build();;
 
-        Insumo insumoExpected = InsumoCreator.createsInsumo();
+        List<Insumo> insumosExpected = List.of(InsumoCreator.createsInsumo());
 
-        BDDMockito.when(mapper.toInsumo(insumoToBeSaved)).thenReturn(insumoMapped);
-        BDDMockito.when(repository.save(ArgumentMatchers.any(Insumo.class))).thenReturn(insumoExpected);
+        BDDMockito.when(mapper.toInsumoList(List.of(insumoToBeSaved))).thenReturn(List.of(insumoMapped));
+        BDDMockito.when(repository.saveAll(ArgumentMatchers.anyList())).thenReturn(insumosExpected);
 
-        Insumo insumoResponse = service.save(insumoToBeSaved);
+        List<Insumo> insumoResponse = service.saveAll(List.of(insumoToBeSaved));
 
         Assertions.assertThat(insumoResponse)
                 .isNotNull()
-                .isEqualTo(insumoExpected);
+                .isEqualTo(insumosExpected);
     }
 
 }
