@@ -3,6 +3,7 @@ package com.branches.controller;
 import com.branches.model.Insumo;
 import com.branches.request.InsumoPostRequest;
 import com.branches.response.InsumoGetResponse;
+import com.branches.response.InsumoPostResponse;
 import com.branches.service.InsumoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,8 @@ public class InsumoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<Insumo>> saveAll(@RequestBody List<InsumoPostRequest> insumoPostRequestList){
-        List<Insumo> response = service.saveAll(insumoPostRequestList);
+    public ResponseEntity<List<InsumoPostResponse>> saveAll(@RequestBody List<InsumoPostRequest> insumoPostRequestList){
+        List<InsumoPostResponse> response = service.saveAll(insumoPostRequestList);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

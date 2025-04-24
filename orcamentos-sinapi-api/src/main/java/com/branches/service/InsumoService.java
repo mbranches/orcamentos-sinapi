@@ -5,6 +5,7 @@ import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
 import com.branches.request.InsumoPostRequest;
 import com.branches.response.InsumoGetResponse;
+import com.branches.response.InsumoPostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +24,11 @@ public class InsumoService {
         return mapper.toInsumoGetResponseList(response);
     }
 
-    public List<Insumo> saveAll(List<InsumoPostRequest> insumoPostRequestList) {
+    public List<InsumoPostResponse> saveAll(List<InsumoPostRequest> insumoPostRequestList) {
         List<Insumo> insumosToSave = mapper.toInsumoList(insumoPostRequestList);
 
-        return repository.saveAll(insumosToSave);
+        List<Insumo> response = repository.saveAll(insumosToSave);
+
+        return mapper.toInsumoPostResponseList(response);
     }
 }
