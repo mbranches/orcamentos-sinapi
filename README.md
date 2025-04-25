@@ -25,6 +25,7 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 - ![Java](https://img.shields.io/badge/Java-17-blue?logo=java) - Linguagem de programação utilizada.
 - ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-brightgreen?logo=spring) - Framework para criação de APIs REST em Java.
 - ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker) - Conteinerização da aplicação.
+- ![MySQL](https://img.shields.io/badge/MySQL-black?logo=mysql) - Banco de dados utilizado para persistência de dados.
 - ![JavaFX](https://img.shields.io/badge/JavaFX-OpenJFX-orange) - Interface interativa e de fácil utilização.
 - ![Maven](https://img.shields.io/badge/Maven-Build-blue?logo=apachemaven) - Gerencia dependências e automação de builds para projetos Java.
 
@@ -55,6 +56,8 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 ### 1. Configuração das Variáveis de Ambiente
 
 Antes de iniciar a aplicação, é necessário configurar as variáveis de ambiente para garantir que todos os módulos funcionem corretamente.
+
+Obs: Caso queira utilizar as credenciais predefinidas, **você pode pular essa etapa**.
 
 #### a. **Variáveis Docker (`orcamentos-sinapi-api`)**
 - Navegue até o diretório do módulo `orcamentos-sinapi-api`.
