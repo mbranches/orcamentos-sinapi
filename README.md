@@ -57,13 +57,12 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 Antes de iniciar a aplicação, é necessário configurar as variáveis de ambiente para garantir que todos os módulos funcionem corretamente.
 
-Obs: Caso queira utilizar as credenciais predefinidas, **você pode pular essa etapa**.
-
 #### a. **Variáveis Docker (`orcamentos-sinapi-api`)**
 - Navegue até o diretório do módulo `orcamentos-sinapi-api`.
 - Renomeie o arquivo `.envTemplate` para `.env` e preencha as variáveis com os valores apropriados para o seu ambiente de desenvolvimento.
 
 #### b. **Variáveis Spring Boot (`src/main/resources`)**
+Obs: Caso queira utilizar as credenciais predefinidas em `application.yaml`, **você pode pular essa etapa**.
 - Navegue até o diretório `src/main/resources` do módulo `orcamentos-sinapi-api`.
 - Renomeie o arquivo `.envTemplate` para `.env` e configure as variáveis conforme necessário para o Spring Boot.
 
