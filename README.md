@@ -1,17 +1,15 @@
 ## Orçamentos Sinapi
 
----
-
-Sistema desktop para criação e gestão de orçamentos de insumos da construção civil, com base na tabela SINAPI.
+> Sistema desktop para criação e gestão de orçamentos de insumos da construção civil, com base na tabela SINAPI.
 
 Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 ---
 
 ## 📁 Estrutura do Repositório
-*  **orcamentos-sinapi-api:** Módulo onde está localizada API RestFul, desenvolvida com **Spring Boot**.
-*  **orcamentos-sinapi-application:**  Módulo responsável pelo Front-End, desenvolvido com JavaFX.
-*  **orcamentos-sinapi-script-insercao-insumos:** Módulo que contém um script que faz requisição POST na API com insumos lidos da tabela SINAPI, carregada em `src/main/resources/files`.
+*  [`orcamentos-sinapi-api`](./orcamentos-sinapi-api): Módulo da API RestFul, desenvolvida com **Spring Boot**.
+*  [`orcamentos-sinapi-application`](./orcamentos-sinapi-application): Front-End em **JavaFX**.
+*  [`orcamentos-sinapi-script-insercao-dados`](./orcamentos-sinapi-script-insercao-dados): Script que faz requisição POST na API com insumos, lidos da tabela SINAPI, carregada em `src/main/resources/files`, e um orçamento, a fim de melhorar a experiência de quem está testando a aplicação.
 
 ---
 
@@ -24,10 +22,11 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 ## 🛠️ Tecnologias Utilizadas
 
-- ![Java](https://img.shields.io/badge/Java-orange) - Linguagem de programação utilizada.
-- ![Spring Boot](https://img.shields.io/badge/Spring-Boot-grey) - Framework para criação de APIs REST em Java.
-- ![Docker](https://img.shields.io/badge/Docker-blue) - Conteinerização da aplicação.
-- ![JavaFX](https://img.shields.io/badge/JavaFX-orange) - Interface interativa e de fácil utilização.
+- ![Java](https://img.shields.io/badge/Java-17-blue?logo=java) - Linguagem de programação utilizada.
+- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-brightgreen?logo=spring) - Framework para criação de APIs REST em Java.
+- ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker) - Conteinerização da aplicação.
+- ![JavaFX](https://img.shields.io/badge/JavaFX-OpenJFX-orange) - Interface interativa e de fácil utilização.
+- ![Maven](https://img.shields.io/badge/Maven-Build-blue?logo=apachemaven) - Gerencia dependências e automação de builds para projetos Java.
 
 ---
 
