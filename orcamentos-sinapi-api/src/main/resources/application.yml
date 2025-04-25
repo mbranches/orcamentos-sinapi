@@ -2,6 +2,8 @@ server:
   port: 8090
 
 spring:
+  config:
+    import: optional:classpath:.env[.properties]
   datasource:
     url: jdbc:mysql://localhost:3308/orcamentos_sinapi?createDatabaseIfNotExist=true
     username: root
