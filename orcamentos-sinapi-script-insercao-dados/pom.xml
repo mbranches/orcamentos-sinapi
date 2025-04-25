@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.branches</groupId>
-	<artifactId>orcamentos-sinapi-script-insercao-insumos</artifactId>
+	<artifactId>orcamentos-sinapi-script-insercao-dados</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>script-insercao</name>
 	<description>Script para a inserção no banco de dados.</description>

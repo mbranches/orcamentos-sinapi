@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-@Log4j2
 @Service
 @RequiredArgsConstructor
 public class InsumoService {
@@ -18,6 +17,12 @@ public class InsumoService {
 
     public List<Insumo> saveAll(List<InsumoPostRequest> insumoPostRequests) {
         Insumo[] response = restTemplate.postForObject("http://localhost:8090/v1/insumos", insumoPostRequests, Insumo[].class);
+
+        return Arrays.asList(response);
+    }
+
+    public List<Insumo> findAll() {
+        Insumo[] response = restTemplate.getForObject("http://localhost:8090/v1/insumos", Insumo[].class);
 
         return Arrays.asList(response);
     }

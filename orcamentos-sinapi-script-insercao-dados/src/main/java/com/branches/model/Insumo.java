@@ -1,6 +1,8 @@
 package com.branches.model;
 
+import lombok.Data;
 
+@Data
 public class Insumo {
     private Long id;
     private Long codigo;

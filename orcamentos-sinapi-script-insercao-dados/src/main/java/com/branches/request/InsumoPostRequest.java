@@ -1,14 +1,12 @@
 package com.branches.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Builder
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class InsumoPostRequest {
     private Long codigo;
     private String descricao;
