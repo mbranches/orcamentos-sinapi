@@ -69,7 +69,7 @@ Antes de iniciar a aplicação, é necessário configurar as variáveis de ambie
 ---
   
 ## 🖥️ Como Inicializar o App Desktop
-- Para inicializar a interface, a partir da raíz do repositório, basta executar os seguintes comandos:
+- Para inicializar a interface, a partir da raíz do repositório, com o banco de dados e a API rodando, basta executar os seguintes comandos:
   ```
     cd orcamentos-sinapi-application
     mvn javafx:run
