@@ -43,6 +43,11 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
   <img src="./assets/tela-orcamentos.png" width="700"/>
 </div>
 
+### Modelagem do Banco de Dados
+<div style="text-align: center;">
+  <img src="./assets/modelo-bd.png" width="700"/>
+</div>
+
 ---
 
 ## 🚀  Como Rodar a API
