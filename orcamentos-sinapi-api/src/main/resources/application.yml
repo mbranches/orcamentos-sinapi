@@ -6,8 +6,8 @@ spring:
     import: optional:classpath:.env[.properties]
   datasource:
     url: jdbc:mysql://localhost:3308/orcamentos_sinapi?createDatabaseIfNotExist=true
-    username: ${ENV_ROOT_USERNAME}
-    password: ${ENV_ROOT_PASSWORD}
+    username: ${ENV_ROOT_USERNAME:root}
+    password: ${ENV_ROOT_PASSWORD:1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
