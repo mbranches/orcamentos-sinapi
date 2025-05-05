@@ -57,14 +57,13 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 Antes de iniciar a aplicação, é necessário configurar as variáveis de ambiente para garantir que todos os módulos funcionem corretamente.
 
-#### a. **Variáveis Docker (`backend`)**
+#### a. **Variável Docker (`backend`)**
 - Navegue até o diretório do módulo `backend`.
-- Renomeie o arquivo `.envTemplate` para `.env` e preencha as variáveis com os valores apropriados para o seu ambiente de desenvolvimento.
+- Renomeie o arquivo `.envTemplate` para `.env` e preencha a variável com o valor desejado para o seu ambiente de desenvolvimento.
 
-#### b. **Variáveis Spring Boot (`src/main/resources`)**
-Obs: Caso queira utilizar as credenciais predefinidas em `application.yaml`, **você pode pular essa etapa**.
+#### b. **Variável Spring Boot (`backend/src/main/resources`)**
 - Navegue até o diretório `src/main/resources` do módulo `backend`.
-- Renomeie o arquivo `.envTemplate` para `.env` e configure as variáveis conforme necessário para o Spring Boot.
+- Renomeie o arquivo `.envTemplate` para `.env` e configure `ENV_ROOT_PASSWORD` igual o definido no `.env` da raíz do projeto.
 
 ### 2. Rodar Docker
 - A partir da raíz do repositório rodar o seguinte comando:
