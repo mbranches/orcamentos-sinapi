@@ -7,8 +7,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>orcamentos-sinapi-application</module>
-        <module>orcamentos-sinapi-api</module>
-        <module>orcamentos-sinapi-script-insercao-dados</module>
+        <module>frontend</module>
+        <module>backend</module>
+        <module>script-insercao-dados</module>
     </modules>
 </project>

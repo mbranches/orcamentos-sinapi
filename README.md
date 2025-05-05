@@ -7,9 +7,9 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 ---
 
 ## 📁 Estrutura do Repositório
-*  [`orcamentos-sinapi-api`](./orcamentos-sinapi-api): Módulo da API RestFul, desenvolvida com **Spring Boot**.
-*  [`orcamentos-sinapi-application`](./orcamentos-sinapi-application): Front-End em **JavaFX**.
-*  [`orcamentos-sinapi-script-insercao-dados`](./orcamentos-sinapi-script-insercao-dados): Script que faz requisição POST na API com insumos, lidos da tabela SINAPI, carregada em `src/main/resources/files`, e um orçamento, a fim de melhorar a experiência de quem está testando a aplicação.
+*  [`backend`](./backend): Módulo da API RestFul, desenvolvida com **Spring Boot**.
+*  [`frontend`](./frontend): Front-End em **JavaFX**.
+*  [`script-insercao-dados`](./script-insercao-dados): Script que faz requisição POST na API com insumos, lidos da tabela SINAPI, carregada em `src/main/resources/files`, e um orçamento, a fim de melhorar a experiência de quem está testando a aplicação.
 
 ---
 
@@ -57,33 +57,33 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 Antes de iniciar a aplicação, é necessário configurar as variáveis de ambiente para garantir que todos os módulos funcionem corretamente.
 
-#### a. **Variáveis Docker (`orcamentos-sinapi-api`)**
-- Navegue até o diretório do módulo `orcamentos-sinapi-api`.
+#### a. **Variáveis Docker (`backend`)**
+- Navegue até o diretório do módulo `backend`.
 - Renomeie o arquivo `.envTemplate` para `.env` e preencha as variáveis com os valores apropriados para o seu ambiente de desenvolvimento.
 
 #### b. **Variáveis Spring Boot (`src/main/resources`)**
 Obs: Caso queira utilizar as credenciais predefinidas em `application.yaml`, **você pode pular essa etapa**.
-- Navegue até o diretório `src/main/resources` do módulo `orcamentos-sinapi-api`.
+- Navegue até o diretório `src/main/resources` do módulo `backend`.
 - Renomeie o arquivo `.envTemplate` para `.env` e configure as variáveis conforme necessário para o Spring Boot.
 
 ### 2. Rodar Docker
 - A partir da raíz do repositório rodar o seguinte comando:
     ```
-      cd orcamentos-sinapi-api
+      cd backend
       docker-compose up -d
     ```
   
 ### 3. Inicializar Spring Boot
 - Da raíz do projeto rodar os seguintes comandos:
     ```
-      cd orcamentos-sinapi-api
+      cd backend
       mvn spring-boot:run
     ```
 
 ### 4. Rode o Script de Inserção de Insumos
 - Para uma melhor experiência é fundamental ter o banco de dados povoado. Para isso, a partir da raíz do repositório, com a **API inicializada**, rode os seguintes comandos:
     ```
-      cd orcamentos-sinapi-script-insercao-insumos
+      cd script-insercao-dados
       mvn spring-boot:run
     ```
   
@@ -92,6 +92,6 @@ Obs: Caso queira utilizar as credenciais predefinidas em `application.yaml`, **v
 ## 🖥️ Como Inicializar o App Desktop
 - Para inicializar a interface, a partir da raíz do repositório, com o banco de dados e a API rodando, basta executar os seguintes comandos:
   ```
-    cd orcamentos-sinapi-application
+    cd frontend
     mvn javafx:run
   ```
