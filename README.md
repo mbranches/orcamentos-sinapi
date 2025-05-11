@@ -35,6 +35,7 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 
 ### Interface do App Desktop
 <div style="text-align: center;">
+  <img src="assets/tela-inicial.png" width="700"/>
 </div>
 <div style="text-align: center;">
   <img src="./assets/tela-orcamento.png" width="700"/>
