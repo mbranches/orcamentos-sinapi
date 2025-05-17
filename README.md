@@ -9,7 +9,6 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 ## 📁 Estrutura do Repositório
 *  [`backend`](./backend): Módulo da API RestFul, desenvolvida com **Spring Boot**.
 *  [`frontend`](./frontend): Front-End em **JavaFX**.
-*  [`script-insercao-dados`](./script-insercao-dados): Script que faz requisição POST na API com insumos, lidos da tabela SINAPI, carregada em `src/main/resources/files`, e um orçamento, a fim de melhorar a experiência de quem está testando a aplicação.
 
 ---
 
@@ -73,18 +72,11 @@ Antes de iniciar a aplicação, é necessário configurar as variáveis de ambie
     ```
   
 ### 3. Inicializar Spring Boot
-- Da raíz do projeto rodar os seguintes comandos:
+- De dentro do módulo backend rodar os seguintes comandos:
     ```
-      cd backend
       mvn spring-boot:run
     ```
-
-### 4. Rode o Script de Inserção de Insumos
-- Para uma melhor experiência é fundamental ter o banco de dados povoado. Para isso, a partir da raíz do repositório, com a **API inicializada**, rode os seguintes comandos:
-    ```
-      cd script-insercao-dados
-      mvn spring-boot:run
-    ```
+Obs: Ao inicializar a API é inserido os insumos lidos tabela SINAPI automaticamente.
   
 ---
   
