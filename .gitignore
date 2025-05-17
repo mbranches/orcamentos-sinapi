@@ -41,3 +41,4 @@ replay_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 /orcamentos-sinapi-api/src/main/resources/.env
+/backend/src/main/resources/.env
