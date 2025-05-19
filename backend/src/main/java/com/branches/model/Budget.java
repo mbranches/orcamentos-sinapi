@@ -9,11 +9,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "orcamento")
-@Setter
-@Getter
+@With
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Builder
 public class Budget {
     @Id

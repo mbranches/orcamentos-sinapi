@@ -2,7 +2,9 @@ package com.branches.request;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.With;
 
+@With
 @Data
 @Builder
 public class BudgetPutRequest {

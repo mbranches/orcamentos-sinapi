@@ -4,12 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity(name = "item_orcamento")
-@Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@Data
 public class BudgetItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +15,7 @@ public class BudgetItem {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "orcamentoid", nullable = false)
+    @ToString.Exclude
     private Budget budget;
     @ManyToOne
     @JoinColumn(name = "insumoid", nullable = false)
