@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,19 +26,26 @@ public class ItemOrcamentoService {
 
     @Transactional
     public ItemOrcamentoPostResponse save(ItemOrcamentoPostRequest postRequest) {
-        Long idOrcamento = postRequest.getIdOrcamento();
+        Long orcamentoId = postRequest.getIdOrcamento();
+        Long insumoId = postRequest.getIdInsumo();
 
-        Orcamento orcamento = orcamentoService.findByIdOrElseThrowNotFoundException(idOrcamento);
-        Insumo insumo = insumoService.findByIdOrElseThrowNotFoundException(postRequest.getIdInsumo());
+        Orcamento orcamento = orcamentoService.findByIdOrElseThrowNotFoundException(orcamentoId);
+        Insumo insumo = insumoService.findByIdOrElseThrowNotFoundException(insumoId);
 
-        ItemOrcamento itemOrcamento = mapper.toItemOrcamento(postRequest);
-        itemOrcamento.setOrcamento(orcamento);
-        itemOrcamento.setInsumo(insumo);
-        atualizaValorTotal(itemOrcamento);
+        Optional<ItemOrcamento> optionalItemOrcamentoAlreadySaved = repository.findByInsumo_IdAndOrcamento_Id(insumoId, orcamentoId);
 
-        ItemOrcamento response = repository.save(itemOrcamento);
+        ItemOrcamento itemOrcamentoToSave = mapper.toItemOrcamento(postRequest);
+        optionalItemOrcamentoAlreadySaved.ifPresent( itemOrcamentoAlreadySaved -> {
+            itemOrcamentoToSave.setId(itemOrcamentoAlreadySaved.getId());
+            itemOrcamentoToSave.setQuantidade(itemOrcamentoAlreadySaved.getQuantidade() + itemOrcamentoToSave.getQuantidade());
+        });
+        itemOrcamentoToSave.setOrcamento(orcamento);
+        itemOrcamentoToSave.setInsumo(insumo);
+        atualizaValorTotal(itemOrcamentoToSave);
 
-        orcamentoService.atualizarValorTotal(idOrcamento);
+        ItemOrcamento response = repository.save(itemOrcamentoToSave);
+
+        orcamentoService.atualizarValorTotal(orcamentoId);
 
         return mapper.toItemOrcamentoPostResponse(response);
     }
