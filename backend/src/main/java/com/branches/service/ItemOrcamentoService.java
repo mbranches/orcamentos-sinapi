@@ -1,5 +1,6 @@
 package com.branches.service;
 
+import com.branches.exception.NotFoundException;
 import com.branches.mapper.ItemOrcamentoMapper;
 import com.branches.model.ItemOrcamento;
 import com.branches.repository.ItemOrcamentoRepository;
@@ -7,9 +8,7 @@ import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
 import com.branches.response.ItemOrcamentoPostResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class ItemOrcamentoService {
 
     public ItemOrcamento findByIdOrElseThrowsNotFoundException(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found"));
+                .orElseThrow(() -> new NotFoundException("Item with id '%s' is not found".formatted(id)));
     }
 
     public List<ItemOrcamentoGetResponse> findByOrcamento(Long orcamentoId) {
