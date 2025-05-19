@@ -9,6 +9,6 @@ import java.time.LocalDate;
 @Builder
 public class OrcamentoPutRequest {
     private Long id;
-    private String nome;
-    private Long clienteId;
+    private String descricao;
+    private Long idCliente;
 }

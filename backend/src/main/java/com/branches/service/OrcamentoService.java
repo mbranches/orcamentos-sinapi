@@ -46,7 +46,7 @@ public class OrcamentoService {
 
     public void update(OrcamentoPutRequest orcamentoPutRequest) {
         findByIdOrElseThrowNotFoundException(orcamentoPutRequest.getId());
-        Cliente cliente = clienteService.findByIdOrThrowsNotFoundException(orcamentoPutRequest.getClienteId());
+        Cliente cliente = clienteService.findByIdOrThrowsNotFoundException(orcamentoPutRequest.getIdCliente());
 
         Orcamento orcamentoToUpdate = mapper.toOrcamento(orcamentoPutRequest);
         orcamentoToUpdate.setCliente(cliente);

@@ -12,7 +12,7 @@ public class OrcamentoPostResponse {
     public record ClienteByOrcamentoPostResponse(Long id, String nome, TipoCliente tipoCliente){}
 
     private Long id;
-    private String nome;
+    private String descricao;
     private ClienteByOrcamentoPostResponse cliente;
     private Double valorTotal;
 }

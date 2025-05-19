@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrcamentoPostRequest {
-    private String nome;
+    private String descricao;
     private Long idCliente;
 }
