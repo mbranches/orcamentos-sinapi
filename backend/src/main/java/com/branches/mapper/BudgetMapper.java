@@ -18,7 +18,7 @@ public interface BudgetMapper {
 
     Budget toBudget(BudgetPutRequest putRequest);
 
-    List<BudgetGetResponse> toBudgetGetResponse(List<Budget> budgetList);
+    List<BudgetGetResponse> toBudgetGetResponseList(List<Budget> budgetList);
 
     BudgetPostResponse toBudgetPostResponse(Budget budget);
 }

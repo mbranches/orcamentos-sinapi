@@ -40,7 +40,7 @@ public class BudgetService {
 
         List<Budget> response = description == null ? repository.findAll(sort) : repository.findAllByDescriptionContaining(description, sort);
 
-        return mapper.toBudgetGetResponse(response);
+        return mapper.toBudgetGetResponseList(response);
     }
 
     public Budget findByIdOrElseThrowNotFoundException(Long id) {
