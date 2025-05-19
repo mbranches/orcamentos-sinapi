@@ -18,8 +18,8 @@ public class ClientController {
     public final ClientService service;
 
     @GetMapping
-    public ResponseEntity<List<ClientGetResponse>> findAll() {
-        List<ClientGetResponse> response = service.findAll();
+    public ResponseEntity<List<ClientGetResponse>> findAll(@RequestParam(required = false) String name) {
+        List<ClientGetResponse> response = service.findAll(name);
 
         return ResponseEntity.ok(response);
     }

@@ -18,8 +18,8 @@ public class ClientService {
     private final ClientRepository repository;
     private final ClientMapper mapper;
 
-    public List<ClientGetResponse> findAll() {
-        List<Client> response = repository.findAll();
+    public List<ClientGetResponse> findAll(String name) {
+        List<Client> response = name == null ? repository.findAll() : repository.findAllByNameContaining(name);
 
         return mapper.toClientGetResponseList(response);
     }
