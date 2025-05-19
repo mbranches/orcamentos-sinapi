@@ -14,4 +14,11 @@ public class GlobalErrorHandlerAdvice {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<DefaultErrorMessage> handlerBadRequestException(BadRequestException e) {
+        DefaultErrorMessage errorMessage = new DefaultErrorMessage(e.getStatusCode().value(), e.getMessage());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+    }
 }

@@ -1,5 +1,6 @@
 package com.branches.service;
 
+import com.branches.exception.BadRequestException;
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.BudgetMapper;
 import com.branches.model.Budget;
@@ -47,8 +48,10 @@ public class BudgetService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Budget with id '%s' is not found".formatted(id)));
     }
 
-    public void update(BudgetPutRequest putRequest) {
-        Budget budgetNotUpdated = findByIdOrElseThrowsNotFoundException(putRequest.getId());
+    public void update(Long budgetId, BudgetPutRequest putRequest) {
+        if (!budgetId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetId, putRequest.getId()));
+
+        Budget budgetNotUpdated = findByIdOrElseThrowsNotFoundException(budgetId);
         Client client = clientService.findByIdOrThrowsNotFoundException(putRequest.getClientId());
 
         Budget budgetToUpdate = mapper.toBudget(putRequest);

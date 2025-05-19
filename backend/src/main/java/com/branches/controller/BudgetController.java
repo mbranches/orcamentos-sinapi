@@ -42,9 +42,9 @@ public class BudgetController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping
-    public ResponseEntity<Void> update(@RequestBody BudgetPutRequest putRequest) {
-        service.update(putRequest);
+    @PutMapping("/{budgetId}")
+    public ResponseEntity<Void> update(@PathVariable Long budgetId, @RequestBody BudgetPutRequest putRequest) {
+        service.update(budgetId, putRequest);
 
         return ResponseEntity.noContent().build();
     }
