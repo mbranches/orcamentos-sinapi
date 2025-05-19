@@ -13,12 +13,15 @@ import lombok.*;
 public class ItemOrcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iditem_orcamento")
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "insumo_id")
+    @JoinColumn(name = "orcamentoid")
+    private Orcamento orcamento;
+    @ManyToOne
+    @JoinColumn(name = "insumoid")
     private Insumo insumo;
     private Integer quantidade;
-    @ManyToOne
-    @JoinColumn(name = "orcamento_id")
-    private Orcamento orcamento;
+    @Column(name = "valor_totao")
+    private Double valorTotal;
 }

@@ -13,8 +13,8 @@ import lombok.*;
 public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idinsumo")
     private Long id;
-    @Column
     private Long codigo;
     @Column(name = "descricao_insumo", length = 500, nullable = false)
     private String descricao;
