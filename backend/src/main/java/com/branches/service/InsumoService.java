@@ -1,5 +1,6 @@
 package com.branches.service;
 
+import com.branches.exception.NotFoundException;
 import com.branches.mapper.InsumoMapper;
 import com.branches.model.Insumo;
 import com.branches.repository.InsumoRepository;
@@ -30,5 +31,10 @@ public class InsumoService {
         List<Insumo> response = repository.saveAll(insumosToSave);
 
         return mapper.toInsumoPostResponseList(response);
+    }
+
+    public Insumo findByIdOrElseThrowNotFoundException(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Insumo with id '%s' is not found".formatted(id)));
     }
 }

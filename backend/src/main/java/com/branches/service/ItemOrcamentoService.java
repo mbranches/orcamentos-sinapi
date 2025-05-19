@@ -2,13 +2,16 @@ package com.branches.service;
 
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.ItemOrcamentoMapper;
+import com.branches.model.Insumo;
 import com.branches.model.ItemOrcamento;
+import com.branches.model.Orcamento;
 import com.branches.repository.ItemOrcamentoRepository;
 import com.branches.request.ItemOrcamentoPostRequest;
 import com.branches.response.ItemOrcamentoGetResponse;
 import com.branches.response.ItemOrcamentoPostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,14 +20,33 @@ import java.util.List;
 public class ItemOrcamentoService {
     private final ItemOrcamentoRepository repository;
     private final OrcamentoService orcamentoService;
+    private final InsumoService insumoService;
     private final ItemOrcamentoMapper mapper;
 
-    public List<ItemOrcamentoPostResponse> saveAll(List<ItemOrcamentoPostRequest> itemPostRequestList) {
-        List<ItemOrcamento> itemsToSave = mapper.toItemOrcamentoList(itemPostRequestList);
+    @Transactional
+    public ItemOrcamentoPostResponse save(ItemOrcamentoPostRequest postRequest) {
+        Long idOrcamento = postRequest.getIdOrcamento();
 
-        List<ItemOrcamento> response = repository.saveAll(itemsToSave);
+        Orcamento orcamento = orcamentoService.findByIdOrElseThrowNotFoundException(idOrcamento);
+        Insumo insumo = insumoService.findByIdOrElseThrowNotFoundException(postRequest.getIdInsumo());
 
-        return mapper.toItemOrcamentoPostResponseList(response);
+        ItemOrcamento itemOrcamento = mapper.toItemOrcamento(postRequest);
+        itemOrcamento.setOrcamento(orcamento);
+        itemOrcamento.setInsumo(insumo);
+        atualizaValorTotal(itemOrcamento);
+
+        ItemOrcamento response = repository.save(itemOrcamento);
+
+        orcamentoService.atualizarValorTotal(idOrcamento);
+
+        return mapper.toItemOrcamentoPostResponse(response);
+    }
+
+    private void atualizaValorTotal(ItemOrcamento itemOrcamento) {
+        Double precoInsumo = itemOrcamento.getInsumo().getPreco();
+        Integer quantidade = itemOrcamento.getQuantidade();
+
+        itemOrcamento.setValorTotal(precoInsumo * quantidade);
     }
 
     public List<ItemOrcamentoGetResponse> findAll() {

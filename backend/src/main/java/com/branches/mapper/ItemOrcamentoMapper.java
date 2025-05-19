@@ -13,9 +13,9 @@ import java.util.List;
 @Primary
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ItemOrcamentoMapper {
-    List<ItemOrcamento> toItemOrcamentoList(List<ItemOrcamentoPostRequest> itemPostRequestList);
-
     List<ItemOrcamentoGetResponse> toItemOrcamentoGetResponseList(List<ItemOrcamento> itemOrcamentoList);
 
-    List<ItemOrcamentoPostResponse> toItemOrcamentoPostResponseList(List<ItemOrcamento> itemOrcamentoList);
+    ItemOrcamento toItemOrcamento(ItemOrcamentoPostRequest postRequest);
+
+    ItemOrcamentoPostResponse toItemOrcamentoPostResponse(ItemOrcamento itemOrcamento);
 }

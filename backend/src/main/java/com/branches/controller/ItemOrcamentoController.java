@@ -26,8 +26,8 @@ public class ItemOrcamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<List<ItemOrcamentoPostResponse>> saveAll(@RequestBody List<ItemOrcamentoPostRequest> itemPostRequestList) {
-        List<ItemOrcamentoPostResponse> response = service.saveAll(itemPostRequestList);
+    public ResponseEntity<ItemOrcamentoPostResponse> save(@RequestBody ItemOrcamentoPostRequest postRequest) {
+        ItemOrcamentoPostResponse response = service.save(postRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
