@@ -76,7 +76,7 @@ public class BudgetItemService {
         return mapper.toBudgetItemGetResponseList(response);
     }
 
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         repository.delete(findByIdOrElseThrowsNotFoundException(id));
     }
 }
