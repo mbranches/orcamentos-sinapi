@@ -1,5 +1,8 @@
 package com.branches.controller;
 
+import com.branches.response.ClienteGetResponse;
+import com.branches.request.ClientePostRequest;
+import com.branches.response.ClientePostResponse;
 import com.branches.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

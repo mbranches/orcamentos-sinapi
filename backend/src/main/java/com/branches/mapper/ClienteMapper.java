@@ -1,8 +1,8 @@
 package com.branches.mapper;
 
-import com.branches.controller.ClienteGetResponse;
-import com.branches.controller.ClientePostRequest;
-import com.branches.controller.ClientePostResponse;
+import com.branches.response.ClienteGetResponse;
+import com.branches.request.ClientePostRequest;
+import com.branches.response.ClientePostResponse;
 import com.branches.model.Cliente;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

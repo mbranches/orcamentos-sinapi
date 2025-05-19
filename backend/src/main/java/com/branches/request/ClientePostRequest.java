@@ -1,4 +1,4 @@
-package com.branches.controller;
+package com.branches.request;
 
 import com.branches.model.TipoCliente;
 import lombok.Builder;

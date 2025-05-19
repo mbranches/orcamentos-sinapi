@@ -1,8 +1,8 @@
 package com.branches.service;
 
-import com.branches.controller.ClienteGetResponse;
-import com.branches.controller.ClientePostRequest;
-import com.branches.controller.ClientePostResponse;
+import com.branches.response.ClienteGetResponse;
+import com.branches.request.ClientePostRequest;
+import com.branches.response.ClientePostResponse;
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.ClienteMapper;
 import com.branches.model.Cliente;
