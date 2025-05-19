@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface OrcamentoRepository extends JpaRepository<Orcamento, Long> {
 
-    List<Orcamento> findAllByNomeContaining(String nome);
+    List<Orcamento> findAllByDescricaoContaining(String descricao);
 }

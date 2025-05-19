@@ -2,6 +2,8 @@ package com.branches.service;
 
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.OrcamentoMapper;
+import com.branches.model.Cliente;
+import com.branches.model.ItemOrcamento;
 import com.branches.model.Orcamento;
 import com.branches.repository.OrcamentoRepository;
 import com.branches.request.OrcamentoPostRequest;
@@ -18,10 +20,14 @@ import java.util.List;
 public class OrcamentoService {
     private final OrcamentoMapper mapper;
     private final OrcamentoRepository repository;
+    private final ClienteService clienteService;
 
     public OrcamentoPostResponse save(OrcamentoPostRequest orcamentoPostRequest) {
+        Cliente cliente = clienteService.findByIdOrThrowsNotFoundException(orcamentoPostRequest.getIdCliente());
+
         Orcamento orcamento = mapper.toOrcamento(orcamentoPostRequest);
-        orcamento.setDataCriacao(LocalDate.now());
+        orcamento.setCliente(cliente);
+        orcamento.setValorTotal(0D);
 
         Orcamento response = repository.save(orcamento);
 
@@ -29,7 +35,7 @@ public class OrcamentoService {
     }
 
     public List<OrcamentoGetResponse> findAll(String name) {
-        List<Orcamento> response = name == null ? repository.findAll() : repository.findAllByNomeContaining(name);
+        List<Orcamento> response = name == null ? repository.findAll() : repository.findAllByDescricaoContaining(name);
 
         return mapper.toOrcamentoGetResponse(response);
     }
@@ -40,8 +46,10 @@ public class OrcamentoService {
 
     public void update(OrcamentoPutRequest orcamentoPutRequest) {
         findByIdOrElseThrowNotFoundException(orcamentoPutRequest.getId());
+        Cliente cliente = clienteService.findByIdOrThrowsNotFoundException(orcamentoPutRequest.getClienteId());
 
         Orcamento orcamentoToUpdate = mapper.toOrcamento(orcamentoPutRequest);
+        orcamentoToUpdate.setCliente(cliente);
 
         repository.save(orcamentoToUpdate);
     }
@@ -50,5 +58,15 @@ public class OrcamentoService {
         Orcamento orcamentoToDelete = findByIdOrElseThrowNotFoundException(orcamentoId);
 
         repository.delete(orcamentoToDelete);
+    }
+
+    public void atualizarValorTotal(Long orcamentoId) {
+        Orcamento orcamento = findByIdOrElseThrowNotFoundException(orcamentoId);
+
+        double valorTotalOrcamento = orcamento.getItems().stream().mapToDouble(ItemOrcamento::getValorTotal).sum();
+
+        orcamento.setValorTotal(valorTotalOrcamento);
+
+        repository.save(orcamento);
     }
 }
