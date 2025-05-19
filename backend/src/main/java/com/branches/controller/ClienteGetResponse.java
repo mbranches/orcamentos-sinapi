@@ -1,0 +1,13 @@
+package com.branches.controller;
+
+import com.branches.model.TipoCliente;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class ClienteGetResponse {
+    private Long id;
+    private String nome;
+    private TipoCliente tipoCliente;
+}
