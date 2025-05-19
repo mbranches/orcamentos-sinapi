@@ -11,6 +11,7 @@ import com.branches.request.BudgetPutRequest;
 import com.branches.response.BudgetGetResponse;
 import com.branches.response.BudgetPostResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +35,10 @@ public class BudgetService {
         return mapper.toBudgetPostResponse(response);
     }
 
-    public List<BudgetGetResponse> findAll(String name) {
-        List<Budget> response = name == null ? repository.findAll() : repository.findAllByDescriptionContaining(name);
+    public List<BudgetGetResponse> findAll(String description) {
+        Sort sort = Sort.by("createdAt").descending();
+
+        List<Budget> response = description == null ? repository.findAll(sort) : repository.findAllByDescriptionContaining(description, sort);
 
         return mapper.toBudgetGetResponse(response);
     }

@@ -22,8 +22,8 @@ public class BudgetController {
     private final BudgetItemService budgetItemService;
 
     @GetMapping
-    public ResponseEntity<List<BudgetGetResponse>> findAll(@RequestParam(required = false) String name) {
-        List<BudgetGetResponse> response = service.findAll(name);
+    public ResponseEntity<List<BudgetGetResponse>> findAll(@RequestParam(required = false) String description) {
+        List<BudgetGetResponse> response = service.findAll(description);
 
         return ResponseEntity.ok(response);
     }
