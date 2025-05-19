@@ -29,7 +29,7 @@ public class BudgetItemService {
         Long budgetId = postRequest.getBudgetId();
         Long supplyId = postRequest.getSupplyId();
 
-        Budget budget = budgetService.findByIdOrElseThrowNotFoundException(budgetId);
+        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
         Supply supply = supplyService.findByIdOrElseThrowNotFoundException(supplyId);
 
         Optional<BudgetItem> optionalBudgetItemAlreadySaved = repository.findBySupply_IdAndBudget_Id(supplyId, budgetId);
@@ -69,7 +69,7 @@ public class BudgetItemService {
     }
 
     public List<BudgetItemGetResponse> findByBudgetId(Long budgetId) {
-        budgetService.findByIdOrElseThrowNotFoundException(budgetId);
+        budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
 
         List<BudgetItem> response = repository.findAllByBudgetId(budgetId);
 

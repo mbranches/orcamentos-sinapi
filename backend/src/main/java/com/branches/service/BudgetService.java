@@ -43,12 +43,12 @@ public class BudgetService {
         return mapper.toBudgetGetResponseList(response);
     }
 
-    public Budget findByIdOrElseThrowNotFoundException(Long id) {
+    public Budget findByIdOrElseThrowsNotFoundException(Long id) {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Budget with id '%s' is not found".formatted(id)));
     }
 
     public void update(BudgetPutRequest putRequest) {
-        Budget budgetNotUpdated = findByIdOrElseThrowNotFoundException(putRequest.getId());
+        Budget budgetNotUpdated = findByIdOrElseThrowsNotFoundException(putRequest.getId());
         Client client = clientService.findByIdOrThrowsNotFoundException(putRequest.getClientId());
 
         Budget budgetToUpdate = mapper.toBudget(putRequest);
@@ -59,13 +59,13 @@ public class BudgetService {
     }
 
     public void deleteById(Long budgetId) {
-        Budget budgetToDelete = findByIdOrElseThrowNotFoundException(budgetId);
+        Budget budgetToDelete = findByIdOrElseThrowsNotFoundException(budgetId);
 
         repository.delete(budgetToDelete);
     }
 
     public void updatesTotalValue(Long budgetId) {
-        Budget budget = findByIdOrElseThrowNotFoundException(budgetId);
+        Budget budget = findByIdOrElseThrowsNotFoundException(budgetId);
 
         double budgetTotalValue = budget.getItems().stream().mapToDouble(BudgetItem::getTotalValue).sum();
 
