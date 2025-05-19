@@ -1,36 +1,46 @@
 package com.branches.utils;
 
-import com.branches.model.Insumo;
-import com.branches.request.InsumoPostRequest;
-import com.branches.response.InsumoGetResponse;
-import com.branches.response.InsumoPostResponse;
+import com.branches.model.Supply;
+import com.branches.request.SupplyPostRequest;
+import com.branches.response.SupplyGetResponse;
+import com.branches.response.SupplyPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InsumoUtils {
-    public static List<Insumo> newInsumoList() {
-        Insumo insumo1 = Insumo.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
-        Insumo insumo2 = Insumo.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
-        Insumo insumo3 = Insumo.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
+    public static List<Supply> newInsumoList() {
+        Supply supply1 = Supply.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
+        Supply supply2 = Supply.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
+        Supply supply3 = Supply.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
+
+        return new ArrayList<>(List.of(supply1, supply2, supply3));
+    }
+
+    public static List<SupplyGetResponse> newInsumoGetResponseList() {
+        SupplyGetResponse insumo1 = SupplyGetResponse.builder().id(1L).code(11L).description("Descrição 1").unitMeasurement("m2").originPrice("XX").price(25D).build();
+        SupplyGetResponse insumo2 = SupplyGetResponse.builder().id(2L).code(22L).description("Descrição 2").unitMeasurement("m2").originPrice("XX").price(50D).build();
+        SupplyGetResponse insumo3 = SupplyGetResponse.builder().id(3L).code(33L).description("Descrição 3").unitMeasurement("un").originPrice("YY").price(80D).build();
 
         return new ArrayList<>(List.of(insumo1, insumo2, insumo3));
     }
 
-    public static List<InsumoGetResponse> newInsumoGetResponseList() {
-        InsumoGetResponse insumo1 = InsumoGetResponse.builder().id(1L).codigo(11L).descricao("Descrição 1").unidadeMedida("m2").origemPreco("XX").preco(25D).build();
-        InsumoGetResponse insumo2 = InsumoGetResponse.builder().id(2L).codigo(22L).descricao("Descrição 2").unidadeMedida("m2").origemPreco("XX").preco(50D).build();
-        InsumoGetResponse insumo3 = InsumoGetResponse.builder().id(3L).codigo(33L).descricao("Descrição 3").unidadeMedida("un").origemPreco("YY").preco(80D).build();
-
-        return new ArrayList<>(List.of(insumo1, insumo2, insumo3));
-    }
-
-    public static Insumo newInsumoSaved() {
+    public static Supply newInsumoSaved() {
         return newInsumoList().get(0);
     }
 
-    public static InsumoPostRequest newInsumoPostRequest() {
-        return InsumoPostRequest.builder()
+    public static SupplyPostRequest newInsumoPostRequest() {
+        return SupplyPostRequest.builder()
+                .code(4L)
+                .description("Areia")
+                .unitMeasurement("Kg")
+                .originPrice("XX")
+                .price(20D)
+                .build();
+    }
+
+    public static Supply newInsumoToSave() {
+        return Supply.builder()
                 .codigo(4L)
                 .descricao("Areia")
                 .unidadeMedida("Kg")
@@ -39,18 +49,8 @@ public class InsumoUtils {
                 .build();
     }
 
-    public static Insumo newInsumoToSave() {
-        return Insumo.builder()
-                .codigo(4L)
-                .descricao("Areia")
-                .unidadeMedida("Kg")
-                .origemPreco("XX")
-                .preco(20D)
-                .build();
-    }
-
-    public static InsumoPostResponse newInsumoPostResponse() {
-        return InsumoPostResponse.builder()
+    public static SupplyPostResponse newInsumoPostResponse() {
+        return SupplyPostResponse.builder()
                 .id(4L)
                 .codigo(4L)
                 .descricao("Areia")

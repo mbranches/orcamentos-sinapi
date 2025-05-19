@@ -1,121 +1,121 @@
 package com.branches.utils;
 
-import com.branches.model.Insumo;
-import com.branches.model.ItemOrcamento;
-import com.branches.model.Orcamento;
-import com.branches.request.ItemOrcamentoPostRequest;
-import com.branches.response.ItemOrcamentoGetResponse;
-import com.branches.response.ItemOrcamentoPostResponse;
+import com.branches.model.Budget;
+import com.branches.model.BudgetItem;
+import com.branches.model.Supply;
+import com.branches.request.BudgetItemPostRequest;
+import com.branches.response.BudgetItemGetResponse;
+import com.branches.response.BudgetItemPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemOrcamentoUtils {
-    public static List<ItemOrcamento> newItemOrcamentoList() {
-        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
-        Insumo insumo = InsumoUtils.newInsumoSaved();
+    public static List<BudgetItem> newItemOrcamentoList() {
+        Budget budget = OrcamentoUtils.newOrcamentoSaved();
+        Supply supply = InsumoUtils.newInsumoSaved();
 
-        ItemOrcamento item1 = ItemOrcamento.builder()
+        BudgetItem item1 = BudgetItem.builder()
                 .id(1L)
-                .insumo(insumo)
+                .supply(supply)
                 .quantidade(1)
-                .orcamento(orcamento)
+                .budget(budget)
                 .build();
 
-        ItemOrcamento item2 = ItemOrcamento.builder()
+        BudgetItem item2 = BudgetItem.builder()
                 .id(2L)
-                .insumo(insumo)
+                .supply(supply)
                 .quantidade(3)
-                .orcamento(orcamento)
+                .budget(budget)
                 .build();
 
-        ItemOrcamento item3 = ItemOrcamento.builder()
+        BudgetItem item3 = BudgetItem.builder()
                 .id(3L)
-                .insumo(insumo)
+                .supply(supply)
                 .quantidade(89)
-                .orcamento(orcamento)
+                .budget(budget)
                 .build();
 
         return new ArrayList<>(List.of(item1, item2, item3));
     }
 
-    public static List<ItemOrcamentoGetResponse> newItemGetResponseList() {
-        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
-        Insumo insumo = InsumoUtils.newInsumoSaved();
+    public static List<BudgetItemGetResponse> newItemGetResponseList() {
+        Budget budget = OrcamentoUtils.newOrcamentoSaved();
+        Supply supply = InsumoUtils.newInsumoSaved();
 
-        ItemOrcamentoGetResponse item1 = ItemOrcamentoGetResponse.builder()
+        BudgetItemGetResponse item1 = BudgetItemGetResponse.builder()
                 .id(1L)
-                .insumo(insumo)
-                .quantidade(1)
-                .orcamento(orcamento)
+                .supply(supply)
+                .quantity(1)
+                .budget(budget)
                 .build();
 
-        ItemOrcamentoGetResponse item2 = ItemOrcamentoGetResponse.builder()
+        BudgetItemGetResponse item2 = BudgetItemGetResponse.builder()
                 .id(2L)
-                .insumo(insumo)
-                .quantidade(3)
-                .orcamento(orcamento)
+                .supply(supply)
+                .quantity(3)
+                .budget(budget)
                 .build();
 
-        ItemOrcamentoGetResponse item3 = ItemOrcamentoGetResponse.builder()
+        BudgetItemGetResponse item3 = BudgetItemGetResponse.builder()
                 .id(3L)
-                .insumo(insumo)
-                .quantidade(89)
-                .orcamento(orcamento)
+                .supply(supply)
+                .quantity(89)
+                .budget(budget)
                 .build();
 
         return new ArrayList<>(List.of(item1, item2, item3));
     }
 
-    public static List<ItemOrcamentoPostRequest> newItemPostRequestList() {
-        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
+    public static List<BudgetItemPostRequest> newItemPostRequestList() {
+        Budget budget = OrcamentoUtils.newOrcamentoSaved();
 
-        ItemOrcamentoPostRequest item1 = ItemOrcamentoPostRequest.builder()
+        BudgetItemPostRequest item1 = BudgetItemPostRequest.builder()
                 .id(1L)
                 .insumo(InsumoUtils.newInsumoSaved())
                 .quantidade(1)
-                .orcamento(orcamento)
+                .orcamento(budget)
                 .build();
 
-        ItemOrcamentoPostRequest item2 = ItemOrcamentoPostRequest.builder()
+        BudgetItemPostRequest item2 = BudgetItemPostRequest.builder()
                 .id(2L)
                 .insumo(InsumoUtils.newInsumoSaved())
                 .quantidade(3)
-                .orcamento(orcamento)
+                .orcamento(budget)
                 .build();
 
-        ItemOrcamentoPostRequest item3 = ItemOrcamentoPostRequest.builder()
+        BudgetItemPostRequest item3 = BudgetItemPostRequest.builder()
                 .id(3L)
                 .insumo(InsumoUtils.newInsumoSaved())
                 .quantidade(89)
-                .orcamento(orcamento)
+                .orcamento(budget)
                 .build();
 
         return new ArrayList<>(List.of(item1, item2, item3));
     }
 
-    public static List<ItemOrcamentoPostResponse> newItemPostResponseList() {
-        Orcamento orcamento = OrcamentoUtils.newOrcamentoSaved();
+    public static List<BudgetItemPostResponse> newItemPostResponseList() {
+        Budget budget = OrcamentoUtils.newOrcamentoSaved();
 
-        ItemOrcamentoPostResponse item1 = ItemOrcamentoPostResponse.builder()
+        BudgetItemPostResponse item1 = BudgetItemPostResponse.builder()
                 .id(1L)
-                .insumo(InsumoUtils.newInsumoSaved())
-                .quantidade(1)
-                .orcamento(orcamento)
+                .supply(InsumoUtils.newInsumoSaved())
+                .quantity(1)
+                .budget(budget)
                 .build();
 
-        ItemOrcamentoPostResponse item2 = ItemOrcamentoPostResponse.builder()
+        BudgetItemPostResponse item2 = BudgetItemPostResponse.builder()
                 .id(2L)
-                .insumo(InsumoUtils.newInsumoSaved())
-                .quantidade(3)
-                .orcamento(orcamento)
+                .supply(InsumoUtils.newInsumoSaved())
+                .quantity(3)
+                .budget(budget)
                 .build();
 
-        ItemOrcamentoPostResponse item3 = ItemOrcamentoPostResponse.builder()
+        BudgetItemPostResponse item3 = BudgetItemPostResponse.builder()
                 .id(3L)
-                .insumo(InsumoUtils.newInsumoSaved())
-                .quantidade(89)
-                .orcamento(orcamento)
+                .supply(InsumoUtils.newInsumoSaved())
+                .quantity(89)
+                .budget(budget)
                 .build();
 
         return new ArrayList<>(List.of(item1, item2, item3));
