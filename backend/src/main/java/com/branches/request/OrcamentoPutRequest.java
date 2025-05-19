@@ -10,6 +10,5 @@ import java.time.LocalDate;
 public class OrcamentoPutRequest {
     private Long id;
     private String nome;
-    private String nomeCliente;
-    private LocalDate dataCriacao;
+    private Long clienteId;
 }

@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class OrcamentoPostRequest {
     private String nome;
-    private String nomeCliente;
+    private Long idCliente;
 }

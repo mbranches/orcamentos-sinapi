@@ -12,4 +12,5 @@ public class ItemOrcamentoPostResponse {
     private Insumo insumo;
     private Integer quantidade;
     private Orcamento orcamento;
+    private Double valorTotal;
 }
