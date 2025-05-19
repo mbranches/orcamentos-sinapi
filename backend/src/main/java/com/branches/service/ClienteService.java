@@ -40,6 +40,6 @@ public class ClienteService {
 
     public Cliente findByIdOrThrowsNotFoundException(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Cliente with id %s is not found".formatted(id)));
+                .orElseThrow(() -> new NotFoundException("Cliente with id '%s' is not found".formatted(id)));
     }
 }
