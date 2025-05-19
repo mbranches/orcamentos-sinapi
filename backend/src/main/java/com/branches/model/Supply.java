@@ -3,13 +3,14 @@ package com.branches.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "insumo")
+@With
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Entity(name = "insumo")
 public class Supply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
