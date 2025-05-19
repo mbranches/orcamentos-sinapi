@@ -58,7 +58,7 @@ class SupplyServiceTest {
     @DisplayName("findAll returns found supplies when the argument is given")
     @Order(2)
     void findAll_ReturnsFoundSupplies_WhenTheGivenDescriptionIsFound() {
-        String randomDescription = "Random DescriptionXXXXSAX";
+        String randomDescription = "Random Description";
 
         BDDMockito.when(repository.findAllByDescriptionContaining(randomDescription)).thenReturn(Collections.emptyList());
         BDDMockito.when(mapper.toSupplyGetResponseList(Collections.emptyList())).thenReturn(Collections.emptyList());
@@ -99,19 +99,19 @@ class SupplyServiceTest {
         List<Supply> suppliesToSave = Collections.singletonList(SupplyUtils.newSupplyToSave());
         List<Supply> savedSupplies = Collections.singletonList(SupplyUtils.newSupplySaved());
 
-        List<SupplyPostRequest> supplyPostRequestList = Collections.singletonList(SupplyUtils.newSupplyPostRequest());
-        List<SupplyPostResponse> supplyPostResponseList = Collections.singletonList(SupplyUtils.newSupplyPostResponse());
+        List<SupplyPostRequest> postRequestList = Collections.singletonList(SupplyUtils.newSupplyPostRequest());
+        List<SupplyPostResponse> postResponseList = Collections.singletonList(SupplyUtils.newSupplyPostResponse());
 
-        BDDMockito.when(mapper.toSupplyList(supplyPostRequestList)).thenReturn(suppliesToSave);
+        BDDMockito.when(mapper.toSupplyList(postRequestList)).thenReturn(suppliesToSave);
         BDDMockito.when(repository.saveAll(suppliesToSave)).thenReturn(savedSupplies);
-        BDDMockito.when(mapper.toSupplyPostResponseList(savedSupplies)).thenReturn(supplyPostResponseList);
+        BDDMockito.when(mapper.toSupplyPostResponseList(savedSupplies)).thenReturn(postResponseList);
 
-        List<SupplyPostResponse> response = service.saveAll(supplyPostRequestList);
+        List<SupplyPostResponse> response = service.saveAll(postRequestList);
 
         Assertions.assertThat(response)
                 .isNotNull()
                 .isNotEmpty()
-                .containsExactlyElementsOf(supplyPostResponseList);
+                .containsExactlyElementsOf(postResponseList);
     }
 
     @Test
