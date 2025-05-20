@@ -10,6 +10,11 @@ public class Client {
         this.clientType = clientType;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public Client() {
     }
 

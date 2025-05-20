@@ -1,9 +1,11 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Budget;
+import com.branches.cpu.model.Client;
 import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.components.Alerta;
+import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,26 +25,18 @@ import java.util.ResourceBundle;
 public class TelaOrcamentosController implements Initializable {
     @FXML
     private Button btnAbrir;
-
     @FXML
     private Button btnEditar;
-
     @FXML
     private Button btnExcluir;
-
     @FXML
     private ImageView imageEditar;
-
     @FXML
     private TextField tfPesquisar;
-
     @FXML
     private TableView<Budget> tvOrcamentos;
-
     private Budget budgetSelecionado;
-
     private BudgetService budgetService = new BudgetService();
-
     private AbrirFxml abrirFxml = new AbrirFxml();
 
     @FXML
@@ -60,7 +54,7 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void excluirOrcamento(ActionEvent event) {
-        if (Alerta.confirmarExclusão("Orçamento", budgetSelecionado.getDescription())) {
+        if (Alerta.confirmarExclusao("Orçamento", budgetSelecionado.getDescription())) {
             budgetService.delete(budgetSelecionado);
             Alerta.informacao("Sucesso!", "orcamento excluído com sucesso.");
         }
@@ -111,20 +105,22 @@ public class TelaOrcamentosController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Budget, String> colunaNome = new TableColumn<>("Orçamento");
-        TableColumn<Budget, String> colunaNomeCliente = new TableColumn<>("Cliente");
-        TableColumn<Budget, LocalDate> colunaDataCriacao = new TableColumn<>("Data de Criação");
+        TableColumn<Budget, String> colunaDescription = new TableColumn<>("Orçamento");
+        TableColumn<Budget, Client> colunaClient = new TableColumn<>("Cliente");
+        TableColumn<Budget, Double> colunaTotalValue = new TableColumn<>("Valor Total");
 
-        colunaNome.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.5));
-        colunaNomeCliente.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.28));
-        colunaDataCriacao.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.19));
+        colunaDescription.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.5));
+        colunaClient.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.28));
+        colunaTotalValue.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.19));
 
-        tvOrcamentos.getColumns().addAll(colunaNome, colunaNomeCliente, colunaDataCriacao);
+        tvOrcamentos.getColumns().addAll(colunaDescription, colunaClient, colunaTotalValue);
         TableViewProprieties.noEditableColumns(tvOrcamentos);
 
-        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colunaDataCriacao.setCellValueFactory(new PropertyValueFactory<>("dataCriacao"));
-        colunaNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+        colunaDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colunaClient.setCellValueFactory(new PropertyValueFactory<>("client"));
+        colunaTotalValue.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+
+        TableColumnConfig.columnFormatoMonetario(colunaTotalValue);
     }
 
     private void removerSelecao() {

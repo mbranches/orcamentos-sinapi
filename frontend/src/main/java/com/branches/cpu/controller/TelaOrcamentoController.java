@@ -105,7 +105,6 @@ public class TelaOrcamentoController implements Initializable {
         limparBarraPesquisa();
 
         atualizarTabela();
-        atualizarValorTotal();
 
         desativarBotoes();
 
@@ -156,15 +155,6 @@ public class TelaOrcamentoController implements Initializable {
         return servicosPesquisados;
     }
 
-    public void atualizarValorTotal() {
-        valorTotal = 0;
-        for (BudgetItem budgetItem : tvServicosAdiconados.getItems()) {
-            valorTotal += budgetItem.getTotalValue();
-        }
-
-        txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
-    }
-
     private void criarColunasTabela() {
         TableColumn<BudgetItem, Long> colunaCodigo = new TableColumn<>("Cód.");
         TableColumn<BudgetItem, String> colunaDescricao = new TableColumn<>("Descrição");
@@ -190,8 +180,8 @@ public class TelaOrcamentoController implements Initializable {
         colunaUnidade.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getSupply().getUnitMeasurement()));
 
-        colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
+        colunaQtd.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colunaTotal.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
 
         TableColumnConfig.columnFormatoMonetario(colunaTotal);
     }
@@ -202,7 +192,6 @@ public class TelaOrcamentoController implements Initializable {
 
         limparBarraPesquisa();
         atualizarTabela();
-        atualizarValorTotal();
     }
 
     private void ativarBotoes() {
@@ -226,7 +215,6 @@ public class TelaOrcamentoController implements Initializable {
 
         limparBarraPesquisa();
         atualizarTabela();
-        atualizarValorTotal();
         ativarBtnSalvar();
     }
 

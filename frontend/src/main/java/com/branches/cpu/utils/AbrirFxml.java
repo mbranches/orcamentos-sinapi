@@ -41,7 +41,6 @@ public class AbrirFxml {
             if (budget != null) {
                 TelaOrcamentoController controller = loader.getController();
                 controller.setOrcamento(budget);
-                controller.atualizarValorTotal();
             }
 
             abrirFxml(root, title, 900, 600, true);

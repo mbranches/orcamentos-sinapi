@@ -16,7 +16,7 @@ public class Alerta {
         alert.show();
     }
 
-    public static boolean confirmarExclusão(String tipoExclusao, String msgExclusao) {
+    public static boolean confirmarExclusao(String tipoExclusao, String msgExclusao) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setHeaderText("Exclusão de " + tipoExclusao);
         alert.setContentText("Excluir \"" + msgExclusao +"\" ?");
