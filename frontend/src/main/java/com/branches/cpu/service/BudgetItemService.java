@@ -6,16 +6,16 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemOrcamentoService {
+public class BudgetItemService {
     private String url = "http://localhost:8090/v1/items";
     private RestTemplate restTemplate = new RestTemplate();
 
-    public ItemOrcamentoService(String url, RestTemplate restTemplate) {
+    public BudgetItemService(String url, RestTemplate restTemplate) {
         this.url = url;
         this.restTemplate = restTemplate;
     }
 
-    public ItemOrcamentoService() {
+    public BudgetItemService() {
     }
 
     public static ItemOrcamentoServiceBuilder builder() {
@@ -71,8 +71,8 @@ public class ItemOrcamentoService {
             return this;
         }
 
-        public ItemOrcamentoService build() {
-            return new ItemOrcamentoService(this.url, this.restTemplate);
+        public BudgetItemService build() {
+            return new BudgetItemService(this.url, this.restTemplate);
         }
 
         public String toString() {
