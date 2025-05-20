@@ -2,9 +2,12 @@ package com.branches.utils;
 
 import com.branches.model.Budget;
 import com.branches.model.Client;
+import com.branches.model.Supply;
 import com.branches.request.BudgetPostRequest;
 import com.branches.request.BudgetPutRequest;
 import com.branches.response.BudgetGetResponse;
+import com.branches.response.BudgetItemGetResponse;
+import com.branches.response.BudgetItemPostResponse;
 import com.branches.response.BudgetPostResponse;
 
 import java.time.LocalDateTime;
@@ -127,5 +130,24 @@ public class BudgetUtils {
                 .totalValue(budgetNotUpdated.getTotalValue())
                 .createdAt(budgetNotUpdated.getCreatedAt())
                 .build();
+    }
+
+    public static BudgetItemGetResponse.BudgetByBudgetItemGetResponse newBudgetByBudgetItemGetResponseByBudget(Budget budget) {
+
+        return new BudgetItemGetResponse.BudgetByBudgetItemGetResponse(
+                budget.getId(),
+                budget.getDescription(),
+                budget.getTotalValue()
+        );
+    }
+
+    public static BudgetItemPostResponse.BudgetByBudgetItemPostResponse newBudgetByBudgetItemPostResponse() {
+        Budget budget = newBudgetList().getFirst();
+
+        return new BudgetItemPostResponse.BudgetByBudgetItemPostResponse(
+                budget.getId(),
+                budget.getDescription(),
+                budget.getTotalValue()
+        );
     }
 }

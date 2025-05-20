@@ -2,6 +2,8 @@ package com.branches.utils;
 
 import com.branches.model.Supply;
 import com.branches.request.SupplyPostRequest;
+import com.branches.response.BudgetItemGetResponse;
+import com.branches.response.BudgetItemPostResponse;
 import com.branches.response.SupplyGetResponse;
 import com.branches.response.SupplyPostResponse;
 
@@ -58,5 +60,28 @@ public class SupplyUtils {
                 .originPrice("XX")
                 .price(20D)
                 .build();
+    }
+
+    public static BudgetItemGetResponse.SupplyByBudgetItemGetResponse newSupplyByBudgetItemGetResponseBySupply(Supply supply) {
+        return new BudgetItemGetResponse.SupplyByBudgetItemGetResponse(
+                supply.getId(),
+                supply.getCode(),
+                supply.getDescription(),
+                supply.getUnitMeasurement(),
+                supply.getOriginPrice(),
+                supply.getPrice()
+        );
+    }
+
+    public static BudgetItemPostResponse.SupplyByBudgetItemPostResponse newSupplyByBudgetItemPostResponse() {
+        Supply supply = newSupplyList().getLast();
+        return new BudgetItemPostResponse.SupplyByBudgetItemPostResponse(
+                supply.getId(),
+                supply.getCode(),
+                supply.getDescription(),
+                supply.getUnitMeasurement(),
+                supply.getOriginPrice(),
+                supply.getPrice()
+        );
     }
 }

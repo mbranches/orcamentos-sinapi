@@ -3,11 +3,12 @@ package com.branches.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "item_orcamento")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@With
+@Entity(name = "item_orcamento")
 public class BudgetItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
