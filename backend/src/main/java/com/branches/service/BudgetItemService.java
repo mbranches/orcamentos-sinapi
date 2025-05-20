@@ -1,5 +1,6 @@
 package com.branches.service;
 
+import com.branches.exception.BadRequestException;
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.BudgetItemMapper;
 import com.branches.model.BudgetItem;
@@ -7,6 +8,7 @@ import com.branches.model.Supply;
 import com.branches.model.Budget;
 import com.branches.repository.BudgetItemRepository;
 import com.branches.request.BudgetItemPostRequest;
+import com.branches.request.BudgetItemPutRequest;
 import com.branches.response.BudgetItemGetResponse;
 import com.branches.response.BudgetItemPostResponse;
 import lombok.RequiredArgsConstructor;
@@ -78,5 +80,24 @@ public class BudgetItemService {
 
     public void deleteById(Long id) {
         repository.delete(findByIdOrElseThrowsNotFoundException(id));
+    }
+
+    @Transactional
+    public void update(Long budgetItemId, BudgetItemPutRequest putRequest) {
+        if (!budgetItemId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetItemId, putRequest.getId()));
+
+        findByIdOrElseThrowsNotFoundException(putRequest.getId());
+
+        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetItemId);
+        Supply supply = supplyService.findByIdOrElseThrowNotFoundException(putRequest.getSupplyId());
+
+        BudgetItem budgetItemToUpdate = mapper.toBudgetItem(putRequest);
+        budgetItemToUpdate.setBudget(budget);
+        budgetItemToUpdate.setSupply(supply);
+        updatesTotalValue(budgetItemToUpdate);
+
+        repository.save(budgetItemToUpdate);
+
+        budgetService.updatesTotalValue(budgetItemToUpdate.getBudget().getId());
     }
 }

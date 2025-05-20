@@ -1,6 +1,7 @@
 package com.branches.controller;
 
 import com.branches.request.BudgetItemPostRequest;
+import com.branches.request.BudgetItemPutRequest;
 import com.branches.response.BudgetItemGetResponse;
 import com.branches.response.BudgetItemPostResponse;
 import com.branches.service.BudgetItemService;
@@ -29,6 +30,13 @@ public class BudgetItemController {
         BudgetItemPostResponse response = service.save(postRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PutMapping("/{budgetItemId}")
+    public ResponseEntity<Void> update(@PathVariable Long budgetItemId, @RequestBody BudgetItemPutRequest putRequest) {
+        service.update(budgetItemId, putRequest);
+
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
