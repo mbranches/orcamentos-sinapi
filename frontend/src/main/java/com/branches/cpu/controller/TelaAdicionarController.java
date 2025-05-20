@@ -4,7 +4,7 @@ import com.branches.cpu.components.Alerta;
 import com.branches.cpu.components.AutoCompleteTextField;
 import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
-import com.branches.cpu.service.InsumoService;
+import com.branches.cpu.service.SupplyService;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -53,7 +53,7 @@ public class TelaAdicionarController implements Initializable {
 
     private TelaOrcamentoController telaPrincipal;
 
-    private InsumoService service = new InsumoService();
+    private SupplyService service = new SupplyService();
 
     @FXML
     void Fechar(ActionEvent event) {
@@ -158,9 +158,8 @@ public class TelaAdicionarController implements Initializable {
 
     private void adicionar() {
         BudgetItem budgetItem = new BudgetItem();
-        budgetItem.setInsumo(servicoSelecionado);
+        budgetItem.setSupply(servicoSelecionado);
         budgetItem.setQuantity(Integer.parseInt(tfQuantidade.getText().trim()));
-        budgetItem.setarValorTotal();
 
         telaPrincipal.adicionarServico(budgetItem);
         telaPrincipal.ativarBtnSalvar();

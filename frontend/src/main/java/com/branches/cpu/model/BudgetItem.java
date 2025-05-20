@@ -10,10 +10,6 @@ public class BudgetItem {
     public BudgetItem() {
     }
 
-    public void setarValorTotal() {
-        totalValue = supply.getPrice() * quantity;
-    }
-
     @Override
     public String toString() {
         return supply.getDescription();

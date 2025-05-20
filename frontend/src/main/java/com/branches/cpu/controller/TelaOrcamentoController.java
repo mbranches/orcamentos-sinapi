@@ -7,8 +7,8 @@ package com.branches.cpu.controller;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.model.Budget;
-import com.branches.cpu.service.ItemOrcamentoService;
-import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.service.BudgetItemService;
+import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.utils.*;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -54,9 +54,9 @@ public class TelaOrcamentoController implements Initializable {
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
-    private ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+    private BudgetItemService budgetItemService = new BudgetItemService();
 
-    private OrcamentoService orcamentoService = new OrcamentoService();
+    private BudgetService budgetService = new BudgetService();
 
     private double valorTotal = 0;
 
@@ -79,8 +79,8 @@ public class TelaOrcamentoController implements Initializable {
 
         if (budget == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
         else {
-            List<BudgetItem> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
-            itemOrcamentoService.deleteAll(itemsToBeDeleted);
+            List<BudgetItem> itensSalvos = budgetItemService.saveAll(itemsOrcamento);
+            budgetItemService.deleteAll(itemsToBeDeleted);
 
             itemsOrcamento.clear();
             itemsOrcamento.addAll(itensSalvos);
@@ -151,7 +151,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
-        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescription().toLowerCase().contains(descricao.toLowerCase()));
+        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getOrcamento().getDescription().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
@@ -182,13 +182,13 @@ public class TelaOrcamentoController implements Initializable {
         TableViewProprieties.noEditableColumns(tvServicosAdiconados);
 
         colunaCodigo.setCellValueFactory(cellData ->
-                new SimpleLongProperty(cellData.getValue().getInsumo().getCode()).asObject());
+                new SimpleLongProperty(cellData.getValue().getSupply().getCode()).asObject());
 
         colunaDescricao.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getDescription()));
+                new SimpleStringProperty(cellData.getValue().getSupply().getDescription()));
 
         colunaUnidade.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getUnitMeasurement()));
+                new SimpleStringProperty(cellData.getValue().getSupply().getUnitMeasurement()));
 
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
@@ -221,7 +221,6 @@ public class TelaOrcamentoController implements Initializable {
         for (BudgetItem servico : itemsOrcamento) {
             if (servico.equals(servicoNovo)) {
                 servico.setQuantity(servicoNovo.getQuantity());
-                servico.setarValorTotal();
             }
         }
 
@@ -240,7 +239,6 @@ public class TelaOrcamentoController implements Initializable {
         itemsOrcamento.clear();
         itemsOrcamento.addAll(budgetItems);
 
-        itemsOrcamento.forEach(BudgetItem::setarValorTotal);
 
         atualizarTabela();
     }
@@ -248,8 +246,7 @@ public class TelaOrcamentoController implements Initializable {
     public void setOrcamento(Budget budget) {
         this.budget = budget;
 
-        List<BudgetItem> itensDoOrcamento = orcamentoService.findItems(budget);
-        itensDoOrcamento.forEach(BudgetItem::setarValorTotal);
+        List<BudgetItem> itensDoOrcamento = budgetService.findItems(budget);
 
         itemsOrcamento.clear();
         itemsOrcamento.addAll(itensDoOrcamento);

@@ -4,8 +4,8 @@ import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.request.OrcamentoPostRequest;
-import com.branches.cpu.service.ItemOrcamentoService;
-import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.service.BudgetItemService;
+import com.branches.cpu.service.BudgetService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -29,9 +29,9 @@ public class TelaSalvarOrcamentoController {
 
     private List<BudgetItem> budgetItemPostRequests;
 
-    private OrcamentoService orcamentoService = new OrcamentoService();
+    private BudgetService budgetService = new BudgetService();
 
-    private ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
+    private BudgetItemService budgetItemService = new BudgetItemService();
 
     @FXML
     void Fechar(ActionEvent event) {
@@ -45,10 +45,10 @@ public class TelaSalvarOrcamentoController {
 
         OrcamentoPostRequest orcamentoPostRequest = OrcamentoPostRequest.builder().nome(nomeOrcamento).nomeCliente(nomeCliente).build();
 
-        Budget budget = orcamentoService.save(orcamentoPostRequest);
+        Budget budget = budgetService.save(orcamentoPostRequest);
 
         budgetItemPostRequests.forEach(item -> item.setOrcamento(budget));
-        orcamentoController.setItemsOrcamento(itemOrcamentoService.saveAll(budgetItemPostRequests));
+        orcamentoController.setItemsOrcamento(budgetItemService.saveAll(budgetItemPostRequests));
         orcamentoController.setOrcamento(budget);
 
         fecharPagina(event);

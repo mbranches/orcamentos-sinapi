@@ -1,7 +1,7 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Budget;
-import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -41,7 +41,7 @@ public class TelaOrcamentosController implements Initializable {
 
     private Budget budgetSelecionado;
 
-    private OrcamentoService orcamentoService = new OrcamentoService();
+    private BudgetService budgetService = new BudgetService();
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
@@ -61,7 +61,7 @@ public class TelaOrcamentosController implements Initializable {
     @FXML
     void excluirOrcamento(ActionEvent event) {
         if (Alerta.confirmarExclusão("Orçamento", budgetSelecionado.getDescription())) {
-            orcamentoService.delete(budgetSelecionado);
+            budgetService.delete(budgetSelecionado);
             Alerta.informacao("Sucesso!", "orcamento excluído com sucesso.");
         }
 
@@ -73,7 +73,7 @@ public class TelaOrcamentosController implements Initializable {
     void autoComplementarTabela(KeyEvent event) {
         String orcamentoBuscado = tfPesquisar.getText();
 
-        List<Budget> resultadoDaBusca = orcamentoService.findAllByName(orcamentoBuscado);
+        List<Budget> resultadoDaBusca = budgetService.findAllByName(orcamentoBuscado);
 
         if (resultadoDaBusca.isEmpty()) {
             tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
@@ -106,7 +106,7 @@ public class TelaOrcamentosController implements Initializable {
 
     public void atualizarTabela() {
         tvOrcamentos.getItems().clear();
-        orcamentoService.findAll()
+        budgetService.findAll()
                 .forEach(orcamento -> tvOrcamentos.getItems().add(orcamento));
     }
 

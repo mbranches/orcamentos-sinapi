@@ -16,6 +16,10 @@ public class Supply {
         this.originPrice = originPrice;
         this.price = price;
     }
+
+    public Supply() {
+    }
+
     @Override
     public String toString() {
         return description;

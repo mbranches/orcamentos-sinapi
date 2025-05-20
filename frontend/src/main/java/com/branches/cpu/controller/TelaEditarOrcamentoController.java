@@ -1,7 +1,7 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Budget;
-import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.service.BudgetService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -23,7 +23,7 @@ public class TelaEditarOrcamentoController {
 
     private TelaOrcamentosController telaOrcamentosController;
 
-    private final OrcamentoService ORCAMENTO_SERVICE = new OrcamentoService();
+    private final BudgetService ORCAMENTO_SERVICE = new BudgetService();
 
     @FXML
     void Fechar(ActionEvent event) {
@@ -33,7 +33,6 @@ public class TelaEditarOrcamentoController {
     @FXML
     void salvarFechar(ActionEvent event) {
         budgetAEditar.setDescription(tfNomeOrcamento.getText());
-        budgetAEditar.setNomeCliente(tfNomeCliente.getText());
 
         ORCAMENTO_SERVICE.update(budgetAEditar);
 
@@ -50,7 +49,6 @@ public class TelaEditarOrcamentoController {
 
     private void atualizarCampos() {
         tfNomeOrcamento.setText(budgetAEditar.getDescription());
-        tfNomeCliente.setText(budgetAEditar.getNomeCliente());
     }
 
     private void fecharPagina(ActionEvent event) {

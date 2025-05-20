@@ -3,7 +3,7 @@ package com.branches.cpu.controller;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
-import com.branches.cpu.service.InsumoService;
+import com.branches.cpu.service.SupplyService;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import com.branches.cpu.utils.Validador;
@@ -47,7 +47,7 @@ public class TelaEditarController implements Initializable {
 
     private BudgetItem servicoAEditar;
 
-    private InsumoService service = new InsumoService();
+    private SupplyService service = new SupplyService();
 
     private ObservableList observableList = javafx.collections.FXCollections.observableArrayList();
 
@@ -75,7 +75,6 @@ public class TelaEditarController implements Initializable {
         if (Validador.isValidNumber(tfQuantidade.getText())) {
             setarValorTotal();
             servicoAEditar.setQuantity(Integer.parseInt(tfQuantidade.getText()));
-            servicoAEditar.setarValorTotal();
         } else {
             txtTotal.setText(formatarValorBRL(0));
         }
@@ -89,14 +88,14 @@ public class TelaEditarController implements Initializable {
     }
 
     public void atualizarCampos() {
-        tfMostrarServico.setText(servicoAEditar.getInsumo().getDescription());
+        tfMostrarServico.setText(servicoAEditar.getSupply().getDescription());
         tfQuantidade.setText(String.valueOf(servicoAEditar.getQuantity()));
         setarItemTableView();
         setarValorTotal();
     }
 
     private void setarValorTotal() {
-        double preco = servicoAEditar.getInsumo().getPrice();
+        double preco = servicoAEditar.getSupply().getPrice();
         double quantidade = Double.parseDouble(tfQuantidade.getText());
         double valorTotal = preco * quantidade;
         txtTotal.setText(formatarValorBRL(valorTotal));
