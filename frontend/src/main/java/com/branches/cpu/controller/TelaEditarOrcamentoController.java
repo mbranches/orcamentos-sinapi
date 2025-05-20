@@ -1,6 +1,6 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.model.Orcamento;
+import com.branches.cpu.model.Budget;
 import com.branches.cpu.service.OrcamentoService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ public class TelaEditarOrcamentoController {
     @FXML
     private TextField tfNomeOrcamento;
 
-    private Orcamento orcamentoAEditar;
+    private Budget budgetAEditar;
 
     private TelaOrcamentosController telaOrcamentosController;
 
@@ -32,25 +32,25 @@ public class TelaEditarOrcamentoController {
 
     @FXML
     void salvarFechar(ActionEvent event) {
-        orcamentoAEditar.setNome(tfNomeOrcamento.getText());
-        orcamentoAEditar.setNomeCliente(tfNomeCliente.getText());
+        budgetAEditar.setDescription(tfNomeOrcamento.getText());
+        budgetAEditar.setNomeCliente(tfNomeCliente.getText());
 
-        ORCAMENTO_SERVICE.update(orcamentoAEditar);
+        ORCAMENTO_SERVICE.update(budgetAEditar);
 
         telaOrcamentosController.atualizarTabela();
 
         fecharPagina(event);
     }
 
-    public void setOrcamento(Orcamento orcamento) {
-        this.orcamentoAEditar = orcamento;
+    public void setOrcamento(Budget budget) {
+        this.budgetAEditar = budget;
 
         atualizarCampos();
     }
 
     private void atualizarCampos() {
-        tfNomeOrcamento.setText(orcamentoAEditar.getNome());
-        tfNomeCliente.setText(orcamentoAEditar.getNomeCliente());
+        tfNomeOrcamento.setText(budgetAEditar.getDescription());
+        tfNomeCliente.setText(budgetAEditar.getNomeCliente());
     }
 
     private void fecharPagina(ActionEvent event) {

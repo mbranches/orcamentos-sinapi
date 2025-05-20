@@ -1,6 +1,6 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.model.Orcamento;
+import com.branches.cpu.model.Budget;
 import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.components.Alerta;
@@ -37,9 +37,9 @@ public class TelaOrcamentosController implements Initializable {
     private TextField tfPesquisar;
 
     @FXML
-    private TableView<Orcamento> tvOrcamentos;
+    private TableView<Budget> tvOrcamentos;
 
-    private Orcamento orcamentoSelecionado;
+    private Budget budgetSelecionado;
 
     private OrcamentoService orcamentoService = new OrcamentoService();
 
@@ -47,21 +47,21 @@ public class TelaOrcamentosController implements Initializable {
 
     @FXML
     void abrirOrcamento(ActionEvent event) {
-        abrirFxml.abrirTelaOrcamento(orcamentoSelecionado.getNome(), orcamentoSelecionado);
+        abrirFxml.abrirTelaOrcamento(budgetSelecionado.getDescription(), budgetSelecionado);
         removerSelecao();
     }
 
     @FXML
     void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditarOrcamento("Editar " + orcamentoSelecionado.getNome(), orcamentoSelecionado, this);
+        abrirFxml.abrirTelaEditarOrcamento("Editar " + budgetSelecionado.getDescription(), budgetSelecionado, this);
 
         removerSelecao();
     }
 
     @FXML
     void excluirOrcamento(ActionEvent event) {
-        if (Alerta.confirmarExclusão("Orçamento", orcamentoSelecionado.getNome())) {
-            orcamentoService.delete(orcamentoSelecionado);
+        if (Alerta.confirmarExclusão("Orçamento", budgetSelecionado.getDescription())) {
+            orcamentoService.delete(budgetSelecionado);
             Alerta.informacao("Sucesso!", "orcamento excluído com sucesso.");
         }
 
@@ -73,22 +73,22 @@ public class TelaOrcamentosController implements Initializable {
     void autoComplementarTabela(KeyEvent event) {
         String orcamentoBuscado = tfPesquisar.getText();
 
-        List<Orcamento> resultadoDaBusca = orcamentoService.findAllByName(orcamentoBuscado);
+        List<Budget> resultadoDaBusca = orcamentoService.findAllByName(orcamentoBuscado);
 
         if (resultadoDaBusca.isEmpty()) {
             tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
         }
 
-        ObservableList<Orcamento> itensDaTabela = tvOrcamentos.getItems();
+        ObservableList<Budget> itensDaTabela = tvOrcamentos.getItems();
         itensDaTabela.clear();
         itensDaTabela.addAll(resultadoDaBusca);
     }
 
     @FXML
     void selecionarOrcamento(MouseEvent event) {
-        orcamentoSelecionado = tvOrcamentos.getSelectionModel().getSelectedItem();
+        budgetSelecionado = tvOrcamentos.getSelectionModel().getSelectedItem();
 
-        if (orcamentoSelecionado != null) ativarBotoes();
+        if (budgetSelecionado != null) ativarBotoes();
     }
 
     @Override
@@ -111,9 +111,9 @@ public class TelaOrcamentosController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Orcamento, String> colunaNome = new TableColumn<>("Orçamento");
-        TableColumn<Orcamento, String> colunaNomeCliente = new TableColumn<>("Cliente");
-        TableColumn<Orcamento, LocalDate> colunaDataCriacao = new TableColumn<>("Data de Criação");
+        TableColumn<Budget, String> colunaNome = new TableColumn<>("Orçamento");
+        TableColumn<Budget, String> colunaNomeCliente = new TableColumn<>("Cliente");
+        TableColumn<Budget, LocalDate> colunaDataCriacao = new TableColumn<>("Data de Criação");
 
         colunaNome.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.5));
         colunaNomeCliente.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.28));

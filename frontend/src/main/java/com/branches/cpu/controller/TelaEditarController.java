@@ -1,8 +1,8 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.components.Alerta;
-import com.branches.cpu.model.Insumo;
-import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.Supply;
+import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -38,14 +38,14 @@ public class TelaEditarController implements Initializable {
     private TextField tfQuantidade;
 
     @FXML
-    private TableView<Insumo> tvMostrarServico;
+    private TableView<Supply> tvMostrarServico;
 
     @FXML
     private Text txtTotal;
 
     private TelaOrcamentoController telaPrincipal;
 
-    private ItemOrcamento servicoAEditar;
+    private BudgetItem servicoAEditar;
 
     private InsumoService service = new InsumoService();
 
@@ -74,7 +74,7 @@ public class TelaEditarController implements Initializable {
     void editarValorTotal(KeyEvent event) {
         if (Validador.isValidNumber(tfQuantidade.getText())) {
             setarValorTotal();
-            servicoAEditar.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
+            servicoAEditar.setQuantity(Integer.parseInt(tfQuantidade.getText()));
             servicoAEditar.setarValorTotal();
         } else {
             txtTotal.setText(formatarValorBRL(0));
@@ -89,21 +89,21 @@ public class TelaEditarController implements Initializable {
     }
 
     public void atualizarCampos() {
-        tfMostrarServico.setText(servicoAEditar.getInsumo().getDescricao());
-        tfQuantidade.setText(String.valueOf(servicoAEditar.getQuantidade()));
+        tfMostrarServico.setText(servicoAEditar.getInsumo().getDescription());
+        tfQuantidade.setText(String.valueOf(servicoAEditar.getQuantity()));
         setarItemTableView();
         setarValorTotal();
     }
 
     private void setarValorTotal() {
-        double preco = servicoAEditar.getInsumo().getPreco();
+        double preco = servicoAEditar.getInsumo().getPrice();
         double quantidade = Double.parseDouble(tfQuantidade.getText());
         double valorTotal = preco * quantidade;
         txtTotal.setText(formatarValorBRL(valorTotal));
     }
 
     private void setarItemTableView() {
-        List<Insumo> servicos = service.findByName(tfMostrarServico.getText());
+        List<Supply> servicos = service.findByName(tfMostrarServico.getText());
 
         observableList.addAll(servicos);
 
@@ -111,10 +111,10 @@ public class TelaEditarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Insumo, Long> colunaCodigo = new TableColumn<>("Cód.");
-        TableColumn<Insumo, String> colunaDescricao = new TableColumn<>("Descrição");
-        TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
+        TableColumn<Supply, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<Supply, String> colunaDescricao = new TableColumn<>("Descrição");
+        TableColumn<Supply, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<Supply, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
 
         colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
@@ -137,7 +137,7 @@ public class TelaEditarController implements Initializable {
         this.telaPrincipal = telaPrincipal;
     }
 
-    public void setServicoAEditar(ItemOrcamento servicoAEditar) {
+    public void setServicoAEditar(BudgetItem servicoAEditar) {
         this.servicoAEditar = servicoAEditar;
     }
 }

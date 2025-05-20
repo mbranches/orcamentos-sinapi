@@ -5,8 +5,8 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.components.Alerta;
-import com.branches.cpu.model.ItemOrcamento;
-import com.branches.cpu.model.Orcamento;
+import com.branches.cpu.model.BudgetItem;
+import com.branches.cpu.model.Budget;
 import com.branches.cpu.service.ItemOrcamentoService;
 import com.branches.cpu.service.OrcamentoService;
 import com.branches.cpu.utils.*;
@@ -42,15 +42,15 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     private Button btnSalvar;
     @FXML
-    private TableView<ItemOrcamento> tvServicosAdiconados;
+    private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
 
-    private List<ItemOrcamento> resultadoBusca = new ArrayList<>();
+    private List<BudgetItem> resultadoBusca = new ArrayList<>();
 
-    private List<ItemOrcamento> itemsOrcamento = new ArrayList<>();
+    private List<BudgetItem> itemsOrcamento = new ArrayList<>();
 
-    private List<ItemOrcamento> itemsToBeDeleted = new ArrayList<>();
+    private List<BudgetItem> itemsToBeDeleted = new ArrayList<>();
 
     private AbrirFxml abrirFxml = new AbrirFxml();
 
@@ -60,9 +60,9 @@ public class TelaOrcamentoController implements Initializable {
 
     private double valorTotal = 0;
 
-    private Orcamento orcamento;
+    private Budget budget;
 
-    private ItemOrcamento itemSelecionado = null;
+    private BudgetItem itemSelecionado = null;
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
@@ -77,14 +77,14 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     void salvarOrcamento(ActionEvent event) {
 
-        if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
+        if (budget == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
         else {
-            List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
+            List<BudgetItem> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
             itemOrcamentoService.deleteAll(itemsToBeDeleted);
 
             itemsOrcamento.clear();
             itemsOrcamento.addAll(itensSalvos);
-            Alerta.informacao(orcamento.getNome(), "Orçamento salvo com sucesso!");
+            Alerta.informacao(budget.getDescription(), "Orçamento salvo com sucesso!");
         }
 
         desativarBtnSalvar();
@@ -109,7 +109,7 @@ public class TelaOrcamentoController implements Initializable {
 
         desativarBotoes();
 
-        if (orcamento == null && itemsOrcamento.isEmpty()) desativarBtnSalvar();
+        if (budget == null && itemsOrcamento.isEmpty()) desativarBtnSalvar();
         else ativarBtnSalvar();
     }
 
@@ -150,27 +150,27 @@ public class TelaOrcamentoController implements Initializable {
         }
     }
 
-    private List<ItemOrcamento> consultarEmServicosAdicionados(String descricao) {
-        List<ItemOrcamento> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
+    private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
+        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescription().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
 
     public void atualizarValorTotal() {
         valorTotal = 0;
-        for (ItemOrcamento itemOrcamento : tvServicosAdiconados.getItems()) {
-            valorTotal += itemOrcamento.getValorTotal();
+        for (BudgetItem budgetItem : tvServicosAdiconados.getItems()) {
+            valorTotal += budgetItem.getTotalValue();
         }
 
         txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
     }
 
     private void criarColunasTabela() {
-        TableColumn<ItemOrcamento, Long> colunaCodigo = new TableColumn<>("Cód.");
-        TableColumn<ItemOrcamento, String> colunaDescricao = new TableColumn<>("Descrição");
-        TableColumn<ItemOrcamento, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<ItemOrcamento, Integer> colunaQtd = new TableColumn<>("Qtd.");
-        TableColumn<ItemOrcamento, Double> colunaTotal = new TableColumn<>("Total");
+        TableColumn<BudgetItem, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<BudgetItem, String> colunaDescricao = new TableColumn<>("Descrição");
+        TableColumn<BudgetItem, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<BudgetItem, Integer> colunaQtd = new TableColumn<>("Qtd.");
+        TableColumn<BudgetItem, Double> colunaTotal = new TableColumn<>("Total");
 
         colunaCodigo.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.05));
         colunaDescricao.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.685));
@@ -182,13 +182,13 @@ public class TelaOrcamentoController implements Initializable {
         TableViewProprieties.noEditableColumns(tvServicosAdiconados);
 
         colunaCodigo.setCellValueFactory(cellData ->
-                new SimpleLongProperty(cellData.getValue().getInsumo().getCodigo()).asObject());
+                new SimpleLongProperty(cellData.getValue().getInsumo().getCode()).asObject());
 
         colunaDescricao.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getDescricao()));
+                new SimpleStringProperty(cellData.getValue().getInsumo().getDescription()));
 
         colunaUnidade.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getUnidadeMedida()));
+                new SimpleStringProperty(cellData.getValue().getInsumo().getUnitMeasurement()));
 
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
@@ -196,9 +196,9 @@ public class TelaOrcamentoController implements Initializable {
         TableColumnConfig.columnFormatoMonetario(colunaTotal);
     }
 
-    public void adicionarServico(ItemOrcamento itemOrcamento) {
-        itemOrcamento.setOrcamento(orcamento);
-        itemsOrcamento.add(itemOrcamento);
+    public void adicionarServico(BudgetItem budgetItem) {
+        budgetItem.setOrcamento(budget);
+        itemsOrcamento.add(budgetItem);
 
         limparBarraPesquisa();
         atualizarTabela();
@@ -217,10 +217,10 @@ public class TelaOrcamentoController implements Initializable {
         btnExcluir.setDisable(true);
     }
 
-    public void atualizarServico(ItemOrcamento servicoNovo) {
-        for (ItemOrcamento servico : itemsOrcamento) {
+    public void atualizarServico(BudgetItem servicoNovo) {
+        for (BudgetItem servico : itemsOrcamento) {
             if (servico.equals(servicoNovo)) {
-                servico.setQuantidade(servicoNovo.getQuantidade());
+                servico.setQuantity(servicoNovo.getQuantity());
                 servico.setarValorTotal();
             }
         }
@@ -236,20 +236,20 @@ public class TelaOrcamentoController implements Initializable {
     }
 
 
-    public void setItemsOrcamento(List<ItemOrcamento> itemOrcamentos) {
+    public void setItemsOrcamento(List<BudgetItem> budgetItems) {
         itemsOrcamento.clear();
-        itemsOrcamento.addAll(itemOrcamentos);
+        itemsOrcamento.addAll(budgetItems);
 
-        itemsOrcamento.forEach(ItemOrcamento::setarValorTotal);
+        itemsOrcamento.forEach(BudgetItem::setarValorTotal);
 
         atualizarTabela();
     }
 
-    public void setOrcamento(Orcamento orcamento) {
-        this.orcamento = orcamento;
+    public void setOrcamento(Budget budget) {
+        this.budget = budget;
 
-        List<ItemOrcamento> itensDoOrcamento = orcamentoService.findItems(orcamento);
-        itensDoOrcamento.forEach(ItemOrcamento::setarValorTotal);
+        List<BudgetItem> itensDoOrcamento = orcamentoService.findItems(budget);
+        itensDoOrcamento.forEach(BudgetItem::setarValorTotal);
 
         itemsOrcamento.clear();
         itemsOrcamento.addAll(itensDoOrcamento);

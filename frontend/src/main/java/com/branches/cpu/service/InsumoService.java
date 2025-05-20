@@ -1,6 +1,6 @@
 package com.branches.cpu.service;
 
-import com.branches.cpu.model.Insumo;
+import com.branches.cpu.model.Supply;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -10,15 +10,15 @@ public class InsumoService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String url = "http://localhost:8090/v1/insumos";
 
-    public List<Insumo> findAll() {
-        Insumo[] arrayInsumo = restTemplate.getForObject(url, Insumo[].class);
-        return Arrays.asList(arrayInsumo);
+    public List<Supply> findAll() {
+        Supply[] arraySupply = restTemplate.getForObject(url, Supply[].class);
+        return Arrays.asList(arraySupply);
     }
 
-    public List<Insumo> findByName(String description) {
+    public List<Supply> findByName(String description) {
         String urlGetByName = url + "?description=" + description;
 
-        Insumo[] arrayInsumo = restTemplate.getForObject(urlGetByName, Insumo[].class);
-        return Arrays.asList(arrayInsumo);
+        Supply[] arraySupply = restTemplate.getForObject(urlGetByName, Supply[].class);
+        return Arrays.asList(arraySupply);
     }
 }

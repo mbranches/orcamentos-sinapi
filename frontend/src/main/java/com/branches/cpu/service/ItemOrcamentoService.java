@@ -1,6 +1,6 @@
 package com.branches.cpu.service;
 
-import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.BudgetItem;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -22,19 +22,19 @@ public class ItemOrcamentoService {
         return new ItemOrcamentoServiceBuilder();
     }
 
-    public List<ItemOrcamento> saveAll(List<ItemOrcamento> itemsOrcamento) {
-        ItemOrcamento[] response = restTemplate.postForObject(url, itemsOrcamento, ItemOrcamento[].class);
+    public List<BudgetItem> saveAll(List<BudgetItem> itemsOrcamento) {
+        BudgetItem[] response = restTemplate.postForObject(url, itemsOrcamento, BudgetItem[].class);
 
         return Arrays.asList(response);
     }
 
-    public void delete(ItemOrcamento itemToBeDeleted) {
+    public void delete(BudgetItem itemToBeDeleted) {
         Long itemToBeDeletedId = itemToBeDeleted.getId();
         String urlForDelete = url + "/" + itemToBeDeletedId;
         restTemplate.delete(urlForDelete);
     }
 
-    public void deleteAll(List<ItemOrcamento> itemsToBeDeleted) {
+    public void deleteAll(List<BudgetItem> itemsToBeDeleted) {
         itemsToBeDeleted.forEach(this::delete);
     }
 

@@ -1,8 +1,8 @@
 package com.branches.cpu.controller;
 
 import com.branches.cpu.components.Alerta;
-import com.branches.cpu.model.ItemOrcamento;
-import com.branches.cpu.model.Orcamento;
+import com.branches.cpu.model.Budget;
+import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.request.OrcamentoPostRequest;
 import com.branches.cpu.service.ItemOrcamentoService;
 import com.branches.cpu.service.OrcamentoService;
@@ -27,7 +27,7 @@ public class TelaSalvarOrcamentoController {
 
     private TelaOrcamentoController orcamentoController;
 
-    private List<ItemOrcamento> itemOrcamentoPostRequests;
+    private List<BudgetItem> budgetItemPostRequests;
 
     private OrcamentoService orcamentoService = new OrcamentoService();
 
@@ -45,11 +45,11 @@ public class TelaSalvarOrcamentoController {
 
         OrcamentoPostRequest orcamentoPostRequest = OrcamentoPostRequest.builder().nome(nomeOrcamento).nomeCliente(nomeCliente).build();
 
-        Orcamento orcamento = orcamentoService.save(orcamentoPostRequest);
+        Budget budget = orcamentoService.save(orcamentoPostRequest);
 
-        itemOrcamentoPostRequests.forEach(item -> item.setOrcamento(orcamento));
-        orcamentoController.setItemsOrcamento(itemOrcamentoService.saveAll(itemOrcamentoPostRequests));
-        orcamentoController.setOrcamento(orcamento);
+        budgetItemPostRequests.forEach(item -> item.setOrcamento(budget));
+        orcamentoController.setItemsOrcamento(itemOrcamentoService.saveAll(budgetItemPostRequests));
+        orcamentoController.setOrcamento(budget);
 
         fecharPagina(event);
         Alerta.informacao(tfNomeOrcamento.getText(), "Orçamento salvo com sucesso!");
@@ -64,7 +64,7 @@ public class TelaSalvarOrcamentoController {
         this.orcamentoController = orcamentoController;
     }
 
-    public void setItemOrcamentoPostRequests(List<ItemOrcamento> itemOrcamentoPostRequests) {
-        this.itemOrcamentoPostRequests = itemOrcamentoPostRequests;
+    public void setItemOrcamentoPostRequests(List<BudgetItem> budgetItemPostRequests) {
+        this.budgetItemPostRequests = budgetItemPostRequests;
     }
 }

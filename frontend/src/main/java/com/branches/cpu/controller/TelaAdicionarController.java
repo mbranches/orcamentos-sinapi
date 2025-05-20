@@ -2,8 +2,8 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.components.AutoCompleteTextField;
-import com.branches.cpu.model.Insumo;
-import com.branches.cpu.model.ItemOrcamento;
+import com.branches.cpu.model.Supply;
+import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.service.InsumoService;
 import com.branches.cpu.utils.Monetary;
 import com.branches.cpu.utils.TableColumnConfig;
@@ -40,16 +40,16 @@ public class TelaAdicionarController implements Initializable {
     private Text txtTotal;
 
     @FXML
-    private TableView<Insumo> tvMostrarServico;
+    private TableView<Supply> tvMostrarServico;
 
     @FXML
     private VBox sugestions;
 
     AutoCompleteTextField autoCompletePesquisar = new AutoCompleteTextField();
 
-    private Insumo servicoSelecionado;
+    private Supply servicoSelecionado;
 
-    List<Insumo> resultadoBusca = new ArrayList<>();
+    List<Supply> resultadoBusca = new ArrayList<>();
 
     private TelaOrcamentoController telaPrincipal;
 
@@ -88,7 +88,7 @@ public class TelaAdicionarController implements Initializable {
 
         if (!quantidadeString.isEmpty() && Validador.isValidNumber(quantidadeString)) {
             ativarBotoes();
-            double preco = resultadoBusca.get(0).getPreco();
+            double preco = resultadoBusca.get(0).getPrice();
             double quantidade = Double.parseDouble(quantidadeString);
             double valorTotal = preco * quantidade;
             txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
@@ -110,7 +110,7 @@ public class TelaAdicionarController implements Initializable {
         autoCompletePesquisar.getEntries().addAll(
                 service.findAll()
                         .stream()
-                        .map(Insumo::getDescricao)
+                        .map(Supply::getDescription)
                         .collect(Collectors.toList())
         );
         autoCompletePesquisar.setPrefHeight(30);
@@ -127,10 +127,10 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Insumo, Long> colunaCodigo = new TableColumn<>("Cód.");
-        TableColumn<Insumo, String> colunaDescricao = new TableColumn<>("Descrição");
-        TableColumn<Insumo, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<Insumo, Double> colunaValor = new TableColumn<>("Valor Unitário");
+        TableColumn<Supply, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<Supply, String> colunaDescricao = new TableColumn<>("Descrição");
+        TableColumn<Supply, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<Supply, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
 
         colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
@@ -157,12 +157,12 @@ public class TelaAdicionarController implements Initializable {
     }
 
     private void adicionar() {
-        ItemOrcamento itemOrcamento = new ItemOrcamento();
-        itemOrcamento.setInsumo(servicoSelecionado);
-        itemOrcamento.setQuantidade(Integer.parseInt(tfQuantidade.getText().trim()));
-        itemOrcamento.setarValorTotal();
+        BudgetItem budgetItem = new BudgetItem();
+        budgetItem.setInsumo(servicoSelecionado);
+        budgetItem.setQuantity(Integer.parseInt(tfQuantidade.getText().trim()));
+        budgetItem.setarValorTotal();
 
-        telaPrincipal.adicionarServico(itemOrcamento);
+        telaPrincipal.adicionarServico(budgetItem);
         telaPrincipal.ativarBtnSalvar();
     }
 
