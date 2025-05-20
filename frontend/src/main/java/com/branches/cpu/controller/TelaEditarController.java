@@ -110,26 +110,26 @@ public class TelaEditarController implements Initializable {
     }
 
     private void criarColunasTabela() {
-        TableColumn<Supply, Long> colunaCodigo = new TableColumn<>("Cód.");
-        TableColumn<Supply, String> colunaDescricao = new TableColumn<>("Descrição");
-        TableColumn<Supply, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<Supply, Double> colunaValor = new TableColumn<>("Valor Unitário");
+        TableColumn<Supply, Long> colunaCode = new TableColumn<>("Cód.");
+        TableColumn<Supply, String> colunaDescription = new TableColumn<>("Descrição");
+        TableColumn<Supply, String> colunaUnitMeasurement = new TableColumn<>("Unidade");
+        TableColumn<Supply, Double> colunaPrice = new TableColumn<>("Valor Unitário");
 
 
-        colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
-        colunaDescricao.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.67));
-        colunaUnidade.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.1));
-        colunaValor.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
+        colunaCode.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
+        colunaDescription.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.67));
+        colunaUnitMeasurement.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.1));
+        colunaPrice.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
 
-        tvMostrarServico.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
+        tvMostrarServico.getColumns().addAll(colunaCode, colunaDescription, colunaUnitMeasurement, colunaPrice);
         TableViewProprieties.noEditableColumns(tvMostrarServico);
 
-        colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        colunaUnidade.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        colunaCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colunaDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colunaUnitMeasurement.setCellValueFactory(new PropertyValueFactory<>("unitMeasurement"));
+        colunaPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        TableColumnConfig.columnFormatoMonetario(colunaValor);
+        TableColumnConfig.columnFormatoMonetario(colunaPrice);
     }
 
     public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
