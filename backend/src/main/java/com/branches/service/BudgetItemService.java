@@ -75,9 +75,9 @@ public class BudgetItemService {
     public void update(Long budgetItemId, BudgetItemPutRequest putRequest) {
         if (!budgetItemId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetItemId, putRequest.getId()));
 
-        findByIdOrElseThrowsNotFoundException(putRequest.getId());
+        findByIdOrElseThrowsNotFoundException(budgetItemId);
 
-        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetItemId);
+        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(putRequest.getBudgetId());
         Supply supply = supplyService.findByIdOrElseThrowNotFoundException(putRequest.getSupplyId());
 
         BudgetItem budgetItemToUpdate = mapper.toBudgetItem(putRequest);
