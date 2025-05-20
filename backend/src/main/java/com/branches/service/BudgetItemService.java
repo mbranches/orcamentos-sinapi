@@ -26,6 +26,25 @@ public class BudgetItemService {
     private final SupplyService supplyService;
     private final BudgetItemMapper mapper;
 
+    public List<BudgetItemGetResponse> findAll() {
+        List<BudgetItem> response = repository.findAll();
+
+        return mapper.toBudgetItemGetResponseList(response);
+    }
+
+    public BudgetItem findByIdOrElseThrowsNotFoundException(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Item with id '%s' is not found".formatted(id)));
+    }
+
+    public List<BudgetItemGetResponse> findByBudgetId(Long budgetId) {
+        budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
+
+        List<BudgetItem> response = repository.findAllByBudgetId(budgetId);
+
+        return mapper.toBudgetItemGetResponseList(response);
+    }
+
     @Transactional
     public BudgetItemPostResponse save(BudgetItemPostRequest postRequest) {
         Long budgetId = postRequest.getBudgetId();
@@ -52,36 +71,6 @@ public class BudgetItemService {
         return mapper.toBudgetItemPostResponse(response);
     }
 
-    private void updatesTotalValue(BudgetItem budgetItem) {
-        Double supplyPrice = budgetItem.getSupply().getPrice();
-        Integer quantity = budgetItem.getQuantity();
-
-        budgetItem.setTotalValue(supplyPrice * quantity);
-    }
-
-    public List<BudgetItemGetResponse> findAll() {
-        List<BudgetItem> response = repository.findAll();
-
-        return mapper.toBudgetItemGetResponseList(response);
-    }
-
-    public BudgetItem findByIdOrElseThrowsNotFoundException(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Item with id '%s' is not found".formatted(id)));
-    }
-
-    public List<BudgetItemGetResponse> findByBudgetId(Long budgetId) {
-        budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
-
-        List<BudgetItem> response = repository.findAllByBudgetId(budgetId);
-
-        return mapper.toBudgetItemGetResponseList(response);
-    }
-
-    public void deleteById(Long id) {
-        repository.delete(findByIdOrElseThrowsNotFoundException(id));
-    }
-
     @Transactional
     public void update(Long budgetItemId, BudgetItemPutRequest putRequest) {
         if (!budgetItemId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetItemId, putRequest.getId()));
@@ -99,5 +88,16 @@ public class BudgetItemService {
         repository.save(budgetItemToUpdate);
 
         budgetService.updatesTotalValue(budgetItemToUpdate.getBudget().getId());
+    }
+
+    private void updatesTotalValue(BudgetItem budgetItem) {
+        Double supplyPrice = budgetItem.getSupply().getPrice();
+        Integer quantity = budgetItem.getQuantity();
+
+        budgetItem.setTotalValue(supplyPrice * quantity);
+    }
+
+    public void deleteById(Long id) {
+        repository.delete(findByIdOrElseThrowsNotFoundException(id));
     }
 }
