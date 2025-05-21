@@ -114,7 +114,7 @@ class BudgetItemServiceTest {
         BDDMockito.when(repository.findAllByBudgetId(budgetId)).thenReturn(foundBudgetItemList);
         BDDMockito.when(mapper.toBudgetItemGetResponseList(foundBudgetItemList)).thenReturn(foundBudgetItemGetResponseList);
 
-        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId);
+        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId, null);
 
         Assertions.assertThat(response)
                 .isNotNull()
@@ -133,7 +133,63 @@ class BudgetItemServiceTest {
         BDDMockito.when(repository.findAllByBudgetId(budgetId)).thenReturn(Collections.emptyList());
         BDDMockito.when(mapper.toBudgetItemGetResponseList(Collections.emptyList())).thenReturn(Collections.emptyList());
 
-        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId);
+        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId, null);
+
+        Assertions.assertThat(response)
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
+    @DisplayName("findByBudgetId returns found budgetItems when the argument is given")
+    @Order(6)
+    void findByBudgetId_ReturnsFoundBudgetItems_WhenTheArgumentIsGiven() {
+        Budget budget = BudgetUtils.newBudgetList().getFirst();
+        Long budgetId = budget.getId();
+
+        Supply supplyToSearch = budgetItemList.getFirst().getSupply();
+        String descriptionToSearch = supplyToSearch.getDescription();
+
+        List<BudgetItem> foundBudgetItemList = budgetItemList.stream()
+                .filter(bi ->
+                    bi.getBudget().equals(budget) && bi.getSupply().getDescription().equalsIgnoreCase(descriptionToSearch)
+                )
+                .toList();
+
+        BudgetByBudgetItemGetResponse budgetByBudgetItemGetResponse = new BudgetByBudgetItemGetResponse(budgetId, budget.getDescription(), budget.getTotalValue());
+        List<BudgetItemGetResponse> foundBudgetItemGetResponseList = budgetGetResponseList.stream()
+                .filter(bi ->
+                        bi.getBudget().equals(budgetByBudgetItemGetResponse) && bi.getSupply().description().equalsIgnoreCase(descriptionToSearch)
+
+                )
+                .toList();
+
+        BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(budgetId)).thenReturn(budget);
+        BDDMockito.when(repository.findAllByBudget_IdAndSupply_DescriptionContaining(budgetId, descriptionToSearch)).thenReturn(foundBudgetItemList);
+        BDDMockito.when(mapper.toBudgetItemGetResponseList(foundBudgetItemList)).thenReturn(foundBudgetItemGetResponseList);
+
+        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId, descriptionToSearch);
+
+        Assertions.assertThat(response)
+                .isNotNull()
+                .isNotEmpty()
+                .containsExactlyElementsOf(foundBudgetItemGetResponseList);
+    }
+
+    @Test
+    @DisplayName("findByBudgetId returns an empty list when given budget has no supply with the given description")
+    @Order(7)
+    void findByBudgetId_ReturnsEmptyList_WhenTheGivenBudgetHasNoSupplyWithTheGivenDescription() {
+        Budget budget = BudgetUtils.newBudgetList().getFirst();
+        Long budgetId = budget.getId();
+
+        String randomSupplyDescription = "Random Description";
+
+        BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(budgetId)).thenReturn(budget);
+        BDDMockito.when(repository.findAllByBudget_IdAndSupply_DescriptionContaining(budgetId, randomSupplyDescription)).thenReturn(Collections.emptyList());
+        BDDMockito.when(mapper.toBudgetItemGetResponseList(Collections.emptyList())).thenReturn(Collections.emptyList());
+
+        List<BudgetItemGetResponse> response = service.findByBudgetId(budgetId, randomSupplyDescription);
 
         Assertions.assertThat(response)
                 .isNotNull()
@@ -142,19 +198,19 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("findByBudgetId throws NotFoundException when the given budget id is not found")
-    @Order(6)
+    @Order(8)
     void findByBudgetId_ThrowsNotFoundException_WhenTheGivenBudgetIdIsNotFound() {
         Long randomId = 999L;
 
         BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(randomId)).thenThrow(NotFoundException.class);
 
-        Assertions.assertThatThrownBy(() -> service.findByBudgetId(randomId))
+        Assertions.assertThatThrownBy(() -> service.findByBudgetId(randomId, null))
                 .isInstanceOf(NotFoundException.class);
     }
 
     @Test
     @DisplayName("save returns saved budgetItem when successful")
-    @Order(7)
+    @Order(9)
     void save_ReturnsSavedBudgetItem_WhenSuccessful() {
         BudgetItemPostRequest postRequest = BudgetItemUtils.newBudgetItemPostRequest();
         BudgetItemPostResponse postResponse = BudgetItemUtils.newBudgetItemPostResponse();
@@ -182,7 +238,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("save updates quantity and total value when the budget id and supply id are already registered")
-    @Order(8)
+    @Order(10)
     void save_UpdatesQuantityAndTotalValue_WhenTheBudgetIdAndSupplyIdAreAlreadyRegistered() {
         BudgetItem budgetItemAlreadyRegistered = budgetItemList.getFirst();
         Budget budget = budgetItemAlreadyRegistered.getBudget();
@@ -238,7 +294,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("save returns throws NotFoundException when the given budget id is not found")
-    @Order(9)
+    @Order(11)
     void save_ThrowsNotFoundException_WhenTheGivenBudgetIdIsNotFound() {
         BudgetItemPostRequest postRequest = BudgetItemUtils.newBudgetItemPostRequest().withBudgetId(999L);
 
@@ -252,7 +308,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("save returns throws NotFoundException when the given supply id is not found")
-    @Order(10)
+    @Order(12)
     void save_ThrowsNotFoundException_WhenTheGivenSupplyIdIsNotFound() {
         BudgetItemPostRequest postRequest = BudgetItemUtils.newBudgetItemPostRequest().withSupplyId(999L);
 
@@ -270,7 +326,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("update updates budgetItem when successful")
-    @Order(8)
+    @Order(13)
     void update_UpdatesBudgetItem_WhenSuccessful() {
         BudgetItem budgetItemNotUpdated = budgetItemList.getFirst();
         Long budgetItemToUpdateId = budgetItemNotUpdated.getId();
@@ -296,7 +352,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("update throws BadRequestException when the url id does not match request body id")
-    @Order(9)
+    @Order(14)
     void update_ThrowsBadRequestException_WhenTheUrlIdDoesNotMatchRequestBodyId() {
         Long randomId = 999L;
 
@@ -309,7 +365,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("update throws NotFoundException when the given budgetItem id is not found")
-    @Order(10)
+    @Order(15)
     void update_ThrowsNotFoundException_WhenTheGivenBudgetItemIdIsNotFound() {
         Long randomId = 999L;
 
@@ -324,7 +380,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("update throws NotFoundException when the given budget id is not found")
-    @Order(11)
+    @Order(16)
     void update_ThrowsNotFoundException_WhenTheGivenBudgetIdIsNotFound() {
         Long randomBudgetId = 999L;
 
@@ -342,7 +398,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("update throws NotFoundException when the given supply id is not found")
-    @Order(11)
+    @Order(17)
     void update_ThrowsNotFoundException_WhenTheGivenSupplyIdIsNotFound() {
         Long randomSupplyId = 999L;
 
@@ -361,7 +417,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("deleteById removes budgetItem when successful")
-    @Order(12)
+    @Order(18)
     void deleteById_RemovesBudgetItem_WhenSuccessful() {
         BudgetItem budgetItemToDelete = budgetItemList.getFirst();
         Long budgetItemToDeleteId = budgetItemToDelete.getId();
@@ -375,7 +431,7 @@ class BudgetItemServiceTest {
 
     @Test
     @DisplayName("deleteById throws NotFoundException when the given id is not found")
-    @Order(13)
+    @Order(19)
     void deleteById_ThrowsNotFoundException_WhenTheGivenIdIsNotFound() {
         Long randomId = 999L;
 
