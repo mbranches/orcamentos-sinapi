@@ -146,9 +146,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
-        List<BudgetItem> servicosPesquisados = budgetService.findItemsBySupplyDescription(budget, descricao);
-
-        return servicosPesquisados;
+        return budgetService.findItemsBySupplyDescription(budget, descricao);
     }
 
     private void criarColunasTabela() {
