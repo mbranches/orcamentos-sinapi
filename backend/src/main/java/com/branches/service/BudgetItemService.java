@@ -98,6 +98,11 @@ public class BudgetItemService {
     }
 
     public void deleteById(Long id) {
-        repository.delete(findByIdOrElseThrowsNotFoundException(id));
+        BudgetItem budgetItemToDelete = findByIdOrElseThrowsNotFoundException(id);
+        
+        repository.delete(budgetItemToDelete);
+
+        Budget budget = budgetItemToDelete.getBudget();
+        budgetService.updatesTotalValue(budget.getId());
     }
 }
