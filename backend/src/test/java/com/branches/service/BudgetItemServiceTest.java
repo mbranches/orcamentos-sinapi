@@ -422,8 +422,10 @@ class BudgetItemServiceTest {
         BudgetItem budgetItemToDelete = budgetItemList.getFirst();
         Long budgetItemToDeleteId = budgetItemToDelete.getId();
 
+        Budget ownerBudget = budgetItemToDelete.getBudget();
         BDDMockito.when(repository.findById(budgetItemToDeleteId)).thenReturn(Optional.of(budgetItemToDelete));
         BDDMockito.doNothing().when(repository).delete(budgetItemToDelete);
+        BDDMockito.doNothing().when(budgetService).updatesTotalValue(ownerBudget.getId());
 
         Assertions.assertThatNoException()
                 .isThrownBy(() -> service.deleteById(budgetItemToDeleteId));
