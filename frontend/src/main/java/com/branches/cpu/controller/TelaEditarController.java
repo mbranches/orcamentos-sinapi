@@ -3,6 +3,7 @@ package com.branches.cpu.controller;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
+import com.branches.cpu.service.BudgetItemService;
 import com.branches.cpu.service.SupplyService;
 import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
@@ -30,26 +31,18 @@ import static com.branches.cpu.utils.Monetary.formatarValorBRL;
 public class TelaEditarController implements Initializable {
     @FXML
     private Button btnSalvarFechar;
-
     @FXML
     private TextField tfMostrarServico;
-
     @FXML
     private TextField tfQuantidade;
-
     @FXML
     private TableView<Supply> tvMostrarServico;
-
     @FXML
     private Text txtTotal;
-
     private TelaOrcamentoController telaPrincipal;
-
     private BudgetItem servicoAEditar;
-
-    private SupplyService service = new SupplyService();
-
-    private ObservableList observableList = javafx.collections.FXCollections.observableArrayList();
+    private final BudgetItemService budgetItemService = new BudgetItemService();
+    private final SupplyService service = new SupplyService();
 
     @FXML
     void Fechar(ActionEvent event) {
@@ -64,7 +57,10 @@ public class TelaEditarController implements Initializable {
             Alerta.error("Quantidade inválida!", "Digite uma quantidade válida");
             return;
         }
-        telaPrincipal.atualizarServico(servicoAEditar);
+
+        budgetItemService.update(servicoAEditar);
+
+        telaPrincipal.atualizarItensTabela();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
@@ -102,6 +98,7 @@ public class TelaEditarController implements Initializable {
     }
 
     private void setarItemTableView() {
+        ObservableList<Supply> observableList = tvMostrarServico.getItems();
         List<Supply> servicos = service.findByName(tfMostrarServico.getText());
 
         observableList.addAll(servicos);

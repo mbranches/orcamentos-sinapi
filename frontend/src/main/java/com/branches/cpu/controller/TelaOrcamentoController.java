@@ -150,7 +150,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
-        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getOrcamento().getDescription().toLowerCase().contains(descricao.toLowerCase()));
+        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getBudget().getDescription().toLowerCase().contains(descricao.toLowerCase()));
 
         return servicosPesquisados;
     }
@@ -206,12 +206,11 @@ public class TelaOrcamentoController implements Initializable {
         btnExcluir.setDisable(true);
     }
 
-    public void atualizarServico(BudgetItem servicoNovo) {
-        for (BudgetItem servico : itemsOrcamento) {
-            if (servico.equals(servicoNovo)) {
-                servico.setQuantity(servicoNovo.getQuantity());
-            }
-        }
+    public void atualizarItensTabela() {
+        List<BudgetItem> budgetItems = budgetService.findItems(budget);
+
+        itemsOrcamento.clear();
+        itemsOrcamento.addAll(budgetItems);
 
         limparBarraPesquisa();
         atualizarTabela();
