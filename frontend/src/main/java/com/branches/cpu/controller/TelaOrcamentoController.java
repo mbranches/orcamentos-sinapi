@@ -141,16 +141,12 @@ public class TelaOrcamentoController implements Initializable {
         } else {
             resultadoBusca = consultarEmServicosAdicionados(descricao);
 
-            if (resultadoBusca.isEmpty()) {
-                tvServicosAdiconados.getItems().clear();
-            } else {
-                tvServicosAdiconados.getItems().setAll(resultadoBusca);
-            }
+            tvServicosAdiconados.getItems().setAll(resultadoBusca);
         }
     }
 
     private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
-        List<BudgetItem> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getBudget().getDescription().toLowerCase().contains(descricao.toLowerCase()));
+        List<BudgetItem> servicosPesquisados = budgetService.findItemsBySupplyDescription(budget, descricao);
 
         return servicosPesquisados;
     }

@@ -45,6 +45,17 @@ public class BudgetService {
         return response.getBody();
     }
 
+    public List<BudgetItem> findItemsBySupplyDescription(Budget budget, String descricao) {
+        Long budgetId = budget.getId();
+        String urlForGet = url + "/" + budgetId + "/items?supplyDescription=" + descricao;
+
+        ParameterizedTypeReference<List<BudgetItem>> typeReference = new ParameterizedTypeReference<>(){};
+
+        ResponseEntity<List<BudgetItem>> response = restTemplate.exchange(urlForGet, HttpMethod.GET, null, typeReference);
+
+        return response.getBody();
+    }
+
     public void update(Budget budget) {
         String urlForPut = url + "/" + budget.getId();
 
