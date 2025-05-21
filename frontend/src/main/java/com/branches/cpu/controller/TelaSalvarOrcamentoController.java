@@ -47,7 +47,7 @@ public class TelaSalvarOrcamentoController {
 
         Budget budget = budgetService.save(orcamentoPostRequest);
 
-        budgetItemPostRequests.forEach(item -> item.setOrcamento(budget));
+        budgetItemPostRequests.forEach(item -> item.setBudget(budget));
         orcamentoController.setItemsOrcamento(budgetItemService.saveAll(budgetItemPostRequests));
         orcamentoController.setOrcamento(budget);
 

@@ -187,7 +187,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     public void adicionarServico(BudgetItem budgetItem) {
-        budgetItem.setOrcamento(budget);
+        budgetItem.setBudget(budget);
         itemsOrcamento.add(budgetItem);
 
         limparBarraPesquisa();

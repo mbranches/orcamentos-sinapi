@@ -39,11 +39,11 @@ public class BudgetItem {
         this.quantity = quantity;
     }
 
-    public Budget getOrcamento() {
+    public Budget getBudget() {
         return budget;
     }
 
-    public void setOrcamento(Budget budget) {
+    public void setBudget(Budget budget) {
         this.budget = budget;
     }
 
