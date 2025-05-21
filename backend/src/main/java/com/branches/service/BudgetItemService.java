@@ -37,10 +37,10 @@ public class BudgetItemService {
                 .orElseThrow(() -> new NotFoundException("Item with id '%s' is not found".formatted(id)));
     }
 
-    public List<BudgetItemGetResponse> findByBudgetId(Long budgetId) {
+    public List<BudgetItemGetResponse> findByBudgetId(Long budgetId, String supplyDescription) {
         budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
 
-        List<BudgetItem> response = repository.findAllByBudgetId(budgetId);
+        List<BudgetItem> response = supplyDescription == null ? repository.findAllByBudgetId(budgetId) : repository.findAllByBudget_IdAndSupply_DescriptionContaining(budgetId, supplyDescription);
 
         return mapper.toBudgetItemGetResponseList(response);
     }

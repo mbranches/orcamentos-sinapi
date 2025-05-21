@@ -13,4 +13,6 @@ public interface BudgetItemRepository extends JpaRepository<BudgetItem, Long> {
     List<BudgetItem> findAllByBudgetId(Long budgetId);
 
     Optional<BudgetItem> findBySupply_IdAndBudget_Id(Long supplyId, Long budgetId);
+
+    List<BudgetItem> findAllByBudget_IdAndSupply_DescriptionContaining(Long budgetId, String supplyDescription);
 }
