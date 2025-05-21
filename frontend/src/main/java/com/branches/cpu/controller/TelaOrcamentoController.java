@@ -71,7 +71,7 @@ public class TelaOrcamentoController implements Initializable {
 
     @FXML
     void autoComplementarTabela(KeyEvent event) {
-        atualizarTabela();
+        carregarBudgetItemsProcurados();
     }
 
     @FXML
@@ -104,7 +104,7 @@ public class TelaOrcamentoController implements Initializable {
 
         limparBarraPesquisa();
 
-        atualizarTabela();
+        carregarTodosBudgetItems();
 
         desativarBotoes();
 
@@ -128,25 +128,7 @@ public class TelaOrcamentoController implements Initializable {
 
         criarColunasTabela();
 
-        atualizarTabela();
-    }
-
-    private void atualizarTabela() {
-        tvServicosAdiconados.getItems().clear();
-        resultadoBusca.clear();
-        String descricao = tfPesquisar.getText();
-
-        if (descricao.isEmpty()) {
-            tvServicosAdiconados.getItems().addAll(itemsOrcamento);
-        } else {
-            resultadoBusca = consultarEmServicosAdicionados(descricao);
-
-            tvServicosAdiconados.getItems().setAll(resultadoBusca);
-        }
-    }
-
-    private List<BudgetItem> consultarEmServicosAdicionados(String descricao) {
-        return budgetService.findItemsBySupplyDescription(budget, descricao);
+        carregarBudgetItemsProcurados();
     }
 
     private void criarColunasTabela() {
@@ -185,7 +167,7 @@ public class TelaOrcamentoController implements Initializable {
         itemsOrcamento.add(budgetItem);
 
         limparBarraPesquisa();
-        atualizarTabela();
+        carregarTodosBudgetItems();
     }
 
     private void ativarBotoes() {
@@ -200,15 +182,21 @@ public class TelaOrcamentoController implements Initializable {
         btnExcluir.setDisable(true);
     }
 
-    public void atualizarItensTabela() {
+    public void carregarTodosBudgetItems() {
         List<BudgetItem> budgetItems = budgetService.findItems(budget);
 
-        itemsOrcamento.clear();
-        itemsOrcamento.addAll(budgetItems);
+        tvServicosAdiconados.getItems().setAll(budgetItems);
 
         limparBarraPesquisa();
-        atualizarTabela();
         ativarBtnSalvar();
+    }
+
+    public void carregarBudgetItemsProcurados() {
+        String descricao = tfPesquisar.getText();
+
+        List<BudgetItem> foundBudgetItems = budgetService.findItemsBySupplyDescription(budget, descricao);
+
+        tvServicosAdiconados.getItems().setAll(foundBudgetItems);
     }
 
     public void limparBarraPesquisa() {
@@ -221,7 +209,7 @@ public class TelaOrcamentoController implements Initializable {
         itemsOrcamento.addAll(budgetItems);
 
 
-        atualizarTabela();
+        carregarTodosBudgetItems();
     }
 
     public void setOrcamento(Budget budget) {
@@ -232,7 +220,7 @@ public class TelaOrcamentoController implements Initializable {
         itemsOrcamento.clear();
         itemsOrcamento.addAll(itensDoOrcamento);
 
-        atualizarTabela();
+        carregarTodosBudgetItems();
     }
 
     public void ativarBtnSalvar() {

@@ -60,7 +60,7 @@ public class TelaEditarController implements Initializable {
 
         budgetItemService.update(servicoAEditar);
 
-        telaPrincipal.atualizarItensTabela();
+        telaPrincipal.carregarTodosBudgetItems();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
