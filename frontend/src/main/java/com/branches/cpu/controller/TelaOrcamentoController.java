@@ -118,8 +118,6 @@ public class TelaOrcamentoController implements Initializable {
         tvServicosAdiconados.setEditable(false);
 
         criarColunasTabela();
-
-        carregarBudgetItemsProcurados();
     }
 
     private void criarColunasTabela() {
