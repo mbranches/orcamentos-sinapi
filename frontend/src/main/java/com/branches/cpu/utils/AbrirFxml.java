@@ -31,7 +31,7 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaOrcamento(String title, Budget budget){
+    public void abrirTelaOrcamento(String title, Budget budget, TelaOrcamentosController telaOrcamentos){
         String fileName = "tela-orcamento";
 
         try {
@@ -42,6 +42,7 @@ public class AbrirFxml {
                 TelaOrcamentoController controller = loader.getController();
                 controller.setOrcamento(budget);
                 controller.carregarTodosBudgetItems();
+                controller.setTelaOrcamentos(telaOrcamentos);
             }
 
             abrirFxml(root, title, 900, 600, true);
