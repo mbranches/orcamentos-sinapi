@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.List;
-
 public class AbrirFxml {
     private final String PATH = "/com/branches/cpu/fxml/";
 
@@ -53,7 +51,7 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaOrcamentos(String title){
+    public void abrirTelaVisualizarOrcamentos(String title){
         String fileName = "tela-orcamentos";
 
         try {
@@ -115,6 +113,21 @@ public class AbrirFxml {
             controller.setTelaOrcamentosController(telaOrcamentosController);
 
             abrirFxml(root, titulo, 660, 320, false);
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaVisualizarClientes(String title){
+        String fileName = "tela-clientes";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+
+            Parent root = loader.load();
+            abrirFxml(root, title, 900, 600, true);
+
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);

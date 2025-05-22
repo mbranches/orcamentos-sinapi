@@ -13,7 +13,17 @@ public class TelaInicialController {
     }
 
     @FXML
-    void abrirTelaOrcamentos(ActionEvent event) {
-        abrirFxml.abrirTelaOrcamentos("Orçamentos");
+    void abrirTelaVisualizarBudgets(ActionEvent event) {
+        abrirFxml.abrirTelaVisualizarOrcamentos("Visualizar Orçamentos");
+    }
+
+    @FXML
+    void abrirTelaVisualizarClients(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirTelaCriarClient(ActionEvent event) {
+
     }
 }
