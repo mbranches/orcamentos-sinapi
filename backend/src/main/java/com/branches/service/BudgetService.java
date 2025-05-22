@@ -44,6 +44,12 @@ public class BudgetService {
         return mapper.toBudgetGetResponseList(response);
     }
 
+    public BudgetGetResponse findById(Long id) {
+        Budget foundBudget = findByIdOrElseThrowsNotFoundException(id);
+
+        return mapper.toBudgetGetResponse(foundBudget);
+    }
+
     public Budget findByIdOrElseThrowsNotFoundException(Long id) {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Budget with id '%s' is not found".formatted(id)));
     }

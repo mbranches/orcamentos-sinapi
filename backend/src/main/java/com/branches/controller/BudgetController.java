@@ -28,6 +28,12 @@ public class BudgetController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<BudgetGetResponse> findById(@PathVariable Long id) {
+        BudgetGetResponse response = service.findById(id);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/{budgetId}/items")
     public ResponseEntity<List<BudgetItemGetResponse>> findAllItemsByBudgetId(@PathVariable Long budgetId, @RequestParam(required = false) String supplyDescription) {
         List<BudgetItemGetResponse> response = budgetItemService.findByBudgetId(budgetId, supplyDescription);
