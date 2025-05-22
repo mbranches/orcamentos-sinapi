@@ -44,10 +44,10 @@ public class TelaOrcamentoController implements Initializable {
     private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
-    private List<BudgetItem> itemsOrcamento = new ArrayList<>();
-    private AbrirFxml abrirFxml = new AbrirFxml();
-    private BudgetItemService budgetItemService = new BudgetItemService();
-    private BudgetService budgetService = new BudgetService();
+    private final List<BudgetItem> itemsOrcamento = new ArrayList<>();
+    private final AbrirFxml abrirFxml = new AbrirFxml();
+    private final BudgetItemService budgetItemService = new BudgetItemService();
+    private final BudgetService budgetService = new BudgetService();
     private Budget budget;
     private BudgetItem itemSelecionado = null;
 
@@ -59,11 +59,6 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     void autoComplementarTabela(KeyEvent event) {
         carregarBudgetItemsProcurados();
-    }
-
-    @FXML
-    void salvarOrcamento(ActionEvent event) {
-
     }
 
     @FXML
@@ -165,15 +160,6 @@ public class TelaOrcamentoController implements Initializable {
 
     public void limparBarraPesquisa() {
         if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
-    }
-
-
-    public void setItemsOrcamento(List<BudgetItem> budgetItems) {
-        itemsOrcamento.clear();
-        itemsOrcamento.addAll(budgetItems);
-
-
-        carregarTodosBudgetItems();
     }
 
     public void setOrcamento(Budget budget) {

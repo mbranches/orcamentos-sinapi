@@ -113,15 +113,6 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button id="button-salvar" fx:id="btnSalvar" alignment="TOP_LEFT" disable="true" mnemonicParsing="false" onAction="#salvarOrcamento" text="Salvar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/save-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <VBox alignment="TOP_RIGHT" fillWidth="false" maxWidth="1400.0" prefHeight="39.0" prefWidth="58.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label text="Total:" textFill="#1700e1">
