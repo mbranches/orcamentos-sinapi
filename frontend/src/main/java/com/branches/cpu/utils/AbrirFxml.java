@@ -3,6 +3,7 @@ package com.branches.cpu.utils;
 import com.branches.cpu.controller.*;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.model.Budget;
+import com.branches.cpu.model.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -128,6 +129,24 @@ public class AbrirFxml {
             Parent root = loader.load();
             abrirFxml(root, title, 900, 600, true);
 
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaEditarCliente(String title, TelaVisualizarClientesController telaVisualizarClientesController, Client clientToEdit) {
+        String fileName = "tela-editar-cliente";
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            TelaEditarClienteController telaEditarClienteController = loader.getController();
+            telaEditarClienteController.setTelaVisualizarClientesController(telaVisualizarClientesController);
+            telaEditarClienteController.setClientToEdit(clientToEdit);
+            telaEditarClienteController.atualizarCampos();
+
+            abrirFxml(root, title, 720, 400, false);
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);

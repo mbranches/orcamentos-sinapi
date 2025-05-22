@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" stylesheets="@../Styles/style-telas-editar-adicionar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaEditarClienteController">
+   <children>
+      <TextField fx:id="tfClientName" layoutX="36.0" layoutY="59.0" prefHeight="50.0" prefWidth="646.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="80.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Label layoutX="36.0" layoutY="54.0" text="Nome :" textFill="#736b6b" AnchorPane.leftAnchor="36.0" />
+      <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
+         <children>
+            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#salvarFechar" prefHeight="30.0" styleClass="button-action" text="Salvar e Fechar">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="30.0" prefWidth="78.0" styleClass="button-action" text="Fechar">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+      <VBox layoutX="642.0" layoutY="278.0" prefHeight="49.0" prefWidth="66.0" AnchorPane.rightAnchor="10.0" />
+      <Label layoutX="37.0" layoutY="182.0" text="Tipo do Cliente" textFill="#736b6b" />
+      <ComboBox fx:id="cbClientType" layoutX="36.0" layoutY="200.0" prefHeight="50.0" prefWidth="646.0" />
+   </children>
+</AnchorPane>

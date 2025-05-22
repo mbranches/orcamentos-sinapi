@@ -2,6 +2,7 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Client;
 import com.branches.cpu.service.ClientService;
+import com.branches.cpu.utils.AbrirFxml;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +29,8 @@ public class TelaVisualizarClientesController implements Initializable {
     @FXML
     private TableView<Client> tvClientes;
     private Client selectedClient;
-    private ClientService clientService = new ClientService();
+    private final ClientService clientService = new ClientService();
+    private final AbrirFxml abrirFxml = new AbrirFxml();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,6 +47,8 @@ public class TelaVisualizarClientesController implements Initializable {
 
     @FXML
     void abrirTelaEditarCliente(ActionEvent event) {
+        abrirFxml.abrirTelaEditarCliente("Editar Cliente", this, selectedClient);
+
         limparBarraPesquisa();
     }
 
