@@ -19,7 +19,7 @@ public class TelaInicialController {
 
     @FXML
     void abrirTelaVisualizarClients(ActionEvent event) {
-
+        abrirFxml.abrirTelaVisualizarClientes("Visualizar Clientes");
     }
 
     @FXML
