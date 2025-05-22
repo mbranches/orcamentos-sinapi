@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.branches.cpu.controller;
 
-import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.service.BudgetItemService;
@@ -42,7 +37,6 @@ public class TelaOrcamentoController implements Initializable {
     private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
-    private final List<BudgetItem> itemsOrcamento = new ArrayList<>();
     private final AbrirFxml abrirFxml = new AbrirFxml();
     private final BudgetItemService budgetItemService = new BudgetItemService();
     private final BudgetService budgetService = new BudgetService();
@@ -158,11 +152,6 @@ public class TelaOrcamentoController implements Initializable {
 
     public void setOrcamento(Budget budget) {
         this.budget = budget;
-
-        List<BudgetItem> itensDoOrcamento = budgetService.findItems(budget);
-
-        itemsOrcamento.clear();
-        itemsOrcamento.addAll(itensDoOrcamento);
 
         carregarTodosBudgetItems();
     }
