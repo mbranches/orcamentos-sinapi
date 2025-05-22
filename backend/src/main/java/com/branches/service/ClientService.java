@@ -52,6 +52,8 @@ public class ClientService {
     public void update(Long clientId, ClientPutRequest putRequest) {
         if (!clientId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(clientId, putRequest.getId()));
 
+        findByIdOrThrowsNotFoundException(clientId);
+
         Client clientToUpdate = mapper.toClient(putRequest);
 
         repository.save(clientToUpdate);
