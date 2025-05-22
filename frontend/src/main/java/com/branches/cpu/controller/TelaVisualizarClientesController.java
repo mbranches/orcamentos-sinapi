@@ -1,10 +1,7 @@
 package com.branches.cpu.controller;
 
-import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.Client;
-import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.service.ClientService;
-import com.branches.cpu.utils.TableColumnConfig;
 import com.branches.cpu.utils.TableViewProprieties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +16,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TelaClientesController implements Initializable {
+public class TelaVisualizarClientesController implements Initializable {
     @FXML
     private Button btnEditar;
     @FXML

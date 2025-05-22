@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Styles/style-telas-orcamentos-clientes.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaOrcamentosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Styles/style-telas-orcamentos-clientes.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaVisualizarClientesController">
    <children>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <HBox maxWidth="1400.0" minHeight="64.0" prefHeight="64.0" prefWidth="880.0">
                      <children>
-                        <TextField fx:id="tfPesquisar" onKeyReleased="#autoComplementarTabela" prefHeight="40.0" prefWidth="507.0" promptText="Pesquisar orçamento" styleClass="item-top-bar">
+                        <TextField fx:id="tfPesquisar" onKeyReleased="#autoComplementarTabela" prefHeight="40.0" prefWidth="507.0" promptText="Pesquisar cliente" styleClass="item-top-bar">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
@@ -28,29 +28,7 @@
                               <Font size="10.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAbrir" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abrirOrcamento" prefHeight="40.0" prefWidth="91.0" text="Abrir" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets left="10.0" right="15.0" />
-                           </padding>
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="button-top" />
-                              <String fx:value="item-top-bar" />
-                           </styleClass>
-                           <graphic>    
-                              <ImageView fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/open-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnEditar" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abrirTelaEditar" prefHeight="40.0" prefWidth="100.0" text="Editar" textFill="WHITE">
+                        <Button fx:id="btnEditar" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abrirTelaEditarCliente" prefHeight="40.0" prefWidth="100.0" text="Editar" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
@@ -72,7 +50,7 @@
                               <String fx:value="item-top-bar" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirOrcamento" prefHeight="40.0" text="Excluir" textFill="WHITE">
+                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="40.0" text="Excluir" textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -101,7 +79,7 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" prefWidth="1400.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <TableView fx:id="tvOrcamentos" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarOrcamento" prefHeight="700.0" prefWidth="1400.0" HBox.hgrow="ALWAYS">
+                        <TableView fx:id="tvClientes" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarCliente" prefHeight="700.0" prefWidth="1400.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

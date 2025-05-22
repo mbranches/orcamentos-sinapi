@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TelaAdicionarController implements Initializable {
+public class TelaAdicionarInsumoController implements Initializable {
     @FXML
     private Button btnAdicionar;
     @FXML

@@ -21,7 +21,7 @@ public class TelaEditarOrcamentoController {
 
     private Budget budgetAEditar;
 
-    private TelaOrcamentosController telaOrcamentosController;
+    private TelaVisualizarOrcamentosController telaVisualizarOrcamentosController;
 
     private final BudgetService ORCAMENTO_SERVICE = new BudgetService();
 
@@ -36,7 +36,7 @@ public class TelaEditarOrcamentoController {
 
         ORCAMENTO_SERVICE.update(budgetAEditar);
 
-        telaOrcamentosController.atualizarTabela();
+        telaVisualizarOrcamentosController.atualizarTabela();
 
         fecharPagina(event);
     }
@@ -56,7 +56,7 @@ public class TelaEditarOrcamentoController {
         stage.close();
     }
 
-    public void setTelaOrcamentosController(TelaOrcamentosController telaOrcamentosController) {
-        this.telaOrcamentosController = telaOrcamentosController;
+    public void setTelaOrcamentosController(TelaVisualizarOrcamentosController telaVisualizarOrcamentosController) {
+        this.telaVisualizarOrcamentosController = telaVisualizarOrcamentosController;
     }
 }

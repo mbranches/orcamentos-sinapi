@@ -29,7 +29,7 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaOrcamento(String title, Budget budget, TelaOrcamentosController telaOrcamentos){
+    public void abrirTelaOrcamento(String title, Budget budget, TelaVisualizarOrcamentosController telaOrcamentos){
         String fileName = "tela-orcamento";
 
         try {
@@ -52,7 +52,7 @@ public class AbrirFxml {
     }
 
     public void abrirTelaVisualizarOrcamentos(String title){
-        String fileName = "tela-orcamentos";
+        String fileName = "tela-visualizar-orcamentos";
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
@@ -68,13 +68,13 @@ public class AbrirFxml {
 
 
     public void abrirTelaAdicionar(String titulo, TelaOrcamentoController telaOrcamentoController) {
-        String fileName = "tela-adicionar";
+        String fileName = "tela-adicionar-insumo";
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
             Parent root = loader.load();
 
-            TelaAdicionarController telaAdicionarController = loader.getController();
-            telaAdicionarController.setTelaPrincipal(telaOrcamentoController);
+            TelaAdicionarInsumoController telaAdicionarInsumoController = loader.getController();
+            telaAdicionarInsumoController.setTelaPrincipal(telaOrcamentoController);
 
             abrirFxml(root, titulo, 720, 400, false);
         } catch (Exception e) {
@@ -84,15 +84,15 @@ public class AbrirFxml {
     }
 
     public void abrirTelaEditar(String titulo, TelaOrcamentoController telaOrcamentoController, BudgetItem itemAEditar) {
-        String fileName = "tela-editar";
+        String fileName = "tela-editar-insumo";
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
             Parent root = loader.load();
 
-            TelaEditarController telaEditarController = loader.getController();
-            telaEditarController.setTelaPrincipal(telaOrcamentoController);
-            telaEditarController.setServicoAEditar(itemAEditar);
-            telaEditarController.atualizarCampos();
+            TelaEditarInsumoController telaEditarInsumoController = loader.getController();
+            telaEditarInsumoController.setTelaPrincipal(telaOrcamentoController);
+            telaEditarInsumoController.setServicoAEditar(itemAEditar);
+            telaEditarInsumoController.atualizarCampos();
 
             abrirFxml(root, titulo, 720, 400, false);
         } catch (Exception e) {
@@ -101,7 +101,7 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaEditarOrcamento(String titulo, Budget budgetAEditar, TelaOrcamentosController telaOrcamentosController) {
+    public void abrirTelaEditarOrcamento(String titulo, Budget budgetAEditar, TelaVisualizarOrcamentosController telaVisualizarOrcamentosController) {
         String fileName = "tela-editar-orcamento";
 
         try {
@@ -110,7 +110,7 @@ public class AbrirFxml {
 
             TelaEditarOrcamentoController controller = loader.getController();
             controller.setOrcamento(budgetAEditar);
-            controller.setTelaOrcamentosController(telaOrcamentosController);
+            controller.setTelaOrcamentosController(telaVisualizarOrcamentosController);
 
             abrirFxml(root, titulo, 660, 320, false);
         } catch (Exception e) {
@@ -120,7 +120,7 @@ public class AbrirFxml {
     }
 
     public void abrirTelaVisualizarClientes(String title){
-        String fileName = "tela-clientes";
+        String fileName = "tela-visualizar-clientes";
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));

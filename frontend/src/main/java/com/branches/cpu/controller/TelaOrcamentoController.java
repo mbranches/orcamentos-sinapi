@@ -36,7 +36,7 @@ public class TelaOrcamentoController implements Initializable {
     private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
-    private TelaOrcamentosController telaOrcamentos;
+    private TelaVisualizarOrcamentosController telaOrcamentos;
     private final AbrirFxml abrirFxml = new AbrirFxml();
     private final BudgetItemService budgetItemService = new BudgetItemService();
     private final BudgetService budgetService = new BudgetService();
@@ -176,7 +176,7 @@ public class TelaOrcamentoController implements Initializable {
         carregarTodosBudgetItems();
     }
 
-    public void setTelaOrcamentos(TelaOrcamentosController telaOrcamentos) {
+    public void setTelaOrcamentos(TelaVisualizarOrcamentosController telaOrcamentos) {
         this.telaOrcamentos = telaOrcamentos;
     }
 

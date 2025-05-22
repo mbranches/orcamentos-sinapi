@@ -11,20 +11,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" stylesheets="@../Styles/style-telas-editar-adicionar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaAdicionarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" stylesheets="@../Styles/style-telas-editar-adicionar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.branches.cpu.controller.TelaEditarInsumoController">
    <children>
-      <TextField fx:id="tfQuantidade" disable="true" layoutX="475.0" layoutY="58.0" onKeyReleased="#setarValorTotal" prefHeight="30.0" prefWidth="108.0" AnchorPane.leftAnchor="475.0" AnchorPane.rightAnchor="143.39999999999998" />
-      <Label layoutX="10.0" layoutY="41.0" text="Informe a descrição do serviço e pressione enter" textFill="#736b6b" AnchorPane.leftAnchor="10.0" />
+      <TextField fx:id="tfMostrarServico" disable="true" editable="false" layoutX="10.0" layoutY="58.0" prefHeight="30.0" prefWidth="454.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="58.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="tfQuantidade" layoutX="475.0" layoutY="58.0" onKeyReleased="#editarValorTotal" prefHeight="30.0" prefWidth="108.0" AnchorPane.leftAnchor="475.0" AnchorPane.rightAnchor="143.39999999999998" />
+      <Label layoutX="10.0" layoutY="41.0" text="Descrição" textFill="#736b6b" AnchorPane.leftAnchor="10.0" />
       <Label layoutX="475.0" layoutY="41.0" text="Quantidade*" textFill="#736b6b" AnchorPane.leftAnchor="475.0" />
       <TableView fx:id="tvMostrarServico" layoutX="11.0" layoutY="133.0" prefHeight="133.0" prefWidth="698.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.399999999999977" />
       <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
          <children>
-            <Button fx:id="btnAdicionar" disable="true" mnemonicParsing="false" onAction="#adicionarServico" prefHeight="30.0" styleClass="button-action" text="Adicionar">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btnAdicionarFechar" disable="true" mnemonicParsing="false" onAction="#adicionarFechar" prefHeight="30.0" styleClass="button-action" text="Adicionar e Fechar">
+            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#editarFechar" prefHeight="30.0" styleClass="button-action" text="Salvar e Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -61,10 +60,6 @@
                </VBox.margin>
             </Text>
          </children>
-         <padding>
-            <Insets right="20.0" />
-         </padding>
       </VBox>
-      <VBox fx:id="sugestions" layoutX="10.0" layoutY="60.0" maxWidth="454.0" prefHeight="146.0" prefWidth="454.0" />
    </children>
 </AnchorPane>

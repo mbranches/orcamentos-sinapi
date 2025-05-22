@@ -18,11 +18,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TelaOrcamentosController implements Initializable {
+public class TelaVisualizarOrcamentosController implements Initializable {
     @FXML
     private Button btnAbrir;
     @FXML

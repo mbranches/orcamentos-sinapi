@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 import static com.branches.cpu.utils.Monetary.formatarValorBRL;
 
-public class TelaEditarController implements Initializable {
+public class TelaEditarInsumoController implements Initializable {
     @FXML
     private Button btnSalvarFechar;
     @FXML
