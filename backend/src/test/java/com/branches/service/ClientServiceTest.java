@@ -2,6 +2,7 @@ package com.branches.service;
 
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.ClientMapper;
+import com.branches.model.Budget;
 import com.branches.model.Client;
 import com.branches.model.Client;
 import com.branches.repository.ClientRepository;
@@ -142,6 +143,33 @@ class ClientServiceTest {
         BDDMockito.when(repository.findById(randomId)).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> service.findById(randomId))
+                .isInstanceOf(NotFoundException.class)
+                .hasMessageContaining("Client with id '%s' is not found".formatted(randomId));
+    }
+
+    @Test
+    @DisplayName("deleteById removes client when successful")
+    @Order(7)
+    void deleteById_RemovesClient_WhenSuccessful() {
+        Client clientToDelete = clientList.getFirst();
+        Long clientToDeleteId = clientToDelete.getId();
+
+        BDDMockito.when(repository.findById(clientToDeleteId)).thenReturn(Optional.of(clientToDelete));
+        BDDMockito.doNothing().when(repository).delete(clientToDelete);
+
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> service.deleteById(clientToDeleteId));
+    }
+
+    @Test
+    @DisplayName("deleteById throws NotFoundException when the given id is not found")
+    @Order(8)
+    void deleteById_ThrowsNotFoundException_WhenTheGivenIdIsNotFound() {
+        Long randomId = 999L;
+
+        BDDMockito.when(repository.findById(randomId)).thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> service.deleteById(randomId))
                 .isInstanceOf(NotFoundException.class)
                 .hasMessageContaining("Client with id '%s' is not found".formatted(randomId));
     }
