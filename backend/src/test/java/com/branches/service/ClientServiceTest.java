@@ -1,14 +1,18 @@
 package com.branches.service;
 
+import com.branches.exception.BadRequestException;
 import com.branches.exception.NotFoundException;
 import com.branches.mapper.ClientMapper;
 import com.branches.model.Budget;
 import com.branches.model.Client;
 import com.branches.model.Client;
 import com.branches.repository.ClientRepository;
+import com.branches.request.BudgetPutRequest;
 import com.branches.request.ClientPostRequest;
+import com.branches.request.ClientPutRequest;
 import com.branches.response.ClientGetResponse;
 import com.branches.response.ClientPostResponse;
+import com.branches.utils.BudgetUtils;
 import com.branches.utils.ClientUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -170,6 +174,53 @@ class ClientServiceTest {
         BDDMockito.when(repository.findById(randomId)).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> service.deleteById(randomId))
+                .isInstanceOf(NotFoundException.class)
+                .hasMessageContaining("Client with id '%s' is not found".formatted(randomId));
+    }
+
+    @Test
+    @DisplayName("update updates client when successful")
+    @Order(8)
+    void update_UpdatesClient_WhenSuccessful() {
+        Client clientNotUpdated = clientList.getFirst();
+        Long clientToUpdateId = clientNotUpdated.getId();
+
+        ClientPutRequest putRequest = ClientUtils.newClientPutRequest();
+
+        Client clientToUpdate = ClientUtils.newClientToUpdate();
+
+        BDDMockito.when(repository.findById(putRequest.getId())).thenReturn(Optional.of(clientNotUpdated));
+        BDDMockito.when(mapper.toClient(putRequest)).thenReturn(clientToUpdate);
+        BDDMockito.when(repository.save(clientToUpdate)).thenReturn(clientToUpdate);
+
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> service.update(clientToUpdateId, putRequest));
+    }
+
+    @Test
+    @DisplayName("update throws BadRequestException when the url id does not match request body id")
+    @Order(9)
+    void update_ThrowsBadRequestException_WhenTheUrlIdDoesNotMatchRequestBodyId() {
+        Long randomId = 999L;
+
+        ClientPutRequest putRequest = ClientUtils.newClientPutRequest();
+
+        Assertions.assertThatThrownBy(() -> service.update(randomId, putRequest))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessageContaining("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(randomId, putRequest.getId()));
+    }
+
+    @Test
+    @DisplayName("update throws NotFoundException when the given client id is not found")
+    @Order(10)
+    void update_ThrowsNotFoundException_WhenTheGivenClientIdIsNotFound() {
+        Long randomId = 999L;
+
+        ClientPutRequest putRequest = ClientUtils.newClientPutRequest().withId(randomId);
+
+        BDDMockito.when(repository.findById(putRequest.getId())).thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> service.update(randomId, putRequest))
                 .isInstanceOf(NotFoundException.class)
                 .hasMessageContaining("Client with id '%s' is not found".formatted(randomId));
     }

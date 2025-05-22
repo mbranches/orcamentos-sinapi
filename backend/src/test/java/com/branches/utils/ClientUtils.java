@@ -3,6 +3,7 @@ package com.branches.utils;
 import com.branches.model.Client;
 import com.branches.model.ClientType;
 import com.branches.request.ClientPostRequest;
+import com.branches.request.ClientPutRequest;
 import com.branches.response.BudgetGetResponse;
 import com.branches.response.BudgetPostResponse;
 import com.branches.response.ClientGetResponse;
@@ -60,5 +61,25 @@ public class ClientUtils {
 
     public static BudgetPostResponse.ClientByBudgetPostResponse newClientByBudgetPostResponse() {
         return new BudgetPostResponse.ClientByBudgetPostResponse(1L, "Marcus Branches", ClientType.pessoa);
+    }
+
+    public static ClientPutRequest newClientPutRequest() {
+        Client clientToUpdate = newClientList().getFirst();
+
+        return ClientPutRequest.builder()
+                .id(clientToUpdate.getId())
+                .name("Novo Nome")
+                .clientType(clientToUpdate.getClientType())
+                .build();
+    }
+
+    public static Client newClientToUpdate() {
+        Client clientNotUpdated = newClientList().getFirst();
+
+        return Client.builder()
+                .id(clientNotUpdated.getId())
+                .name("Novo Nome")
+                .clientType(clientNotUpdated.getClientType())
+                .build();
     }
 }
