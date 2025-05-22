@@ -102,24 +102,6 @@ public class AbrirFxml {
         }
     }
 
-    public void abrirTelaSalvarOrcamento(String titulo, TelaOrcamentoController telaOrcamentoController, List<BudgetItem> itemsASalvar) {
-        String fileName = "tela-salvar-orcamento";
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
-            Parent root = loader.load();
-
-            TelaSalvarOrcamentoController controller = loader.getController();
-            controller.setOrcamentoController(telaOrcamentoController);
-            controller.setItemOrcamentoPostRequests(itemsASalvar);
-
-            abrirFxml(root, titulo, 660, 320, false);
-        } catch (Exception e) {
-            System.out.println("Não foi possível carregar a tela.");
-            throw new RuntimeException(e);
-        }
-    }
-
     public void abrirTelaEditarOrcamento(String titulo, Budget budgetAEditar, TelaOrcamentosController telaOrcamentosController) {
         String fileName = "tela-editar-orcamento";
 
