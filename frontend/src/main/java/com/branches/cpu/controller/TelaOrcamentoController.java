@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TelaOrcamentoController implements Initializable {
-
     @FXML
     private ImageView imageEditar;
     @FXML
@@ -45,17 +44,11 @@ public class TelaOrcamentoController implements Initializable {
     private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
-
     private List<BudgetItem> itemsOrcamento = new ArrayList<>();
-
     private AbrirFxml abrirFxml = new AbrirFxml();
-
     private BudgetItemService budgetItemService = new BudgetItemService();
-
     private BudgetService budgetService = new BudgetService();
-
     private Budget budget;
-
     private BudgetItem itemSelecionado = null;
 
     @FXML
@@ -71,16 +64,6 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     void salvarOrcamento(ActionEvent event) {
 
-        if (budget == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
-        else {
-            List<BudgetItem> itensSalvos = budgetItemService.saveAll(itemsOrcamento);
-
-            itemsOrcamento.clear();
-            itemsOrcamento.addAll(itensSalvos);
-            Alerta.informacao(budget.getDescription(), "Orçamento salvo com sucesso!");
-        }
-
-        desativarBtnSalvar();
     }
 
     @FXML
@@ -151,14 +134,6 @@ public class TelaOrcamentoController implements Initializable {
         TableColumnConfig.columnFormatoMonetario(colunaTotal);
     }
 
-    public void adicionarServico(BudgetItem budgetItem) {
-        budgetItem.setBudget(budget);
-        itemsOrcamento.add(budgetItem);
-
-        limparBarraPesquisa();
-        carregarTodosBudgetItems();
-    }
-
     private void ativarBotoes() {
         btnEditar.setDisable(false);
         btnExcluir.setDisable(false);
@@ -218,5 +193,9 @@ public class TelaOrcamentoController implements Initializable {
 
     public void desativarBtnSalvar() {
         btnSalvar.setDisable(true);
+    }
+
+    public Budget getBudget() {
+        return budget;
     }
 }
