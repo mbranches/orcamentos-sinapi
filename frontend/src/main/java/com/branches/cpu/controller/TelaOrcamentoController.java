@@ -39,8 +39,6 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     private Button btnExcluir;
     @FXML
-    private Button btnSalvar;
-    @FXML
     private TableView<BudgetItem> tvServicosAdiconados;
     @FXML
     private Text txtTotal;
@@ -76,9 +74,6 @@ public class TelaOrcamentoController implements Initializable {
         carregarTodosBudgetItems();
 
         desativarBotoes();
-
-        if (budget == null && itemsOrcamento.isEmpty()) desativarBtnSalvar();
-        else ativarBtnSalvar();
     }
 
     @FXML
@@ -147,7 +142,6 @@ public class TelaOrcamentoController implements Initializable {
         tvServicosAdiconados.getItems().setAll(budgetItems);
 
         limparBarraPesquisa();
-        ativarBtnSalvar();
     }
 
     public void carregarBudgetItemsProcurados() {
@@ -171,14 +165,6 @@ public class TelaOrcamentoController implements Initializable {
         itemsOrcamento.addAll(itensDoOrcamento);
 
         carregarTodosBudgetItems();
-    }
-
-    public void ativarBtnSalvar() {
-        btnSalvar.setDisable(false);
-    }
-
-    public void desativarBtnSalvar() {
-        btnSalvar.setDisable(true);
     }
 
     public Budget getBudget() {
