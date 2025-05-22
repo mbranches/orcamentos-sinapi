@@ -1,5 +1,6 @@
 package com.branches.controller;
 
+import com.branches.request.ClientPutRequest;
 import com.branches.response.ClientGetResponse;
 import com.branches.request.ClientPostRequest;
 import com.branches.response.ClientPostResponse;
@@ -41,6 +42,12 @@ public class ClientController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{clientId}")
+    public ResponseEntity<Void> update(@PathVariable Long clientId, @RequestBody ClientPutRequest putRequest) {
+        service.update(clientId, putRequest);
         return ResponseEntity.noContent().build();
     }
 }

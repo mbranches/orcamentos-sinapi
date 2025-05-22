@@ -1,6 +1,8 @@
 package com.branches.service;
 
+import com.branches.exception.BadRequestException;
 import com.branches.model.Client;
+import com.branches.request.ClientPutRequest;
 import com.branches.response.ClientGetResponse;
 import com.branches.request.ClientPostRequest;
 import com.branches.response.ClientPostResponse;
@@ -45,5 +47,13 @@ public class ClientService {
 
     public void deleteById(Long id) {
         repository.delete(findByIdOrThrowsNotFoundException(id));
+    }
+
+    public void update(Long clientId, ClientPutRequest putRequest) {
+        if (!clientId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(clientId, putRequest.getId()));
+
+        Client clientToUpdate = mapper.toClient(putRequest);
+
+        repository.save(clientToUpdate);
     }
 }

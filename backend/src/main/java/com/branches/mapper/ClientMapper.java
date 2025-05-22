@@ -1,6 +1,7 @@
 package com.branches.mapper;
 
 import com.branches.model.Client;
+import com.branches.request.ClientPutRequest;
 import com.branches.response.ClientGetResponse;
 import com.branches.request.ClientPostRequest;
 import com.branches.response.ClientPostResponse;
@@ -21,4 +22,6 @@ public interface ClientMapper {
     ClientPostResponse toClientPostResponse(Client client);
 
     ClientGetResponse toClientGetResponse(Client client);
+
+    Client toClient(ClientPutRequest putRequest);
 }
