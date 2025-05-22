@@ -108,30 +108,33 @@ class BudgetServiceTest {
     }
 
     @Test
-    @DisplayName("findByIdOrElseThrowsNotFoundException returns found budget when successful")
+    @DisplayName("findById returns found budget when successful")
     @Order(4)
-    void findByIdOrElseThrowsNotFoundException_ReturnsFoundBudget_WhenSuccessful() {
+    void findById_ReturnsFoundBudget_WhenSuccessful() {
         Budget budgetToBeFound = budgetList.getFirst();
         Long idToSearch = budgetToBeFound.getId();
 
-        BDDMockito.when(repository.findById(idToSearch)).thenReturn(Optional.of(budgetToBeFound));
+        BudgetGetResponse expectedResponse = budgetGetResponseList.getFirst();
 
-        Budget response = service.findByIdOrElseThrowsNotFoundException(idToSearch);
+        BDDMockito.when(repository.findById(idToSearch)).thenReturn(Optional.of(budgetToBeFound));
+        BDDMockito.when(mapper.toBudgetGetResponse(budgetToBeFound)).thenReturn(expectedResponse);
+
+        BudgetGetResponse response = service.findById(idToSearch);
 
         Assertions.assertThat(response)
                 .isNotNull()
-                .isEqualTo(budgetToBeFound);
+                .isEqualTo(expectedResponse);
     }
 
     @Test
-    @DisplayName("findByIdOrElseThrowsNotFoundException throws NotFoundException when the given id is not found")
+    @DisplayName("findById throws NotFoundException when the given id is not found")
     @Order(5)
-    void findByIdOrElseThrowsNotFoundException_ThrowsNotFoundException_WhenTheGivenIdIsNotFound() {
+    void findById_ThrowsNotFoundException_WhenTheGivenIdIsNotFound() {
         Long randomId = 999L;
 
         BDDMockito.when(repository.findById(randomId)).thenReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> service.findByIdOrElseThrowsNotFoundException(randomId))
+        Assertions.assertThatThrownBy(() -> service.findById(randomId))
                 .isInstanceOf(NotFoundException.class)
                 .hasMessageContaining("Budget with id '%s' is not found".formatted(randomId));
     }
