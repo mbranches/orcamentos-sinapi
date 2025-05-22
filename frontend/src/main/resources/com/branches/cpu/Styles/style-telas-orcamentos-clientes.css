@@ -20,25 +20,13 @@
 }
 
 .table-view {
-    -fx-border-width: 0;
-    -fx-background-color: transparent;
     -fx-font-size: 14px;
-}
-
-
-.table-view .table-row-cell {
-    -fx-border-width: 0;
 }
 
 .table-view .table-cell {
     -fx-padding: 5px;
     -fx-alignment: center-left;
     -fx-wrap-text: true;
-    -fx-border-width: 0;
-}
-
-.table-row-cell:odd, .table-row-cell:even {
-    -fx-background-color: transparent; /* Remove cor de fundo das linhas ímpares */
 }
 
 .table-view .column-header .label {
