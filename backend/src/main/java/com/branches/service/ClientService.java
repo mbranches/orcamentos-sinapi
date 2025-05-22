@@ -43,7 +43,7 @@ public class ClientService {
                 .orElseThrow(() -> new NotFoundException("Client with id '%s' is not found".formatted(id)));
     }
 
-    public void deleById(Long id) {
+    public void deleteById(Long id) {
         repository.delete(findByIdOrThrowsNotFoundException(id));
     }
 }
