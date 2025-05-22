@@ -10,15 +10,15 @@ public class GlobalErrorHandlerAdvice {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<DefaultErrorMessage> handlerNotFoundException(NotFoundException e) {
-        DefaultErrorMessage error = new DefaultErrorMessage(e.getStatusCode().value(), e.getMessage());
+        DefaultErrorMessage error = new DefaultErrorMessage(e.getStatusCode().value(), e.getReason());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<DefaultErrorMessage> handlerBadRequestException(BadRequestException e) {
-        DefaultErrorMessage errorMessage = new DefaultErrorMessage(e.getStatusCode().value(), e.getMessage());
+        DefaultErrorMessage error = new DefaultErrorMessage(e.getStatusCode().value(), e.getReason());
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }
