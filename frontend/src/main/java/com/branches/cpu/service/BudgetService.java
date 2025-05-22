@@ -12,21 +12,21 @@ import java.util.List;
 
 public class BudgetService {
     private final RestTemplate restTemplate = new RestTemplate();
-    private final String url = "http://localhost:8090/v1/budgets";
+    private final String URL = "http://localhost:8090/v1/budgets";
 
     public Budget save(OrcamentoPostRequest orcamentoPostRequest) {
-        return restTemplate.postForObject(url, orcamentoPostRequest, Budget.class);
+        return restTemplate.postForObject(URL, orcamentoPostRequest, Budget.class);
     }
 
     public List<Budget> findAll() {
         ParameterizedTypeReference<List<Budget>> typeReference = new ParameterizedTypeReference<>() {};
 
-        ResponseEntity<List<Budget>> response = restTemplate.exchange(url, HttpMethod.GET, null,typeReference);
+        ResponseEntity<List<Budget>> response = restTemplate.exchange(URL, HttpMethod.GET, null,typeReference);
         return response.getBody();
     }
 
     public List<Budget> findAllByName(String budgetDescription) {
-        String urlForGetByName = url + "?description=" + budgetDescription;
+        String urlForGetByName = URL + "?description=" + budgetDescription;
 
         ParameterizedTypeReference<List<Budget>> typeReference = new ParameterizedTypeReference<>() {};
 
@@ -36,7 +36,7 @@ public class BudgetService {
 
     public List<BudgetItem> findItems(Budget budget) {
         Long orcamentoId = budget.getId();
-        String urlForGet = url + "/" + orcamentoId + "/items";
+        String urlForGet = URL + "/" + orcamentoId + "/items";
 
         ParameterizedTypeReference<List<BudgetItem>> typeReference = new ParameterizedTypeReference<>(){};
 
@@ -47,7 +47,7 @@ public class BudgetService {
 
     public List<BudgetItem> findItemsBySupplyDescription(Budget budget, String descricao) {
         Long budgetId = budget.getId();
-        String urlForGet = url + "/" + budgetId + "/items?supplyDescription=" + descricao;
+        String urlForGet = URL + "/" + budgetId + "/items?supplyDescription=" + descricao;
 
         ParameterizedTypeReference<List<BudgetItem>> typeReference = new ParameterizedTypeReference<>(){};
 
@@ -57,15 +57,20 @@ public class BudgetService {
     }
 
     public void update(Budget budget) {
-        String urlForPut = url + "/" + budget.getId();
+        String urlForPut = URL + "/" + budget.getId();
 
         restTemplate.put(urlForPut, budget);
     }
 
     public void delete(Budget budget) {
         Long idToBeDeleted = budget.getId();
-        String urlForDelete = url + "/" + idToBeDeleted;
+        String urlForDelete = URL + "/" + idToBeDeleted;
 
         restTemplate.delete(urlForDelete);
+    }
+
+    public Budget findById(Long id) {
+        String urlForGet = URL + "/" + id;
+        return restTemplate.getForObject(urlForGet, Budget.class);
     }
 }

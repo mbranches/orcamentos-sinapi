@@ -18,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -135,7 +134,11 @@ public class TelaOrcamentoController implements Initializable {
 
         tvServicosAdiconados.getItems().setAll(budgetItems);
 
+        atualizarBudget();
+        
         limparBarraPesquisa();
+
+        atualizarValorTotalBudget();
     }
 
     public void carregarBudgetItemsProcurados() {
@@ -143,11 +146,25 @@ public class TelaOrcamentoController implements Initializable {
 
         List<BudgetItem> foundBudgetItems = budgetService.findItemsBySupplyDescription(budget, descricao);
 
+        atualizarBudget();
+
         tvServicosAdiconados.getItems().setAll(foundBudgetItems);
+
+        atualizarValorTotalBudget();
     }
 
     public void limparBarraPesquisa() {
         if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
+    }
+
+    public void atualizarValorTotalBudget() {
+        Double totalValue = budget.getTotalValue();
+
+        txtTotal.setText(Monetary.formatarValorBRL(totalValue));
+    }
+
+    public void atualizarBudget() {
+        budget = budgetService.findById(budget.getId());
     }
 
     public void setOrcamento(Budget budget) {
