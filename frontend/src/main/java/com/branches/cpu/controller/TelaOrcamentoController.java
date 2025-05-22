@@ -155,7 +155,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     public void limparBarraPesquisa() {
-        if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
+        tfPesquisar.clear();
     }
 
     public void atualizarValorTotalBudget() {

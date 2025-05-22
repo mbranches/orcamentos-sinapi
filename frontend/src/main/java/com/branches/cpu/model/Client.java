@@ -3,6 +3,7 @@ package com.branches.cpu.model;
 public class Client {
     private Long id;
     private String name;
+    private ClientType clientType;
 
     public Client(Long id, String name, ClientType clientType) {
         this.id = id;
@@ -41,6 +42,4 @@ public class Client {
     public void setClientType(ClientType clientType) {
         this.clientType = clientType;
     }
-
-    private ClientType clientType;
 }
