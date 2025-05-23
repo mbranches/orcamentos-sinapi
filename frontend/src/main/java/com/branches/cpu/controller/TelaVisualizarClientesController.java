@@ -1,5 +1,6 @@
 package com.branches.cpu.controller;
 
+import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Client;
 import com.branches.cpu.service.ClientService;
 import com.branches.cpu.utils.AbrirFxml;
@@ -59,11 +60,13 @@ public class TelaVisualizarClientesController implements Initializable {
 
     @FXML
     void excluirCliente(ActionEvent event) {
-        clientService.delete(selectedClient);
+        if (Alerta.confirmarExclusao("Cliente", selectedClient.getName())) {
+            clientService.delete(selectedClient);
+            Alerta.informacao("Sucesso!", "cliente excluído com sucesso.");
+            carregarTodosClients();
+            desativarBotoes();
+        }
 
-        carregarTodosClients();
-
-        desativarBotoes();
     }
 
     @FXML
