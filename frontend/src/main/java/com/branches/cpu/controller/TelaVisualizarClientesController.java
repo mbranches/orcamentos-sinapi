@@ -81,7 +81,7 @@ public class TelaVisualizarClientesController implements Initializable {
         TableColumn<Client, Client> colunaClientType = new TableColumn<>("Tipo do Cliente");
 
         colunaName.prefWidthProperty().bind(tvClientes.widthProperty().multiply(0.7));
-        colunaClientType.prefWidthProperty().bind(tvClientes.widthProperty().multiply(0.29));
+        colunaClientType.prefWidthProperty().bind(tvClientes.widthProperty().multiply(0.27));
 
         tvClientes.getColumns().addAll(colunaName, colunaClientType);
         TableViewProprieties.noEditableColumns(tvClientes);
