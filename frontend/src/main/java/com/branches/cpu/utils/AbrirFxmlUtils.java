@@ -39,9 +39,9 @@ public class AbrirFxmlUtils {
 
             if (budget != null) {
                 TelaOrcamentoController controller = loader.getController();
-                controller.setOrcamento(budget);
+                controller.setBudget(budget);
                 controller.carregarTodosBudgetItems();
-                controller.setTelaOrcamentos(telaOrcamentos);
+                controller.setTelaVisualizarOrcamentos(telaOrcamentos);
             }
 
             abrirFxml(root, title, 900, 600, true);
@@ -61,7 +61,7 @@ public class AbrirFxmlUtils {
 
             if (budget != null) {
                 TelaOrcamentoController controller = loader.getController();
-                controller.setOrcamento(budget);
+                controller.setBudget(budget);
                 controller.carregarTodosBudgetItems();
             }
 

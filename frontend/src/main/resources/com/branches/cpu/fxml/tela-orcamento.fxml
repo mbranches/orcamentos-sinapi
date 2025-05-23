@@ -74,7 +74,7 @@
                               <String fx:value="item-top-bar" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirServico" prefHeight="40.0" text="Excluir" textFill="WHITE">
+                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirBudgetItem" prefHeight="40.0" text="Excluir" textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -103,7 +103,7 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="650.0" minHeight="400.0" minWidth="860.0" prefWidth="1400.0">
                      <children>
-                        <TableView fx:id="tvServicosAdiconados" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarServicoAdicionado" prefHeight="700.0" prefWidth="1400.0">
+                        <TableView fx:id="tvBudgetItemsAdicionados" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarBudgetItem" prefHeight="700.0" prefWidth="1400.0">
                            <HBox.margin>
                               <Insets left="20.0" right="20.0" />
                            </HBox.margin>

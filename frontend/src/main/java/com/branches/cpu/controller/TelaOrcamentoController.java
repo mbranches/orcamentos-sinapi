@@ -33,10 +33,10 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     private Button btnExcluir;
     @FXML
-    private TableView<BudgetItem> tvInsumosAdiconados;
+    private TableView<BudgetItem> tvBudgetItemsAdicionados;
     @FXML
     private Text txtTotal;
-    private TelaVisualizarOrcamentosController telaOrcamentos;
+    private TelaVisualizarOrcamentosController telaVisualizarOrcamentos;
     private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
     private final BudgetItemService budgetItemService = new BudgetItemService();
     private final BudgetService budgetService = new BudgetService();
@@ -60,7 +60,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     @FXML
-    private void excluirInsumo(ActionEvent event) {
+    private void excluirBudgetItem(ActionEvent event) {
         limparBarraPesquisa();
 
         budgetItemService.delete(itemSelecionado);
@@ -71,17 +71,17 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     @FXML
-    void selecionarInsumoAdicionado(MouseEvent event) {
-        itemSelecionado = tvInsumosAdiconados.getSelectionModel().getSelectedItem();
+    void selecionarBudgetItem(MouseEvent event) {
+        itemSelecionado = tvBudgetItemsAdicionados.getSelectionModel().getSelectedItem();
         if (itemSelecionado != null) ativarBotoes();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tvInsumosAdiconados.getPlaceholder().setStyle("-fx-font-size: 15px");
+        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
 
-        tvInsumosAdiconados.setFixedCellSize(80);
-        tvInsumosAdiconados.setEditable(false);
+        tvBudgetItemsAdicionados.setFixedCellSize(80);
+        tvBudgetItemsAdicionados.setEditable(false);
 
         criarColunasTabela();
     }
@@ -93,14 +93,14 @@ public class TelaOrcamentoController implements Initializable {
         TableColumn<BudgetItem, Integer> colunaQtd = new TableColumn<>("Qtd.");
         TableColumn<BudgetItem, Double> colunaTotal = new TableColumn<>("Total");
 
-        colunaCodigo.prefWidthProperty().bind(tvInsumosAdiconados.widthProperty().multiply(0.05));
-        colunaDescricao.prefWidthProperty().bind(tvInsumosAdiconados.widthProperty().multiply(0.685));
-        colunaUnidade.prefWidthProperty().bind(tvInsumosAdiconados.widthProperty().multiply(0.07));
-        colunaQtd.prefWidthProperty().bind(tvInsumosAdiconados.widthProperty().multiply(0.06));
-        colunaTotal.prefWidthProperty().bind(tvInsumosAdiconados.widthProperty().multiply(0.11));
+        colunaCodigo.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.05));
+        colunaDescricao.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.685));
+        colunaUnidade.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.07));
+        colunaQtd.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.06));
+        colunaTotal.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.11));
 
-        tvInsumosAdiconados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
-        TableViewUtils.noEditableColumns(tvInsumosAdiconados);
+        tvBudgetItemsAdicionados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
+        TableViewUtils.noEditableColumns(tvBudgetItemsAdicionados);
 
         colunaCodigo.setCellValueFactory(cellData ->
                 new SimpleLongProperty(cellData.getValue().getSupply().getCode()).asObject());
@@ -123,7 +123,7 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     private void desativarBotoes() {
-        tvInsumosAdiconados.getSelectionModel().clearSelection();
+        tvBudgetItemsAdicionados.getSelectionModel().clearSelection();
 
         btnEditar.setDisable(true);
         btnExcluir.setDisable(true);
@@ -131,9 +131,9 @@ public class TelaOrcamentoController implements Initializable {
 
     public void carregarTodosBudgetItems() {
         List<BudgetItem> budgetItems = budgetService.findItems(budget);
-        if (budgetItems.isEmpty()) tvInsumosAdiconados.setPlaceholder(new Label("Nenhum insumo adicionado até o momento."));
+        if (budgetItems.isEmpty()) tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo adicionado até o momento."));
 
-        tvInsumosAdiconados.getItems().setAll(budgetItems);
+        tvBudgetItemsAdicionados.getItems().setAll(budgetItems);
 
         atualizarBudget();
 
@@ -146,11 +146,11 @@ public class TelaOrcamentoController implements Initializable {
         String descricao = tfPesquisar.getText();
 
         List<BudgetItem> foundBudgetItems = budgetService.findItemsBySupplyDescription(budget, descricao);
-        if (foundBudgetItems.isEmpty()) tvInsumosAdiconados.setPlaceholder(new Label("Nenhum insumo encontrado."));
+        if (foundBudgetItems.isEmpty()) tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo encontrado."));
 
         atualizarBudget();
 
-        tvInsumosAdiconados.getItems().setAll(foundBudgetItems);
+        tvBudgetItemsAdicionados.getItems().setAll(foundBudgetItems);
 
         atualizarValorTotalBudget();
     }
@@ -168,17 +168,15 @@ public class TelaOrcamentoController implements Initializable {
     public void atualizarBudget() {
         budget = budgetService.findById(budget.getId());
 
-        if (telaOrcamentos != null) telaOrcamentos.carregarOrcamentos();
+        if (telaVisualizarOrcamentos != null) telaVisualizarOrcamentos.carregarOrcamentos();
     }
 
-    public void setOrcamento(Budget budget) {
+    public void setBudget(Budget budget) {
         this.budget = budget;
-
-        carregarTodosBudgetItems();
     }
 
-    public void setTelaOrcamentos(TelaVisualizarOrcamentosController telaOrcamentos) {
-        this.telaOrcamentos = telaOrcamentos;
+    public void setTelaVisualizarOrcamentos(TelaVisualizarOrcamentosController telaOrcamentos) {
+        this.telaVisualizarOrcamentos = telaOrcamentos;
     }
 
     public Budget getBudget() {
