@@ -25,10 +25,12 @@ public class BudgetService {
     private final ClientService clientService;
 
     public BudgetPostResponse save(BudgetPostRequest postRequest) {
-        Client client = clientService.findByIdOrThrowsNotFoundException(postRequest.getClientId());
 
         Budget budget = mapper.toBudget(postRequest);
-        budget.setClient(client);
+        if (postRequest.getClientId() != null) {
+            Client client = clientService.findByIdOrThrowsNotFoundException(postRequest.getClientId());
+            budget.setClient(client);
+        }
         budget.setTotalValue(0D);
 
         Budget response = repository.save(budget);
