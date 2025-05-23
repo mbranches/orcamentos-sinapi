@@ -35,8 +35,6 @@ public class TelaVisualizarClientesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvClientes.getPlaceholder().setStyle("-fx-font-size: 15px");
-
         tvClientes.setFixedCellSize(60);
         tvClientes.setEditable(false);
 
