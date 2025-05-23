@@ -2,12 +2,15 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.model.Client;
 import com.branches.cpu.model.ClientType;
+import com.branches.cpu.service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +24,7 @@ public class TelaEditarClienteController implements Initializable {
     private TextField tfClientName;
     private TelaVisualizarClientesController telaVisualizarClientesController;
     private Client clientToEdit;
+    private final ClientService clientService = new ClientService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,17 +33,36 @@ public class TelaEditarClienteController implements Initializable {
 
     @FXML
     void Fechar(ActionEvent event) {
-
+        fecharPagina(event);
     }
 
     @FXML
     void salvarFechar(ActionEvent event) {
+        atualizarClient();
 
+        fecharPagina(event);
     }
 
     public void atualizarCampos() {
-
+        tfClientName.setText(clientToEdit.getName());
+        cbClientType.getItems().setAll(ClientType.values());
+        cbClientType.getSelectionModel().select(clientToEdit.getClientType());
     }
+
+    private void fecharPagina(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    private void atualizarClient() {
+        clientToEdit.setClientType(cbClientType.getSelectionModel().getSelectedItem());
+        clientToEdit.setName(tfClientName.getText());
+
+        clientService.update(clientToEdit);
+
+        telaVisualizarClientesController.carregarTodosClients();
+    }
+
 
     public void setClientToEdit(Client clientToEdit) {
         this.clientToEdit = clientToEdit;

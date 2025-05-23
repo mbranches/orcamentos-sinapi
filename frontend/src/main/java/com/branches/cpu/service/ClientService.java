@@ -34,4 +34,10 @@ public class ClientService {
 
         return response.getBody();
     }
+
+    public void update(Client clientToUpdate) {
+        String urlForPut = URL + "/" + clientToUpdate.getId();
+
+        restTemplate.put(urlForPut, clientToUpdate);
+    }
 }

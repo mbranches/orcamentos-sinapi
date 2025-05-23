@@ -86,7 +86,7 @@ public class TelaVisualizarClientesController implements Initializable {
         colunaClientType.setCellValueFactory(new PropertyValueFactory<>("clientType"));
     }
 
-    private void carregarTodosClients() {
+    public void carregarTodosClients() {
         List<Client> clients = clientService.findAll();
 
         atualizarTabela(clients);
