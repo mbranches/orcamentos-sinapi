@@ -33,17 +33,18 @@ public class TelaCriarClienteController implements Initializable {
 
     @FXML
     void criarCliente(ActionEvent event) {
-        if (fieldsAreValid()) {
-            Client clientToSave = getClientToSave();
+        if (!fieldsAreValid()) {
+            return;
+        }
+        Client clientToSave = getClientToSave();
 
-            Client savedCliente = clientService.save(clientToSave);
+        Client savedCliente = clientService.save(clientToSave);
 
-            if (savedCliente != null) {
-                Alerta.informacao(
-                        "Cliente cadastrado",
-                        "O cliente %s foi cadastrado com sucesso!".formatted(clientToSave.getName())
-                ).ifPresent(btn -> fecharPagina(event));
-            }
+        if (savedCliente != null) {
+            Alerta.informacao(
+                    "Cliente cadastrado",
+                    "O cliente %s foi cadastrado com sucesso!".formatted(clientToSave.getName())
+            ).ifPresent(btn -> fecharPagina(event));
         }
     }
 
