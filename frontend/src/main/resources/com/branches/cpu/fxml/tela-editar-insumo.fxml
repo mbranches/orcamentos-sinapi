@@ -27,17 +27,11 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="44.0" prefWidth="78.0" styleClass="button-action" text="Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
             </Button>
          </children>
          <padding>

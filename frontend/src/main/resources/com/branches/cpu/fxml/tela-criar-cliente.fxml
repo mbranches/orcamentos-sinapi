@@ -19,10 +19,13 @@
       <Label layoutX="36.0" layoutY="54.0" text="Nome :" textFill="#736b6b" AnchorPane.leftAnchor="36.0" />
       <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
          <children>
-            <Button fx:id="btnCriarCliente" mnemonicParsing="false" onAction="#criarCliente" prefHeight="40.0" prefWidth="150.0" styleClass="button-action" text="Cadastrar Cliente">
+            <Button fx:id="btnCriarCliente" mnemonicParsing="false" onAction="#criarCliente" prefHeight="44.0" prefWidth="150.0" styleClass="button-action" text="Cadastrar Cliente">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="38.0" />
                </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
          <padding>
