@@ -56,7 +56,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
     @FXML
     void abrirTelaEditar(ActionEvent event) {
-        abrirFxmlUtils.abrirTelaEditarOrcamento("Editar " + budgetSelecionado.getDescription(), budgetSelecionado, this);
+        abrirFxmlUtils.abrirTelaEditarOrcamento("Editar orçamento", budgetSelecionado, this);
 
         removerSelecao();
     }
