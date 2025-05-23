@@ -43,7 +43,7 @@ public class TelaCriarClienteController implements Initializable {
         if (savedCliente != null) {
             Alerta.informacao(
                     "Cliente cadastrado",
-                    "O cliente %s foi cadastrado com sucesso!".formatted(clientToSave.getName())
+                    "O cliente \"%s\" foi cadastrado com sucesso!".formatted(clientToSave.getName())
             );
 
             fecharPagina(event);
