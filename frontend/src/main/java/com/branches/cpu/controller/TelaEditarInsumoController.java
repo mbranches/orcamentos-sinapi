@@ -32,15 +32,15 @@ public class TelaEditarInsumoController implements Initializable {
     @FXML
     private Button btnSalvarFechar;
     @FXML
-    private TextField tfMostrarServico;
+    private TextField tfMostrarInsumo;
     @FXML
     private TextField tfQuantidade;
     @FXML
-    private TableView<Supply> tvMostrarServico;
+    private TableView<Supply> tvMostrarInsumo;
     @FXML
     private Text txtTotal;
     private TelaOrcamentoController telaPrincipal;
-    private BudgetItem servicoAEditar;
+    private BudgetItem insumoAEditar;
     private final BudgetItemService budgetItemService = new BudgetItemService();
     private final SupplyService service = new SupplyService();
 
@@ -58,7 +58,7 @@ public class TelaEditarInsumoController implements Initializable {
             return;
         }
 
-        budgetItemService.update(servicoAEditar);
+        budgetItemService.update(insumoAEditar);
 
         telaPrincipal.carregarTodosBudgetItems();
 
@@ -70,7 +70,7 @@ public class TelaEditarInsumoController implements Initializable {
     void editarValorTotal(KeyEvent event) {
         if (NumberUtils.isValidNumber(tfQuantidade.getText())) {
             setarValorTotal();
-            servicoAEditar.setQuantity(Integer.parseInt(tfQuantidade.getText()));
+            insumoAEditar.setQuantity(Integer.parseInt(tfQuantidade.getText()));
         } else {
             txtTotal.setText(formatarValorBRL(0));
         }
@@ -80,30 +80,30 @@ public class TelaEditarInsumoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         criarColunasTabela();
-        tvMostrarServico.setFixedCellSize(95);
+        tvMostrarInsumo.setFixedCellSize(95);
     }
 
     public void atualizarCampos() {
-        tfMostrarServico.setText(servicoAEditar.getSupply().getDescription());
-        tfQuantidade.setText(String.valueOf(servicoAEditar.getQuantity()));
+        tfMostrarInsumo.setText(insumoAEditar.getSupply().getDescription());
+        tfQuantidade.setText(String.valueOf(insumoAEditar.getQuantity()));
         setarItemTableView();
         setarValorTotal();
     }
 
     private void setarValorTotal() {
-        double preco = servicoAEditar.getSupply().getPrice();
+        double preco = insumoAEditar.getSupply().getPrice();
         double quantidade = Double.parseDouble(tfQuantidade.getText());
         double valorTotal = preco * quantidade;
         txtTotal.setText(formatarValorBRL(valorTotal));
     }
 
     private void setarItemTableView() {
-        ObservableList<Supply> observableList = tvMostrarServico.getItems();
-        List<Supply> servicos = service.findByName(tfMostrarServico.getText());
+        ObservableList<Supply> observableList = tvMostrarInsumo.getItems();
+        List<Supply> insumos = service.findByName(tfMostrarInsumo.getText());
 
-        observableList.addAll(servicos);
+        observableList.addAll(insumos);
 
-        tvMostrarServico.setItems(observableList);
+        tvMostrarInsumo.setItems(observableList);
     }
 
     private void criarColunasTabela() {
@@ -113,13 +113,13 @@ public class TelaEditarInsumoController implements Initializable {
         TableColumn<Supply, Double> colunaPrice = new TableColumn<>("Valor Unitário");
 
 
-        colunaCode.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
-        colunaDescription.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.67));
-        colunaUnitMeasurement.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.1));
-        colunaPrice.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
+        colunaCode.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.08));
+        colunaDescription.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.67));
+        colunaUnitMeasurement.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.1));
+        colunaPrice.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.13));
 
-        tvMostrarServico.getColumns().addAll(colunaCode, colunaDescription, colunaUnitMeasurement, colunaPrice);
-        TableViewUtils.noEditableColumns(tvMostrarServico);
+        tvMostrarInsumo.getColumns().addAll(colunaCode, colunaDescription, colunaUnitMeasurement, colunaPrice);
+        TableViewUtils.noEditableColumns(tvMostrarInsumo);
 
         colunaCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colunaDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -133,7 +133,7 @@ public class TelaEditarInsumoController implements Initializable {
         this.telaPrincipal = telaPrincipal;
     }
 
-    public void setServicoAEditar(BudgetItem servicoAEditar) {
-        this.servicoAEditar = servicoAEditar;
+    public void setInsumoAEditar(BudgetItem insumoAEditar) {
+        this.insumoAEditar = insumoAEditar;
     }
 }

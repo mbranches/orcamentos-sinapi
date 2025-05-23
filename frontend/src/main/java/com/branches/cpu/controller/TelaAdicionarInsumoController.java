@@ -34,11 +34,11 @@ public class TelaAdicionarInsumoController implements Initializable {
     @FXML
     private Text txtTotal;
     @FXML
-    private TableView<Supply> tvMostrarServico;
+    private TableView<Supply> tvMostrarInsumo;
     @FXML
     private VBox sugestions;
     private AutoCompleteTextField autoCompletePesquisar = new AutoCompleteTextField();
-    private Supply servicoSelecionado;
+    private Supply insumoSelecionado;
     private TelaOrcamentoController telaPrincipal;
     private SupplyService service = new SupplyService();
     private BudgetItemService budgetItemService = new BudgetItemService();
@@ -48,9 +48,9 @@ public class TelaAdicionarInsumoController implements Initializable {
 
         criarColunasTabela();
 
-        tvMostrarServico.setFixedCellSize(95);
-        tvMostrarServico.setPlaceholder(new Label("Nenhum serviço selecionado até o momento."));
-        tvMostrarServico.getPlaceholder().setStyle("-fx-font-size: 15px");
+        tvMostrarInsumo.setFixedCellSize(95);
+        tvMostrarInsumo.setPlaceholder(new Label("Nenhum insumo selecionado até o momento."));
+        tvMostrarInsumo.getPlaceholder().setStyle("-fx-font-size: 15px");
 
         autoCompletePesquisar.getEntries().addAll(
                 service.findAll()
@@ -59,7 +59,7 @@ public class TelaAdicionarInsumoController implements Initializable {
                         .toList()
         );
         autoCompletePesquisar.setPrefHeight(30);
-        autoCompletePesquisar.setOnAction(this::PesquisarServico);
+        autoCompletePesquisar.setOnAction(this::PesquisarInsumo);
         sugestions.getChildren().add(autoCompletePesquisar);
     }
 
@@ -69,7 +69,7 @@ public class TelaAdicionarInsumoController implements Initializable {
     }
 
     @FXML
-    void PesquisarServico(ActionEvent event) {
+    void PesquisarInsumo(ActionEvent event) {
         carregarItemProcurado();
         tfQuantidade.disableProperty().setValue(false);
     }
@@ -82,7 +82,7 @@ public class TelaAdicionarInsumoController implements Initializable {
     }
 
     @FXML
-    void adicionarServico(ActionEvent event) {
+    void adicionarInsumo(ActionEvent event) {
         if (!validarCampoQuantidade()) return;
         salvarBudgetItem();
         tfQuantidade.setDisable(true);
@@ -96,7 +96,7 @@ public class TelaAdicionarInsumoController implements Initializable {
 
         if (!quantidadeString.isEmpty() && NumberUtils.isValidNumber(quantidadeString)) {
             ativarBotoes();
-            double preco = tvMostrarServico.getItems().get(0).getPrice();
+            double preco = tvMostrarInsumo.getItems().get(0).getPrice();
             double quantidade = Double.parseDouble(quantidadeString);
             double valorTotal = preco * quantidade;
             txtTotal.setText(NumberUtils.formatarValorBRL(valorTotal));
@@ -113,13 +113,13 @@ public class TelaAdicionarInsumoController implements Initializable {
         TableColumn<Supply, Double> colunaValor = new TableColumn<>("Valor Unitário");
 
 
-        colunaCodigo.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.08));
-        colunaDescricao.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.67));
-        colunaUnidade.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.1));
-        colunaValor.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
+        colunaCodigo.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.08));
+        colunaDescricao.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.67));
+        colunaUnidade.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.1));
+        colunaValor.prefWidthProperty().bind(tvMostrarInsumo.widthProperty().multiply(0.13));
 
-        tvMostrarServico.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
-        TableViewUtils.noEditableColumns(tvMostrarServico);
+        tvMostrarInsumo.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
+        TableViewUtils.noEditableColumns(tvMostrarInsumo);
 
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("code"));
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -131,24 +131,24 @@ public class TelaAdicionarInsumoController implements Initializable {
 
     private void carregarItemProcurado() {
         List<Supply> foundSupplies = service.findByName(autoCompletePesquisar.getText());
-        tvMostrarServico.getItems().setAll(foundSupplies);
+        tvMostrarInsumo.getItems().setAll(foundSupplies);
 
-        servicoSelecionado = foundSupplies.get(0);
+        insumoSelecionado = foundSupplies.get(0);
 
-        tvMostrarServico.getItems().setAll(servicoSelecionado);
+        tvMostrarInsumo.getItems().setAll(insumoSelecionado);
     }
 
     private void limparCampos() {
         autoCompletePesquisar.clear();
         tfQuantidade.clear();
         txtTotal.setText("R$ 0,00");
-        tvMostrarServico.getItems().clear();
+        tvMostrarInsumo.getItems().clear();
     }
 
     private void salvarBudgetItem() {
         BudgetItem budgetItemToSave = new BudgetItem();
         budgetItemToSave.setBudget(telaPrincipal.getBudget());
-        budgetItemToSave.setSupply(servicoSelecionado);
+        budgetItemToSave.setSupply(insumoSelecionado);
         budgetItemToSave.setQuantity(Integer.parseInt(tfQuantidade.getText().trim()));
 
         budgetItemService.save(budgetItemToSave);
