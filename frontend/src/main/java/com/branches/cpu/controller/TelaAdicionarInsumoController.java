@@ -76,14 +76,14 @@ public class TelaAdicionarInsumoController implements Initializable {
 
     @FXML
     void adicionarFechar(ActionEvent event) {
-        if (!validarCampoQuantidade()) return;
+        if (!fieldQuantityIsValid()) return;
         salvarBudgetItem();
         fecharPagina(event);
     }
 
     @FXML
     void adicionarInsumo(ActionEvent event) {
-        if (!validarCampoQuantidade()) return;
+        if (!fieldQuantityIsValid()) return;
         salvarBudgetItem();
         tfQuantidade.setDisable(true);
         limparCampos();
@@ -156,7 +156,7 @@ public class TelaAdicionarInsumoController implements Initializable {
         telaPrincipal.carregarTodosBudgetItems();
     }
 
-    private boolean validarCampoQuantidade() {
+    private boolean fieldQuantityIsValid() {
         String quantidade = tfQuantidade.getText();
         if (Double.parseDouble(quantidade) == 0) {
             Alerta.error("Quantidade inválida!", "Digite uma quantidade válida.");
