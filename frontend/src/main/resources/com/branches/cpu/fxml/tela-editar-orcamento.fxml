@@ -21,14 +21,14 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
+      <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="258.4" prefHeight="62.0" prefWidth="660.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="258.0">
          <children>
-            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#salvarFechar" prefHeight="30.0" styleClass="button-action" text="Salvar e Fechar">
+            <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#salvarFechar" prefHeight="38.0" prefWidth="114.0" styleClass="button-action" text="Salvar e Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="30.0" prefWidth="78.0" styleClass="button-action" text="Fechar">
+            <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="38.0" prefWidth="74.0" styleClass="button-action" text="Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
