@@ -35,8 +35,8 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     @FXML
     private TableView<Budget> tvOrcamentos;
     private Budget budgetSelecionado;
-    private BudgetService budgetService = new BudgetService();
-    private AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
+    private final BudgetService budgetService = new BudgetService();
+    private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,7 +68,9 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     void excluirOrcamento(ActionEvent event) {
         if (Alerta.confirmarExclusao("Orçamento", budgetSelecionado.getDescription())) {
             budgetService.delete(budgetSelecionado);
+
             Alerta.informacao("Sucesso!", "orçamento excluído com sucesso.");
+
             carregarOrcamentos();
         }
 
@@ -85,9 +87,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
             tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
         }
 
-        ObservableList<Budget> itensDaTabela = tvOrcamentos.getItems();
-        itensDaTabela.clear();
-        itensDaTabela.addAll(resultadoDaBusca);
+        tvOrcamentos.getItems().setAll(resultadoDaBusca);
     }
 
     @FXML
