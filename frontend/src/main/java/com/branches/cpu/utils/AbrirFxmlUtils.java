@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AbrirFxml {
+public class AbrirFxmlUtils {
     private final String PATH = "/com/branches/cpu/fxml/";
 
     private void abrirFxml(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable) {

@@ -3,8 +3,8 @@ package com.branches.cpu.controller;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Client;
 import com.branches.cpu.service.ClientService;
-import com.branches.cpu.utils.AbrirFxml;
-import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.AbrirFxmlUtils;
+import com.branches.cpu.utils.TableViewUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,7 +31,7 @@ public class TelaVisualizarClientesController implements Initializable {
     private TableView<Client> tvClientes;
     private Client selectedClient;
     private final ClientService clientService = new ClientService();
-    private final AbrirFxml abrirFxml = new AbrirFxml();
+    private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,7 +48,7 @@ public class TelaVisualizarClientesController implements Initializable {
 
     @FXML
     void abrirTelaEditarCliente(ActionEvent event) {
-        abrirFxml.abrirTelaEditarCliente("Editar Cliente", this, selectedClient);
+        abrirFxmlUtils.abrirTelaEditarCliente("Editar Cliente", this, selectedClient);
 
         removerSelecao();
     }
@@ -84,7 +84,7 @@ public class TelaVisualizarClientesController implements Initializable {
         colunaClientType.prefWidthProperty().bind(tvClientes.widthProperty().multiply(0.27));
 
         tvClientes.getColumns().addAll(colunaName, colunaClientType);
-        TableViewProprieties.noEditableColumns(tvClientes);
+        TableViewUtils.noEditableColumns(tvClientes);
 
         colunaName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colunaClientType.setCellValueFactory(new PropertyValueFactory<>("clientType"));

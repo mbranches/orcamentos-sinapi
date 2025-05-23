@@ -37,7 +37,7 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     private Text txtTotal;
     private TelaVisualizarOrcamentosController telaOrcamentos;
-    private final AbrirFxml abrirFxml = new AbrirFxml();
+    private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
     private final BudgetItemService budgetItemService = new BudgetItemService();
     private final BudgetService budgetService = new BudgetService();
     private Budget budget;
@@ -45,7 +45,7 @@ public class TelaOrcamentoController implements Initializable {
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
-        abrirFxml.abrirTelaAdicionar("Adicionar Insumo", this);
+        abrirFxmlUtils.abrirTelaAdicionar("Adicionar Insumo", this);
     }
 
     @FXML
@@ -55,7 +55,7 @@ public class TelaOrcamentoController implements Initializable {
 
     @FXML
     private void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditar("Editar Insumo", this, this.itemSelecionado);
+        abrirFxmlUtils.abrirTelaEditar("Editar Insumo", this, this.itemSelecionado);
         desativarBotoes();
     }
 
@@ -101,7 +101,7 @@ public class TelaOrcamentoController implements Initializable {
         colunaTotal.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.11));
 
         tvServicosAdiconados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
-        TableViewProprieties.noEditableColumns(tvServicosAdiconados);
+        TableViewUtils.noEditableColumns(tvServicosAdiconados);
 
         colunaCodigo.setCellValueFactory(cellData ->
                 new SimpleLongProperty(cellData.getValue().getSupply().getCode()).asObject());
@@ -115,7 +115,7 @@ public class TelaOrcamentoController implements Initializable {
         colunaQtd.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
 
-        TableColumnConfig.columnFormatoMonetario(colunaTotal);
+        TableColumnUtils.columnFormatoMonetario(colunaTotal);
     }
 
     private void ativarBotoes() {
@@ -161,7 +161,7 @@ public class TelaOrcamentoController implements Initializable {
     public void atualizarValorTotalBudget() {
         Double totalValue = budget.getTotalValue();
 
-        txtTotal.setText(Monetary.formatarValorBRL(totalValue));
+        txtTotal.setText(NumberUtils.formatarValorBRL(totalValue));
     }
 
     public void atualizarBudget() {

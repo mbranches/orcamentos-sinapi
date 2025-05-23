@@ -6,10 +6,9 @@ import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.service.BudgetItemService;
 import com.branches.cpu.service.SupplyService;
-import com.branches.cpu.utils.Monetary;
-import com.branches.cpu.utils.TableColumnConfig;
-import com.branches.cpu.utils.TableViewProprieties;
-import com.branches.cpu.utils.Validador;
+import com.branches.cpu.utils.NumberUtils;
+import com.branches.cpu.utils.TableColumnUtils;
+import com.branches.cpu.utils.TableViewUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -95,15 +94,15 @@ public class TelaAdicionarInsumoController implements Initializable {
     void setarValorTotal(KeyEvent event) {
         String quantidadeString = tfQuantidade.getText().trim();
 
-        if (!quantidadeString.isEmpty() && Validador.isValidNumber(quantidadeString)) {
+        if (!quantidadeString.isEmpty() && NumberUtils.isValidNumber(quantidadeString)) {
             ativarBotoes();
             double preco = tvMostrarServico.getItems().get(0).getPrice();
             double quantidade = Double.parseDouble(quantidadeString);
             double valorTotal = preco * quantidade;
-            txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
+            txtTotal.setText(NumberUtils.formatarValorBRL(valorTotal));
         } else {
             desativarBotoes();
-            txtTotal.setText(Monetary.formatarValorBRL(0));
+            txtTotal.setText(NumberUtils.formatarValorBRL(0));
         }
     }
 
@@ -120,14 +119,14 @@ public class TelaAdicionarInsumoController implements Initializable {
         colunaValor.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
 
         tvMostrarServico.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaValor);
-        TableViewProprieties.noEditableColumns(tvMostrarServico);
+        TableViewUtils.noEditableColumns(tvMostrarServico);
 
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("code"));
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("description"));
         colunaUnidade.setCellValueFactory(new PropertyValueFactory<>("unitMeasurement"));
         colunaValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        TableColumnConfig.columnFormatoMonetario(colunaValor);
+        TableColumnUtils.columnFormatoMonetario(colunaValor);
     }
 
     private void carregarItemProcurado() {

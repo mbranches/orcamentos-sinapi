@@ -3,10 +3,10 @@ package com.branches.cpu.controller;
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.Client;
 import com.branches.cpu.service.BudgetService;
-import com.branches.cpu.utils.AbrirFxml;
+import com.branches.cpu.utils.AbrirFxmlUtils;
 import com.branches.cpu.components.Alerta;
-import com.branches.cpu.utils.TableColumnConfig;
-import com.branches.cpu.utils.TableViewProprieties;
+import com.branches.cpu.utils.TableColumnUtils;
+import com.branches.cpu.utils.TableViewUtils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +36,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     private TableView<Budget> tvOrcamentos;
     private Budget budgetSelecionado;
     private BudgetService budgetService = new BudgetService();
-    private AbrirFxml abrirFxml = new AbrirFxml();
+    private AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,7 +45,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         tvOrcamentos.setFixedCellSize(60);
         tvOrcamentos.setEditable(false);
-        TableViewProprieties.noEditableColumns(tvOrcamentos);
+        TableViewUtils.noEditableColumns(tvOrcamentos);
 
         criarColunasTabela();
 
@@ -54,13 +54,13 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
     @FXML
     void abrirOrcamento(ActionEvent event) {
-        abrirFxml.abrirTelaOrcamento(budgetSelecionado.getDescription(), budgetSelecionado, this);
+        abrirFxmlUtils.abrirTelaOrcamento(budgetSelecionado.getDescription(), budgetSelecionado, this);
         removerSelecao();
     }
 
     @FXML
     void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditarOrcamento("Editar " + budgetSelecionado.getDescription(), budgetSelecionado, this);
+        abrirFxmlUtils.abrirTelaEditarOrcamento("Editar " + budgetSelecionado.getDescription(), budgetSelecionado, this);
 
         removerSelecao();
     }
@@ -122,8 +122,8 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         tvOrcamentos.getColumns().addAll(colunaDescription, colunaClient, colunaTotalValue);
 
-        TableViewProprieties.noEditableColumns(tvOrcamentos);
-        TableColumnConfig.columnFormatoMonetario(colunaTotalValue);
+        TableViewUtils.noEditableColumns(tvOrcamentos);
+        TableColumnUtils.columnFormatoMonetario(colunaTotalValue);
     }
 
     private void removerSelecao() {

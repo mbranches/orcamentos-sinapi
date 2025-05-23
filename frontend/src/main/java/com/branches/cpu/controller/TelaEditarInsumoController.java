@@ -5,9 +5,9 @@ import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.service.BudgetItemService;
 import com.branches.cpu.service.SupplyService;
-import com.branches.cpu.utils.TableColumnConfig;
-import com.branches.cpu.utils.TableViewProprieties;
-import com.branches.cpu.utils.Validador;
+import com.branches.cpu.utils.NumberUtils;
+import com.branches.cpu.utils.TableColumnUtils;
+import com.branches.cpu.utils.TableViewUtils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +26,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.branches.cpu.utils.Monetary.formatarValorBRL;
+import static com.branches.cpu.utils.NumberUtils.formatarValorBRL;
 
 public class TelaEditarInsumoController implements Initializable {
     @FXML
@@ -53,7 +53,7 @@ public class TelaEditarInsumoController implements Initializable {
     @FXML
     void editarFechar(ActionEvent event) {
         String quantidadeString = tfQuantidade.getText();
-        if (!Validador.isValidNumber(quantidadeString) || Double.parseDouble(quantidadeString) == 0) {
+        if (!NumberUtils.isValidNumber(quantidadeString) || Double.parseDouble(quantidadeString) == 0) {
             Alerta.error("Quantidade inválida!", "Digite uma quantidade válida");
             return;
         }
@@ -68,7 +68,7 @@ public class TelaEditarInsumoController implements Initializable {
 
     @FXML
     void editarValorTotal(KeyEvent event) {
-        if (Validador.isValidNumber(tfQuantidade.getText())) {
+        if (NumberUtils.isValidNumber(tfQuantidade.getText())) {
             setarValorTotal();
             servicoAEditar.setQuantity(Integer.parseInt(tfQuantidade.getText()));
         } else {
@@ -119,14 +119,14 @@ public class TelaEditarInsumoController implements Initializable {
         colunaPrice.prefWidthProperty().bind(tvMostrarServico.widthProperty().multiply(0.13));
 
         tvMostrarServico.getColumns().addAll(colunaCode, colunaDescription, colunaUnitMeasurement, colunaPrice);
-        TableViewProprieties.noEditableColumns(tvMostrarServico);
+        TableViewUtils.noEditableColumns(tvMostrarServico);
 
         colunaCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colunaDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colunaUnitMeasurement.setCellValueFactory(new PropertyValueFactory<>("unitMeasurement"));
         colunaPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        TableColumnConfig.columnFormatoMonetario(colunaPrice);
+        TableColumnUtils.columnFormatoMonetario(colunaPrice);
     }
 
     public void setTelaPrincipal(TelaOrcamentoController telaPrincipal) {
