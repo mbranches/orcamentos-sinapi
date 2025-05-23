@@ -18,7 +18,7 @@
                   <Image url="@../Images/logo-icon.png" />
                </image>
                <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" top="15.0" />
+                  <Insets left="20.0" top="15.0" />
                </VBox.margin>
             </ImageView>
             <VBox prefHeight="150.0" prefWidth="100.0">
@@ -32,8 +32,21 @@
                      </font></Button>
                   <Button mnemonicParsing="false" onAction="#abrirTelaVisualizarBudgets" prefHeight="26.0" prefWidth="213.0" styleClass="button-navigation-bar" text="Visualizar Orçamentos">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="2.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#abrirTelaCriarClient" prefHeight="26.0" prefWidth="213.0" styleClass="button-navigation-bar" text="Cadastrar Cliente">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#abrirTelaVisualizarClients" prefHeight="26.0" prefWidth="213.0" styleClass="button-navigation-bar" text="Visualizar Clientes">
                      <font>
                         <Font size="14.0" />
                      </font>
