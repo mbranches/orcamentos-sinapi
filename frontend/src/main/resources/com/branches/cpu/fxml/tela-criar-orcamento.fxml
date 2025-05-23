@@ -25,7 +25,7 @@
          <children>
             <Button fx:id="btnSalvarFechar" mnemonicParsing="false" onAction="#criarBudget" prefHeight="44.0" prefWidth="128.0" styleClass="button-action" text="Criar Orçamento">
                <HBox.margin>
-                  <Insets right="30.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
                <font>
                   <Font size="14.0" />

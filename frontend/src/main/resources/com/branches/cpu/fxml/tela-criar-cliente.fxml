@@ -21,7 +21,7 @@
          <children>
             <Button fx:id="btnCriarCliente" mnemonicParsing="false" onAction="#criarCliente" prefHeight="44.0" prefWidth="150.0" styleClass="button-action" text="Cadastrar Cliente">
                <HBox.margin>
-                  <Insets right="38.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
                <font>
                   <Font size="14.0" />
