@@ -56,10 +56,10 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         if (Alerta.confirmarExclusao("Orçamento", budgetSelecionado.getDescription())) {
             budgetService.delete(budgetSelecionado);
             Alerta.informacao("Sucesso!", "orçamento excluído com sucesso.");
+            atualizarTabela();
         }
 
         removerSelecao();
-        atualizarTabela();
     }
 
     @FXML
