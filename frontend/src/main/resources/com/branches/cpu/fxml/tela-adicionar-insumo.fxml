@@ -19,17 +19,17 @@
       <TableView fx:id="tvMostrarServico" layoutX="11.0" layoutY="133.0" prefHeight="133.0" prefWidth="698.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.399999999999977" />
       <HBox alignment="BOTTOM_RIGHT" layoutX="-0.8" layoutY="328.0" prefHeight="72.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="328.0">
          <children>
-            <Button fx:id="btnAdicionar" disable="true" mnemonicParsing="false" onAction="#adicionarServico" prefHeight="44.0" prefWidth="78.0" styleClass="button-action" text="Adicionar">
+            <Button fx:id="btnAdicionar" disable="true" mnemonicParsing="false" onAction="#adicionarServico" prefHeight="38.0" prefWidth="78.0" styleClass="button-action" text="Adicionar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnAdicionarFechar" disable="true" mnemonicParsing="false" onAction="#adicionarFechar" prefHeight="44.0" prefWidth="128.0" styleClass="button-action" text="Adicionar e Fechar">
+            <Button fx:id="btnAdicionarFechar" disable="true" mnemonicParsing="false" onAction="#adicionarFechar" prefHeight="38.0" prefWidth="128.0" styleClass="button-action" text="Adicionar e Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="44.0" prefWidth="78.0" styleClass="button-action" text="Fechar">
+            <Button mnemonicParsing="false" onAction="#Fechar" prefHeight="38.0" prefWidth="78.0" styleClass="button-action" text="Fechar">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
