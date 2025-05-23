@@ -21,7 +21,7 @@ public class Budget {
     @Column(name = "descricao", length = 50, nullable = false)
     private String description;
     @ManyToOne
-    @JoinColumn(name = "fk_cliente_orcamento")
+    @JoinColumn(name = "fk_cliente_orcamento", nullable = true)
     private Client client;
     @OneToMany(mappedBy = "budget", cascade = CascadeType.ALL)
     private List<BudgetItem> items;

@@ -58,10 +58,12 @@ public class BudgetService {
         if (!budgetId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetId, putRequest.getId()));
 
         Budget budgetNotUpdated = findByIdOrElseThrowsNotFoundException(budgetId);
-        Client client = clientService.findByIdOrThrowsNotFoundException(putRequest.getClientId());
 
         Budget budgetToUpdate = mapper.toBudget(putRequest);
-        budgetToUpdate.setClient(client);
+        if (putRequest.getClientId() != null) {
+            Client client = clientService.findByIdOrThrowsNotFoundException(putRequest.getClientId());
+            budgetToUpdate.setClient(client);
+        }
         budgetToUpdate.setTotalValue(budgetNotUpdated.getTotalValue());
 
         repository.save(budgetToUpdate);
