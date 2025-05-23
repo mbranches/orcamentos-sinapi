@@ -78,7 +78,6 @@ public class TelaOrcamentoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
 
         tvBudgetItemsAdicionados.setFixedCellSize(80);
         tvBudgetItemsAdicionados.setEditable(false);
@@ -131,7 +130,7 @@ public class TelaOrcamentoController implements Initializable {
 
     public void carregarTodosBudgetItems() {
         List<BudgetItem> budgetItems = budgetService.findItems(budget);
-        if (budgetItems.isEmpty()) tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo adicionado até o momento."));
+        if (budgetItems.isEmpty()) addPlaceholderNotAddedItems();
 
         tvBudgetItemsAdicionados.getItems().setAll(budgetItems);
 
@@ -146,7 +145,7 @@ public class TelaOrcamentoController implements Initializable {
         String descricao = tfPesquisar.getText();
 
         List<BudgetItem> foundBudgetItems = budgetService.findItemsBySupplyDescription(budget, descricao);
-        if (foundBudgetItems.isEmpty()) tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo encontrado."));
+        if (foundBudgetItems.isEmpty()) addPlaceholderNotFoundItems();
 
         atualizarBudget();
 
@@ -169,6 +168,16 @@ public class TelaOrcamentoController implements Initializable {
         budget = budgetService.findById(budget.getId());
 
         if (telaVisualizarOrcamentos != null) telaVisualizarOrcamentos.carregarOrcamentos();
+    }
+
+    private void addPlaceholderNotAddedItems() {
+        tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo adicionado até o momento."));
+        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
+    }
+
+    private void addPlaceholderNotFoundItems() {
+        tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo encontrado."));
+        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
     }
 
     public void setBudget(Budget budget) {

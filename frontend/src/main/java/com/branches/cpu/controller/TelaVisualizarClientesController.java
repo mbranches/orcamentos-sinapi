@@ -91,7 +91,7 @@ public class TelaVisualizarClientesController implements Initializable {
 
     public void carregarTodosClients() {
         List<Client> clients = clientService.findAll();
-        if (clients.isEmpty()) tvClientes.setPlaceholder(new Label("Nenhum cliente cadastrado até o momento"));
+        if (clients.isEmpty()) addPlaceholderNotCreatedClients();
 
         atualizarTabela(clients);
 
@@ -101,7 +101,7 @@ public class TelaVisualizarClientesController implements Initializable {
     private void carregarClientsPesquisados() {
         String nameToSearch = tfPesquisar.getText();
         List<Client> clients = clientService.findAllByName(nameToSearch);
-        if (clients.isEmpty()) tvClientes.setPlaceholder(new Label("Nenhum cliente encontrado"));
+        if (clients.isEmpty()) addPlaceholderNotFoundClients();
 
         atualizarTabela(clients);
     }
@@ -112,6 +112,17 @@ public class TelaVisualizarClientesController implements Initializable {
 
     private void limparBarraPesquisa() {
         tfPesquisar.clear();
+    }
+
+
+    void addPlaceholderNotCreatedClients() {
+        tvClientes.setPlaceholder(new Label("Nenhum cliente cadastrado até o momento."));
+        tvClientes.getPlaceholder().setStyle("-fx-font-size: 15px");
+    }
+
+    void addPlaceholderNotFoundClients() {
+        tvClientes.setPlaceholder(new Label("Nenhum cliente encontrado."));
+        tvClientes.getPlaceholder().setStyle("-fx-font-size: 15px");
     }
 
     private void ativarBotoes() {

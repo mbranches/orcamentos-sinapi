@@ -7,7 +7,6 @@ import com.branches.cpu.utils.AbrirFxmlUtils;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.utils.TableColumnUtils;
 import com.branches.cpu.utils.TableViewUtils;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,8 +39,6 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
-
         tvOrcamentos.setFixedCellSize(60);
         tvOrcamentos.setEditable(false);
         TableViewUtils.noEditableColumns(tvOrcamentos);
@@ -83,9 +80,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         List<Budget> resultadoDaBusca = budgetService.findAllByName(orcamentoBuscado);
 
-        if (resultadoDaBusca.isEmpty()) {
-            tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
-        }
+        if (resultadoDaBusca.isEmpty()) addPlaceholderNotFoundBudgets();
 
         tvOrcamentos.getItems().setAll(resultadoDaBusca);
     }
@@ -100,7 +95,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     public void carregarOrcamentos() {
         List<Budget> budgets = budgetService.findAll();
 
-        if (budgets.isEmpty()) tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
+        if (budgets.isEmpty()) addPlaceholderNotCreatedBudgets();
 
         tvOrcamentos.getItems().setAll(budgets);
     }
@@ -125,6 +120,16 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         TableViewUtils.noEditableColumns(tvOrcamentos);
         TableColumnUtils.columnFormatoMonetario(colunaTotalValue);
+    }
+
+    void addPlaceholderNotCreatedBudgets() {
+        tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
+        tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
+    }
+
+    void addPlaceholderNotFoundBudgets() {
+        tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento encontrado."));
+        tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
     }
 
     private void removerSelecao() {
