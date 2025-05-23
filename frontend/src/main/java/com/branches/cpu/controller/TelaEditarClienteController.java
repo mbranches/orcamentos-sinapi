@@ -1,5 +1,6 @@
 package com.branches.cpu.controller;
 
+import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Client;
 import com.branches.cpu.model.ClientType;
 import com.branches.cpu.service.ClientService;
@@ -38,7 +39,20 @@ public class TelaEditarClienteController implements Initializable {
 
     @FXML
     void salvarFechar(ActionEvent event) {
-        atualizarClient();
+        if (!fieldsAreValid()) {
+            return;
+        }
+        clientToEdit.setClientType(cbClientType.getSelectionModel().getSelectedItem());
+        clientToEdit.setName(tfClientName.getText());
+
+        clientService.update(clientToEdit);
+
+        telaVisualizarClientesController.carregarTodosClients();
+
+        Alerta.informacao(
+                "Cliente editado",
+                "Cliente editado com sucesso!"
+        );
 
         fecharPagina(event);
     }
@@ -54,13 +68,18 @@ public class TelaEditarClienteController implements Initializable {
         stage.close();
     }
 
-    private void atualizarClient() {
-        clientToEdit.setClientType(cbClientType.getSelectionModel().getSelectedItem());
-        clientToEdit.setName(tfClientName.getText());
+    private boolean fieldsAreValid() {
+        if (tfClientName.getText().isEmpty()) {
+            Alerta.error("Campo Obrigatório", "O campo \"nome\" é obrigatório!");
+            return false;
+        }
 
-        clientService.update(clientToEdit);
+        if (cbClientType.getSelectionModel().getSelectedItem() == null) {
+            Alerta.error("Campo Obrigatório", "\"Tipo do cliente\" é obrigatório!");
+            return false;
+        }
 
-        telaVisualizarClientesController.carregarTodosClients();
+        return true;
     }
 
 
