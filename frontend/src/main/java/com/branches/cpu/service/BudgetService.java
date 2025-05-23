@@ -2,6 +2,8 @@ package com.branches.cpu.service;
 
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.BudgetItem;
+import com.branches.cpu.model.Client;
+import com.branches.cpu.request.BudgetPutRequest;
 import com.branches.cpu.request.OrcamentoPostRequest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -56,10 +58,16 @@ public class BudgetService {
         return response.getBody();
     }
 
-    public void update(Budget budget) {
-        String urlForPut = URL + "/" + budget.getId();
+    public void update(Budget budgetToUpdate) {
+        String urlForPut = URL + "/" + budgetToUpdate.getId();
 
-        restTemplate.put(urlForPut, budget);
+        BudgetPutRequest putRequest = new BudgetPutRequest();
+        putRequest.setId(budgetToUpdate.getId());
+        putRequest.setDescription(budgetToUpdate.getDescription());
+        Client client = budgetToUpdate.getClient();
+        if (client != null) putRequest.setClientId(client.getId());
+
+        restTemplate.put(urlForPut, putRequest);
     }
 
     public void delete(Budget budget) {

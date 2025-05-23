@@ -110,8 +110,8 @@ public class AbrirFxml {
             Parent root = loader.load();
 
             TelaEditarOrcamentoController controller = loader.getController();
-            controller.setOrcamento(budgetAEditar);
-            controller.setTelaOrcamentosController(telaVisualizarOrcamentosController);
+            controller.setBudget(budgetAEditar);
+            controller.setTelaVisualizarOrcamentosController(telaVisualizarOrcamentosController);
 
             abrirFxml(root, titulo, 660, 320, false);
         } catch (Exception e) {
