@@ -38,6 +38,20 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     private BudgetService budgetService = new BudgetService();
     private AbrirFxml abrirFxml = new AbrirFxml();
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
+        tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
+
+        tvOrcamentos.setFixedCellSize(60);
+        tvOrcamentos.setEditable(false);
+        TableViewProprieties.noEditableColumns(tvOrcamentos);
+
+        criarColunasTabela();
+
+        atualizarTabela();
+    }
+
     @FXML
     void abrirOrcamento(ActionEvent event) {
         abrirFxml.abrirTelaOrcamento(budgetSelecionado.getDescription(), budgetSelecionado, this);
@@ -84,19 +98,6 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         if (budgetSelecionado != null) ativarBotoes();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
-        tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
-
-        tvOrcamentos.setFixedCellSize(60);
-        tvOrcamentos.setEditable(false);
-
-        criarColunasTabela();
-
-        atualizarTabela();
-    }
-
     public void atualizarTabela() {
         tvOrcamentos.getItems().clear();
         budgetService.findAll()
@@ -112,13 +113,16 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         colunaClient.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.28));
         colunaTotalValue.prefWidthProperty().bind(tvOrcamentos.widthProperty().multiply(0.19));
 
-        tvOrcamentos.getColumns().addAll(colunaDescription, colunaClient, colunaTotalValue);
-        TableViewProprieties.noEditableColumns(tvOrcamentos);
-
         colunaDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colunaDescription.setSortable(false);
         colunaClient.setCellValueFactory(new PropertyValueFactory<>("client"));
+        colunaClient.setSortable(false);
         colunaTotalValue.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
+        colunaTotalValue.setSortable(false);
 
+        tvOrcamentos.getColumns().addAll(colunaDescription, colunaClient, colunaTotalValue);
+
+        TableViewProprieties.noEditableColumns(tvOrcamentos);
         TableColumnConfig.columnFormatoMonetario(colunaTotalValue);
     }
 
