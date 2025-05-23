@@ -98,6 +98,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         if (budgets.isEmpty()) addPlaceholderNotCreatedBudgets();
 
         tvOrcamentos.getItems().setAll(budgets);
+        clearSearchBar();
     }
 
     private void criarColunasTabela() {
@@ -120,6 +121,10 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         TableViewUtils.noEditableColumns(tvOrcamentos);
         TableColumnUtils.columnFormatoMonetario(colunaTotalValue);
+    }
+
+    void clearSearchBar() {
+        tfPesquisar.clear();
     }
 
     void addPlaceholderNotCreatedBudgets() {

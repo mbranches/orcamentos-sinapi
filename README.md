@@ -17,11 +17,12 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 * ✅ **Cadastro e Gestão de Insumos:** Permite o cadastro, edição e exclusão de insumos utilizados na construção civil, com base na tabela SINAPI.
 * ✅ **Criação de Orçamentos:** Criação de orçamentos com cálculo automático do custo total, baseado nos insumos selecionados.
 * ✅ **Visualização de Orçamentos:** Visualização de orçamentos com detalhes dos insumos e custos envolvidos.
+* ✅ **Gestão de clientes:** Permite gerenciar clientes, bem como associá-los a um orçamento.
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- ![Java](https://img.shields.io/badge/Java-17-blue?logo=java) - Linguagem de programação utilizada.
+- ![Java](https://img.shields.io/badge/Java-21-blue?logo=java) - Linguagem de programação utilizada.
 - ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-brightgreen?logo=spring) - Framework para criação de APIs REST em Java.
 - ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker) - Conteinerização da aplicação.
 - ![MySQL](https://img.shields.io/badge/MySQL-black?logo=mysql) - Banco de dados utilizado para persistência de dados.
@@ -33,15 +34,24 @@ Este repositório contém o **Backend** e o **Frontend** do projeto.
 ## 📸 Demonstração
 
 ### Interface do App Desktop
-<div style="text-align: center;">
-  <img src="assets/tela-inicial.png" width="700"/>
-</div>
-<div style="text-align: center;">
-  <img src="./assets/tela-orcamento.png" width="700"/>
-</div>
-<div style="text-align: center;">
-  <img src="./assets/tela-orcamentos.png" width="700"/>
-</div>
+
+#### **Operações com Orçamentos**
+![Apresentação Orçamentos](assets/apresentation-orcamento.gif)
+
+- Criação rápido e fácil de orçamentos
+- Atualização de dados de um orçamento
+- Navegação entre orçamentos 
+- Visualização dos orçamentos criados em ordem decrescente de criação
+- Associação opcional com cliente
+
+#### **Operações com Clientes**
+
+![Apresentação Clientes](assets/apresentation-cliente.gif)
+
+- Criação de clientes
+- Atualização de dados de clientes
+- Definição do tipo de cliente
+- Visualização de cliente
 
 ### Modelagem do Banco de Dados
 <div style="text-align: center;">
