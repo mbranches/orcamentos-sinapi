@@ -55,7 +55,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
     void excluirOrcamento(ActionEvent event) {
         if (Alerta.confirmarExclusao("Orçamento", budgetSelecionado.getDescription())) {
             budgetService.delete(budgetSelecionado);
-            Alerta.informacao("Sucesso!", "orcamento excluído com sucesso.");
+            Alerta.informacao("Sucesso!", "orçamento excluído com sucesso.");
         }
 
         removerSelecao();
