@@ -127,7 +127,7 @@ public class AbrirFxmlUtils {
 
             TelaEditarInsumoController telaEditarInsumoController = loader.getController();
             telaEditarInsumoController.setTelaPrincipal(telaOrcamentoController);
-            telaEditarInsumoController.setServicoAEditar(itemAEditar);
+            telaEditarInsumoController.setInsumoAEditar(itemAEditar);
             telaEditarInsumoController.atualizarCampos();
 
             abrirFxml(root, tite, 720, 400, false);
