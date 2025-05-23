@@ -7,14 +7,21 @@ import com.branches.cpu.model.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AbrirFxmlUtils {
     private final String PATH = "/com/branches/cpu/fxml/";
 
-    private void abrirFxml(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable) {
-        try {
+    private void abrirFxml(Parent root, String title, Integer minWidth, Integer minHeight, Boolean resizable, String iconFileName) {
+        try(InputStream inputStream = getClass().getResourceAsStream("/com/branches/cpu/Images/" + iconFileName)) {
+            Image icon = new Image(inputStream);
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
@@ -23,6 +30,7 @@ public class AbrirFxmlUtils {
             stage.centerOnScreen();
             stage.setResizable(resizable);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.getIcons().setAll(icon);
             stage.show();
         } catch (Exception e) {
             System.out.println("Não foi possível abrir a tela.");
@@ -44,7 +52,7 @@ public class AbrirFxmlUtils {
                 controller.setTelaVisualizarOrcamentos(telaOrcamentos);
             }
 
-            abrirFxml(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true, "orçamento-icon-blue.png");
 
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
@@ -65,7 +73,7 @@ public class AbrirFxmlUtils {
                 controller.carregarTodosBudgetItems();
             }
 
-            abrirFxml(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true, "orçamento-icon-blue.png");
 
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
@@ -80,7 +88,7 @@ public class AbrirFxmlUtils {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
             Parent root = loader.load();
 
-            abrirFxml(root, title, 660, 320, false);
+            abrirFxml(root, title, 660, 320, false, "add-orçamento-icon-blue.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
@@ -94,7 +102,7 @@ public class AbrirFxmlUtils {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
 
             Parent root = loader.load();
-            abrirFxml(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true, "orçamento-icon-blue.png");
 
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
@@ -112,7 +120,7 @@ public class AbrirFxmlUtils {
             TelaAdicionarInsumoController telaAdicionarInsumoController = loader.getController();
             telaAdicionarInsumoController.setTelaPrincipal(telaOrcamentoController);
 
-            abrirFxml(root, tite, 720, 400, false);
+            abrirFxml(root, tite, 720, 400, false, "plus-icon-blue.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
@@ -130,7 +138,7 @@ public class AbrirFxmlUtils {
             telaEditarInsumoController.setInsumoAEditar(itemAEditar);
             telaEditarInsumoController.atualizarCampos();
 
-            abrirFxml(root, tite, 720, 400, false);
+            abrirFxml(root, tite, 720, 400, false, "edit-icon.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
@@ -148,7 +156,7 @@ public class AbrirFxmlUtils {
             controller.setBudget(budgetAEditar);
             controller.setTelaVisualizarOrcamentosController(telaVisualizarOrcamentosController);
 
-            abrirFxml(root, tite, 660, 320, false);
+            abrirFxml(root, tite, 660, 320, false, "edit-icon.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
@@ -162,7 +170,7 @@ public class AbrirFxmlUtils {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
 
             Parent root = loader.load();
-            abrirFxml(root, title, 900, 600, true);
+            abrirFxml(root, title, 900, 600, true, "show-clients-icon-blue.png");
 
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
@@ -181,7 +189,7 @@ public class AbrirFxmlUtils {
             telaEditarClienteController.setClientToEdit(clientToEdit);
             telaEditarClienteController.atualizarCampos();
 
-            abrirFxml(root, title, 720, 400, false);
+            abrirFxml(root, title, 720, 400, false, "edit-icon.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
@@ -194,7 +202,7 @@ public class AbrirFxmlUtils {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
             Parent root = loader.load();
 
-            abrirFxml(root, title, 720, 400, false);
+            abrirFxml(root, title, 720, 400, false, "add-client-icon-blue.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
