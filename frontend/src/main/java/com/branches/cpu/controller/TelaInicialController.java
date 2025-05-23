@@ -24,6 +24,6 @@ public class TelaInicialController {
 
     @FXML
     void abrirTelaCriarClient(ActionEvent event) {
-
+        abrirFxml.abrirTelaCriarCliente("Cadastrar Cliente");
     }
 }

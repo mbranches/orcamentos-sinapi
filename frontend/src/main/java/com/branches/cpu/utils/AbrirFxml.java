@@ -152,4 +152,17 @@ public class AbrirFxml {
             throw new RuntimeException(e);
         }
     }
+
+    public void abrirTelaCriarCliente(String title) {
+        String fileName = "tela-criar-cliente";
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            abrirFxml(root, title, 720, 400, false);
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
 }

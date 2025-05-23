@@ -4,16 +4,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
+import java.util.Optional;
+
 public class Alerta {
     private static ButtonType btnConfirmar = new ButtonType("Confirmar");
     private static ButtonType btnCancelar = new ButtonType("Cancelar");
     private static boolean resposta;
 
-    public static void informacao(String headerText, String mensagem) {
+    public static Optional<ButtonType> informacao(String headerText, String mensagem) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText(headerText);
         alert.setContentText(mensagem);
-        alert.show();
+        return alert.showAndWait();
     }
 
     public static boolean confirmarExclusao(String tipoExclusao, String msgExclusao) {

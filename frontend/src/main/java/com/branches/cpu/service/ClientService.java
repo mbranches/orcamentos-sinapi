@@ -1,6 +1,7 @@
 package com.branches.cpu.service;
 
 import com.branches.cpu.model.Client;
+import com.branches.cpu.request.ClientPostRequest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,11 @@ public class ClientService {
         String urlForPut = URL + "/" + clientToUpdate.getId();
 
         restTemplate.put(urlForPut, clientToUpdate);
+    }
+
+    public Client save(Client clientToSave) {
+        ClientPostRequest postRequest = new ClientPostRequest(clientToSave.getName(), clientToSave.getClientType());
+
+        return restTemplate.postForObject(URL, postRequest, Client.class);
     }
 }
