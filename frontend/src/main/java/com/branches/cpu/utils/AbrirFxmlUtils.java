@@ -52,6 +52,41 @@ public class AbrirFxmlUtils {
         }
     }
 
+    public void abrirTelaOrcamento(String title, Budget budget){
+        String fileName = "tela-orcamento";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            if (budget != null) {
+                TelaOrcamentoController controller = loader.getController();
+                controller.setOrcamento(budget);
+                controller.carregarTodosBudgetItems();
+            }
+
+            abrirFxml(root, title, 900, 600, true);
+
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void abrirTelaCriarOrcamento(String title) {
+        String fileName = "tela-criar-orcamento";
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
+            Parent root = loader.load();
+
+            abrirFxml(root, title, 660, 320, false);
+        } catch (Exception e) {
+            System.out.println("Não foi possível carregar a tela.");
+            throw new RuntimeException(e);
+        }
+    }
+
     public void abrirTelaVisualizarOrcamentos(String title){
         String fileName = "tela-visualizar-orcamentos";
 
@@ -68,7 +103,7 @@ public class AbrirFxmlUtils {
     }
 
 
-    public void abrirTelaAdicionar(String titulo, TelaOrcamentoController telaOrcamentoController) {
+    public void abrirTelaAdicionar(String tite, TelaOrcamentoController telaOrcamentoController) {
         String fileName = "tela-adicionar-insumo";
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
@@ -77,14 +112,14 @@ public class AbrirFxmlUtils {
             TelaAdicionarInsumoController telaAdicionarInsumoController = loader.getController();
             telaAdicionarInsumoController.setTelaPrincipal(telaOrcamentoController);
 
-            abrirFxml(root, titulo, 720, 400, false);
+            abrirFxml(root, tite, 720, 400, false);
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
         }
     }
 
-    public void abrirTelaEditar(String titulo, TelaOrcamentoController telaOrcamentoController, BudgetItem itemAEditar) {
+    public void abrirTelaEditar(String tite, TelaOrcamentoController telaOrcamentoController, BudgetItem itemAEditar) {
         String fileName = "tela-editar-insumo";
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH + fileName + ".fxml"));
@@ -95,14 +130,14 @@ public class AbrirFxmlUtils {
             telaEditarInsumoController.setServicoAEditar(itemAEditar);
             telaEditarInsumoController.atualizarCampos();
 
-            abrirFxml(root, titulo, 720, 400, false);
+            abrirFxml(root, tite, 720, 400, false);
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
         }
     }
 
-    public void abrirTelaEditarOrcamento(String titulo, Budget budgetAEditar, TelaVisualizarOrcamentosController telaVisualizarOrcamentosController) {
+    public void abrirTelaEditarOrcamento(String tite, Budget budgetAEditar, TelaVisualizarOrcamentosController telaVisualizarOrcamentosController) {
         String fileName = "tela-editar-orcamento";
 
         try {
@@ -113,7 +148,7 @@ public class AbrirFxmlUtils {
             controller.setBudget(budgetAEditar);
             controller.setTelaVisualizarOrcamentosController(telaVisualizarOrcamentosController);
 
-            abrirFxml(root, titulo, 660, 320, false);
+            abrirFxml(root, tite, 660, 320, false);
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);

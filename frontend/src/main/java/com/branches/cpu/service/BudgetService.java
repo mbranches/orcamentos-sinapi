@@ -3,8 +3,8 @@ package com.branches.cpu.service;
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.model.Client;
+import com.branches.cpu.request.BudgetPostRequest;
 import com.branches.cpu.request.BudgetPutRequest;
-import com.branches.cpu.request.OrcamentoPostRequest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,10 @@ public class BudgetService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String URL = "http://localhost:8090/v1/budgets";
 
-    public Budget save(OrcamentoPostRequest orcamentoPostRequest) {
-        return restTemplate.postForObject(URL, orcamentoPostRequest, Budget.class);
+    public Budget save(Budget budgetToSave) {
+        BudgetPostRequest postRequest = BudgetPostRequest.of(budgetToSave);
+
+        return restTemplate.postForObject(URL, postRequest, Budget.class);
     }
 
     public List<Budget> findAll() {
