@@ -44,6 +44,26 @@ public class TelaAdicionarInsumoController implements Initializable {
     private SupplyService service = new SupplyService();
     private BudgetItemService budgetItemService = new BudgetItemService();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        criarColunasTabela();
+
+        tvMostrarServico.setFixedCellSize(95);
+        tvMostrarServico.setPlaceholder(new Label("Nenhum serviço selecionado até o momento."));
+        tvMostrarServico.getPlaceholder().setStyle("-fx-font-size: 15px");
+
+        autoCompletePesquisar.getEntries().addAll(
+                service.findAll()
+                        .stream()
+                        .map(Supply::getDescription)
+                        .toList()
+        );
+        autoCompletePesquisar.setPrefHeight(30);
+        autoCompletePesquisar.setOnAction(this::PesquisarServico);
+        sugestions.getChildren().add(autoCompletePesquisar);
+    }
+
     @FXML
     void Fechar(ActionEvent event) {
         fecharPagina(event);
@@ -87,35 +107,6 @@ public class TelaAdicionarInsumoController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        criarColunasTabela();
-
-        tvMostrarServico.setFixedCellSize(95);
-        tvMostrarServico.setPlaceholder(new Label("Nenhum serviço selecionado até o momento."));
-        tvMostrarServico.getPlaceholder().setStyle("-fx-font-size: 15px");
-
-        autoCompletePesquisar.getEntries().addAll(
-                service.findAll()
-                        .stream()
-                        .map(Supply::getDescription)
-                        .toList()
-        );
-        autoCompletePesquisar.setPrefHeight(30);
-        autoCompletePesquisar.setOnAction(this::PesquisarServico);
-        sugestions.getChildren().add(autoCompletePesquisar);
-    }
-
-    private void carregarItemProcurado() {
-        List<Supply> foundSupplies = service.findByName(autoCompletePesquisar.getText());
-        tvMostrarServico.getItems().setAll(foundSupplies);
-
-        servicoSelecionado = foundSupplies.get(0);
-
-        tvMostrarServico.getItems().add(servicoSelecionado);
-    }
-
     private void criarColunasTabela() {
         TableColumn<Supply, Long> colunaCodigo = new TableColumn<>("Cód.");
         TableColumn<Supply, String> colunaDescricao = new TableColumn<>("Descrição");
@@ -137,6 +128,15 @@ public class TelaAdicionarInsumoController implements Initializable {
         colunaValor.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         TableColumnConfig.columnFormatoMonetario(colunaValor);
+    }
+
+    private void carregarItemProcurado() {
+        List<Supply> foundSupplies = service.findByName(autoCompletePesquisar.getText());
+        tvMostrarServico.getItems().setAll(foundSupplies);
+
+        servicoSelecionado = foundSupplies.get(0);
+
+        tvMostrarServico.getItems().setAll(servicoSelecionado);
     }
 
     private void limparCampos() {
