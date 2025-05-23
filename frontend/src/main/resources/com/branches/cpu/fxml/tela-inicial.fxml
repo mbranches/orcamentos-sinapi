@@ -79,7 +79,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button contentDisplay="TOP" layoutX="260.0" layoutY="229.0" mnemonicParsing="false" onAction="#abrirTelaCriarClient" prefHeight="86.0" prefWidth="166.0" styleClass="button-section" text="Adicionar Cliente">
+      <Button contentDisplay="TOP" layoutX="260.0" layoutY="229.0" mnemonicParsing="false" onAction="#abrirTelaCriarClient" prefHeight="86.0" prefWidth="166.0" styleClass="button-section" text="Cadastrar Cliente">
          <font>
             <Font size="14.0" />
          </font>
