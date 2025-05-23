@@ -50,7 +50,7 @@ public class TelaVisualizarClientesController implements Initializable {
     void abrirTelaEditarCliente(ActionEvent event) {
         abrirFxml.abrirTelaEditarCliente("Editar Cliente", this, selectedClient);
 
-        limparBarraPesquisa();
+        removerSelecao();
     }
 
     @FXML
@@ -67,6 +67,7 @@ public class TelaVisualizarClientesController implements Initializable {
             desativarBotoes();
         }
 
+        removerSelecao();
     }
 
     @FXML
@@ -120,5 +121,9 @@ public class TelaVisualizarClientesController implements Initializable {
     private void desativarBotoes() {
         btnEditar.setDisable(true);
         btnExcluir.setDisable(true);
+    }
+
+    private void removerSelecao() {
+        tvClientes.getSelectionModel().clearSelection();
     }
 }
