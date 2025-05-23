@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.branches.cpu.controller;
 
-import com.branches.cpu.components.Alerta;
-import com.branches.cpu.model.ItemOrcamento;
-import com.branches.cpu.model.Orcamento;
-import com.branches.cpu.service.ItemOrcamentoService;
-import com.branches.cpu.service.OrcamentoService;
+import com.branches.cpu.model.BudgetItem;
+import com.branches.cpu.model.Budget;
+import com.branches.cpu.service.BudgetItemService;
+import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.utils.*;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,12 +18,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class TelaOrcamentoController implements Initializable {
-
     @FXML
     private ImageView imageEditar;
     @FXML
@@ -40,169 +33,87 @@ public class TelaOrcamentoController implements Initializable {
     @FXML
     private Button btnExcluir;
     @FXML
-    private Button btnSalvar;
-    @FXML
-    private TableView<ItemOrcamento> tvServicosAdiconados;
+    private TableView<BudgetItem> tvBudgetItemsAdicionados;
     @FXML
     private Text txtTotal;
-
-    private List<ItemOrcamento> resultadoBusca = new ArrayList<>();
-
-    private List<ItemOrcamento> itemsOrcamento = new ArrayList<>();
-
-    private List<ItemOrcamento> itemsToBeDeleted = new ArrayList<>();
-
-    private AbrirFxml abrirFxml = new AbrirFxml();
-
-    private ItemOrcamentoService itemOrcamentoService = new ItemOrcamentoService();
-
-    private OrcamentoService orcamentoService = new OrcamentoService();
-
-    private double valorTotal = 0;
-
-    private Orcamento orcamento;
-
-    private ItemOrcamento itemSelecionado = null;
+    private TelaVisualizarOrcamentosController telaVisualizarOrcamentos;
+    private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
+    private final BudgetItemService budgetItemService = new BudgetItemService();
+    private final BudgetService budgetService = new BudgetService();
+    private Budget budget;
+    private BudgetItem itemSelecionado = null;
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) {
-        abrirFxml.abrirTelaAdicionar("Adicionar Insumo", this);
+        abrirFxmlUtils.abrirTelaAdicionar("Adicionar Insumo", this);
     }
 
     @FXML
     void autoComplementarTabela(KeyEvent event) {
-        atualizarTabela();
-    }
-
-    @FXML
-    void salvarOrcamento(ActionEvent event) {
-
-        if (orcamento == null) abrirFxml.abrirTelaSalvarOrcamento("Salvar Orçamento", this, this.itemsOrcamento);
-        else {
-            List<ItemOrcamento> itensSalvos = itemOrcamentoService.saveAll(itemsOrcamento);
-            itemOrcamentoService.deleteAll(itemsToBeDeleted);
-
-            itemsOrcamento.clear();
-            itemsOrcamento.addAll(itensSalvos);
-            Alerta.informacao(orcamento.getNome(), "Orçamento salvo com sucesso!");
-        }
-
-        desativarBtnSalvar();
+        carregarBudgetItemsProcurados();
     }
 
     @FXML
     private void abrirTelaEditar(ActionEvent event) {
-        abrirFxml.abrirTelaEditar("Editar Insumo", this, this.itemSelecionado);
+        abrirFxmlUtils.abrirTelaEditar("Editar Insumo", this, this.itemSelecionado);
         desativarBotoes();
     }
 
     @FXML
-    private void excluirServico(ActionEvent event) {
-        if (itemSelecionado.getId() != null) itemsToBeDeleted.add(itemSelecionado);
-
-        itemsOrcamento.remove(itemSelecionado);
-
+    private void excluirBudgetItem(ActionEvent event) {
         limparBarraPesquisa();
 
-        atualizarTabela();
-        atualizarValorTotal();
+        budgetItemService.delete(itemSelecionado);
+
+        carregarTodosBudgetItems();
 
         desativarBotoes();
-
-        if (orcamento == null && itemsOrcamento.isEmpty()) desativarBtnSalvar();
-        else ativarBtnSalvar();
     }
 
     @FXML
-    void selecionarServicoAdicionado(MouseEvent event) {
-        itemSelecionado = tvServicosAdiconados.getSelectionModel().getSelectedItem();
+    void selecionarBudgetItem(MouseEvent event) {
+        itemSelecionado = tvBudgetItemsAdicionados.getSelectionModel().getSelectedItem();
         if (itemSelecionado != null) ativarBotoes();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tvServicosAdiconados.setPlaceholder(new Label("Nenhum serviço adicionado até o momento."));
-        tvServicosAdiconados.getPlaceholder().setStyle("-fx-font-size: 15px");
 
-        tvServicosAdiconados.setFixedCellSize(80);
-        tvServicosAdiconados.setEditable(false);
+        tvBudgetItemsAdicionados.setFixedCellSize(80);
+        tvBudgetItemsAdicionados.setEditable(false);
 
         criarColunasTabela();
-
-        atualizarTabela();
-    }
-
-    private void atualizarTabela() {
-        tvServicosAdiconados.getItems().clear();
-        resultadoBusca.clear();
-        String descricao = tfPesquisar.getText();
-
-        if (descricao.isEmpty()) {
-            tvServicosAdiconados.getItems().addAll(itemsOrcamento);
-        } else {
-            resultadoBusca = consultarEmServicosAdicionados(descricao);
-
-            if (resultadoBusca.isEmpty()) {
-                tvServicosAdiconados.getItems().clear();
-            } else {
-                tvServicosAdiconados.getItems().setAll(resultadoBusca);
-            }
-        }
-    }
-
-    private List<ItemOrcamento> consultarEmServicosAdicionados(String descricao) {
-        List<ItemOrcamento> servicosPesquisados = Lists.containsInList(itemsOrcamento, s -> s.getInsumo().getDescricao().toLowerCase().contains(descricao.toLowerCase()));
-
-        return servicosPesquisados;
-    }
-
-    public void atualizarValorTotal() {
-        valorTotal = 0;
-        for (ItemOrcamento itemOrcamento : tvServicosAdiconados.getItems()) {
-            valorTotal += itemOrcamento.getValorTotal();
-        }
-
-        txtTotal.setText(Monetary.formatarValorBRL(valorTotal));
     }
 
     private void criarColunasTabela() {
-        TableColumn<ItemOrcamento, Long> colunaCodigo = new TableColumn<>("Cód.");
-        TableColumn<ItemOrcamento, String> colunaDescricao = new TableColumn<>("Descrição");
-        TableColumn<ItemOrcamento, String> colunaUnidade = new TableColumn<>("Unidade");
-        TableColumn<ItemOrcamento, Integer> colunaQtd = new TableColumn<>("Qtd.");
-        TableColumn<ItemOrcamento, Double> colunaTotal = new TableColumn<>("Total");
+        TableColumn<BudgetItem, Long> colunaCodigo = new TableColumn<>("Cód.");
+        TableColumn<BudgetItem, String> colunaDescricao = new TableColumn<>("Descrição");
+        TableColumn<BudgetItem, String> colunaUnidade = new TableColumn<>("Unidade");
+        TableColumn<BudgetItem, Integer> colunaQtd = new TableColumn<>("Qtd.");
+        TableColumn<BudgetItem, Double> colunaTotal = new TableColumn<>("Total");
 
-        colunaCodigo.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.05));
-        colunaDescricao.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.685));
-        colunaUnidade.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.07));
-        colunaQtd.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.06));
-        colunaTotal.prefWidthProperty().bind(tvServicosAdiconados.widthProperty().multiply(0.11));
+        colunaCodigo.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.05));
+        colunaDescricao.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.685));
+        colunaUnidade.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.07));
+        colunaQtd.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.06));
+        colunaTotal.prefWidthProperty().bind(tvBudgetItemsAdicionados.widthProperty().multiply(0.11));
 
-        tvServicosAdiconados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
-        TableViewProprieties.noEditableColumns(tvServicosAdiconados);
+        tvBudgetItemsAdicionados.getColumns().addAll(colunaCodigo, colunaDescricao, colunaUnidade, colunaQtd, colunaTotal);
+        TableViewUtils.noEditableColumns(tvBudgetItemsAdicionados);
 
         colunaCodigo.setCellValueFactory(cellData ->
-                new SimpleLongProperty(cellData.getValue().getInsumo().getCodigo()).asObject());
+                new SimpleLongProperty(cellData.getValue().getSupply().getCode()).asObject());
 
         colunaDescricao.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getDescricao()));
+                new SimpleStringProperty(cellData.getValue().getSupply().getDescription()));
 
         colunaUnidade.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getInsumo().getUnidadeMedida()));
+                new SimpleStringProperty(cellData.getValue().getSupply().getUnitMeasurement()));
 
-        colunaQtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        colunaTotal.setCellValueFactory(new PropertyValueFactory("valorTotal"));
+        colunaQtd.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colunaTotal.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
 
-        TableColumnConfig.columnFormatoMonetario(colunaTotal);
-    }
-
-    public void adicionarServico(ItemOrcamento itemOrcamento) {
-        itemOrcamento.setOrcamento(orcamento);
-        itemsOrcamento.add(itemOrcamento);
-
-        limparBarraPesquisa();
-        atualizarTabela();
-        atualizarValorTotal();
+        TableColumnUtils.columnFormatoMonetario(colunaTotal);
     }
 
     private void ativarBotoes() {
@@ -211,57 +122,73 @@ public class TelaOrcamentoController implements Initializable {
     }
 
     private void desativarBotoes() {
-        tvServicosAdiconados.getSelectionModel().clearSelection();
+        tvBudgetItemsAdicionados.getSelectionModel().clearSelection();
 
         btnEditar.setDisable(true);
         btnExcluir.setDisable(true);
     }
 
-    public void atualizarServico(ItemOrcamento servicoNovo) {
-        for (ItemOrcamento servico : itemsOrcamento) {
-            if (servico.equals(servicoNovo)) {
-                servico.setQuantidade(servicoNovo.getQuantidade());
-                servico.setarValorTotal();
-            }
-        }
+    public void carregarTodosBudgetItems() {
+        List<BudgetItem> budgetItems = budgetService.findItems(budget);
+        if (budgetItems.isEmpty()) addPlaceholderNotAddedItems();
+
+        tvBudgetItemsAdicionados.getItems().setAll(budgetItems);
+
+        atualizarBudget();
 
         limparBarraPesquisa();
-        atualizarTabela();
-        atualizarValorTotal();
-        ativarBtnSalvar();
+
+        atualizarValorTotalBudget();
+    }
+
+    public void carregarBudgetItemsProcurados() {
+        String descricao = tfPesquisar.getText();
+
+        List<BudgetItem> foundBudgetItems = budgetService.findItemsBySupplyDescription(budget, descricao);
+        if (foundBudgetItems.isEmpty()) addPlaceholderNotFoundItems();
+
+        atualizarBudget();
+
+        tvBudgetItemsAdicionados.getItems().setAll(foundBudgetItems);
+
+        atualizarValorTotalBudget();
     }
 
     public void limparBarraPesquisa() {
-        if (!tfPesquisar.getText().isEmpty()) tfPesquisar.clear();
+        tfPesquisar.clear();
     }
 
+    public void atualizarValorTotalBudget() {
+        Double totalValue = budget.getTotalValue();
 
-    public void setItemsOrcamento(List<ItemOrcamento> itemOrcamentos) {
-        itemsOrcamento.clear();
-        itemsOrcamento.addAll(itemOrcamentos);
-
-        itemsOrcamento.forEach(ItemOrcamento::setarValorTotal);
-
-        atualizarTabela();
+        txtTotal.setText(NumberUtils.formatarValorBRL(totalValue));
     }
 
-    public void setOrcamento(Orcamento orcamento) {
-        this.orcamento = orcamento;
+    public void atualizarBudget() {
+        budget = budgetService.findById(budget.getId());
 
-        List<ItemOrcamento> itensDoOrcamento = orcamentoService.findItems(orcamento);
-        itensDoOrcamento.forEach(ItemOrcamento::setarValorTotal);
-
-        itemsOrcamento.clear();
-        itemsOrcamento.addAll(itensDoOrcamento);
-
-        atualizarTabela();
+        if (telaVisualizarOrcamentos != null) telaVisualizarOrcamentos.carregarOrcamentos();
     }
 
-    public void ativarBtnSalvar() {
-        btnSalvar.setDisable(false);
+    private void addPlaceholderNotAddedItems() {
+        tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo adicionado até o momento."));
+        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
     }
 
-    public void desativarBtnSalvar() {
-        btnSalvar.setDisable(true);
+    private void addPlaceholderNotFoundItems() {
+        tvBudgetItemsAdicionados.setPlaceholder(new Label("Nenhum insumo encontrado."));
+        tvBudgetItemsAdicionados.getPlaceholder().setStyle("-fx-font-size: 15px");
+    }
+
+    public void setBudget(Budget budget) {
+        this.budget = budget;
+    }
+
+    public void setTelaVisualizarOrcamentos(TelaVisualizarOrcamentosController telaOrcamentos) {
+        this.telaVisualizarOrcamentos = telaOrcamentos;
+    }
+
+    public Budget getBudget() {
+        return budget;
     }
 }

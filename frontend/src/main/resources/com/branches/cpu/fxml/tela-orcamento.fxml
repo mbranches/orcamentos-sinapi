@@ -47,7 +47,7 @@
                            <graphic>    
                               <ImageView fitHeight="28.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/plus-icon.png" />
+                                    <Image url="@../Images/add-supply-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -65,7 +65,7 @@
                            <graphic>
                               <ImageView fx:id="imageEditar" fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/penIconEditar.png" />
+                                    <Image url="@../Images/pen-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -74,7 +74,7 @@
                               <String fx:value="item-top-bar" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirServico" prefHeight="40.0" text="Excluir" textFill="WHITE">
+                        <Button fx:id="btnExcluir" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#excluirBudgetItem" prefHeight="40.0" text="Excluir" textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -103,7 +103,7 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="650.0" minHeight="400.0" minWidth="860.0" prefWidth="1400.0">
                      <children>
-                        <TableView fx:id="tvServicosAdiconados" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarServicoAdicionado" prefHeight="700.0" prefWidth="1400.0">
+                        <TableView fx:id="tvBudgetItemsAdicionados" maxHeight="650.0" maxWidth="1400.0" minHeight="400.0" minWidth="860.0" onMouseClicked="#selecionarBudgetItem" prefHeight="700.0" prefWidth="1400.0">
                            <HBox.margin>
                               <Insets left="20.0" right="20.0" />
                            </HBox.margin>
@@ -113,15 +113,6 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button id="button-salvar" fx:id="btnSalvar" alignment="TOP_LEFT" disable="true" mnemonicParsing="false" onAction="#salvarOrcamento" text="Salvar" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Images/save-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <VBox alignment="TOP_RIGHT" fillWidth="false" maxWidth="1400.0" prefHeight="39.0" prefWidth="58.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label text="Total:" textFill="#1700e1">

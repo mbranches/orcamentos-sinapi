@@ -16,3 +16,12 @@
     -fx-alignment: center-left;
     -fx-wrap-text: true;
 }
+
+#cbClientType {
+    -fx-font-size: 16px;
+}
+
+#btnRemoveClient {
+    -fx-background-color: none;
+    -fx-cursor: hand;
+}

@@ -1,6 +1,6 @@
 package com.branches.utils;
 
-import com.branches.model.Insumo;
+import com.branches.model.Supply;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,8 +18,8 @@ public class SINAPIExcelReader {
     private final ResourceLoader resourceLoader;
     private static final String SINAPI_FILE_PATH = "files/SINAPI_Preco_Ref_Insumos_PA_202412_NaoDesonerado.xlsx";
 
-    public List<Insumo> allInsumos() throws IOException {
-        List<Insumo> insumos = new ArrayList<>();
+    public List<Supply> allSupplies() throws IOException {
+        List<Supply> supplies = new ArrayList<>();
 
         try (InputStream is = resourceLoader.getResource("classpath:" + SINAPI_FILE_PATH).getInputStream();
              Workbook workbook = new XSSFWorkbook(is)) {
@@ -29,44 +29,45 @@ public class SINAPIExcelReader {
             for (Row row : sheet) {
                 if (row.getRowNum() < 7 || row.getRowNum() >= 4846) continue;
 
-                Insumo insumo = Insumo.builder().build();
+                Supply supply = Supply.builder().build();
 
                 for (Cell cell : row) {
-                    if (cell.toString().isEmpty()) continue;
+                    String cellValue = cell.toString().trim();
+                    if (cellValue.isEmpty()) continue;
 
                     switch (cell.getColumnIndex()) {
                         case 0:
-                            insumo.setCodigo(Long.parseLong(cell.toString().replace(".0", "")));
+                            supply.setCode(Long.parseLong(cellValue.replace(".0", "")));
                             break;
                         case 1:
-                            insumo.setDescricao(cell.toString().trim());
+                            supply.setDescription(cellValue);
                             break;
                         case 2:
-                            insumo.setUnidadeMedida(cell.toString().trim());
+                            supply.setUnitMeasurement(cellValue);
                             break;
                         case 3:
-                            insumo.setOrigemPreco(cell.toString().trim());
+                            supply.setOriginPrice(cellValue);
                             break;
                         case 4:
-                            insumo.setPreco(Double.parseDouble(cell.toString()));
+                            supply.setPrice(Double.parseDouble(cellValue));
                             break;
                     }
                 }
 
-                if (allFieldsFilled(insumo)) {
-                    insumos.add(insumo);
+                if (allFieldsFilled(supply)) {
+                    supplies.add(supply);
                 }
             }
         }
 
-        return insumos;
+        return supplies;
     }
 
-    private static boolean allFieldsFilled(Insumo insumo) {
-        return insumo.getCodigo() != null &&
-                insumo.getDescricao() != null &&
-                insumo.getUnidadeMedida() != null &&
-                insumo.getOrigemPreco() != null &&
-                insumo.getPreco() != null;
+    private static boolean allFieldsFilled(Supply supply) {
+        return supply.getCode() != null &&
+                supply.getDescription() != null &&
+                supply.getUnitMeasurement() != null &&
+                supply.getOriginPrice() != null &&
+                supply.getPrice() != null;
     }
 }

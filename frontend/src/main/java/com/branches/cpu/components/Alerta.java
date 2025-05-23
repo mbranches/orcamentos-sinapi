@@ -4,6 +4,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
+import java.util.Optional;
+
 public class Alerta {
     private static ButtonType btnConfirmar = new ButtonType("Confirmar");
     private static ButtonType btnCancelar = new ButtonType("Cancelar");
@@ -13,10 +15,10 @@ public class Alerta {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText(headerText);
         alert.setContentText(mensagem);
-        alert.show();
+        alert.showAndWait();
     }
 
-    public static boolean confirmarExclusão(String tipoExclusao, String msgExclusao) {
+    public static boolean confirmarExclusao(String tipoExclusao, String msgExclusao) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setHeaderText("Exclusão de " + tipoExclusao);
         alert.setContentText("Excluir \"" + msgExclusao +"\" ?");
