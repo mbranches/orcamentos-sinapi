@@ -40,7 +40,6 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
         tvOrcamentos.getPlaceholder().setStyle("-fx-font-size: 15px");
 
         tvOrcamentos.setFixedCellSize(60);
@@ -49,7 +48,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
 
         criarColunasTabela();
 
-        atualizarTabela();
+        carregarOrcamentos();
     }
 
     @FXML
@@ -70,7 +69,7 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         if (Alerta.confirmarExclusao("Orçamento", budgetSelecionado.getDescription())) {
             budgetService.delete(budgetSelecionado);
             Alerta.informacao("Sucesso!", "orçamento excluído com sucesso.");
-            atualizarTabela();
+            carregarOrcamentos();
         }
 
         removerSelecao();
@@ -98,10 +97,12 @@ public class TelaVisualizarOrcamentosController implements Initializable {
         if (budgetSelecionado != null) ativarBotoes();
     }
 
-    public void atualizarTabela() {
-        tvOrcamentos.getItems().clear();
-        budgetService.findAll()
-                .forEach(orcamento -> tvOrcamentos.getItems().add(orcamento));
+    public void carregarOrcamentos() {
+        List<Budget> budgets = budgetService.findAll();
+
+        if (budgets.isEmpty()) tvOrcamentos.setPlaceholder(new Label("Nenhum orçamento criado até o momento."));
+
+        tvOrcamentos.getItems().setAll(budgets);
     }
 
     private void criarColunasTabela() {

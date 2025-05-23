@@ -35,7 +35,6 @@ public class TelaVisualizarClientesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvClientes.setPlaceholder(new Label("Nenhum cliente adicionado até o momento."));
         tvClientes.getPlaceholder().setStyle("-fx-font-size: 15px");
 
         tvClientes.setFixedCellSize(60);
@@ -92,6 +91,7 @@ public class TelaVisualizarClientesController implements Initializable {
 
     public void carregarTodosClients() {
         List<Client> clients = clientService.findAll();
+        if (clients.isEmpty()) tvClientes.setPlaceholder(new Label("Nenhum cliente cadastrado até o momento"));
 
         atualizarTabela(clients);
 
@@ -101,6 +101,7 @@ public class TelaVisualizarClientesController implements Initializable {
     private void carregarClientsPesquisados() {
         String nameToSearch = tfPesquisar.getText();
         List<Client> clients = clientService.findAllByName(nameToSearch);
+        if (clients.isEmpty()) tvClientes.setPlaceholder(new Label("Nenhum cliente encontrado"));
 
         atualizarTabela(clients);
     }

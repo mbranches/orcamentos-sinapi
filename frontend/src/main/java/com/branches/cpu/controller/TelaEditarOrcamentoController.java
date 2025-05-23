@@ -53,7 +53,7 @@ public class TelaEditarOrcamentoController implements Initializable {
 
         budgetService.update(budgetToEdit);
 
-        telaVisualizarOrcamentosController.atualizarTabela();
+        telaVisualizarOrcamentosController.carregarOrcamentos();
 
         fecharPagina(event);
     }
