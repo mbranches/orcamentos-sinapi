@@ -2,35 +2,18 @@ package com.branches.cpu.request;
 
 
 import com.branches.cpu.model.Budget;
+import com.branches.cpu.model.Client;
 
-public class BudgetPostRequest {
-    private String description;
-    private Long clientId;
+import java.util.Optional;
 
-    public BudgetPostRequest() {
-    }
+public record BudgetPostRequest (String description, Long clientId) {
 
     public static BudgetPostRequest of(Budget budget) {
-        BudgetPostRequest postRequest = new BudgetPostRequest();
-        postRequest.setDescription(budget.getDescription());
-        if (budget.getClient() != null) postRequest.setClientId(budget.getClient().getId());
+        Client client = budget.getClient();
+        Long clientId = Optional.ofNullable(client)
+                .map(Client::getId)
+                .orElse(null);
 
-        return postRequest;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+        return new BudgetPostRequest(budget.getDescription(), clientId);
     }
 }

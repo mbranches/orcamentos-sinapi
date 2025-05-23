@@ -1,40 +1,17 @@
 package com.branches.cpu.request;
 
-public class BudgetPutRequest {
-    private Long id;
-    private String description;
-    private Long clientId;
+import com.branches.cpu.model.Budget;
+import com.branches.cpu.model.Client;
 
-    public BudgetPutRequest(Long id, String description, Long clientId) {
-        this.id = id;
-        this.description = description;
-        this.clientId = clientId;
-    }
+import java.util.Optional;
 
-    public BudgetPutRequest() {
-    }
+public record BudgetPutRequest (Long id, String description, Long clientId) {
+    public static BudgetPutRequest of(Budget budget) {
+        Client client = budget.getClient();
+        Long clientId = Optional.ofNullable(client)
+                .map(Client::getId)
+                .orElse(null);
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+        return new BudgetPutRequest(budget.getId(), budget.getDescription(), clientId);
     }
 }

@@ -63,11 +63,7 @@ public class BudgetService {
     public void update(Budget budgetToUpdate) {
         String urlForPut = URL + "/" + budgetToUpdate.getId();
 
-        BudgetPutRequest putRequest = new BudgetPutRequest();
-        putRequest.setId(budgetToUpdate.getId());
-        putRequest.setDescription(budgetToUpdate.getDescription());
-        Client client = budgetToUpdate.getClient();
-        if (client != null) putRequest.setClientId(client.getId());
+        BudgetPutRequest putRequest = BudgetPutRequest.of(budgetToUpdate);
 
         restTemplate.put(urlForPut, putRequest);
     }

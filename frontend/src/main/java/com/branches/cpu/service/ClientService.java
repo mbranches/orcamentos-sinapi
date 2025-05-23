@@ -43,7 +43,7 @@ public class ClientService {
     }
 
     public Client save(Client clientToSave) {
-        ClientPostRequest postRequest = new ClientPostRequest(clientToSave.getName(), clientToSave.getClientType());
+        ClientPostRequest postRequest = ClientPostRequest.of(clientToSave);
 
         return restTemplate.postForObject(URL, postRequest, Client.class);
     }
