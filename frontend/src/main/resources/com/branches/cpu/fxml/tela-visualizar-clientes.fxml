@@ -41,7 +41,7 @@
                            <graphic>
                               <ImageView fx:id="imageEditar" fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/penIconEditar.png" />
+                                    <Image url="@../Images/pen-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>

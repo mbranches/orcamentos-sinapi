@@ -120,7 +120,7 @@ public class AbrirFxmlUtils {
             TelaAdicionarInsumoController telaAdicionarInsumoController = loader.getController();
             telaAdicionarInsumoController.setTelaPrincipal(telaOrcamentoController);
 
-            abrirFxml(root, tite, 720, 400, false, "plus-icon-blue.png");
+            abrirFxml(root, tite, 720, 400, false, "add-icon-blue.png");
         } catch (Exception e) {
             System.out.println("Não foi possível carregar a tela.");
             throw new RuntimeException(e);
