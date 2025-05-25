@@ -3,7 +3,7 @@ package com.branches.cpu.controller;
 import com.branches.cpu.components.Alerta;
 import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
-import com.branches.cpu.service.BudgetItemService;
+import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.service.SupplyService;
 import com.branches.cpu.utils.NumberUtils;
 import com.branches.cpu.utils.TableColumnUtils;
@@ -41,7 +41,7 @@ public class TelaEditarInsumoController implements Initializable {
     private Text txtTotal;
     private TelaOrcamentoController telaPrincipal;
     private BudgetItem insumoAEditar;
-    private final BudgetItemService budgetItemService = new BudgetItemService();
+    private final BudgetService budgetService = new BudgetService();
     private final SupplyService service = new SupplyService();
 
     @FXML
@@ -58,7 +58,7 @@ public class TelaEditarInsumoController implements Initializable {
             return;
         }
 
-        budgetItemService.update(insumoAEditar);
+        budgetService.updateBudgetItem(insumoAEditar);
 
         telaPrincipal.carregarTodosBudgetItems();
 

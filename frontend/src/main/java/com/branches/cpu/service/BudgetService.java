@@ -2,7 +2,8 @@ package com.branches.cpu.service;
 
 import com.branches.cpu.model.Budget;
 import com.branches.cpu.model.BudgetItem;
-import com.branches.cpu.model.Client;
+import com.branches.cpu.request.BudgetItemPostRequest;
+import com.branches.cpu.request.BudgetItemPutRequest;
 import com.branches.cpu.request.BudgetPostRequest;
 import com.branches.cpu.request.BudgetPutRequest;
 import org.springframework.core.ParameterizedTypeReference;
@@ -78,5 +79,31 @@ public class BudgetService {
     public Budget findById(Long id) {
         String urlForGet = URL + "/" + id;
         return restTemplate.getForObject(urlForGet, Budget.class);
+    }
+
+    public BudgetItem saveBudgetItem(BudgetItem budgetItemToSave) {
+        Long budgetId = budgetItemToSave.getBudget().getId();
+        String urlForPost = URL + "/%s/items".formatted(budgetId);
+
+        BudgetItemPostRequest postRequest = BudgetItemPostRequest.of(budgetItemToSave);
+
+        return restTemplate.postForObject(urlForPost, postRequest, BudgetItem.class);
+    }
+
+    public void updateBudgetItem(BudgetItem budgetItemToUpdate) {
+        Long budgetId = budgetItemToUpdate.getBudget().getId();
+
+        String urlForPut = URL + "/%s/items/%s".formatted(budgetId, budgetItemToUpdate.getId());
+
+        BudgetItemPutRequest putRequest = BudgetItemPutRequest.of(budgetItemToUpdate);
+
+        restTemplate.put(urlForPut, putRequest);
+    }
+
+    public void deleteBudgetItem(BudgetItem budgetItemToDelete) {
+        Long budgetId = budgetItemToDelete.getBudget().getId();
+        String urlForDelete = URL + "/%s/items/%s".formatted(budgetId, budgetItemToDelete.getId());
+
+        restTemplate.delete(urlForDelete);
     }
 }

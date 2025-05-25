@@ -2,7 +2,6 @@ package com.branches.cpu.controller;
 
 import com.branches.cpu.model.BudgetItem;
 import com.branches.cpu.model.Budget;
-import com.branches.cpu.service.BudgetItemService;
 import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.utils.*;
 import javafx.beans.property.SimpleLongProperty;
@@ -38,7 +37,6 @@ public class TelaOrcamentoController implements Initializable {
     private Text txtTotal;
     private TelaVisualizarOrcamentosController telaVisualizarOrcamentos;
     private final AbrirFxmlUtils abrirFxmlUtils = new AbrirFxmlUtils();
-    private final BudgetItemService budgetItemService = new BudgetItemService();
     private final BudgetService budgetService = new BudgetService();
     private Budget budget;
     private BudgetItem itemSelecionado = null;
@@ -63,7 +61,7 @@ public class TelaOrcamentoController implements Initializable {
     private void excluirBudgetItem(ActionEvent event) {
         limparBarraPesquisa();
 
-        budgetItemService.delete(itemSelecionado);
+        budgetService.deleteBudgetItem(itemSelecionado);
 
         carregarTodosBudgetItems();
 

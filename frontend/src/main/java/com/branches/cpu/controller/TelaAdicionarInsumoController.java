@@ -4,7 +4,7 @@ import com.branches.cpu.components.Alerta;
 import com.branches.cpu.components.AutoCompleteTextField;
 import com.branches.cpu.model.Supply;
 import com.branches.cpu.model.BudgetItem;
-import com.branches.cpu.service.BudgetItemService;
+import com.branches.cpu.service.BudgetService;
 import com.branches.cpu.service.SupplyService;
 import com.branches.cpu.utils.NumberUtils;
 import com.branches.cpu.utils.TableColumnUtils;
@@ -41,7 +41,7 @@ public class TelaAdicionarInsumoController implements Initializable {
     private Supply insumoSelecionado;
     private TelaOrcamentoController telaPrincipal;
     private SupplyService service = new SupplyService();
-    private BudgetItemService budgetItemService = new BudgetItemService();
+    private final BudgetService budgetService = new BudgetService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -151,7 +151,7 @@ public class TelaAdicionarInsumoController implements Initializable {
         budgetItemToSave.setSupply(insumoSelecionado);
         budgetItemToSave.setQuantity(Integer.parseInt(tfQuantidade.getText().trim()));
 
-        budgetItemService.save(budgetItemToSave);
+        budgetService.saveBudgetItem(budgetItemToSave);
 
         telaPrincipal.carregarTodosBudgetItems();
     }
