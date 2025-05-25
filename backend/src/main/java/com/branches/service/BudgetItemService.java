@@ -37,7 +37,7 @@ public class BudgetItemService {
                 .orElseThrow(() -> new NotFoundException("Item with id '%s' is not found".formatted(id)));
     }
 
-    public List<BudgetItemGetResponse> findByBudgetId(Long budgetId, String supplyDescription) {
+    public List<BudgetItemGetResponse> findAllByBudgetId(Long budgetId, String supplyDescription) {
         budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
 
         List<BudgetItem> response = supplyDescription == null ? repository.findAllByBudgetId(budgetId) : repository.findAllByBudget_IdAndSupply_DescriptionContaining(budgetId, supplyDescription);
@@ -46,8 +46,7 @@ public class BudgetItemService {
     }
 
     @Transactional
-    public BudgetItemPostResponse save(BudgetItemPostRequest postRequest) {
-        Long budgetId = postRequest.getBudgetId();
+    public BudgetItemPostResponse save(Long budgetId, BudgetItemPostRequest postRequest) {
         Long supplyId = postRequest.getSupplyId();
 
         Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
@@ -72,12 +71,13 @@ public class BudgetItemService {
     }
 
     @Transactional
-    public void update(Long budgetItemId, BudgetItemPutRequest putRequest) {
+    public void update(Long budgetId, Long budgetItemId, BudgetItemPutRequest putRequest) {
         if (!budgetItemId.equals(putRequest.getId())) throw new BadRequestException("The ID in the URL (%s) does not match the ID in the request body (%s)".formatted(budgetItemId, putRequest.getId()));
+
+        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
 
         findByIdOrElseThrowsNotFoundException(budgetItemId);
 
-        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(putRequest.getBudgetId());
         Supply supply = supplyService.findByIdOrElseThrowNotFoundException(putRequest.getSupplyId());
 
         BudgetItem budgetItemToUpdate = mapper.toBudgetItem(putRequest);
@@ -97,12 +97,13 @@ public class BudgetItemService {
         budgetItem.setTotalValue(supplyPrice * quantity);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long budgetId, Long id) {
+        Budget budget = budgetService.findByIdOrElseThrowsNotFoundException(budgetId);
+
         BudgetItem budgetItemToDelete = findByIdOrElseThrowsNotFoundException(id);
         
         repository.delete(budgetItemToDelete);
 
-        Budget budget = budgetItemToDelete.getBudget();
         budgetService.updatesTotalValue(budget.getId());
     }
 }

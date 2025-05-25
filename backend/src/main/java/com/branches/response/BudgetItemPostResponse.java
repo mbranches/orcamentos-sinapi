@@ -10,8 +10,8 @@ public class BudgetItemPostResponse {
     public record BudgetByBudgetItemPostResponse(Long id, String description, Double totalValue){}
 
     private Long id;
+    private BudgetByBudgetItemPostResponse budget;
     private SupplyByBudgetItemPostResponse supply;
     private Integer quantity;
-    private BudgetByBudgetItemPostResponse budget;
     private Double totalValue;
 }

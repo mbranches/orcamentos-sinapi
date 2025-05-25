@@ -9,7 +9,6 @@ import lombok.With;
 @With
 public class BudgetItemPutRequest {
     private Long id;
-    private Long budgetId;
     private Long supplyId;
     private Integer quantity;
 }

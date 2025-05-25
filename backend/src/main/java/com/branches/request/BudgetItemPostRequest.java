@@ -12,5 +12,4 @@ import lombok.With;
 public class BudgetItemPostRequest {
     private Long supplyId;
     private Integer quantity;
-    private Long budgetId;
 }
