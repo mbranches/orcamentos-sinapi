@@ -70,12 +70,11 @@ public class BudgetItemUtils {
     }
 
     public static BudgetItemPostRequest newBudgetItemPostRequest() {
-        Budget budget = BudgetUtils.newBudgetList().getFirst();
         Supply supply = SupplyUtils.newSupplyList().getLast();
 
         int quantity = 5;
 
-        return BudgetItemPostRequest.builder().budgetId(budget.getId()).supplyId(supply.getId()).quantity(quantity).build();
+        return BudgetItemPostRequest.builder().supplyId(supply.getId()).quantity(quantity).build();
     }
 
     public static BudgetItemPostResponse newBudgetItemPostResponse() {
@@ -97,7 +96,6 @@ public class BudgetItemUtils {
 
         return BudgetItemPutRequest.builder()
                 .id(budgetItemToUpdate.getId())
-                .budgetId(budgetItemToUpdate.getBudget().getId())
                 .supplyId(budgetItemToUpdate.getSupply().getId())
                 .quantity(50)
                 .build();
