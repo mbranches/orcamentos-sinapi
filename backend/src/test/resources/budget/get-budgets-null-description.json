@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "client": {
+      "id": 1,
+      "name": "Marcus Branches",
+      "clientType": "pessoa"
+    },
+    "description": "Orçamento 1",
+    "totalValue": 1400.0
+  },
+  {
+    "id": 2,
+    "client": {
+      "id": 1,
+      "name": "Marcus Branches",
+      "clientType": "pessoa"
+    },
+    "description": "Orçamento 2",
+    "totalValue": 1400.0
+  },
+  {
+    "id": 3,
+    "client": {
+      "id": 1,
+      "name": "Marcus Branches",
+      "clientType": "pessoa"
+    },
+    "description": "Orçamento 3",
+    "totalValue": 1400.0
+  }
+]

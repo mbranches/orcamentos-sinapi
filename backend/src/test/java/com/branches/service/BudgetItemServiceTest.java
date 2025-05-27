@@ -439,4 +439,19 @@ class BudgetItemServiceTest {
                 .isInstanceOf(NotFoundException.class)
                 .hasMessageContaining("Item with id '%s' is not found".formatted(randomId));
     }
+
+    @Test
+    @DisplayName("deleteById throws NotFoundException when the given budget id is not found")
+    @Order(20)
+    void deleteById_ThrowsNotFoundException_WhenTheGivenBudgetIdIsNotFound() {
+        Long randomBudgetId = 999L;
+
+        BudgetItem budgetItemToDelete = budgetItemList.getFirst();
+        Long budgetItemToDeleteId = budgetItemToDelete.getId();
+
+        BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(randomBudgetId)).thenThrow(NotFoundException.class);
+
+        Assertions.assertThatThrownBy(() -> service.deleteById(randomBudgetId, budgetItemToDeleteId))
+                .isInstanceOf(NotFoundException.class);
+    }
 }

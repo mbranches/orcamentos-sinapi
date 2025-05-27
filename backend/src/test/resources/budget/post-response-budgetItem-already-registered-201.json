@@ -1,0 +1,17 @@
+{
+  "budget": {
+    "id": 1,
+    "description": "Orçamento 1",
+    "totalValue": 1400.0
+  },
+  "supply": {
+    "id": 1,
+    "code": 11,
+    "description": "Descrição 1",
+    "unitMeasurement": "m2",
+    "originPrice": "XX",
+    "price": 25.0
+  },
+  "quantity": 10,
+  "totalValue": 250.0
+}

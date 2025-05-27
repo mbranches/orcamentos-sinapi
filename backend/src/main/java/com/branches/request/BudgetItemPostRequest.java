@@ -1,13 +1,9 @@
 package com.branches.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.With;
+import lombok.*;
 
 @Builder
-@Getter
-@Setter
+@Data
 @With
 public class BudgetItemPostRequest {
     private Long supplyId;

@@ -1,0 +1,10 @@
+{
+  "id": 4,
+  "description": "Orçamento 4",
+  "client": {
+    "id": 1,
+    "name": "Marcus Branches",
+    "clientType": "pessoa"
+  },
+  "totalValue": 0.0
+}

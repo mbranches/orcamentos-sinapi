@@ -1,0 +1,17 @@
+{
+  "budget": {
+    "id": 1,
+    "description": "Orçamento 1",
+    "totalValue": 1400.0
+  },
+  "supply": {
+    "id": 3,
+    "code": 33,
+    "description": "Descrição 3",
+    "unitMeasurement": "un",
+    "originPrice": "YY",
+    "price": 80.0
+  },
+  "quantity": 5,
+  "totalValue": 400.0
+}
