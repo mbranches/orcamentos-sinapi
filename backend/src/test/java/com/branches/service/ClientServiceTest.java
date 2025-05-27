@@ -180,7 +180,7 @@ class ClientServiceTest {
 
     @Test
     @DisplayName("update updates client when successful")
-    @Order(8)
+    @Order(9)
     void update_UpdatesClient_WhenSuccessful() {
         Client clientNotUpdated = clientList.getFirst();
         Long clientToUpdateId = clientNotUpdated.getId();
@@ -199,7 +199,7 @@ class ClientServiceTest {
 
     @Test
     @DisplayName("update throws BadRequestException when the url id does not match request body id")
-    @Order(9)
+    @Order(10)
     void update_ThrowsBadRequestException_WhenTheUrlIdDoesNotMatchRequestBodyId() {
         Long randomId = 999L;
 
@@ -212,7 +212,7 @@ class ClientServiceTest {
 
     @Test
     @DisplayName("update throws NotFoundException when the given client id is not found")
-    @Order(10)
+    @Order(11)
     void update_ThrowsNotFoundException_WhenTheGivenClientIdIsNotFound() {
         Long randomId = 999L;
 
