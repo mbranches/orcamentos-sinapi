@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Marcus Branches",
+    "clientType": "pessoa"
+  },
+  {
+    "id": 2,
+    "name": "MassConstruções",
+    "clientType": "empresa"
+  },
+  {
+    "id": 3,
+    "name": "Restaurante Bom Apetite",
+    "clientType": "empresa"
+  }
+]
