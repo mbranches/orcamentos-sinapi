@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "code": 11,
+    "description": "Descrição 1",
+    "unitMeasurement": "m2",
+    "originPrice": "XX",
+    "price": 25.0
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "code": 11,
+    "description": "Descrição 1",
+    "unitMeasurement": "m2",
+    "originPrice": "XX",
+    "price": 25.0
+  },
+  {
+    "id": 2,
+    "code": 22,
+    "description": "Descrição 2",
+    "unitMeasurement": "m2",
+    "originPrice": "XX",
+    "price": 50.0
+  },
+  {
+    "id": 3,
+    "code": 33,
+    "description": "Descrição 3",
+    "unitMeasurement": "un",
+    "originPrice": "YY",
+    "price": 80.0
+  }
+]
