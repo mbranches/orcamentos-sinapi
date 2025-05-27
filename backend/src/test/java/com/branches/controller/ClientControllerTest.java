@@ -208,7 +208,7 @@ public class ClientControllerTest {
     @Order(10)
     void update_ThrowsBadRequestException_WhenTheUrlIdDoesNotMatchRequestBodyId() throws Exception {
         String request = fileUtils.readResourceFile("client/put-request-client-200.json");
-        String expectedResponse = fileUtils.readResourceFile("client/put-response-not-match-ids-client-400.json");
+        String expectedResponse = fileUtils.readResourceFile("client/put-response-client-ids-not-matching-200.json");
 
         ClientPutRequest putRequest = ClientUtils.newClientPutRequest();
 
