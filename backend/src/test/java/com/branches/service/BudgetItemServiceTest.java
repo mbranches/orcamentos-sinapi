@@ -12,8 +12,6 @@ import com.branches.request.BudgetItemPutRequest;
 import com.branches.response.BudgetItemGetResponse;
 import com.branches.response.BudgetItemGetResponse.BudgetByBudgetItemGetResponse;
 import com.branches.response.BudgetItemPostResponse;
-import com.branches.response.BudgetItemPostResponse.BudgetByBudgetItemPostResponse;
-import com.branches.response.BudgetItemPostResponse.SupplyByBudgetItemPostResponse;
 import com.branches.utils.BudgetItemUtils;
 import com.branches.utils.BudgetUtils;
 import org.assertj.core.api.Assertions;
@@ -95,7 +93,7 @@ class BudgetItemServiceTest {
     }
 
     @Test
-    @DisplayName("findByBudgetId returns all found budgetItems when successful")
+    @DisplayName("findAllByBudgetId returns all found budgetItems when successful")
     @Order(4)
     void findAllByBudgetId_ReturnsAllFoundBudgetItems_WhenSuccessful() {
         Budget ownerBudget = BudgetUtils.newBudgetList().getFirst();
@@ -123,7 +121,7 @@ class BudgetItemServiceTest {
     }
 
     @Test
-    @DisplayName("findByBudgetId returns an empty list when the budget does not have budgetItems")
+    @DisplayName("findAllByBudgetId returns an empty list when the budget does not have budgetItems")
     @Order(5)
     void findAllByBudgetId_ReturnsEmptyList_WhenTheBudgetDoesNotHaveBudgetItems() {
         Budget ownerBudget = BudgetUtils.newBudgetSaved();
@@ -141,7 +139,7 @@ class BudgetItemServiceTest {
     }
 
     @Test
-    @DisplayName("findByBudgetId returns found budgetItems when the argument is given")
+    @DisplayName("findAllByBudgetId returns found budgetItems when the argument is given")
     @Order(6)
     void findAllByBudgetId_ReturnsFoundBudgetItems_WhenTheArgumentIsGiven() {
         Budget ownerBudget = BudgetUtils.newBudgetList().getFirst();
@@ -177,7 +175,7 @@ class BudgetItemServiceTest {
     }
 
     @Test
-    @DisplayName("findByBudgetId returns an empty list when given budget has no supply with the given description")
+    @DisplayName("findAllByBudgetId returns an empty list when given budget has no supply with the given description")
     @Order(7)
     void findAllByBudgetId_ReturnsEmptyList_WhenTheGivenBudgetHasNoSupplyWithTheGivenDescription() {
         Budget ownerBudget = BudgetUtils.newBudgetList().getFirst();
@@ -197,7 +195,7 @@ class BudgetItemServiceTest {
     }
 
     @Test
-    @DisplayName("findByBudgetId throws NotFoundException when the given budget id is not found")
+    @DisplayName("findAllByBudgetId throws NotFoundException when the given budget id is not found")
     @Order(8)
     void findAllByBudgetId_ThrowsNotFoundException_WhenTheGivenBudgetIdIsNotFound() {
         Long randomId = 999L;
@@ -242,45 +240,23 @@ class BudgetItemServiceTest {
     @DisplayName("save updates quantity and total value when the budget id and supply id are already registered")
     @Order(10)
     void save_UpdatesQuantityAndTotalValue_WhenTheBudgetIdAndSupplyIdAreAlreadyRegistered() {
-        BudgetItem budgetItemAlreadyRegistered = budgetItemList.getFirst();
-        Budget ownerBudget = budgetItemAlreadyRegistered.getBudget();
-        Long budgetId = ownerBudget.getId();
+        BudgetItem budgetItemAlreadyRegistered = BudgetItemUtils.newBudgetItemList().getFirst();
+
+        BudgetItemPostRequest postRequest = BudgetItemUtils.newBudgetItemAlreadyRegisteredPostRequest();
+        BudgetItemPostResponse postResponse = BudgetItemUtils.newBudgetItemAlreadyRegisteredPostResponse();
+
         Supply supply = budgetItemAlreadyRegistered.getSupply();
         Long supplyId = supply.getId();
-
-        BudgetItemPostRequest postRequest = BudgetItemPostRequest.builder()
-                .supplyId(supplyId)
-                .quantity(5)
-                .build();
-
-        BudgetByBudgetItemPostResponse budgetByBudgetItemPostResponse = new BudgetByBudgetItemPostResponse(
-                budgetId,
-                ownerBudget.getDescription(),
-                ownerBudget.getTotalValue()
-                );
-
-        SupplyByBudgetItemPostResponse supplyByBudgetItemPostResponse = new SupplyByBudgetItemPostResponse(
-                supplyId,
-                supply.getCode(),
-                supply.getDescription(),
-                supply.getUnitMeasurement(),
-                supply.getOriginPrice(),
-                supply.getPrice()
-        );
+        Budget budget = budgetItemAlreadyRegistered.getBudget();
+        Long budgetId = budget.getId();
 
         int quantity = postRequest.getQuantity() + budgetItemAlreadyRegistered.getQuantity();
         double totalValue = quantity * supply.getPrice();
-        BudgetItemPostResponse postResponse = BudgetItemPostResponse.builder()
-                .budget(budgetByBudgetItemPostResponse)
-                .supply(supplyByBudgetItemPostResponse)
-                .quantity(quantity)
-                .totalValue(totalValue)
-                .build();
 
-        BudgetItem budgetItemToUpdate = BudgetItem.builder().supply(supply).budget(ownerBudget).quantity(postRequest.getQuantity()).build();
+        BudgetItem budgetItemToUpdate = BudgetItem.builder().supply(supply).budget(budget).quantity(postRequest.getQuantity()).build();
         BudgetItem budgetItemUpdated = budgetItemToUpdate.withId(budgetItemAlreadyRegistered.getId()).withQuantity(quantity).withTotalValue(totalValue);
 
-        BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(budgetId)).thenReturn(ownerBudget);
+        BDDMockito.when(budgetService.findByIdOrElseThrowsNotFoundException(budgetId)).thenReturn(budget);
         BDDMockito.when(supplyService.findByIdOrElseThrowNotFoundException(postRequest.getSupplyId())).thenReturn(supply);
         BDDMockito.when(repository.findBySupply_IdAndBudget_Id(supplyId, budgetId)).thenReturn(Optional.of(budgetItemAlreadyRegistered));
         BDDMockito.when(mapper.toBudgetItem(postRequest)).thenReturn(budgetItemToUpdate);
