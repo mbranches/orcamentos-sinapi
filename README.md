@@ -96,3 +96,23 @@ Obs: Ao inicializar a API é inserido os insumos lidos tabela SINAPI automaticam
     cd frontend
     mvn javafx:run
   ```
+
+## 🧪 Testes
+
+A API possui testes automatizados para garantir a qualidade do código e o funcionamento correto da aplicação. A mesma está coberta por dois tipos de testes:
+
+### Testes Unitários
+- Testes da camada de serviço, que garantem que a lógica de negócio funcione corretamente.
+- Utilizam `JUnit` para estruturação dos testes, `Mockito` para mockar dependências e `AssertJ` para garantir que as funcionalidades funcionem como o esperado.
+
+### Testes de Controller (Camada Web)
+- Validam o comportamento dos endpoints REST da aplicação em isolamento.
+- Configurados com `@WebMvcTest` inicializam apenas os beans da camada de controller sem carregar todo o contexto do Spring.
+- Utilizam `MockMVC` para simular requisições HTTP.
+- Testam os status HTTP e os payloads das requisições e respostas.
+
+### Para rodar os testes, a partir da raíz do repositório, execute:
+```
+   cd backend
+   mvn test
+```
